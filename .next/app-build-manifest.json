@@ -12,6 +12,12 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/get-tested/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/get-tested/page.css",
+      "static/chunks/app/get-tested/page.js"
+    ],
     "/test/[type]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -27,12 +33,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/sign-up/page.js"
-    ],
-    "/get-tested/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/get-tested/page.css",
-      "static/chunks/app/get-tested/page.js"
     ]
   }
 }

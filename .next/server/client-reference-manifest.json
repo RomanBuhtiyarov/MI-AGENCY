@@ -112,17 +112,17 @@
         "async": false
       }
     },
-    "(app-client)/./src/components/TestingUser/BlockTest/index.jsx": {
+    "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx": {
       "*": {
-        "id": "(sc_client)/./src/components/TestingUser/BlockTest/index.jsx",
+        "id": "(sc_client)/./src/components/TestingUser/Enneagrama/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
       }
     },
-    "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx": {
+    "(app-client)/./src/components/TestingUser/BlockTest/index.jsx": {
       "*": {
-        "id": "(sc_client)/./src/components/TestingUser/Enneagrama/index.jsx",
+        "id": "(sc_client)/./src/components/TestingUser/BlockTest/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -351,7 +351,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/image.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -359,7 +359,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/image.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -367,7 +367,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -375,7 +375,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -383,7 +383,7 @@
       "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -391,7 +391,7 @@
       "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/sign-up/page:static/chunks/app/sign-up/page.js"
       ],
       "async": false
     },
@@ -427,19 +427,19 @@
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\BlockTest\\index.jsx": {
-      "id": "(app-client)/./src/components/TestingUser/BlockTest/index.jsx",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\Enneagrama\\index.jsx": {
+      "id": "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx",
       "name": "*",
       "chunks": [
         "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\Enneagrama\\index.jsx": {
-      "id": "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\BlockTest\\index.jsx": {
+      "id": "(app-client)/./src/components/TestingUser/BlockTest/index.jsx",
       "name": "*",
       "chunks": [
-        "app/get-tested/page:static/chunks/app/get-tested/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -527,6 +527,14 @@
         "static/css/app/layout.css"
       ]
     },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\get-tested\\page": {
+      "modules": [
+        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\components\\\\screens\\\\GetTested\\\\CardTest.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
+      ],
+      "files": [
+        "static/css/app/get-tested/page.css"
+      ]
+    },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\test\\[type]\\page": {
       "modules": [
         "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\app\\\\test\\\\[type]\\\\page.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
@@ -542,14 +550,6 @@
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\sign-up\\page": {
       "modules": [],
       "files": []
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\get-tested\\page": {
-      "modules": [
-        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\components\\\\screens\\\\GetTested\\\\CardTest.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
-      ],
-      "files": [
-        "static/css/app/get-tested/page.css"
-      ]
     }
   }
 }
