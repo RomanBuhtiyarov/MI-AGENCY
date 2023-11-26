@@ -31,7 +31,6 @@ const success = () => {
 };
 
 const CreatedProfile = ({ session }) => {
-  console.log(session);
   const [modal, setModal] = useState(false);
 
   const [scopes, setScopes] = useState([]);
@@ -58,7 +57,6 @@ const CreatedProfile = ({ session }) => {
       isRegistered: !session.user.isRegistered,
       // image: "",
     };
-    console.log("Sent data: " + { ...data });
     // if (email === "" || password === "") {
     //   return false;
     // }

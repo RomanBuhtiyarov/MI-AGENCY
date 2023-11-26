@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Enneagrama } from "@/components/TestingUser/Enneagrama";
+import { PAEIDescription } from "@/components/TestingUser/PAEIDescription";
+import { TestingUser } from "@/components/TestingUser";
 export default [
   {
     label: "Тест Адізеса",
@@ -28,140 +30,33 @@ export default [
         </p>
       ),
       children: (
-        <section className="flex flex-col items-start gap-[35px]">
-          <div className="flex items-start gap-[15px]">
-            <p className="w-[100px] font-unbounded bg-gradient-to-r from-[#347AEC] to-[#6764E7] inline-block text-transparent bg-clip-text text-8xl font-semibold">
-              P
-            </p>
-            <div className="max-w-[456px] pt-[10px]">
-              <h5 className="font-unbounded text-[#262626] uppercase font-[500]">
-                ЩО ПОТРІБНО ЗРОБИТИ?
-              </h5>
-              <p className="text-[#262626] font-[500] leading-6 mt-[10px]">
-                Ця функція менеджменту відповідає задоволення потреб клієнтів.
-                Від цього залежить результативність компанії у короткостроковій
-                перспективі.
-              </p>
+        <section className="flex flex-col items-start gap-[35px] mb-[30px]">
+          <PAEIDescription />
+          <div className="flex items-center gap-[27px]">
+            <div className="relative border border-solid border-2 border-[#347AEC] py-[15px] px-[24px] w-[595px] rounded-[15px]">
+              <div className="text-[#262626] leading-[130%]">
+                <p className="font-[500] mb-[10px]">
+                  Перед вами 10 блоків, що містять по 4 якості особистості.
+                  Надайте кожній якості від 1-го до 4-х балів в залежності від
+                  того, наскільки воно підходить саме вам. Загальна сума балів
+                  одного блоку повинна дорівнювати 10.
+                </p>
+                <h3 className="font-[700]">Будьте чесні перед собою</h3>
+              </div>
+            </div>
+            <div className="-scale-x-100">
+              <Image
+                src={"/_assets/images/robot img.png"}
+                alt={"robot look"}
+                loading="lazy"
+                width={150}
+                height={200}
+              />
             </div>
           </div>
-          <div className="flex items-start gap-[15px]">
-            <p className="w-[100px] font-unbounded bg-gradient-to-r from-[#347AEC] to-[#6764E7] inline-block text-transparent bg-clip-text text-8xl font-semibold">
-              А
-            </p>
-            <div className="max-w-[456px] pt-[10px]">
-              <h5 className="font-unbounded text-[#262626] uppercase font-[500]">
-                ЯК ЦЕ ПОТРІБНО ЗРОБИТИ?
-              </h5>
-              <p className="text-[#262626] font-[500] leading-6 mt-[10px]">
-                Організація повинна у правильній послідовності робити правильні
-                речі. Адміністратор забезпечує цей процес.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-[15px]">
-            <p className="w-[100px] font-unbounded bg-gradient-to-r from-[#347AEC] to-[#6764E7] inline-block text-transparent bg-clip-text text-8xl font-semibold">
-              E
-            </p>
-            <div className="max-w-[456px] pt-[10px]">
-              <h5 className="font-unbounded text-[#262626] uppercase font-[500]">
-                КОЛИ/НАВІЩО ЦЕ ПОТРІБНО ЗРОБИТИ?
-              </h5>
-              <p className="text-[#262626] font-[500] leading-6 mt-[10px]">
-                Дотримуючись творчого підходу та готовність йти на ризик
-                менеджер також має орієнтуватися у хаосі змін та визначати
-                напрямок розвитку компанії.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-[15px]">
-            <p className="w-[100px] font-unbounded bg-gradient-to-r from-[#347AEC] to-[#6764E7] inline-block text-transparent bg-clip-text text-8xl font-semibold">
-              I
-            </p>
-            <div className="max-w-[456px] pt-[10px]">
-              <h5 className="font-unbounded text-[#262626] uppercase font-[500]">
-                ХТО ЦЕ ПОВИНЕН ЗРОБИТИ?
-              </h5>
-              <p className="text-[#262626] font-[500] leading-6 mt-[10px]">
-                Керівнику потрібно вміти створювати у компанії таку систему
-                цінностей, яка у свою чергу сформує у команді атмосферу
-                взаємоповаги та співробітництва.
-              </p>
-            </div>
-          </div>
+          <TestingUser />
         </section>
       ),
-      tests: {
-        block_1: [
-          { _id: "I", label: "Чуйний" },
-          { _id: "E", label: "Яскравий" },
-          { _id: "P", label: "Залучений" },
-          { _id: "A", label: "Той, що має сумніви" },
-          { answers: [] },
-        ],
-        block_2: [
-          { _id: "P", label: "Прямолінійний" },
-          { _id: "A", label: "Аналізуючий" },
-          { _id: "E", label: "Харизматичний" },
-          { _id: "I", label: "Чуттєвий" },
-          { answers: [] },
-        ],
-        block_3: [
-          { _id: "A", label: "Спостерігаючий" },
-          { _id: "P", label: "Той, що робить" },
-          { _id: "E", label: "Думаючий" },
-          { _id: "I", label: "Співпереживаючий" },
-          { answers: [] },
-        ],
-        block_4: [
-          { _id: "P", label: "Свідомий" },
-          { _id: "A", label: "Оцінюючий" },
-          { _id: "E", label: "Ризикований" },
-          { _id: "I", label: "Доброзичливий" },
-          { answers: [] },
-        ],
-        block_5: [
-          { _id: "I", label: "Свідомий" },
-          { _id: "E", label: "Оцінюючий" },
-          { _id: "P", label: "Ризикований" },
-          { _id: "A", label: "Доброзичливий" },
-          { answers: [] },
-        ],
-        block_6: [
-          { _id: "E", label: "Абстрактний" },
-          { _id: "A", label: "Спостерігаючий" },
-          { _id: "I", label: "Взаємодіючий" },
-          { _id: "P", label: "Активний" },
-          { answers: [] },
-        ],
-        block_7: [
-          { _id: "P", label: "Прагматичний" },
-          { _id: "I", label: "Теплий" },
-          { _id: "A", label: "Той, що розмірковує" },
-          { _id: "E", label: "Орієнтований на майбутнє" },
-          { answers: [] },
-        ],
-        block_8: [
-          { _id: "I", label: "Той, хто прагне консенсусу" },
-          { _id: "E", label: "Концептуальний" },
-          { _id: "P", label: "Переможець" },
-          { _id: "A", label: "Спостерігаючий" },
-          { answers: [] },
-        ],
-        block_9: [
-          { _id: "A", label: "Стриманий" },
-          { _id: "E", label: "Генератор ідей" },
-          { _id: "P", label: "Раціональний" },
-          { _id: "I", label: "Обізнаний" },
-          { answers: [] },
-        ],
-        block_10: [
-          { _id: "I", label: "Приємний" },
-          { _id: "E", label: "Яскравий" },
-          { _id: "A", label: "Акуратний" },
-          { _id: "P", label: "Діловий" },
-          { answers: [] },
-        ],
-      },
     },
   },
   {

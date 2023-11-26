@@ -112,14 +112,6 @@
         "async": false
       }
     },
-    "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/components/TestingUser/Enneagrama/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
     "(app-client)/./src/components/TestingUser/BlockTest/index.jsx": {
       "*": {
         "id": "(sc_client)/./src/components/TestingUser/BlockTest/index.jsx",
@@ -128,57 +120,25 @@
         "async": false
       }
     },
+    "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/TestingUser/Enneagrama/index.jsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/TestingUser/PAEIDescription/index.jsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/TestingUser/PAEIDescription/index.jsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
     "(app-client)/./src/components/TestingUser/index.jsx": {
       "*": {
         "id": "(sc_client)/./src/components/TestingUser/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/script.js": {
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/components/screens/MyProfile/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/components/screens/MyProfile/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/app/sign-up/page.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/app/sign-up/page.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/components/UI/Selects/MultipleSelect.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/components/UI/Selects/MultipleSelect.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/components/screens/SignUp/CreatedProfile/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/components/screens/SignUp/CreatedProfile/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/components/screens/SignUp/LoginGoogleProvider/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/components/screens/SignUp/LoginGoogleProvider/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -351,7 +311,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/image.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -359,7 +319,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/image.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -367,7 +327,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -375,7 +335,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -383,7 +343,7 @@
       "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -391,7 +351,7 @@
       "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
       "name": "*",
       "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
     },
@@ -427,6 +387,14 @@
       ],
       "async": false
     },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\BlockTest\\index.jsx": {
+      "id": "(app-client)/./src/components/TestingUser/BlockTest/index.jsx",
+      "name": "*",
+      "chunks": [
+        "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
+      ],
+      "async": false
+    },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\Enneagrama\\index.jsx": {
       "id": "(app-client)/./src/components/TestingUser/Enneagrama/index.jsx",
       "name": "*",
@@ -435,8 +403,8 @@
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\BlockTest\\index.jsx": {
-      "id": "(app-client)/./src/components/TestingUser/BlockTest/index.jsx",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\TestingUser\\PAEIDescription\\index.jsx": {
+      "id": "(app-client)/./src/components/TestingUser/PAEIDescription/index.jsx",
       "name": "*",
       "chunks": [
         "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
@@ -450,73 +418,9 @@
         "app/test/[type]/page:static/chunks/app/test/[type]/page.js"
       ],
       "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "*",
-      "chunks": [
-        "app/my-profile/page:static/chunks/app/my-profile/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\esm\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "*",
-      "chunks": [
-        "app/my-profile/page:static/chunks/app/my-profile/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\screens\\MyProfile\\index.jsx": {
-      "id": "(app-client)/./src/components/screens/MyProfile/index.jsx",
-      "name": "*",
-      "chunks": [
-        "app/my-profile/page:static/chunks/app/my-profile/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\sign-up\\page.jsx": {
-      "id": "(app-client)/./src/app/sign-up/page.jsx",
-      "name": "*",
-      "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\UI\\Selects\\MultipleSelect.jsx": {
-      "id": "(app-client)/./src/components/UI/Selects/MultipleSelect.jsx",
-      "name": "*",
-      "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\screens\\SignUp\\CreatedProfile\\index.jsx": {
-      "id": "(app-client)/./src/components/screens/SignUp/CreatedProfile/index.jsx",
-      "name": "*",
-      "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\components\\screens\\SignUp\\LoginGoogleProvider\\index.jsx": {
-      "id": "(app-client)/./src/components/screens/SignUp/LoginGoogleProvider/index.jsx",
-      "name": "*",
-      "chunks": [
-        "app/sign-up/page:static/chunks/app/sign-up/page.js"
-      ],
-      "async": false
     }
   },
   "entryCSSFiles": {
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\page": {
-      "modules": [
-        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\app\\\\page.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
-      ],
-      "files": [
-        "static/css/app/page.css"
-      ]
-    },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\layout": {
       "modules": [
         "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\globals.css",
@@ -525,6 +429,14 @@
       ],
       "files": [
         "static/css/app/layout.css"
+      ]
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\page": {
+      "modules": [
+        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\app\\\\page.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
+      ],
+      "files": [
+        "static/css/app/page.css"
       ]
     },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\get-tested\\page": {
@@ -542,14 +454,6 @@
       "files": [
         "static/css/app/test/[type]/page.css"
       ]
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\my-profile\\page": {
-      "modules": [],
-      "files": []
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\sign-up\\page": {
-      "modules": [],
-      "files": []
     }
   }
 }

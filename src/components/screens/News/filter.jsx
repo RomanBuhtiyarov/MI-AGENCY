@@ -4,7 +4,6 @@ import {Select, Tag} from "antd";
 
 const tagRender = (props) => {
     const { label, value, closable, onClose } = props;
-    console.log(props)
     const onPreventMouseDown = (event) => {
         event.preventDefault();
         event.stopPropagation();

@@ -5,7 +5,6 @@ import LoginGoogle from "@/components/UI/Buttons/LoginGoogle";
 import { signIn } from "next-auth/react";
 
 export const LoginGoogleProvider = ({ session }) => {
-  console.log(session);
   return (
     <section className="flex items-start gap-[50px]">
       <Image

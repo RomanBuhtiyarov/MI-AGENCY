@@ -11,6 +11,7 @@ import Link from "next/link";
 import enneagrama from "@/_libs/enneagrama";
 import Image from "next/image";
 import { EnneagramaResult } from "./EnneagramaResult";
+import NextPrevButton from "@/components/UI/Buttons/NextPrevButton";
 export const Enneagrama = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -43,8 +44,6 @@ export const Enneagrama = () => {
     const storedUserAnswers = localStorage.getItem("userAnswers");
     return storedUserAnswers ? JSON.parse(storedUserAnswers) : {};
   });
-  console.log("General count: " + generalCount);
-  console.log("User answers:", userAnswers);
 
   useEffect(() => {
     // Зберігаємо дані в локальному сховищі
@@ -135,7 +134,7 @@ export const Enneagrama = () => {
       </div>
       <div className="flex justify-around mt-[20px] w-[300px] mx-auto">
         {currentQuestion > 0 && (
-          <ArrowButton
+          <NextPrevButton
             className="previous-block block-button bg-transparent w-[135px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
             label="Попередній блок"
             onClick={() => {
@@ -146,7 +145,7 @@ export const Enneagrama = () => {
           />
         )}
         {currentQuestion < generalQuestions && (
-          <ArrowButton
+          <NextPrevButton
             className="block-button bg-transparent w-[128px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
             label="Наступний блок"
             onClick={() => setCurrentQuestion((prev) => prev + 1)}

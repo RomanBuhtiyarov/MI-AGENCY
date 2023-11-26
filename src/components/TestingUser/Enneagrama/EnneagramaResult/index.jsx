@@ -22,9 +22,6 @@ export const EnneagramaResult = ({ answers }) => {
       0
     );
   }
-  console.log(
-    Object.keys(scores).reduce((a, b) => (scores[a] > scores[b] ? a : b))
-  );
   const resultType = Object.keys(scores).reduce((a, b) =>
     scores[a] > scores[b] ? a : b
   );
@@ -48,7 +45,7 @@ export const EnneagramaResult = ({ answers }) => {
   } = enneagramResultData;
 
   return (
-    <div className="mt-[40px] flex justify-between">
+    <div className="mt-[20px] flex justify-between">
       <div>
         <Image
           className=" radius-[15px]"
