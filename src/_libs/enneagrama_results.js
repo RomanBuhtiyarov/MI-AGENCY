@@ -1,118 +1,86 @@
-export default [
-  {
-    type: 1,
-    img: "1.png",
-    title: "Перфекціоніст",
-    description:
-      "Люди першого типу дуже надійні, акуратні, принципові та структурні. Вони етичні та ідеалістичні – у всьому прагнуть досконалості. Перфекціоністи живуть за правилами та контролюють свої емоції.",
-    lifeCreed: "я знаю, як усе зробити добре, і навчу.",
-    keyword: "правило.",
-    careerOrientations:
-      "сфери, де все регламентовано та структуровано. Є можливість кар'єрного зростання та команда однодумців. Відсутність контролю, адже люди першого типу самі орієнтовані на максимальний результат. Для них також важливою є цінність роботи.",
-    possibleProfessions:
-      "менеджер (у тому числі топ-менеджер), юрист або адвокат, банкір, фінансист, бухгалтер, product owner.",
-  },
-  {
-    type: 2,
-    img: "2.png",
-    title: "Друг",
-    description:
-      "Люди другого типу орієнтовані відносини з іншими, проникливі, дбайливі, емпатичні, люблячі і щедрі. Вони люди-клею на роботі, часто говорять іншим «Так», при цьому повністю забуваючи про свої потреби. «Двійки» хочуть бути коханими, віддавати своє тепло та світло іншим людям.",
-    lifeCreed: "розпізнавати потреби інших та пропонувати допомогу",
-    keyword: "дякую.",
-    careerOrientations:
-      "сфери послуг та пов'язані з сервісом, соціальне підприємництво, некомерційні організації та волонтерство.",
-    possibleProfessions: "учитель, кухар, пожежний, дизайнер, event-менеджер.",
-  },
-  {
-    type: 3,
-    img: "3.png",
-    title: "Досягач",
-    description:
-      "Люди третього типу цілеспрямовані, активні, ефективні, впевнені у собі та привабливі. Вони неймовірні трудоголіки і легко адаптуються до різних життєвих ситуацій, тому що прагнуть успіху і хочуть викликати захоплення.",
-    lifeCreed: "життя = робота.",
-    keyword: "ціль.",
-    careerOrientations:
-      "особистий бренд чи посади із високим рівнем заробітної плати, можливістю швидкого кар'єрного зростання.",
-    possibleProfessions:
-      "виконавчий директор, PR-директор, менеджер з продажу, менеджер проектів.",
-  },
-  {
-    type: 4,
-    img: "4.png",
-    title: "Індивідуаліст",
-    description:
-      "Люди четвертого типу емоційні, творчі та креативні, що виділяються, романтичні натури. Вони вірять, що оточуючі люблять їх за унікальність та оригінальність, тому завжди хочуть виявити свою індивідуальність, яскраво виділитися зовні. Один із найбільших страхів – бути як усі.",
-    lifeCreed:
-      "творчість завжди та скрізь! Навіть коли робота рутинна, людина четвертого типу привнесе у виконання особливий елемент – щось унікальне.",
-    keyword: "емоція.",
-    careerOrientations:
-      "будь-який напрям, де можна творчо самовиражатися та втілювати свої ідеї.",
-    possibleProfessions:
-      "психолог, консультант, масажист, музикант, актор, письменник, художник, дизайнер.",
-  },
-  {
-    type: 5,
-    img: "5.png",
-    title: "Мислитель",
-    description:
-      "Люди п'ятого типу дуже ерудовані, мислячі і глибокі - повністю поринають у тему. Вони успішні стратеги та добрі слухачі, адже налаштовані отримати максимальну кількість інформації про світ навколо.",
-    lifeCreed:
-      "накопичувати знання про світ, про різні сфери, які їх спричиняють.",
-    keyword: "експертність.",
-    careerOrientations: "наука та технології, фріланс (віддалена робота).",
-    possibleProfessions:
-      "фінансовий директор, архітектор, професор або науковий діяч, веб-розробник.",
-  },
-  {
-    type: 6,
-    img: "6.png",
-    title: "Скептик",
-    description:
-      "Люди шостого типу здатні бачити різні напрями та шляхи розвитку ситуації, враховувати всі можливі результати подій, прораховуючи ризики. Вони постійно перебувають у процесі вибору та пошуку правильного рішення. Саме тому тверезо оцінюють те, що відбувається, перевіряють світ на міцність.",
-    lifeCreed: "шукати підтримку та опору всередині себе та серед оточуючих.",
-    keyword: "вибір.",
-    careerOrientations: "у будь-якій роботі можна знайти щось варте.",
-    possibleProfessions:
-      "державний службовець, співробітник спецслужб, юрист, інспектор, ризик-менеджер.",
-  },
-  {
-    type: 7,
-    img: "7.png",
-    title: "Оптиміст",
-    description:
-      "Люди сьомого типу дивляться на світ через позитивний фільтр і фокусуються на хорошому, прагнуть задоволення і хочуть отримувати від життя максимум. Вони легко залучаються до різних проектів, мотивуються, швидко перемикаються між завданнями, але можуть не довести справу до кінця.",
-    lifeCreed: "життя – це насолода.",
-    keyword: "насолода.",
-    careerOrientations:
-      "особистий бренд, свій проект чи бізнес, робота у сфері розваг, креативні напрямки.",
-    possibleProfessions:
-      "гід, туристичний агент, ресторанний критик, музикант, діджей, танцюрист, фотограф.",
-  },
-  {
-    type: 8,
-    img: "8.png",
-    title: "Бос",
-    description:
-      "Люди восьмого типу знають, що хочуть отримувати від життя, рухають своїм внутрішнім «Хочу», відповідальні, вроджені лідери, енергійні, витривалі та сильні. Вони орієнтовані на результат, конкретні та практичні у своєму підході. Часто живуть за принципом: є дві точки зору на кожне питання – неправильне і моє.",
-    lifeCreed: "розвивати силу та нарощувати контроль.",
-    keyword: "справедливість.",
-    careerOrientations:
-      "можливість одноосібно приймати рішення, а також важлива масштабність – можливість змінити світ.",
-    possibleProfessions:
-      "підприємець, кар'єрний консультант, генеральний директор, директор з маркетингу чи продажу, виконавчий директор, політик.",
-  },
-  {
-    type: 9,
-    img: "9.png",
-    title: "Миротворець",
-    description:
-      "Люди дев'ятого типу мирні, душевні, чуйні, співчутливі, щедрі та гармонійні. Їхня унікальна властивість – дипломатичність. Мають здатність «зливатися» з іншими людьми, розчиняючи в них свої потреби та бажання.",
-    lifeCreed:
-      "оточувати себе гармонією та позитивом, зберігати стан умиротворення, уникаючи конфліктів.",
-    keyword: "гармонія.",
-    careerOrientations: "спокійний ритм і відсутність стресу.",
-    possibleProfessions:
-      "дипломат, співробітник служби довіри, учитель, професор, ветеринар, лікар, масажист.",
-  },
-];
+export const enneagrama_results = (lang) => {
+  const results = [
+    {
+      type: 1,
+      title: lang.enneagram_results.type_1.title,
+      description: lang.enneagram_results.type_1.description,
+      lifeCreed: lang.enneagram_results.type_1.lifeCreed,
+      keyword: lang.enneagram_results.type_1.keyword,
+      careerOrientations: lang.enneagram_results.type_1.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_1.possibleProfessions,
+    },
+    {
+      type: 2,
+      title: lang.enneagram_results.type_2.title,
+      description: lang.enneagram_results.type_2.description,
+      lifeCreed: lang.enneagram_results.type_2.lifeCreed,
+      keyword: lang.enneagram_results.type_2.keyword,
+      careerOrientations: lang.enneagram_results.type_2.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_2.possibleProfessions,
+    },
+    {
+      type: 3,
+      title: lang.enneagram_results.type_3.title,
+      description: lang.enneagram_results.type_3.description,
+      lifeCreed: lang.enneagram_results.type_3.lifeCreed,
+      keyword: lang.enneagram_results.type_3.keyword,
+      careerOrientations: lang.enneagram_results.type_3.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_3.possibleProfessions,
+    },
+    {
+      type: 4,
+      title: lang.enneagram_results.type_4.title,
+      description: lang.enneagram_results.type_4.description,
+      lifeCreed: lang.enneagram_results.type_4.lifeCreed,
+      keyword: lang.enneagram_results.type_4.keyword,
+      careerOrientations: lang.enneagram_results.type_4.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_4.possibleProfessions,
+    },
+    {
+      type: 5,
+      title: lang.enneagram_results.type_5.title,
+      description: lang.enneagram_results.type_5.description,
+      lifeCreed: lang.enneagram_results.type_5.lifeCreed,
+      keyword: lang.enneagram_results.type_5.keyword,
+      careerOrientations: lang.enneagram_results.type_5.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_5.possibleProfessions,
+    },
+    {
+      type: 6,
+      title: lang.enneagram_results.type_6.title,
+      description: lang.enneagram_results.type_6.description,
+      lifeCreed: lang.enneagram_results.type_6.lifeCreed,
+      keyword: lang.enneagram_results.type_6.keyword,
+      careerOrientations: lang.enneagram_results.type_6.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_6.possibleProfessions,
+    },
+    {
+      type: 7,
+      title: lang.enneagram_results.type_7.title,
+      description: lang.enneagram_results.type_7.description,
+      lifeCreed: lang.enneagram_results.type_7.lifeCreed,
+      keyword: lang.enneagram_results.type_7.keyword,
+      careerOrientations: lang.enneagram_results.type_7.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_7.possibleProfessions,
+    },
+    {
+      type: 8,
+      title: lang.enneagram_results.type_8.title,
+      description: lang.enneagram_results.type_8.description,
+      lifeCreed: lang.enneagram_results.type_8.lifeCreed,
+      keyword: lang.enneagram_results.type_8.keyword,
+      careerOrientations: lang.enneagram_results.type_8.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_8.possibleProfessions,
+    },
+    {
+      type: 9,
+      title: lang.enneagram_results.type_9.title,
+      description: lang.enneagram_results.type_9.description,
+      lifeCreed: lang.enneagram_results.type_9.lifeCreed,
+      keyword: lang.enneagram_results.type_9.keyword,
+      careerOrientations: lang.enneagram_results.type_9.careerOrientations,
+      possibleProfessions: lang.enneagram_results.type_9.possibleProfessions,
+    },
+  ];
+  return results;
+};

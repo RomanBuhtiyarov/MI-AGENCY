@@ -1,28 +1,38 @@
 {
   "pages": {
-    "/layout": [
+    "/[lang]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/css/app/[lang]/page.css",
+      "static/chunks/app/[lang]/page.js"
     ],
-    "/page": [
+    "/[lang]/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/css/app/[lang]/layout.css",
+      "static/chunks/app/[lang]/layout.js"
     ],
-    "/get-tested/page": [
+    "/[lang]/my-profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/get-tested/page.css",
-      "static/chunks/app/get-tested/page.js"
+      "static/chunks/app/[lang]/my-profile/page.js"
     ],
-    "/test/[type]/page": [
+    "/[lang]/get-tested/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/test/[type]/page.css",
-      "static/chunks/app/test/[type]/page.js"
+      "static/css/app/[lang]/get-tested/page.css",
+      "static/chunks/app/[lang]/get-tested/page.js"
+    ],
+    "/[lang]/pages/sign-up/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/pages/sign-up/page.js"
+    ],
+    "/[lang]/test/[type]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[lang]/test/[type]/page.css",
+      "static/chunks/app/[lang]/test/[type]/page.js"
     ]
   }
 }
