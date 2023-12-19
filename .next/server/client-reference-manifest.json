@@ -72,9 +72,33 @@
         "async": false
       }
     },
+    "(app-client)/./node_modules/next/dist/client/script.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
     "(app-client)/./node_modules/next/dist/shared/lib/head.js": {
       "*": {
         "id": "(sc_client)/./node_modules/next/dist/shared/lib/head.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/app/[lang]/components/screens/MyProfile/index.jsx": {
+      "*": {
+        "id": "(sc_client)/./src/app/[lang]/components/screens/MyProfile/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -112,25 +136,25 @@
         "async": false
       }
     },
-    "(app-client)/./node_modules/next/dist/client/script.js": {
+    "(app-client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx": {
       "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/script.js",
+        "id": "(sc_client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx",
         "name": "*",
         "chunks": [],
         "async": false
       }
     },
-    "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js": {
+    "(app-client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx": {
       "*": {
-        "id": "(sc_client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+        "id": "(sc_client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
       }
     },
-    "(app-client)/./src/app/[lang]/components/screens/MyProfile/index.jsx": {
+    "(app-client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx": {
       "*": {
-        "id": "(sc_client)/./src/app/[lang]/components/screens/MyProfile/index.jsx",
+        "id": "(sc_client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -163,30 +187,6 @@
     "(app-client)/./src/app/[lang]/components/PAEI/index.jsx": {
       "*": {
         "id": "(sc_client)/./src/app/[lang]/components/PAEI/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx": {
-      "*": {
-        "id": "(sc_client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -459,6 +459,22 @@
       ],
       "async": false
     },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\client\\script.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "*",
+      "chunks": [
+        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\esm\\client\\script.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/script.js",
+      "name": "*",
+      "chunks": [
+        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
+      ],
+      "async": false
+    },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\shared\\lib\\head.js": {
       "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
       "name": "*",
@@ -472,6 +488,30 @@
       "name": "*",
       "chunks": [
         "app/[lang]/test/[type]/page:static/chunks/app/[lang]/test/[type]/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\shared\\lib\\lazy-dynamic\\dynamic-no-ssr.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+      "name": "*",
+      "chunks": [
+        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\esm\\shared\\lib\\lazy-dynamic\\dynamic-no-ssr.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+      "name": "*",
+      "chunks": [
+        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\MyProfile\\index.jsx": {
+      "id": "(app-client)/./src/app/[lang]/components/screens/MyProfile/index.jsx",
+      "name": "*",
+      "chunks": [
+        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
       ],
       "async": false
     },
@@ -507,43 +547,27 @@
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "*",
-      "chunks": [
-        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\esm\\client\\script.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/script.js",
-      "name": "*",
-      "chunks": [
-        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\shared\\lib\\lazy-dynamic\\dynamic-no-ssr.js": {
-      "id": "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\UI\\Selects\\MultipleSelect.jsx": {
+      "id": "(app-client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx",
       "name": "*",
       "chunks": [
         "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\dist\\esm\\shared\\lib\\lazy-dynamic\\dynamic-no-ssr.js": {
-      "id": "(app-client)/./node_modules/next/dist/shared/lib/lazy-dynamic/dynamic-no-ssr.js",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\SignUp\\CreatedProfile\\index.jsx": {
+      "id": "(app-client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx",
       "name": "*",
       "chunks": [
         "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\MyProfile\\index.jsx": {
-      "id": "(app-client)/./src/app/[lang]/components/screens/MyProfile/index.jsx",
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\SignUp\\LoginGoogleProvider\\index.jsx": {
+      "id": "(app-client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx",
       "name": "*",
       "chunks": [
-        "app/[lang]/my-profile/page:static/chunks/app/[lang]/my-profile/page.js"
+        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
       ],
       "async": false
     },
@@ -576,30 +600,6 @@
       "name": "*",
       "chunks": [
         "app/[lang]/test/[type]/page:static/chunks/app/[lang]/test/[type]/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\UI\\Selects\\MultipleSelect.jsx": {
-      "id": "(app-client)/./src/app/[lang]/components/UI/Selects/MultipleSelect.jsx",
-      "name": "*",
-      "chunks": [
-        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\SignUp\\CreatedProfile\\index.jsx": {
-      "id": "(app-client)/./src/app/[lang]/components/screens/SignUp/CreatedProfile/index.jsx",
-      "name": "*",
-      "chunks": [
-        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\components\\screens\\SignUp\\LoginGoogleProvider\\index.jsx": {
-      "id": "(app-client)/./src/app/[lang]/components/screens/SignUp/LoginGoogleProvider/index.jsx",
-      "name": "*",
-      "chunks": [
-        "app/[lang]/pages/sign-up/page:static/chunks/app/[lang]/pages/sign-up/page.js"
       ],
       "async": false
     },
@@ -677,13 +677,9 @@
     }
   },
   "entryCSSFiles": {
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\page": {
-      "modules": [
-        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\app\\\\[lang]\\\\page.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
-      ],
-      "files": [
-        "static/css/app/[lang]/page.css"
-      ]
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\my-profile\\page": {
+      "modules": [],
+      "files": []
     },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\layout": {
       "modules": [
@@ -695,7 +691,15 @@
         "static/css/app/[lang]/layout.css"
       ]
     },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\my-profile\\page": {
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\page": {
+      "modules": [
+        "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\node_modules\\next\\font\\google\\target.css?{\"path\":\"src\\\\app\\\\[lang]\\\\page.jsx\",\"import\":\"Unbounded\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"Unbound\"}"
+      ],
+      "files": [
+        "static/css/app/[lang]/page.css"
+      ]
+    },
+    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\pages\\sign-up\\page": {
       "modules": [],
       "files": []
     },
@@ -706,10 +710,6 @@
       "files": [
         "static/css/app/[lang]/get-tested/page.css"
       ]
-    },
-    "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\pages\\sign-up\\page": {
-      "modules": [],
-      "files": []
     },
     "C:\\Users\\Takizawa\\OneDrive\\Документы\\GitHub\\mi_agency\\src\\app\\[lang]\\test\\[type]\\page": {
       "modules": [

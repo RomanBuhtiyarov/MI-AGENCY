@@ -10,13 +10,15 @@ export const Lang = () => {
 
   return (
     <div className="flex items-center gap-[10px]">
-      {langList?.map?.((l, _) => (
-        <ItemLang
-          activeLang={activeLang}
-          setActiveLang={setActiveLang}
-          data={l}
-        />
-      ))}
+      {langList?.map?.((l, _) => {
+        return (
+          <ItemLang
+            activeLang={activeLang}
+            setActiveLang={setActiveLang}
+            data={l}
+          />
+        );
+      })}
     </div>
   );
 };
