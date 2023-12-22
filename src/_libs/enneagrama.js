@@ -1,452 +1,455 @@
-export default [
-  {
-    type: 5,
-    number: 1,
-    text: "Я потребую простору, підтримки дистанції, я прагну захищати свою територію.",
-  },
-  {
-    type: 5,
-    number: 2,
-    text: "Я легко дратуюсь, коли хтось поводиться надто наполегливо, настирливо, я не люблю, коли вторгаються на мою територію. До мене ніхто не приходить без запрошення.",
-  },
-  {
-    type: 1,
-    number: 3,
-    text: "Я не можу терпіти тих, хто досяг чогось не працею, а махінаціями.",
-  },
-  {
-    type: 3,
-    number: 4,
-    text: "Я впевнено йду до своєї мети і досягаю успіху.",
-  },
-  {
-    type: 3,
-    number: 5,
-    text: "Якщо переді мною немає мети, мені стає нудно.",
-  },
-  {
-    type: 2,
-    number: 6,
-    text: "Я знаю, чого потребує мій партнер, ще до того, як він сам це усвідомить.",
-  },
-  {
-    type: 2,
-    number: 7,
-    text: "Мені важко прийняти те, що хтось може мені відмовити.",
-  },
-  {
-    type: 2,
-    number: 8,
-    text: "Як правило, я роблю більше, ніж будь-хто, часто жертвуючи своїми інтересами.",
-  },
-  {
-    type: 4,
-    number: 9,
-    text: "Я все дуже глибоко переживаю, навіть якщо це завдає мені страждань, можу роками переживати свої минулі невдачі.",
-  },
-  {
-    type: 4,
-    number: 10,
-    text: "Навколишні не помічають найголовнішого в мені – моєї унікальності.",
-  },
-  {
-    type: 6,
-    number: 11,
-    text: "Мені подобається знаходитися в компанії друзів, на яких я можу покластися.",
-  },
-  {
-    type: 6,
-    number: 12,
-    text: "Я остерігаюсь людей, які поводяться зі мною надто чемно: чого вони від мене хочуть?",
-  },
-  {
-    type: 5,
-    number: 13,
-    text: "Я відчуваю свою (помітну) інтелектуальну перевагу над оточуючими. Зазвичай я розумію краще (і швидше), ніж вони.",
-  },
-  {
-    type: 5,
-    number: 14,
-    text: "Я висловлюю свою думку тільки в тому випадку, якщо це буде корисно, інакше я вважаю за краще промовчати.",
-  },
-  {
-    type: 1,
-    number: 15,
-    text: "Я не можу терпіти недбалості та неакуратності.",
-  },
-  {
-    type: 1,
-    number: 16,
-    text: "Я настільки вимогливий до себе, що маю право покритикувати інших.",
-  },
-  {
-    type: 3,
-    number: 17,
-    text: "У мене немає розкладу: мій робочий день може розпочатися або закінчитися у будь-який час доби, головне, щоб роботу було зроблено.",
-  },
-  {
-    type: 2,
-    number: 18,
-    text: "Я дуже ображаюся, коли хтось відмовляється від моєї допомоги.",
-  },
-  {
-    type: 2,
-    number: 19,
-    text: "Люди часто приходять до мене, щоб довірити потаємні думки, я ідеальна людина для подібних розмов.",
-  },
-  {
-    type: 4,
-    number: 20,
-    text: "Я дуже чутливий до настроїв, мені легко відчувати, що відчувають оточуючі.",
-  },
-  {
-    type: 6,
-    number: 21,
-    text: "Я волію не брати на себе зайві ризики.",
-  },
-  {
-    type: 6,
-    number: 22,
-    text: "У мене розвинене почуття обов'язку та відповідальності.",
-  },
-  {
-    type: 7,
-    number: 23,
-    text: "Я різнобічний і наділений безліччю талантів.",
-  },
-  {
-    type: 7,
-    number: 24,
-    text: "У мене в голові постійно рояться тисячі ідей та планів.",
-  },
-  {
-    type: 8,
-    number: 25,
-    text: "Будь-яка складність сприймається мною як виклик, як випробування, яке слід подолати. Широкомасштабні проекти та важкі ситуації не викликають у мене страху, а зовсім навпаки.",
-  },
-  {
-    type: 8,
-    number: 26,
-    text: "Я почуваюся впевнено лише тоді, коли я сам стою біля керма, керую, контролюю, приймаю рішення.",
-  },
-  {
-    type: 9,
-    number: 27,
-    text: "Я вмію слухати, але мені важко протягом довгого часу бути уважним та сконцентрованим.",
-  },
-  {
-    type: 9,
-    number: 28,
-    text: "Говорять, що я дипломатичний і можу залагоджувати конфліктні ситуації.",
-  },
-  {
-    type: 7,
-    number: 29,
-    text: "Я ніколи не звалю собі на плечі щось важке, що завдає болю та страждань.",
-  },
-  {
-    type: 7,
-    number: 30,
-    text: "Я люблю грати словами, спілкування і вираження своїх думок не становлять для мене жодних труднощів.",
-  },
-  {
-    type: 8,
-    number: 31,
-    text: "Я легко розпізнаю слабкі місця інших і не соромлюся їм про них говорити.",
-  },
-  {
-    type: 8,
-    number: 32,
-    text: "Я не поводжуся ніжно зі слабкими, але завжди стану на захист слабкого, якщо сильні поводяться з ними несправедливо на мій погляд.",
-  },
-  {
-    type: 9,
-    number: 33,
-    text: "Мені складно вибудувати пріоритети. У мене не виходить відокремити головне від другорядного.",
-  },
-  {
-    type: 9,
-    number: 34,
-    text: "Я рідко відмовляю людям, але схильний забувати те, що мені не підходить.",
-  },
-  {
-    type: 5,
-    number: 35,
-    text: "Я люблю чіткі та зрозумілі речі. Навмисна неясність приводить мене до сказу.",
-  },
-  {
-    type: 1,
-    number: 36,
-    text: "Коли я щось роблю, мене не залишає почуття нестачі часу.",
-  },
-  {
-    type: 1,
-    number: 37,
-    text: "Я не маю права на помилки та безвідповідальність.",
-  },
-  {
-    type: 3,
-    number: 38,
-    text: "Мені не комфортно сидіти на місці і нічого не робити.",
-  },
-  {
-    type: 2,
-    number: 39,
-    text: "Я люблю ділитися, бути ближчими до людей.",
-  },
-  {
-    type: 2,
-    number: 40,
-    text: "Я люблю, коли люди визнають, як багато я роблю для оточуючих. Я люблю почуватися незамінним.",
-  },
-  {
-    type: 4,
-    number: 41,
-    text: "Я часто почуваюся не у своїй тарілці.",
-  },
-  {
-    type: 6,
-    number: 42,
-    text: "Мені важко приймати рішення, оскільки я хочу врахувати всі варіанти та можливості.",
-  },
-  {
-    type: 6,
-    number: 43,
-    text: "Зазвичай я підозрілий, недовірливий, скептичний, завжди насторожений.",
-  },
-  {
-    type: 7,
-    number: 44,
-    text: "У мене завжди знайдеться у запасі весела історія на будь-яку тему. Гумор – найкращі ліки від усіх проблем.",
-  },
-  {
-    type: 7,
-    number: 45,
-    text: "Я легко знаходжу привабливих, цікавих у спілкуванні людей.",
-  },
-  {
-    type: 8,
-    number: 46,
-    text: "Я відчуваю себе ніяково в ролі підлеглого. Я лідер, і я ціную тих, хто йде за мною.",
-  },
-  {
-    type: 9,
-    number: 47,
-    text: "Мені важко щось стверджувати, висловлювати свої потреби. Я сам не знаю, чого мені насправді хочеться.",
-  },
-  {
-    type: 5,
-    number: 48,
-    text: "Я незатишно почуваюся в колективі і не терплю натовпу.",
-  },
-  {
-    type: 1,
-    number: 49,
-    text: "Я не можу взятися за справу, якщо завдання погано сформульоване.",
-  },
-  {
-    type: 3,
-    number: 50,
-    text: "Я люблю збирати навколо себе людей, націлених на перемогу, і можу виступити у ролі лідера команди.",
-  },
-  {
-    type: 2,
-    number: 51,
-    text: "Я вважаю нормальним, коли мені віддають перевагу, коли для мене щось роблять, оскільки я сам дуже багато віддаю.",
-  },
-  {
-    type: 4,
-    number: 52,
-    text: "Мене легко поранити (завдати шкоди) навіть якщо цього ніхто не бачить.",
-  },
-  {
-    type: 6,
-    number: 53,
-    text: "Я пунктуальний та надійний, на мене можна покластися.",
-  },
-  {
-    type: 7,
-    number: 54,
-    text: "Кажуть, що я завжди дивлюсь на речі лише з позитивного боку.",
-  },
-  {
-    type: 7,
-    number: 55,
-    text: "Якщо я на щось наважуюсь, то побоююся проґавити інші можливості.",
-  },
-  {
-    type: 8,
-    number: 56,
-    text: "Я не боюся протистоянь та суперечок. На момент люті легко можу «спустити собак».",
-  },
-  {
-    type: 9,
-    number: 57,
-    text: "Я уникаю конфліктів, не витримую тиску.",
-  },
-  {
-    type: 1,
-    number: 58,
-    text: "Я люблю правила і планування.",
-  },
-  {
-    type: 1,
-    number: 59,
-    text: "Я поважаю пунктуальність та дисципліну.",
-  },
-  {
-    type: 1,
-    number: 60,
-    text: "Я маю бути суворим і вимогливим до себе.",
-  },
-  {
-    type: 3,
-    number: 61,
-    text: "Я не люблю показувати свої слабкі сторони, інші люди можуть цим скористатися.",
-  },
-  {
-    type: 2,
-    number: 62,
-    text: "У мене часто складається враження, що оточуючі не цінують, що я для них роблю.",
-  },
-  {
-    type: 4,
-    number: 63,
-    text: "Матеріальний світ не дуже мене цікавить.",
-  },
-  {
-    type: 4,
-    number: 64,
-    text: "Коли мене не розуміють чи заперечують, я відчуваю приплив ненависті.",
-  },
-  {
-    type: 6,
-    number: 65,
-    text: "Я часто займаю оборонну позицію, це допомагає мені приховати моє хвилювання.",
-  },
-  {
-    type: 7,
-    number: 66,
-    text: "Мені важко довго зберігати працездатність, виконуючи роботу, яка потребує великих витрат часу.",
-  },
-  {
-    type: 8,
-    number: 67,
-    text: "Я уявляю світ так: з одного боку – сильні, з іншого – слабкі.",
-  },
-  {
-    type: 5,
-    number: 68,
-    text: "Я люблю все спланувати і подумки підготуватися, щоб уникнути сюрпризів.",
-  },
-  {
-    type: 1,
-    number: 69,
-    text: "Інші можуть говорити все, що хочуть, я впевнений у своїй правоті.",
-  },
-  {
-    type: 3,
-    number: 70,
-    text: "Мій безумовний пріоритет – реалізація власних планів, особливо у професійному житті.",
-  },
-  {
-    type: 3,
-    number: 71,
-    text: "Я не терплю невдач, слабких сторін, провалів.",
-  },
-  {
-    type: 4,
-    number: 72,
-    text: "Я люблю оточувати себе красивими, глибокими, справжніми людьми та речами.",
-  },
-  {
-    type: 4,
-    number: 73,
-    text: "Я почуваюся не таким, як усі, у мене є щось, що робить мене не схожим на оточуючих.",
-  },
-  {
-    type: 6,
-    number: 74,
-    text: "Я відданий колективу та повністю поважаю спільно прийняті рішення.",
-  },
-  {
-    type: 6,
-    number: 75,
-    text: "Я відчуваю потребу у підтримці, визнанні моїх якостей.",
-  },
-  {
-    type: 7,
-    number: 76,
-    text: "Мені все швидко набридає. Я не люблю рутину.",
-  },
-  {
-    type: 5,
-    number: 77,
-    text: "Краще вивчати життя з боку, ніж залучатися до нього.",
-  },
-  {
-    type: 8,
-    number: 78,
-    text: "Ніжність, м'якість – не для мене, все це змушує мене почуватися ніяково. Про мене кажуть, що я сильна особистість, мене іноді порівнюють із бульдозером.",
-  },
-  {
-    type: 9,
-    number: 79,
-    text: "Я не люблю нововведень. Все звичне дозволяє мені почуватися впевненіше.",
-  },
-  {
-    type: 9,
-    number: 80,
-    text: "Я не хочу нікому заважати, завдавати незручностей. Якщо оточуючі почуваються добре, я теж почуваюся добре.",
-  },
-  {
-    type: 3,
-    number: 81,
-    text: "Я мушу відповідати очікуванням оточуючих.",
-  },
-  {
-    type: 2,
-    number: 82,
-    text: "Я граю важливу роль в житті інших людей.",
-  },
-  {
-    type: 3,
-    number: 83,
-    text: "Якщо люди побачать мене справжнього, я втрачу їхнє прийняття та захоплення.",
-  },
-  {
-    type: 5,
-    number: 84,
-    text: "Я можу задовольнятися малим.",
-  },
-  {
-    type: 8,
-    number: 85,
-    text: "Якщо я покажу свої слабкі сторони, люди почнуть користуватися ними.",
-  },
-  {
-    type: 4,
-    number: 86,
-    text: "Почуття дозволяють мені бути живим.",
-  },
-  {
-    type: 9,
-    number: 87,
-    text: "Більшість проблем вирішуються самі собою.",
-  },
-  {
-    type: 5,
-    number: 88,
-    text: "Я практично не потребую людей і можу довго жити на самоті.",
-  },
-  {
-    type: 8,
-    number: 89,
-    text: "Подолання складнощів загартовує мене і робить сильним.",
-  },
-  {
-    type: 9,
-    number: 90,
-    text: "Агресія завжди неприпустима та руйнівна.",
-  },
-];
+export const enneagrama = (lang) => {
+  const enneagramaTests = [
+    {
+      type: 5,
+      number: 1,
+      text: lang.enneagram_test.block_1,
+    },
+    {
+      type: 5,
+      number: 2,
+      text: lang.enneagram_test.block_2,
+    },
+    {
+      type: 1,
+      number: 3,
+      text: lang.enneagram_test.block_3,
+    },
+    {
+      type: 3,
+      number: 4,
+      text: lang.enneagram_test.block_4,
+    },
+    {
+      type: 3,
+      number: 5,
+      text: lang.enneagram_test.block_5,
+    },
+    {
+      type: 2,
+      number: 6,
+      text: lang.enneagram_test.block_6,
+    },
+    {
+      type: 2,
+      number: 7,
+      text: lang.enneagram_test.block_7,
+    },
+    {
+      type: 2,
+      number: 8,
+      text: lang.enneagram_test.block_8,
+    },
+    {
+      type: 4,
+      number: 9,
+      text: lang.enneagram_test.block_9,
+    },
+    {
+      type: 4,
+      number: 10,
+      text: lang.enneagram_test.block_10,
+    },
+    {
+      type: 6,
+      number: 11,
+      text: lang.enneagram_test.block_11,
+    },
+    {
+      type: 6,
+      number: 12,
+      text: lang.enneagram_test.block_12,
+    },
+    {
+      type: 5,
+      number: 13,
+      text: lang.enneagram_test.block_13,
+    },
+    {
+      type: 5,
+      number: 14,
+      text: lang.enneagram_test.block_14,
+    },
+    {
+      type: 1,
+      number: 15,
+      text: lang.enneagram_test.block_15,
+    },
+    {
+      type: 1,
+      number: 16,
+      text: lang.enneagram_test.block_16,
+    },
+    {
+      type: 3,
+      number: 17,
+      text: lang.enneagram_test.block_17,
+    },
+    {
+      type: 2,
+      number: 18,
+      text: lang.enneagram_test.block_18,
+    },
+    {
+      type: 2,
+      number: 19,
+      text: lang.enneagram_test.block_19,
+    },
+    {
+      type: 4,
+      number: 20,
+      text: lang.enneagram_test.block_20,
+    },
+    {
+      type: 6,
+      number: 21,
+      text: lang.enneagram_test.block_21,
+    },
+    {
+      type: 6,
+      number: 22,
+      text: lang.enneagram_test.block_22,
+    },
+    {
+      type: 7,
+      number: 23,
+      text: lang.enneagram_test.block_23,
+    },
+    {
+      type: 7,
+      number: 24,
+      text: lang.enneagram_test.block_24,
+    },
+    {
+      type: 8,
+      number: 25,
+      text: lang.enneagram_test.block_25,
+    },
+    {
+      type: 8,
+      number: 26,
+      text: lang.enneagram_test.block_26,
+    },
+    {
+      type: 9,
+      number: 27,
+      text: lang.enneagram_test.block_27,
+    },
+    {
+      type: 9,
+      number: 28,
+      text: lang.enneagram_test.block_28,
+    },
+    {
+      type: 7,
+      number: 29,
+      text: lang.enneagram_test.block_29,
+    },
+    {
+      type: 7,
+      number: 30,
+      text: lang.enneagram_test.block_30,
+    },
+    {
+      type: 8,
+      number: 31,
+      text: lang.enneagram_test.block_31,
+    },
+    {
+      type: 8,
+      number: 32,
+      text: lang.enneagram_test.block_32,
+    },
+    {
+      type: 9,
+      number: 33,
+      text: lang.enneagram_test.block_33,
+    },
+    {
+      type: 9,
+      number: 34,
+      text: lang.enneagram_test.block_34,
+    },
+    {
+      type: 5,
+      number: 35,
+      text: lang.enneagram_test.block_35,
+    },
+    {
+      type: 1,
+      number: 36,
+      text: lang.enneagram_test.block_36,
+    },
+    {
+      type: 1,
+      number: 37,
+      text: lang.enneagram_test.block_37,
+    },
+    {
+      type: 3,
+      number: 38,
+      text: lang.enneagram_test.block_38,
+    },
+    {
+      type: 2,
+      number: 39,
+      text: lang.enneagram_test.block_39,
+    },
+    {
+      type: 2,
+      number: 40,
+      text: lang.enneagram_test.block_40,
+    },
+    {
+      type: 4,
+      number: 41,
+      text: lang.enneagram_test.block_41,
+    },
+    {
+      type: 6,
+      number: 42,
+      text: lang.enneagram_test.block_42,
+    },
+    {
+      type: 6,
+      number: 43,
+      text: lang.enneagram_test.block_43,
+    },
+    {
+      type: 7,
+      number: 44,
+      text: lang.enneagram_test.block_44,
+    },
+    {
+      type: 7,
+      number: 45,
+      text: lang.enneagram_test.block_45,
+    },
+    {
+      type: 8,
+      number: 46,
+      text: lang.enneagram_test.block_46,
+    },
+    {
+      type: 9,
+      number: 47,
+      text: lang.enneagram_test.block_47,
+    },
+    {
+      type: 5,
+      number: 48,
+      text: lang.enneagram_test.block_48,
+    },
+    {
+      type: 1,
+      number: 49,
+      text: lang.enneagram_test.block_49,
+    },
+    {
+      type: 3,
+      number: 50,
+      text: lang.enneagram_test.block_50,
+    },
+    {
+      type: 2,
+      number: 51,
+      text: lang.enneagram_test.block_51,
+    },
+    {
+      type: 4,
+      number: 52,
+      text: lang.enneagram_test.block_52,
+    },
+    {
+      type: 6,
+      number: 53,
+      text: lang.enneagram_test.block_53,
+    },
+    {
+      type: 7,
+      number: 54,
+      text: lang.enneagram_test.block_54,
+    },
+    {
+      type: 7,
+      number: 55,
+      text: lang.enneagram_test.block_55,
+    },
+    {
+      type: 8,
+      number: 56,
+      text: lang.enneagram_test.block_56,
+    },
+    {
+      type: 9,
+      number: 57,
+      text: lang.enneagram_test.block_57,
+    },
+    {
+      type: 1,
+      number: 58,
+      text: lang.enneagram_test.block_58,
+    },
+    {
+      type: 1,
+      number: 59,
+      text: lang.enneagram_test.block_59,
+    },
+    {
+      type: 1,
+      number: 60,
+      text: lang.enneagram_test.block_60,
+    },
+    {
+      type: 3,
+      number: 61,
+      text: lang.enneagram_test.block_61,
+    },
+    {
+      type: 2,
+      number: 62,
+      text: lang.enneagram_test.block_62,
+    },
+    {
+      type: 4,
+      number: 63,
+      text: lang.enneagram_test.block_63,
+    },
+    {
+      type: 4,
+      number: 64,
+      text: lang.enneagram_test.block_64,
+    },
+    {
+      type: 6,
+      number: 65,
+      text: lang.enneagram_test.block_65,
+    },
+    {
+      type: 7,
+      number: 66,
+      text: lang.enneagram_test.block_66,
+    },
+    {
+      type: 8,
+      number: 67,
+      text: lang.enneagram_test.block_67,
+    },
+    {
+      type: 5,
+      number: 68,
+      text: lang.enneagram_test.block_68,
+    },
+    {
+      type: 1,
+      number: 69,
+      text: lang.enneagram_test.block_69,
+    },
+    {
+      type: 3,
+      number: 70,
+      text: lang.enneagram_test.block_70,
+    },
+    {
+      type: 3,
+      number: 71,
+      text: lang.enneagram_test.block_71,
+    },
+    {
+      type: 4,
+      number: 72,
+      text: lang.enneagram_test.block_72,
+    },
+    {
+      type: 4,
+      number: 73,
+      text: lang.enneagram_test.block_73,
+    },
+    {
+      type: 6,
+      number: 74,
+      text: lang.enneagram_test.block_74,
+    },
+    {
+      type: 6,
+      number: 75,
+      text: lang.enneagram_test.block_75,
+    },
+    {
+      type: 7,
+      number: 76,
+      text: lang.enneagram_test.block_76,
+    },
+    {
+      type: 5,
+      number: 77,
+      text: lang.enneagram_test.block_77,
+    },
+    {
+      type: 8,
+      number: 78,
+      text: lang.enneagram_test.block_78,
+    },
+    {
+      type: 9,
+      number: 79,
+      text: lang.enneagram_test.block_79,
+    },
+    {
+      type: 9,
+      number: 80,
+      text: lang.enneagram_test.block_80,
+    },
+    {
+      type: 3,
+      number: 81,
+      text: lang.enneagram_test.block_81,
+    },
+    {
+      type: 2,
+      number: 82,
+      text: lang.enneagram_test.block_82,
+    },
+    {
+      type: 3,
+      number: 83,
+      text: lang.enneagram_test.block_83,
+    },
+    {
+      type: 5,
+      number: 84,
+      text: lang.enneagram_test.block_84,
+    },
+    {
+      type: 8,
+      number: 85,
+      text: lang.enneagram_test.block_85,
+    },
+    {
+      type: 4,
+      number: 86,
+      text: lang.enneagram_test.block_86,
+    },
+    {
+      type: 9,
+      number: 87,
+      text: lang.enneagram_test.block_87,
+    },
+    {
+      type: 5,
+      number: 88,
+      text: lang.enneagram_test.block_88,
+    },
+    {
+      type: 8,
+      number: 89,
+      text: lang.enneagram_test.block_89,
+    },
+    {
+      type: 9,
+      number: 90,
+      text: lang.enneagram_test.block_90,
+    },
+  ];
+  return enneagramaTests;
+};
