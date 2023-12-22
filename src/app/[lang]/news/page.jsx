@@ -4,7 +4,7 @@ import News from "../components/screens/News";
 export default async function Page({ params }) {
   const lang = await getDictionary(params.lang);
   return (
-    <main className="pt-[60px]">
+    <main className="pt-[53px]">
       <Filter lang={lang} />
       <News />
     </main>

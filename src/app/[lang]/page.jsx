@@ -10,7 +10,7 @@ export default async function Home({ params }) {
   return (
     <div>
       <GreatingBlock lang={lang} />
-      <section className="py-[40px]">
+      <section className="py-[23px]">
         <h2
           className={`${Unbound.className} text-[#262626] text-[22px] font-[400]`}
         >

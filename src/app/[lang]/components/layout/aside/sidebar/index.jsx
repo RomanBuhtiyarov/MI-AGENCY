@@ -14,8 +14,8 @@ export default async function Sidebar({ params }) {
   const lang = await getDictionary(params.lang);
   const user = await getCurrentUser();
   return (
-    <aside className="w-[250px] h-[654px]">
-      <div className="mb-[12px] ml-[5px]">
+    <aside className="w-[250px] h-[610px]">
+      <div className="mb-[12px] ml-[10px]">
         <Logo />
       </div>
       <div className="w-full h-full bg-white shadow-lg rounded-[15px] px-[20px] py-[25px] flex flex-col justify-between items-start">
@@ -34,12 +34,8 @@ export default async function Sidebar({ params }) {
           </nav>
         </div>
         <div>
-          <div>
-            <Lang />
-          </div>
-          <div className="mt-[23px]">
-            <Socials />
-          </div>
+          <Lang />
+          <Socials />
         </div>
       </div>
     </aside>
