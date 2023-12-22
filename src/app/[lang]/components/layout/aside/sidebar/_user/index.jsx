@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 
 const User = ({ font, user, lang }) => {
   return (
-    <div className="flex gap-[8px]">
+    <div className="hidden md:flex md:gap-[8px]">
       <Default user={user} />
       <div>
         <div className="mb-[6px]">

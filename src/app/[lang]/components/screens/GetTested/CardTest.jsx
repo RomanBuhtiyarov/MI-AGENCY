@@ -1,29 +1,59 @@
+"use client";
 import Image from "next/image";
 import { Unbounded } from "next/font/google";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Unbound = Unbounded({ subsets: ["latin"] });
 const CardTest = ({ data }) => {
+  const [bannerSrc, setBannerSrc] = useState(null);
+  const [ownerSrc, setOwnerSrc] = useState(null);
+  console.log(data);
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        const bannerModule = await import(
+          `/public/_assets/images/tests/${data.banner}`
+        );
+        setBannerSrc(bannerModule.default);
+        const ownerModule = await import(
+          `/public/_assets/images/icons/${data.owner.path}`
+        );
+        setOwnerSrc(ownerModule.default);
+      } catch (error) {
+        console.error("Error loading image:", error);
+      }
+    };
+
+    if (data) {
+      loadImage();
+    }
+  }, [data]);
   return (
     <div className="max-w-[408px] w-full shadow-lg rounded-[15px]">
       <div
         className={`bg-gradient-to-r w-full h-[176px] bg-gradient-to-r from-[#347AEC] to-[#6764E7] rounded-t-[15px] pt-[12px] pb-[24px] overflow-hidden`}
       >
-        <Image
-          loading={"lazy"}
-          className="mx-auto"
-          src={data.owner.path}
-          alt={"owner"}
-          width={64}
-          height={22}
-        />
-        <div className="w-[350px] h-[130px] relative mx-auto">
+        {ownerSrc && (
           <Image
-            className="object-contain mx-auto"
-            src={data.banner}
-            alt={"banner"}
-            fill
+            loading={"lazy"}
+            className="hidden md:block mx-auto"
+            src={ownerSrc}
+            alt={"owner"}
+            width={64}
+            height={22}
           />
+        )}
+
+        <div className="w-[350px] h-[130px] relative mx-auto">
+          {bannerSrc && (
+            <Image
+              className="object-contain mx-auto"
+              src={bannerSrc}
+              alt={"banner"}
+              fill
+            />
+          )}
         </div>
       </div>
       <div className="h-[108px] bg-white rounded-b-[15px] pt-[12px] pb-[20px] pl-[20px] pr-[15px]">
@@ -31,7 +61,7 @@ const CardTest = ({ data }) => {
           <h2 className={Unbound.className + " " + "text-[16px] font-[400]"}>
             {data.test_blocks[0].label}
           </h2>
-          <p className="text-[#5E5E5E] text-[14px] font-[500] mb-[15px] mt-[3px]">
+          <p className="w-[420px] md:w-auto text-[#5E5E5E] text-[14px] font-[500] mb-[5px] md:mb-[15px] mt-[3px]">
             {data.test_blocks[0].description}
           </p>
         </div>

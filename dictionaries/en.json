@@ -8,7 +8,8 @@
     "greating": "Hello!",
     "description_1": "I am your personal assistant on the platform that will help you learn more about your psychological characteristics and create a psychological portrait.",
     "description_2_bold": "All tests are verified,",
-    "description_2_normal": " have relevant results and have been tested many times."
+    "description_2_normal": " have relevant results and have been tested many times.",
+    "description_3": "P.S. You can create a profile to save your results"
   },
   "test_platforms": [
     {
@@ -46,12 +47,20 @@
     },
     "nav": [
       {
+        "key": "about",
         "about_project": "About project"
       },
       {
+        "key": "get-tested",
         "pass_the_test": "Pass the tests"
       },
+
       {
+        "key": "my-profile",
+        "my_profile": "My profile"
+      },
+      {
+        "key": "news",
         "our-articles": "Our articles"
       }
     ]

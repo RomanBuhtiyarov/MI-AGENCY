@@ -9,10 +9,10 @@ export const tests = (lang) => {
       label: lang.paei_page.title,
       type: "paei",
       description: "В основі методики лежить PAEI-концепція, згід...",
-      banner: "/_assets/images/tests/pael_banner.png",
+      banner: "paei_banner.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: false,
       page: {
@@ -64,10 +64,10 @@ export const tests = (lang) => {
       label: lang.enneagram_page.title,
       type: "eneagrama",
       description: "Психологічна модель, що описує 9 глибинних...",
-      banner: "/_assets/images/tests/enneagram_banner.png",
+      banner: "enneagram_banner.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: false,
       page: {
@@ -118,40 +118,40 @@ export const tests = (lang) => {
     {
       label: "MBTI",
       description: "Призначений для психологічної оцінки характе...",
-      banner: "/_assets/images/tests/MBTI_banner.png",
+      banner: "MBTI_banner.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: true,
     },
     {
       label: "Емоційний інтелект",
       description: "Методика Н. Холла призначена для виявлен...",
-      banner: "/_assets/images/tests/Emotional intelligence.png",
+      banner: "Emotional intelligence.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: true,
     },
     {
       label: "Адаптивний інтелект",
       description: <span className="opacity-0">1</span>,
-      banner: "/_assets/images/tests/Adaptive intelligence.png",
+      banner: "Adaptive intelligence.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: true,
     },
     {
       label: "Інноваційний інтелект",
       description: <span className="opacity-0">1</span>,
-      banner: "/_assets/images/tests/Innovative intelligence.png",
+      banner: "Innovative intelligence.png",
       owner: {
         type: "image",
-        path: "/_assets/images/icons/logo_owner.png",
+        path: "logo_owner.png",
       },
       development: true,
     },

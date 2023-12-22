@@ -44,7 +44,7 @@ export const Filter = ({ lang }) => {
   ];
 
   return (
-    <div className="flex items-center gap-[22px]">
+    <div className="my-[20px] flex items-center gap-[22px]">
       <Select
         mode="tags"
         className="group bg-[#347AEC] hover:bg-[#6764E7] duration-500 rounded-[100px] px-[12px] text-white cursor-pointer"

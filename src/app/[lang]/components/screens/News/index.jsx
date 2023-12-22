@@ -38,7 +38,7 @@ const News = () => {
     fetchBlogPosts();
   }, []);
   return (
-    <div className=" mt-[20px] grid grid-cols-2 gap-4">
+    <div className="md:mt-[20px] grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
       {mediumPosts.slice(0, 4).map((post, index) => (
         <Post key={index} {...post} index={index} />
       ))}

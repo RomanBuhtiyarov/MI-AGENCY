@@ -1,17 +1,35 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export const Logo = () => {
-    return(
-        <div>
-            <Image 
-                src={'/_assets/images/icons/psyMI_logo.png'}
-                blurDataURL={'/_assets/images/icons/psyMI_logo.png'}
-                alt={'psyMI'}
-                width={120}
-                height={50}
-                placeholder={"blur"}
-                loading={"lazy"}
-            />
-        </div>
-    );
+  const [imageSrc, setImageSrc] = useState(null);
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        const imageModule = await import(
+          `/public/_assets/images/icons/psyMI_logo.png`
+        );
+        setImageSrc(imageModule?.default);
+      } catch (error) {
+        console.error("Error loading image:", error);
+      }
+    };
+
+    loadImage();
+  }, []);
+  return (
+    <div>
+      {imageSrc && (
+        <Image
+          className="w-[100px] h-[40px] md:w-[120px] md:h-[50px]"
+          src={imageSrc}
+          blurDataURL={"/_assets/images/icons/psyMI_logo.png"}
+          alt={"psyMI"}
+          placeholder={"blur"}
+          loading={"lazy"}
+        />
+      )}
+    </div>
+  );
 };

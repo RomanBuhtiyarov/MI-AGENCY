@@ -3,7 +3,7 @@ import { ItemSocial } from "@/app/[lang]/components/layout/aside/sidebar/socials
 
 export const Socials = () => {
   return (
-    <div className="mt-[23px] flex items-center gap-[20px]">
+    <div className="hidden md:flex md:mt-[23px] items-center gap-[20px]">
       {socialList?.map?.((social, _) => (
         <span key={social.name}>
           <ItemSocial data={social} />
