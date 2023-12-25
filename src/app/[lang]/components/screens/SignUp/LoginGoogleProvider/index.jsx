@@ -1,21 +1,21 @@
 "use client";
-
+import avatarImg from "/public/_assets/images/mi-avatar.png";
 import Image from "next/image";
 import LoginGoogle from "../../../UI/Buttons/LoginGoogle";
 import { signIn } from "next-auth/react";
 
 export const LoginGoogleProvider = ({ session, lang }) => {
   return (
-    <section className="flex items-start gap-[50px]">
+    <section className="flex flex-col md:flex-row items-center md:items-start md:gap-[50px]">
       <Image
-        src={"/_assets/images/mi-avatar.png"}
+        src={avatarImg}
         alt={"robot"}
         width={190}
         height={255}
         loading={"lazy"}
       />
-      <div className="max-w-[500px] py-[30px]">
-        <h1 className="text-[#262626] text-[22px] font-[400] font-unbounded leading-7 mb-[15px]">
+      <div className="flex flex-col items-center md:items-start max-w-[500px] py-[30px] text-center md:text-left">
+        <h1 className="  text-[#262626] text-[22px] font-[400] font-unbounded leading-7 mb-[15px]">
           {lang.login_page.google_provider.header}{" "}
         </h1>
         <p className="text-[#262626] font-[500] leading-6 mb-[20px]">

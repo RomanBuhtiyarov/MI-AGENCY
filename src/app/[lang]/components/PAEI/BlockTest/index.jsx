@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
-
+import { useScreenSize } from "@/hooks/useScreenSize";
 const BlockTest = ({
   test_name = "",
   letter,
@@ -13,6 +13,8 @@ const BlockTest = ({
   answers,
   blockId,
 }) => {
+  const { isMobile } = useScreenSize();
+
   useEffect(() => {
     if (state.length === 0) setCurrentTabButton(0);
     else {
@@ -52,16 +54,20 @@ const BlockTest = ({
   };
 
   return (
-    <div className="flex justify-between items-center py-[14px] px-[19px] bg-white rounded-[5px]">
-      <p className="text-[#262626] font-unbounded font-[400] pr-[25px]">
+    <>
+      <p className="md:hidden text-[#262626] font-unbounded font-[400] pr-[25px]">
         {test_name}
       </p>
-      <div className="flex gap-[50px]">
-        {BUTTONS_PARAMS?.map?.((button, _) => {
-          return (
-            <button
-              onClick={() => handleCountLetter(button.number, letter)}
-              className={`w-[10px] duration-500 h-[10px]
+      <div className="flex justify-between items-center py-[14px] px-[19px] bg-white rounded-[5px]">
+        <p className="hidden md:block text-[#262626] font-unbounded font-[400] pr-[25px]">
+          {test_name}
+        </p>
+        <div className="flex gap-[63px] md:gap-[50px]">
+          {BUTTONS_PARAMS?.map?.((button, _) => {
+            return (
+              <button
+                onClick={() => handleCountLetter(button.number, letter)}
+                className={`w-[10px] duration-500 h-[10px]
                          ${
                            currentTabButton === button.number ||
                            state?.find((el) => el.letter === letter)?.number ===
@@ -72,21 +78,22 @@ const BlockTest = ({
                          ${
                            counter + button.number >= 11 && "opacity-60 bg-red"
                          } rounded-[100%]`}
-              type={button.type}
-              key={button.number}
-              disabled={
-                counter - currentTabButton + button.number > 10 ||
-                // Specific logic for when the counter is at a certain value and based on index.
-                (state.length === 2 &&
-                  currentTabButton === 0 &&
-                  counter >= 6 &&
-                  counter + button.number > 9)
-              }
-            />
-          );
-        })}
+                type={button.type}
+                key={button.number}
+                disabled={
+                  counter - currentTabButton + button.number > 10 ||
+                  // Specific logic for when the counter is at a certain value and based on index.
+                  (state.length === 2 &&
+                    currentTabButton === 0 &&
+                    counter >= 6 &&
+                    counter + button.number > 9)
+                }
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

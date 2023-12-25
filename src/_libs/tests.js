@@ -2,7 +2,8 @@ import Image from "next/image";
 import { Enneagrama } from "@/app/[lang]/components/Enneagrama";
 import { PAEIDescription } from "@/app/[lang]/components/PAEI/PAEIDescription";
 import { PAEI } from "@/app/[lang]/components/PAEI";
-
+import enneagramImg from "/public/_assets/images/enneagram_img.png";
+import robotLookImg from "/public/_assets/images/robot_img.png";
 export const tests = (lang) => {
   return [
     {
@@ -34,10 +35,10 @@ export const tests = (lang) => {
           </p>
         ),
         children: (
-          <section className="flex flex-col items-start gap-[35px] mb-[30px]">
+          <section className="flex flex-col items-start gap-[20px] mb-[50px]">
             <PAEIDescription lang={lang} />
             <div className="flex items-center gap-[27px]">
-              <div className="relative border border-solid border-2 border-[#347AEC] py-[15px] px-[24px] w-[595px] rounded-[15px]">
+              <div className="relative border border-solid border-2 border-[#347AEC] py-[15px] px-[24px] max-w-[595px] rounded-[15px]">
                 <div className="text-[#262626] leading-[130%]">
                   <p className="font-[500] mb-[10px]">
                     {lang.paei_page.robot_hint_p}
@@ -45,9 +46,9 @@ export const tests = (lang) => {
                   <h3 className="font-[700]">{lang.paei_page.robot_hint_h3}</h3>
                 </div>
               </div>
-              <div className="-scale-x-100">
+              <div className="hidden md:block -scale-x-100">
                 <Image
-                  src={"/_assets/images/robot img.png"}
+                  src={robotLookImg}
                   alt={"robot look"}
                   loading="lazy"
                   width={150}
@@ -84,15 +85,16 @@ export const tests = (lang) => {
         ),
         children: (
           <section>
-            <div className="flex items-center gap-[27px]">
+            <div className="flex flex-col-reverse md:flex-row items-center gap-[27px]">
               <Image
-                src={"/_assets/images/robot img.png"}
+                className="hidden md:block"
+                src={robotLookImg}
                 alt={"robot look"}
                 loading="lazy"
                 width={150}
                 height={200}
               />
-              <div className="relative border border-solid border-2 border-[#347AEC] py-[15px] px-[24px] w-[369px] rounded-[15px]">
+              <div className="w-full md:w-[400px] relative md:border md:border-solid md:border-2 md:border-[#347AEC] py-[15px] md:px-[24px] w-[369px] rounded-[15px]">
                 <div className="text-[#262626] leading-[130%]">
                   <p className="font-[500] mb-[10px]">
                     {lang.enneagram_page.robot_hint_p}
@@ -103,11 +105,11 @@ export const tests = (lang) => {
                 </div>
               </div>
               <Image
-                src={"/_assets/images/enneagram img.png"}
+                src={enneagramImg}
                 alt={"enneagram look"}
                 loading="lazy"
-                width={280}
-                height={270}
+                width={250}
+                height={150}
               />
             </div>
             <Enneagrama lang={lang} />

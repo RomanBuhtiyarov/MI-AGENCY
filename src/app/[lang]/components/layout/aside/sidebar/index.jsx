@@ -25,7 +25,7 @@ export default async function Sidebar({ lang }) {
             {lang.sidebar.discover}
           </p>
           <nav>
-            <Nav lang={lang} />
+            <Nav user={user} lang={lang} />
           </nav>
         </div>
         <div>

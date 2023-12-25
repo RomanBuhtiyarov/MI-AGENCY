@@ -2,7 +2,7 @@ const LoginGoogle = ({ onClick, lang }) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center bg-[#347AEC] hover:bg-[#6764E7] duration-500 rounded-[29px] py-[7px] px-[13px] gap-[7px]"
+      className="flex justify-center items-center bg-[#347AEC] hover:bg-[#6764E7] duration-500 rounded-[29px] py-[7px] px-[13px] gap-[7px]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,9 @@ const LoginGoogle = ({ onClick, lang }) => {
           fill="#347AEC"
         />
       </svg>
-      <span className="font-unbounded text-[14px] font-[400] text-white">
+      <p className="font-unbounded text-[14px] font-[400] text-white">
         {lang.login_page.google_provider.login_button}
-      </span>
+      </p>
     </button>
   );
 };

@@ -3,7 +3,14 @@ import { useCallback, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
-export const ItemLang = ({ activeLang, setActiveLang, data, pathName }) => {
+export const ItemLang = ({
+  activeLang,
+  setActiveLang,
+  data,
+  pathName,
+  isMobile,
+}) => {
+  const newLang = activeLang === "ua" ? "en" : "ua"; // Переключаем язык между "ua" и "en"
   const [imageSrc, setImageSrc] = useState(null);
   const redirectedPathName = (locale) => {
     if (!pathName) {
@@ -17,7 +24,11 @@ export const ItemLang = ({ activeLang, setActiveLang, data, pathName }) => {
 
   const success = () => {
     toast.success(
-      data.key === "en"
+      isMobile
+        ? newLang === "en"
+          ? `You have successfully set the language - English`
+          : `Ви вдало встановили мову - Українська`
+        : data.key === "en"
         ? `You have successfully set the language - ${data.alt}`
         : `Ви вдало встановили мову - ${data.alt}`,
       {
@@ -28,12 +39,20 @@ export const ItemLang = ({ activeLang, setActiveLang, data, pathName }) => {
         pauseOnHover: false,
         draggable: false,
         progress: undefined,
+        style: { width: `${isMobile ? "100%" : "370px"}` },
         theme: "light",
       }
     );
   };
   const changeLang = useCallback(() => {
     setActiveLang(data.key);
+    setTimeout(() => {
+      success();
+    }, 1000);
+  }, [activeLang]);
+
+  const changeLangMobile = useCallback(() => {
+    setActiveLang(newLang);
     setTimeout(() => {
       success();
     }, 1000);
@@ -56,8 +75,11 @@ export const ItemLang = ({ activeLang, setActiveLang, data, pathName }) => {
   }, [data]);
   return (
     <>
-      <Link href={redirectedPathName(data.key)}>
-        <button key={data.key} onClick={changeLang}>
+      <Link href={redirectedPathName(isMobile ? newLang : data.key)}>
+        <button
+          key={data.key}
+          onClick={isMobile ? changeLangMobile : changeLang}
+        >
           {imageSrc && (
             <Image
               className={`${

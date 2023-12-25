@@ -1,4 +1,5 @@
 import "./globals.css";
+import classNames from "classnames";
 import { Montserrat } from "next/font/google";
 import Sidebar from "./components/layout/aside/sidebar";
 import Providers from "@/providers";
@@ -22,16 +23,19 @@ export default async function RootLayout({ children, params }) {
         className={
           Mont.className +
           " " +
-          "min-h-screen pt-[35px] pb-[50px] px-[20px] md:px-[70px] bg-[#F2F5F8] relative"
+          "min-h-screen pt-[30px] pb-[50px] px-[20px] md:px-[70px] bg-[#F2F5F8] relative"
         }
       >
-        <ToastContainer />
+        <ToastContainer
+          closeButton={false}
+          className={"font-montserrat text-[14px] text-center h-[20px]"}
+        />
         <main>
           <Providers>
             <div className="md:mb-[12px] ml-[5px] md:fixed">
               <Logo />
             </div>
-            <div className="absolute left-0 right-0 bottom-0 md:fixed md:left-[70px] md:top-[100px] ">
+            <div className="absolute left-0 right-0 bottom-0 md:fixed md:left-[70px] md:right-auto md:bottom-auto md:top-[90px]">
               <Sidebar lang={lang} />
             </div>
             <div className="md:pl-[350px]">{children}</div>

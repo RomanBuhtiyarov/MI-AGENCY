@@ -1,4 +1,5 @@
 import { useScreenSize } from "@/hooks/useScreenSize";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,11 +9,7 @@ export const ItemNav = ({ data, setCurrentTab, currentTab }) => {
   const segments = pathname.replace(/^\/|\/$/g, "").split("/");
   const slug = segments.length > 1 ? segments.pop() : "";
 
-  // console.log(
-  //   data.slug.map((el, i) => {
-  //     el[i].slug === slug;
-  //   })
-  // );
+  console.log(data);
   return (
     <li key={data.key} onClick={() => setCurrentTab(data.key)}>
       <Link
@@ -31,7 +28,19 @@ export const ItemNav = ({ data, setCurrentTab, currentTab }) => {
             "bg-gradient-to-r from-[#347AEC] to-[#6764E7] nav active-nav"
           } `}
         >
-          {data.icon}
+          {data.slug === "my-profile" && data.user ? (
+            <Image
+              className="rounded-[100%]"
+              aria-label={"Change to:" + data.alt}
+              width={35}
+              height={35}
+              src={data.user.image}
+              alt={data.user.username}
+              loading={"lazy"}
+            />
+          ) : (
+            data.icon
+          )}
         </span>
         <p className="text-[9px] md:text-[16px] w-[50px] md:w-auto">
           {data.label && Object.values(data.label)[1]}

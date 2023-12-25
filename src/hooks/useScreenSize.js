@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 
 export const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState({
-    width: window.outerWidth,
-    height: window.outerHeight,
-    isMobile: window.outerWidth < 768,
+    width: window?.outerWidth,
+    height: window?.outerHeight,
+    isMobile: window?.outerWidth < 768,
   });
 
   useEffect(() => {
     const handleResize = () => {
       setScreenSize({
-        width: window.outerWidth,
-        height: window.outerHeight,
-        isMobile: window.outerWidth < 768,
+        width: window?.outerWidth,
+        height: window?.outerHeight,
+        isMobile: window?.outerWidth < 768,
       });
     };
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MainButton from "../../UI/Buttons/MainButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { paei_results } from "@/_libs/paei_results";
 export const PAEIResult = ({ answers, lang }) => {
   const localizedResults = paei_results(lang);
@@ -63,21 +63,39 @@ export const PAEIResult = ({ answers, lang }) => {
   const finalResult = formatResult(scores);
 
   const [isSaved, setIsSaved] = useState(false);
+  const [imageSrc, setImageSrc] = useState(null);
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        const imageModule = await import(
+          `/public/_assets/images/paei_answers/${maxLetter}.png`
+        );
+        setImageSrc(imageModule?.default);
+      } catch (error) {
+        console.error("Error loading image:", error);
+      }
+    };
+    if (maxLetter) {
+      loadImage();
+    }
+  }, [maxLetter]);
 
   return (
-    <div className=" flex justify-between">
+    <div className="flex flex-col items-center md:flex-row justify-between">
       <div>
-        <Image
-          className=" radius-[15px] mr-[30px]"
-          src={`/_assets/images/paei_answers/${maxLetter}.png`}
-          alt={"robot look"}
-          loading="lazy"
-          width={300}
-          height={300}
-        />
+        {imageSrc && (
+          <Image
+            className="mb-[26px] md:mb-0 radius-[15px] md:mr-[30px]"
+            src={imageSrc}
+            alt={"robot look"}
+            loading="lazy"
+            width={300}
+            height={300}
+          />
+        )}
       </div>
-      <div className="w-[520px] h-[460px] ">
-        <h1 className="text-[30px] font-unbounded mb-[10px]">
+      <div className="md:w-[520px] md:h-[460px]">
+        <h1 className="text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]">
           {lang.header} {finalResult}
         </h1>
 
@@ -127,7 +145,7 @@ export const PAEIResult = ({ answers, lang }) => {
           }
         </p>
 
-        <div>
+        <div className="text-center mb-[20px] md:mb-0">
           <MainButton
             className="save-button w-[255px] h-[40px] text-[16px] px-[10px] !important"
             label={lang.save_button}

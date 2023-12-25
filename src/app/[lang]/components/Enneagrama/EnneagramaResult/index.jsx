@@ -64,11 +64,11 @@ export const EnneagramaResult = ({ answers, lang }) => {
   }, [enneagramResultData]);
 
   return (
-    <div className="mt-[20px] flex justify-between">
+    <div className="mb-[50px] mt-[20px] flex flex-col items-center md:items-start md:flex-row justify-between">
       <div>
         {imageSrc && (
           <Image
-            className="radius-[15px]"
+            className="mb-[26px] md:mb-0 radius-[15px]"
             src={imageSrc}
             alt={"enneagram result"}
             loading="lazy"
@@ -77,11 +77,13 @@ export const EnneagramaResult = ({ answers, lang }) => {
           />
         )}
       </div>
-      <div className="w-[520px] h-[460px] ">
-        <h1 className="text-[30px] font-unbounded mb-[10px]">{title}</h1>
-        <span className="bg-[#347AEC] text-[#fff] rounded-[5px] px-[10px]">
+      <div className="md:w-[520px] md:h-[460px]">
+        <h1 className="text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]">
+          {title}
+        </h1>
+        <p className="mx-auto md:mx-0 w-[60px] text-center bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center">
           {resultType} {lang.enneagram_page.n_type}
-        </span>
+        </p>
         <p className="my-[20px] font-medium">{description}</p>
         <p className="mb-[20px] font-medium">
           <span className="text-[#347AEC] font-semibold">
@@ -107,7 +109,7 @@ export const EnneagramaResult = ({ answers, lang }) => {
           </span>{" "}
           {possibleProfessions}
         </p>
-        <div>
+        <div className="text-center md:text-left mb-[20px] md:mb-0">
           <MainButton
             className="save-button w-[255px] h-[40px] text-[16px] px-[10px] !important"
             label={lang.enneagram_page.save_button}

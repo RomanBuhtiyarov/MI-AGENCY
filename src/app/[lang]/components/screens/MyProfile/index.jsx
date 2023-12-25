@@ -98,7 +98,7 @@ const MyProfile = ({ currentUser, lang }) => {
   // }
 
   return (
-    <section className="flex relative items-start gap-[47px] bg-white max-w-[842px] w-full py-[25px] px-[30px] rounded-[15px] shadow-xl">
+    <section className="flex flex-col md:flex-row relative items-start gap-[20px] md:gap-[47px] bg-white max-w-[842px] w-full py-[25px] px-[30px] rounded-[15px] shadow-xl">
       <button
         className="text-[#5D5D5D] font-unbounded font-[400] absolute right-[25px] top-[20px]"
         onClick={() => {
@@ -109,33 +109,42 @@ const MyProfile = ({ currentUser, lang }) => {
       </button>
       <div>
         <input className="hidden" id="projectCoverUploads" type="file" />
-
         {userRender && userRender.image !== "" ? (
-          <div className="w-[170px] h-[170px] rounded-[100%] border-1 border-solid border-[#347AEC] relative">
-            <button className="z-10 top-[5px] left-[10px] absolute w-[35px] h-[35px] rounded-[100%] bg-[#347AEC] hover:bg-[#6764E7] duration-500 flex items-center justify-center">
-              <svg
-                width="17"
-                height="18"
-                viewBox="0 0 17 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1.2746 3.54159L16.1527 3.54159M12.4332 16.5599H4.99412C3.967 16.5599 3.13436 15.7273 3.13436 14.7002V4.47147C3.13436 3.95791 3.55068 3.54159 4.06424 3.54159H13.363C13.8766 3.54159 14.2929 3.95791 14.2929 4.47147V14.7002C14.2929 15.7273 13.4603 16.5599 12.4332 16.5599ZM6.85388 3.54159H10.5734C11.087 3.54159 11.5033 3.12527 11.5033 2.61171V1.68183C11.5033 1.16827 11.087 0.751953 10.5734 0.751953H6.85388C6.34032 0.751953 5.924 1.16827 5.924 1.68183V2.61171C5.924 3.12527 6.34032 3.54159 6.85388 3.54159Z"
-                  stroke="white"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
+          <div className="flex items-center">
+            <div className="w-[170px] h-[170px] rounded-[100%] border-1 border-solid border-[#347AEC] relative">
+              <button className="z-10 top-[5px] left-[10px] absolute w-[35px] h-[35px] rounded-[100%] bg-[#347AEC] hover:bg-[#6764E7] duration-500 flex items-center justify-center">
+                <svg
+                  width="17"
+                  height="18"
+                  viewBox="0 0 17 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.2746 3.54159L16.1527 3.54159M12.4332 16.5599H4.99412C3.967 16.5599 3.13436 15.7273 3.13436 14.7002V4.47147C3.13436 3.95791 3.55068 3.54159 4.06424 3.54159H13.363C13.8766 3.54159 14.2929 3.95791 14.2929 4.47147V14.7002C14.2929 15.7273 13.4603 16.5599 12.4332 16.5599ZM6.85388 3.54159H10.5734C11.087 3.54159 11.5033 3.12527 11.5033 2.61171V1.68183C11.5033 1.16827 11.087 0.751953 10.5734 0.751953H6.85388C6.34032 0.751953 5.924 1.16827 5.924 1.68183V2.61171C5.924 3.12527 6.34032 3.54159 6.85388 3.54159Z"
+                    stroke="white"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
 
-            <Image
-              className="rounded-[100%]"
-              src={userRender.image}
-              alt={currentUser.username}
-              width={170}
-              height={170}
-              loading="lazy"
-            />
+              <Image
+                className="rounded-[100%]"
+                src={userRender.image}
+                alt={currentUser.username}
+                width={170}
+                height={170}
+                loading="lazy"
+              />
+            </div>
+            <div className="md:hidden ml-[15px]">
+              <p className="mb-[5px] text-[#5E5E5E] text-[10px] font-[500]">
+                {lang.profile_page.user.greeting}
+              </p>
+              <p className="text-[#262626] text-[22px] font-[400] font-unbounded mb-[15px]">
+                {userRender?.username}
+              </p>
+            </div>
           </div>
         ) : (
           <>
@@ -161,12 +170,15 @@ const MyProfile = ({ currentUser, lang }) => {
         )}
       </div>
       <div>
-        <p className="text-[#5E5E5E] text-[10px] font-[500]">
-          {lang.profile_page.user.greeting}
-        </p>
-        <p className="text-[#262626] text-[22px] font-[400] font-unbounded mb-[15px]">
-          {userRender?.username}
-        </p>
+        <div className="hidden md:block">
+          <p className="text-[#5E5E5E] text-[10px] font-[500]">
+            {lang.profile_page.user.greeting}
+          </p>
+          <p className="text-[#262626] text-[22px] font-[400] font-unbounded md:mb-[15px]">
+            {userRender?.username}
+          </p>
+        </div>
+
         <div className="max-w-[545px] text-[#262626] font-[500]">
           <p>{lang.profile_page.user.description_1}</p>
           <p className="mt-[10px]">
@@ -183,9 +195,8 @@ const MyProfile = ({ currentUser, lang }) => {
           />
           <button>
             <svg
+              className="w-[25px] h-[25px] md:w-[16px] md:h-[16px]"
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
               viewBox="0 0 16 16"
               fill="none"
             >

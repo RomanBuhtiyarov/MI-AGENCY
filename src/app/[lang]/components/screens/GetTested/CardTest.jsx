@@ -8,7 +8,6 @@ const Unbound = Unbounded({ subsets: ["latin"] });
 const CardTest = ({ data }) => {
   const [bannerSrc, setBannerSrc] = useState(null);
   const [ownerSrc, setOwnerSrc] = useState(null);
-  console.log(data);
   useEffect(() => {
     const loadImage = async () => {
       try {

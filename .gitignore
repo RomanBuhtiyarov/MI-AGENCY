@@ -87,9 +87,15 @@ web_modules/
 .parcel-cache
 
 # Next.js build output
-.next
-out
-.next/cache/webpack/
+
+.next/
+out/
+.cache/
+.next.cache/
+.next.ir/
+.next.production/
+.next.server/
+.next.serverless/
 # Nuxt.js build / generate output
 .nuxt
 dist

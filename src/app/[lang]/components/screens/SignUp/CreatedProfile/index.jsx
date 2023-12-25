@@ -13,18 +13,16 @@ const success = (lang) => {
   Modal.success({
     title: lang.login_page.created_profile.success_modal.title,
     content: (
-      <>
-        <div>
-          <p className="text-[16px] font-unbounded">
-            {lang.login_page.created_profile.success_modal.text}
-          </p>
-          <MainButton>
-            <Link href={`/${lang.locale}/get-tested`}>
-              {lang.login_page.created_profile.success_modal.link}
-            </Link>
-          </MainButton>
-        </div>
-      </>
+      <div className="text-left">
+        <p className="text-[16px] mb-[10px] font-unbounded">
+          {lang.login_page.created_profile.success_modal.text}
+        </p>
+        <MainButton className="ml-[50px] md:ml-[40px]">
+          <Link className="text-white" href={`/${lang.locale}/get-tested`}>
+            {lang.login_page.created_profile.success_modal.link}
+          </Link>
+        </MainButton>
+      </div>
     ),
     closable: true,
     centered: true,
@@ -82,22 +80,23 @@ const CreatedProfile = ({ session, lang }) => {
   };
 
   return (
-    <section className="bg-white shadow-2xl w-[545px] h-[239px] pt-[25px] px-[30px] pb-[30px] rounded-[15px] my-[30px]">
+    <section className="bg-white shadow-2xl w-full md:w-[545px] h-auto md:h-[239px] pt-[25px] px-[30px] pb-[30px] rounded-[15px] md:my-[30px]">
       <h2 className="text-center text-[#347AEC] font-unbounded text-[22px] font-[400] mb-[22px]">
         {lang.login_page.created_profile.header}
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col gap-[20px] md:gap-0 md:flex-row justify-between items-center">
           <div className="w-[212px]">
             <Input
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
               className="w-full"
+              height={30}
               placeholder={lang.login_page.created_profile.name_label}
             />
           </div>
-          <div className="w-[212px] h-[40px] relative group">
+          <div className="w-[212px] relative group">
             <MultipleSelect
               lang={lang}
               onChange={(value) => onChangeMultipleSelectScopes(value)}
@@ -128,7 +127,9 @@ const CreatedProfile = ({ session, lang }) => {
         <MainButton
           label={lang.login_page.created_profile.register_btn}
           onClick={handleRegistrationButton}
-          className="mx-auto block mt-[20px] h-[30px]"
+          className={`mx-auto block mt-[20px] ${
+            messageError !== "" && "mb-[20px]"
+          } h-[30px]`}
         />
       </form>
 
@@ -138,7 +139,7 @@ const CreatedProfile = ({ session, lang }) => {
       </button> */}
       {messageError !== "" && (
         <Alert
-          className="mt-[15px] rounded-t-[0px] border-t-0"
+          className="mt-[30px] md:mt-[15px] rounded-t-[0px] border-t-0"
           message={messageError}
           type="info"
           closable

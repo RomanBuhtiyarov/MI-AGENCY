@@ -4,6 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   // reactStrictMode: true,
   images: {
+    formats: ["image/avif", "image/webp"],
     domains: ["lh3.googleusercontent.com"],
   },
 };

@@ -1,6 +1,6 @@
 export const QuestionsCounter = ({ current = 1, general = 1, lang }) => {
   return (
-    <div class=" flex-start flex rounded-[29px] h-[30px] w-[726px] overflow-hidden bg-white font-sans text-xs font-medium relative">
+    <div class="flex-start flex rounded-[29px] h-[30px] w-[290px] md:w-[726px] overflow-hidden bg-white font-monserrat text-xs font-[600] relative">
       <p className="text-[#262626] absolute top-[2px] left-[15px] text-base">
         {lang.enneagram_block.question_counter}
         {current}

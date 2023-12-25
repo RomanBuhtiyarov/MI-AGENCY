@@ -1,7 +1,7 @@
 export const asideNav = () => {
   const nav = [
     {
-      key: "1",
+      key: "0",
       href: `/`,
       // href: `${params.lang}/`,
       slug: "",
@@ -22,7 +22,7 @@ export const asideNav = () => {
       ),
     },
     {
-      key: "2",
+      key: "1",
       href: `/get-tested/`,
       // href: `${params.lang}/get-tested/`,
       slug: "get-tested",
@@ -44,7 +44,7 @@ export const asideNav = () => {
       ),
     },
     {
-      key: "3",
+      key: "2",
       href: `/my-profile`,
       // href: `${params.lang}/news`,
       slug: "my-profile",
@@ -66,7 +66,7 @@ export const asideNav = () => {
       ),
     },
     {
-      key: "4",
+      key: "3",
       href: `/news`,
       // href: `${params.lang}/news`,
       slug: "news",

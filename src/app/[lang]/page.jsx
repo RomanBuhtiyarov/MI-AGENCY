@@ -17,7 +17,7 @@ export default async function Home({ params }) {
           {lang.home.header}
         </h2>
         <TestPlatforms font={Unbound} lang={lang.test_platforms} />
-        <Link className="hidden md:block" href={"/get-tested"}>
+        <Link className="hidden md:block" href={`/${lang.locale}/get-tested`}>
           <button
             className={`${Unbound.className} text-white text-[18px] font-[400] py-[7px] px-[15px] bg-[#347AEC] rounded-[100px] mt-[30px]`}
           >

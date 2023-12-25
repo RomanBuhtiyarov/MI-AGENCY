@@ -10,7 +10,11 @@ import { enneagrama } from "@/_libs/enneagrama";
 import Image from "next/image";
 import { EnneagramaResult } from "./EnneagramaResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
+import { useScreenSize } from "@/hooks/useScreenSize";
+import leaveTestingRobot from "/public/_assets/images/leave_testing_robot.png";
+
 export const Enneagrama = ({ lang }) => {
+  const { isMobile } = useScreenSize();
   const localizedTests = enneagrama(lang);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -53,9 +57,9 @@ export const Enneagrama = ({ lang }) => {
 
   useEffect(() => {
     // Завантаження даних з localStorage при старті компоненту
-    const storedCurrentQuestion = localStorage.getItem("currentQuestion");
-    const storedGeneralCount = localStorage.getItem("generalCount");
-    const storedUserAnswers = localStorage.getItem("userAnswers");
+    const storedCurrentQuestion = localStorage?.getItem("currentQuestion");
+    const storedGeneralCount = localStorage?.getItem("generalCount");
+    const storedUserAnswers = localStorage?.getItem("userAnswers");
 
     // Встановлення станів з даних localStorage, якщо вони існують
     if (storedCurrentQuestion) {
@@ -90,13 +94,14 @@ export const Enneagrama = ({ lang }) => {
 
   return (
     <div className="max-w-[842px] h-auto mt-[15px]">
-      <div className="text-end w-full flex justify-between ">
+      <div className="text-end w-full flex justify-between">
         <MainButton
-          className="w-[107px] h-[30px]"
+          className="md:w-[120px] md:mr-[10px] h-[30px]"
           label={lang.enneagram_block.back_btn}
           onClick={showModal}
         />
         <QuestionsCounter
+          className="w-[250px] md:w-auto"
           current={currentQuestion}
           general={generalQuestions}
           lang={lang}
@@ -113,30 +118,30 @@ export const Enneagrama = ({ lang }) => {
           }
         />
       </div>
-      <div className="w-full flex items-center justify-between gap-[16px]">
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-[16px]">
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-[270px] h-[50px]"
+          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
           onClick={() => handleSubmit("Yes")}
           label={lang.enneagram_block.yes_btn}
         />
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-[270px] h-[50px]"
+          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
           onClick={() => handleSubmit("No")}
           label={lang.enneagram_block.yes_no_btn}
         />
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-[270px] h-[50px]"
+          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
           onClick={() => handleSubmit("No")}
           label={lang.enneagram_block.no_btn}
         />
       </div>
-      <div className="flex justify-around mt-[20px] w-[300px] mx-auto">
+      <div className="mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto">
         {currentQuestion > 0 && (
           <NextPrevButton
-            className="previous-block block-button bg-transparent w-[135px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
+            className="previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
             label={lang.test_page.prev_block_btn}
             onClick={() => {
               if (currentQuestion > 0) {
@@ -147,7 +152,7 @@ export const Enneagrama = ({ lang }) => {
         )}
         {currentQuestion < generalQuestions && (
           <NextPrevButton
-            className="block-button bg-transparent w-[128px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
+            className="block-button bg-transparent w-[130px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
             label={lang.test_page.next_block_btn}
             onClick={() => setCurrentQuestion((prev) => prev + 1)}
           />
@@ -155,32 +160,33 @@ export const Enneagrama = ({ lang }) => {
       </div>
       {isShownResult && <EnneagramaResult answers={userAnswers} lang={lang} />}
       <Modal
-        width={"800px"}
-        height={"360px"}
+        className="w-[800px] h-[360px]"
         open={isModalOpen}
+        width={!isMobile ? 800 : 350}
+        height={360}
         footer={[]}
         closable={false}
       >
-        <div className="flex items-center ">
+        <div className="flex items-center">
           <Image
-            className="ml-[30px]"
-            src={"/_assets/images/leave_testing_robot.png"}
+            className="hidden md:block ml-[30px]"
+            src={leaveTestingRobot}
             alt={"robot look"}
             loading="lazy"
             width={192}
             height={280}
           />
-          <div className="ml-[50px]">
-            <h1 className="text-[42px] font-unbounded ">
+          <div className="md:ml-[50px]">
+            <h1 className="text-center md:text-left text-[30px] md:text-[42px] font-unbounded">
               {lang.enneagram_block.modal_window_h1}
             </h1>
-            <p className="text-[18px] font-normal font-montserrat leading-[130%] w-[350px] mb-[50px]">
+            <p className="text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]">
               {lang.enneagram_block.modal_window_p}
             </p>
-            <div className="w-[500px]">
+            <div className="flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]">
               <EnneagramaButton
                 onClick={handleLeavePage}
-                className="w-[209px] h-[38px] mr-[15px]"
+                className="w-[209px] h-[38px] md:mr-[15px]"
                 label={lang.enneagram_block.modal_leave_btn}
               />
               <EnneagramaButton
