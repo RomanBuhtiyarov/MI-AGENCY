@@ -169,12 +169,12 @@ export const Enneagrama = ({ lang }) => {
       >
         <div className="flex items-center">
           <Image
-            className="hidden md:block ml-[30px]"
+            blurDataURL={"/public/_assets/images/leave_testing_robot.png"}
+            placeholder={"blur"}
+            className="hidden md:block ml-[30px] w-[192px] h-[280px]"
             src={leaveTestingRobot}
             alt={"robot look"}
             loading="lazy"
-            width={192}
-            height={280}
           />
           <div className="md:ml-[50px]">
             <h1 className="text-center md:text-left text-[30px] md:text-[42px] font-unbounded">

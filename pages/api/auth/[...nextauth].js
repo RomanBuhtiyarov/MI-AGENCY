@@ -10,7 +10,7 @@ export const authOptions = {
   theme: {
     colorScheme: "light",
     brandColor: "#347AEC",
-    logo: "/_assets/images/icons/psyMI_logo.png",
+    logo: "/public/_assets/images/icons/psyMI_logo.png",
   },
   providers: [
     CredentialsProvider({

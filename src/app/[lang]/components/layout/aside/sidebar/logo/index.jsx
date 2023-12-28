@@ -24,7 +24,7 @@ export const Logo = () => {
         <Image
           className="w-[100px] h-[40px] md:w-[120px] md:h-[50px]"
           src={imageSrc}
-          blurDataURL={"/_assets/images/icons/psyMI_logo.png"}
+          blurDataURL={"/public/_assets/images/icons/psyMI_logo.png"}
           alt={"psyMI"}
           placeholder={"blur"}
           loading={"lazy"}

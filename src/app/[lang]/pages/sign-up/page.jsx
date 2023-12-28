@@ -21,6 +21,8 @@ export default async function Page({ params }) {
               <div className="hidden md:block relative">
                 <div className="w-[156px] h-[156px] bg-[#347AEC] rounded-[100%] absolute -z-10 top-[40%] right-0" />
                 <Image
+                  blurDataURL={"/public/_assets/images/robot-look.png"}
+                  placeholder={"blur"}
                   src={robotLookImg}
                   alt={"robot-look"}
                   width={207}

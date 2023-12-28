@@ -85,6 +85,8 @@ export const PAEIResult = ({ answers, lang }) => {
       <div>
         {imageSrc && (
           <Image
+            blurDataURL={`/public/_assets/images/paei_answers/${maxLetter}.png`}
+            placeholder={"blur"}
             className="mb-[26px] md:mb-0 radius-[15px] md:mr-[30px]"
             src={imageSrc}
             alt={"robot look"}

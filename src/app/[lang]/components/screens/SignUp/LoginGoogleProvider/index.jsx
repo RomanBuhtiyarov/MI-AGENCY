@@ -8,6 +8,8 @@ export const LoginGoogleProvider = ({ session, lang }) => {
   return (
     <section className="flex flex-col md:flex-row items-center md:items-start md:gap-[50px]">
       <Image
+        blurDataURL={"/public/_assets/images/mi-avatar.png"}
+        placeholder={"blur"}
         src={avatarImg}
         alt={"robot"}
         width={190}

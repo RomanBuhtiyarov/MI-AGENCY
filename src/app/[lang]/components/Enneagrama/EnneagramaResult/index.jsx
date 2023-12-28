@@ -68,12 +68,12 @@ export const EnneagramaResult = ({ answers, lang }) => {
       <div>
         {imageSrc && (
           <Image
-            className="mb-[26px] md:mb-0 radius-[15px]"
+            blurDataURL={`/public/_assets/images/enneagrama_answers/${enneagramResultData.type}.png`}
+            placeholder={"blur"}
+            className="mb-[26px] md:mb-0 radius-[15px] w-[300px] h-[300px]"
             src={imageSrc}
             alt={"enneagram result"}
             loading="lazy"
-            width={300}
-            height={300}
           />
         )}
       </div>

@@ -2,9 +2,9 @@
 const nextConfig = {
   swcMinify: true,
   trailingSlash: true,
-  // reactStrictMode: true,
+  reactStrictMode: true,
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp"],
     domains: ["lh3.googleusercontent.com"],
   },
 };

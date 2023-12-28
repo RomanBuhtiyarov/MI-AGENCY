@@ -4,7 +4,7 @@ export const ItemPlatformTest = ({ data }) => {
   return (
     <Link
       href={data.href}
-      className="w-[160px] h-[100px] md:w-[190px] md:h-[120px] rounded-[10px] bg-gradient-to-r from-[#347AEC] to-[#6764E7] pl-[15px] pb-[13px] relative flex items-end justify-start"
+      className="w-[48%] h-[100px] md:w-[190px] md:h-[120px] rounded-[10px] bg-gradient-to-r from-[#347AEC] to-[#6764E7] pl-[15px] pb-[13px] relative flex items-end justify-start"
     >
       <p className="text-[10px] md:text-[12px] text-white font-[300] leading-4">
         <span>

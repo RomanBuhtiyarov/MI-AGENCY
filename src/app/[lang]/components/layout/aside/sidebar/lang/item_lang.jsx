@@ -79,17 +79,18 @@ export const ItemLang = ({
         <button
           key={data.key}
           onClick={isMobile ? changeLangMobile : changeLang}
+          className="flex  md:block ml-[20px] md:ml-0 w-[50px] md:w-[24px] justify-center"
         >
           {imageSrc && (
             <Image
               className={`${
                 activeLang === data.key ? "grayscale-0" : "grayscale"
-              }`}
+              } w-[24px] h-[24px]`}
               aria-label={"Change to:" + data.alt}
+              blurDataURL={`/public/_assets/images/lang/${data.image}`}
+              placeholder={"blur"}
               src={imageSrc}
               alt={data.alt}
-              width={24}
-              height={24}
               loading={"lazy"}
             />
           )}

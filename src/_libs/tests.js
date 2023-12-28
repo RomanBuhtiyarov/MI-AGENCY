@@ -48,11 +48,12 @@ export const tests = (lang) => {
               </div>
               <div className="hidden md:block -scale-x-100">
                 <Image
+                  blurDataURL={"/public/_assets/images/robot_img.png"}
+                  placeholder={"blur"}
+                  className="w-[150px] h-[200px]"
                   src={robotLookImg}
                   alt={"robot look"}
                   loading="lazy"
-                  width={150}
-                  height={200}
                 />
               </div>
             </div>
@@ -87,12 +88,12 @@ export const tests = (lang) => {
           <section>
             <div className="flex flex-col-reverse md:flex-row items-center gap-[27px]">
               <Image
-                className="hidden md:block"
+                blurDataURL={"/public/_assets/images/robot_img.png"}
+                placeholder={"blur"}
+                className="hidden md:block w-[150px] h-[200px]"
                 src={robotLookImg}
                 alt={"robot look"}
                 loading="lazy"
-                width={150}
-                height={200}
               />
               <div className="w-full md:w-[400px] relative md:border md:border-solid md:border-2 md:border-[#347AEC] py-[15px] md:px-[24px] w-[369px] rounded-[15px]">
                 <div className="text-[#262626] leading-[130%]">
@@ -105,11 +106,12 @@ export const tests = (lang) => {
                 </div>
               </div>
               <Image
+                blurDataURL={"/public/_assets/images/enneagram_img.png"}
+                placeholder={"blur"}
+                className="w-[250px] h-[250px]"
                 src={enneagramImg}
                 alt={"enneagram look"}
                 loading="lazy"
-                width={250}
-                height={150}
               />
             </div>
             <Enneagrama lang={lang} />

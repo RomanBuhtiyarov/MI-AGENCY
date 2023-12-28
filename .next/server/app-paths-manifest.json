@@ -1,5 +1,11 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/upload-image/route": "app/api/upload-image/route.js",
   "/[lang]/page": "app/[lang]/page.js",
+  "/[lang]/news/page": "app/[lang]/news/page.js",
+  "/[lang]/my-profile/page": "app/[lang]/my-profile/page.js",
+  "/api/auth/sign-up/route": "app/api/auth/sign-up/route.js",
   "/[lang]/get-tested/page": "app/[lang]/get-tested/page.js",
-  "/[lang]/test/[type]/page": "app/[lang]/test/[type]/page.js"
+  "/[lang]/test/[type]/page": "app/[lang]/test/[type]/page.js",
+  "/[lang]/pages/sign-up/page": "app/[lang]/pages/sign-up/page.js"
 }

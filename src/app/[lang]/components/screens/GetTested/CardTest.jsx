@@ -35,6 +35,8 @@ const CardTest = ({ data }) => {
       >
         {ownerSrc && (
           <Image
+            blurDataURL={`/public/_assets/images/icons/${data.owner.path}`}
+            placeholder={"blur"}
             loading={"lazy"}
             className="hidden md:block mx-auto"
             src={ownerSrc}
@@ -44,9 +46,11 @@ const CardTest = ({ data }) => {
           />
         )}
 
-        <div className="w-[350px] h-[130px] relative mx-auto">
+        <div className=" max-w-[350px] h-[130px] relative mx-auto">
           {bannerSrc && (
             <Image
+              blurDataURL={`/public/_assets/images/tests/${data.banner}`}
+              placeholder={"blur"}
               className="object-contain mx-auto"
               src={bannerSrc}
               alt={"banner"}

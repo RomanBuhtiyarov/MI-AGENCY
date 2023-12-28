@@ -24,6 +24,8 @@ const GreatingBlock = ({ lang }) => {
       <div className="relative">
         {imageSrc && (
           <Image
+            blurDataURL={`/public/_assets/images/greating/greating.png`}
+            placeholder={"blur"}
             className="relative z-10"
             src={imageSrc}
             alt={"hello world"}

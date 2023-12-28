@@ -6,10 +6,9 @@ export const Default = ({ user }) => {
       {user ? (
         <div className="rounded-[9px] w-[67px] h-[67px] overflow-hidden">
           <Image
+            className="w-[67px] h-[67px]"
             src={user?.image}
             alt={user?.username}
-            width={67}
-            height={67}
           />
         </div>
       ) : (
