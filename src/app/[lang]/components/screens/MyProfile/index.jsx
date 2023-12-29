@@ -96,7 +96,7 @@ const MyProfile = ({ lang }) => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        router.push(`/${lang.locale}/`);
+        router.push(`/${lang.locale}/pages/sign-up`);
         return;
       }
 
@@ -134,7 +134,7 @@ const MyProfile = ({ lang }) => {
   //   router.replace("/");
   //   return null; // Опционально: можно вернуть null, чтобы компонент не рендерился
   // }
-  console.log(userData);
+
   return (
     <section className="flex flex-col md:flex-row relative items-start gap-[20px] md:gap-[47px] bg-white max-w-[842px] w-full py-[25px] px-[30px] rounded-[15px] shadow-xl">
       <button

@@ -4,15 +4,16 @@ import { ProfileTests } from "../ProfileTests";
 import MainButton from "../../../UI/Buttons/MainButton";
 import ky from "ky";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 export const ProfileSection = ({ lang }) => {
+  const router = useRouter();
   const [userTests, setUserTests] = useState(null);
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        router.push(`/${lang.locale}/`);
+        router.push(`/${lang.locale}/pages/sign-up/`);
         return;
       }
 
