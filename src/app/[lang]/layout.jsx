@@ -19,6 +19,9 @@ export default async function RootLayout({ children, params }) {
   const lang = await getDictionary(params.lang);
   return (
     <html lang={lang}>
+      <head>
+        <title>PsyMI</title>
+      </head>
       <body
         className={
           Mont.className +
