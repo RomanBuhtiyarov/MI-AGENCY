@@ -80,7 +80,7 @@ const ResultTests = ({ lang, id }) => {
 
   if (resultTest?.test === 1) {
     return (
-      <div className="mb-[50px] mt-[60px] flex flex-col items-center md:items-start md:flex-row justify-around">
+      <div className=" mt-[60px] flex flex-col items-center md:items-start md:flex-row gap-[20px]">
         <div>
           {imageSrc && (
             <Image
@@ -132,7 +132,7 @@ const ResultTests = ({ lang, id }) => {
     );
   } else if (resultTest?.test === 2) {
     return (
-      <div className="md:mt-[63px] flex flex-col md:items-start md:flex-row justify-around">
+      <div className="md:mt-[63px] flex flex-col md:items-start md:flex-row gap-[50px]">
         <div>
           {imageSrc && (
             <Image
