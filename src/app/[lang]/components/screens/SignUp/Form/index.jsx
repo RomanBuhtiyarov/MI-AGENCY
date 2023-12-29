@@ -252,7 +252,7 @@ export const Form = ({ lang }) => {
         />
       </form>
       <button
-        className="mx-auto block mt-[15px] font-unbounded"
+        className="text-[#347AEC] hover:text-[#6764E7] duration-500 mx-auto block mt-[15px] px-[20px] font-unbounded"
         onClick={() => setIsLoginForm(!isLoginForm)}
       >
         {!isLoginForm
