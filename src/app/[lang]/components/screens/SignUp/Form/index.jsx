@@ -142,7 +142,13 @@ export const Form = ({ lang }) => {
       setMessageError("Ви не ввели пошту!");
       return false;
     } else if (username === "") {
+      return setMessageError("Щоб продовжити реєстрацію, введіть Ваш нікнейм");
+    } else if (first_name === "") {
       return setMessageError("Щоб продовжити реєстрацію, введіть Ваше ім'я");
+    } else if (first_name === "") {
+      return setMessageError(
+        "Щоб продовжити реєстрацію, введіть Ваше прізвище"
+      );
     } else if (password === "") {
       setMessageError("Enter your password");
     } else if (password !== repeatedPassword) {

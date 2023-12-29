@@ -134,7 +134,7 @@ const MyProfile = ({ lang }) => {
   //   router.replace("/");
   //   return null; // Опционально: можно вернуть null, чтобы компонент не рендерился
   // }
-
+  console.log(userData);
   return (
     <section className="flex flex-col md:flex-row relative items-start gap-[20px] md:gap-[47px] bg-white max-w-[842px] w-full py-[25px] px-[30px] rounded-[15px] shadow-xl">
       <button
@@ -149,7 +149,7 @@ const MyProfile = ({ lang }) => {
       </button>
       <div>
         <input className="hidden" id="projectCoverUploads" type="file" />
-        {userData && userData.image !== "" ? (
+        {userData && userData.image ? (
           <div className="flex items-center">
             <div className="w-[170px] h-[170px] rounded-[100%] border-1 border-solid border-[#347AEC] relative">
               <button className="z-10 top-[5px] left-[10px] absolute w-[35px] h-[35px] rounded-[100%] bg-[#347AEC] hover:bg-[#6764E7] duration-500 flex items-center justify-center">
@@ -188,7 +188,25 @@ const MyProfile = ({ lang }) => {
           </div>
         ) : (
           <>
-            <CldUploadButton
+            <div className="default-avatar rounded-[9px] w-[170px] h-[170px] flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="165"
+                height="165"
+                viewBox="0 0 43 44"
+                fill="none"
+              >
+                <path
+                  d="M21.3401 43.132C13.0053 42.8565 6.71405 39.3435 2.25963 32.5241C1.93818 32.0189 1.91522 31.5597 2.19075 31.0316C4.34908 26.7379 7.79321 24.1663 12.5002 23.2938C13.1661 23.179 13.7401 23.2938 14.2911 23.6612C17.4598 25.8654 20.9269 26.4394 24.6006 25.3373C25.7946 24.9699 26.9196 24.2811 28.0447 23.6841C28.6647 23.3397 29.2617 23.179 29.9505 23.2938C34.6345 24.1893 38.0098 26.7609 40.191 30.9857C40.4666 31.4908 40.4436 31.9271 40.1222 32.4322C36.5173 38.0806 31.4429 41.5936 24.8302 42.7876C23.6362 42.9943 22.3963 43.0402 21.3401 43.132Z"
+                  fill="white"
+                />
+                <path
+                  d="M10.0433 11.1591C10.0203 5.07444 15.0488 0.0230392 21.1793 7.83222e-05C27.3099 -0.0228826 32.3613 5.00556 32.3842 11.1361C32.4072 17.2208 27.4017 22.2492 21.2482 22.2951C15.1406 22.341 10.0892 17.3356 10.0433 11.1591Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            {/* <CldUploadButton
               onUpload={(e, result, widget) =>
                 uploadCloudinary(e, result, widget)
               }
@@ -201,7 +219,7 @@ const MyProfile = ({ lang }) => {
               >
                 {firstPart} <br /> {secondPart}
               </label>
-            </CldUploadButton>
+            </CldUploadButton> */}
           </>
         )}
       </div>
