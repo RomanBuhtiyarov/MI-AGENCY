@@ -2,8 +2,11 @@ import Image from "next/image";
 import MainButton from "../../UI/Buttons/MainButton";
 import { useEffect, useState } from "react";
 import { enneagrama_results } from "@/_libs/enneagrama_results";
+import ky from "ky";
 export const EnneagramaResult = ({ answers, lang }) => {
   const [imageSrc, setImageSrc] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
 
   const localizedResults = enneagrama_results(lang);
   const [isSaved, setIsSaved] = useState(false);
@@ -46,6 +49,29 @@ export const EnneagramaResult = ({ answers, lang }) => {
     possibleProfessions,
   } = enneagramResultData;
 
+  const handleSubmit = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    const data = {
+      test: 1,
+      user: userData.id,
+      type: enneagramResultData.type.toString(),
+      description: "string",
+    };
+    try {
+      await ky
+        .post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, {
+          json: data,
+        })
+        .json();
+      setIsSaved(!isSaved);
+    } catch (error) {
+      // Set the error message in the component's state
+      setMessageError(error.message);
+    }
+  };
+
   useEffect(() => {
     const loadImage = async () => {
       try {
@@ -63,6 +89,42 @@ export const EnneagramaResult = ({ answers, lang }) => {
     }
   }, [enneagramResultData]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const authToken = localStorage.getItem("authToken");
+      if (!authToken) {
+        router.push(`/${lang.locale}/`);
+        return;
+      }
+
+      try {
+        // Use ky to make a request with the auth token in the headers
+        const response = await ky
+          .get(
+            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+            {
+              headers: {
+                Authorization: `Token ${authToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .json();
+        // Set the user data in the component state
+        setUserData(response);
+      } catch (error) {
+        setError("An error occurred while fetching user data");
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
+
+  // Render logic based on the fetched user data or error
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <div className="mb-[50px] mt-[20px] flex flex-col items-center md:items-start md:flex-row justify-between">
       <div>
@@ -113,7 +175,7 @@ export const EnneagramaResult = ({ answers, lang }) => {
           <MainButton
             className="save-button w-[255px] h-[40px] text-[16px] px-[10px] !important"
             label={lang.enneagram_page.save_button}
-            onClick={() => setIsSaved(!isSaved)}
+            onClick={handleSubmit}
           />
           {isSaved && (
             <p className="mt-[10px] text-[10px] font-medium">

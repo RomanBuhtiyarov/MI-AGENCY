@@ -1,14 +1,17 @@
 import Image from "next/image";
 
-export const Default = ({ user }) => {
+export const Default = ({
+  userData,
+  // { user }
+}) => {
   return (
     <>
-      {user ? (
+      {userData?.image ? (
         <div className="rounded-[9px] w-[67px] h-[67px] overflow-hidden">
           <Image
             className="w-[67px] h-[67px]"
-            src={user?.image}
-            alt={user?.username}
+            src={userData?.image}
+            alt={userData?.username}
           />
         </div>
       ) : (

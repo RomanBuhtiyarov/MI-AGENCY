@@ -1,7 +1,6 @@
 import robotLookImg from "/public/_assets/images/robot-look.png";
-import { LoginGoogleProvider } from "../../components/screens/SignUp/LoginGoogleProvider";
+import { Authorization } from "../../components/screens/SignUp/Authorization";
 import CreatedProfile from "../../components/screens/SignUp/CreatedProfile";
-import { Form } from "../../components/screens/SignUp/Form";
 import Image from "next/image";
 import { getDictionary } from "../../../../../getDictionary";
 import { getSession } from "@/actions/getSession";
@@ -14,11 +13,10 @@ export default async function Page({ params }) {
   const lang = await getDictionary(params.lang);
   return (
     <main className="md:pt-[60px]">
-      <LoginGoogleProvider session={session} lang={lang} />
-      <h2 className="w-[20px] ml-[340px] text-center text-[#347AEC] font-unbounded text-[22px] font-[400] mb-[22px]">
+      <Authorization session={session} lang={lang} />
+      {/* <h2 className="w-[20px] mx-auto md:ml-[340px] text-center text-[#347AEC] font-unbounded text-[22px] font-[400] mb-[22px]">
         Or
-      </h2>
-      {!session && <Form isRegistered={isRegistered} lang={lang} />}
+      </h2> */}
       {session && (
         <div className="flex gap-[57px] w-full justify-center">
           {!isRegistered ? (

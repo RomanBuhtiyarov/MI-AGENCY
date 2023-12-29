@@ -5,7 +5,11 @@ import { ItemNav } from "./item_nav";
 import { useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
-export const Nav = ({ lang, user }) => {
+export const Nav = ({
+  lang,
+  // , user
+  userData,
+}) => {
   const asideElements = asideNav();
   const { isMobile } = useScreenSize();
   const changeOrder = () => {
@@ -39,7 +43,8 @@ export const Nav = ({ lang, user }) => {
                   return !isMobile ? el.key !== "my-profile" : true;
                 })[newIndex],
                 locale: lang.locale,
-                user: user,
+                userData: userData,
+                // user: user,
                 mobileOrder: mobileOrder, // передайте порядок как часть данных
               }}
               setCurrentTab={setCurrentTab}

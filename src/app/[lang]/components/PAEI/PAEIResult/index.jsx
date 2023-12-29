@@ -1,9 +1,16 @@
+"use client";
 import Image from "next/image";
 import MainButton from "../../UI/Buttons/MainButton";
 import { useState, useEffect } from "react";
 import { paei_results } from "@/_libs/paei_results";
+import ky from "ky";
 export const PAEIResult = ({ answers, lang }) => {
   const localizedResults = paei_results(lang);
+  const [isSaved, setIsSaved] = useState(false);
+  const [imageSrc, setImageSrc] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+
   function calculateTotalScores(data) {
     // Инициализируем объект для хранения сумм баллов по каждой букве
     const totalScores = { I: 0, E: 0, P: 0, A: 0 };
@@ -58,12 +65,32 @@ export const PAEIResult = ({ answers, lang }) => {
       maxLetter = letter;
     }
   }
-  // Находим максимальное значение
 
   const finalResult = formatResult(scores);
 
-  const [isSaved, setIsSaved] = useState(false);
-  const [imageSrc, setImageSrc] = useState(null);
+  const handleSubmit = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    const data = {
+      test: 2,
+      user: userData.id,
+      type: finalResult,
+      description: "",
+    };
+    try {
+      await ky
+        .post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, {
+          json: data,
+        })
+        .json();
+      setIsSaved(!isSaved);
+    } catch (error) {
+      // Set the error message in the component's state
+      setMessageError(error.message);
+    }
+  };
+
   useEffect(() => {
     const loadImage = async () => {
       try {
@@ -79,6 +106,43 @@ export const PAEIResult = ({ answers, lang }) => {
       loadImage();
     }
   }, [maxLetter]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const authToken = localStorage.getItem("authToken");
+      if (!authToken) {
+        router.push(`/${lang.locale}/`);
+        return;
+      }
+
+      try {
+        // Use ky to make a request with the auth token in the headers
+        const response = await ky
+          .get(
+            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+            {
+              headers: {
+                Authorization: `Token ${authToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .json();
+        // Set the user data in the component state
+        setUserData(response);
+      } catch (error) {
+        setError("An error occurred while fetching user data");
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
+
+  // Render logic based on the fetched user data or error
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex flex-col items-center md:flex-row justify-between">
@@ -150,12 +214,12 @@ export const PAEIResult = ({ answers, lang }) => {
         <div className="text-center mb-[20px] md:mb-0">
           <MainButton
             className="save-button w-[255px] h-[40px] text-[16px] px-[10px] !important"
-            label={lang.save_button}
-            onClick={() => setIsSaved(!isSaved)}
+            label={lang.paei_result.save_button}
+            onClick={handleSubmit}
           />
           {isSaved && (
             <p className="mt-[10px] text-[10px] font-medium">
-              {lang.saved_result_msg}
+              {lang.paei_result.saved_result_msg}
             </p>
           )}
         </div>

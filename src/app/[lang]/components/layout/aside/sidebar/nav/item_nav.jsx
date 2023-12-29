@@ -27,7 +27,7 @@ export const ItemNav = ({ data, setCurrentTab, currentTab }) => {
             "bg-gradient-to-r from-[#347AEC] to-[#6764E7] nav active-nav"
           } `}
         >
-          {data.slug === "my-profile" && data.user ? (
+          {data.slug === "my-profile" && data.userData?.image ? (
             <Image
               className="rounded-[100%]"
               aria-label={"Change to:" + data.alt}

@@ -3,8 +3,8 @@ import avatarImg from "/public/_assets/images/mi-avatar.png";
 import Image from "next/image";
 import LoginGoogle from "../../../UI/Buttons/LoginGoogle";
 import { signIn } from "next-auth/react";
-
-export const LoginGoogleProvider = ({ session, lang }) => {
+import { Form } from "../Form";
+export const Authorization = ({ session, lang }) => {
   return (
     <section className="flex flex-col md:flex-row items-center md:items-start md:gap-[50px]">
       <Image
@@ -27,9 +27,10 @@ export const LoginGoogleProvider = ({ session, lang }) => {
           <br />
           {lang.login_page.google_provider.p_default}
         </p>
-        {!session && (
+        {/* {!session && (
           <LoginGoogle lang={lang} onClick={() => signIn("google")} />
-        )}
+        )} */}
+        <Form lang={lang} />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { CldUploadButton } from "next-cloudinary";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Image, Modal } from "antd";
 import ky from "ky";
 import { signOut, useSession } from "next-auth/react";
@@ -60,13 +60,12 @@ const errorServer = () => {
   });
 };
 
-const MyProfile = ({ currentUser, lang }) => {
+const MyProfile = ({ lang }) => {
   const router = useRouter();
   const uploadImageBtnText = lang.profile_page.user.upload_image_btn;
   const [firstPart, secondPart] = uploadImageBtnText.split(" ");
   const [publicIdImageCD, setPublicIdImageCD] = useState("");
-  const [userRender, setUserRender] = useState(currentUser);
-
+  // const [userRender, setUserRender] = useState(currentUser);
   const uploadCloudinary = async (e, result) => {
     if (e.info.resource_type === "image") {
       setPublicIdImageCD(e.info);
@@ -91,6 +90,45 @@ const MyProfile = ({ currentUser, lang }) => {
       result.update();
     }
   };
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const authToken = localStorage.getItem("authToken");
+      if (!authToken) {
+        router.push(`/${lang.locale}/`);
+        return;
+      }
+
+      try {
+        // Use ky to make a request with the auth token in the headers
+        const response = await ky
+          .get(
+            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+            {
+              headers: {
+                Authorization: `Token ${authToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .json();
+        // Set the user data in the component state
+        setUserData(response);
+      } catch (error) {
+        setError("An error occurred while fetching user data");
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
+
+  // Render logic based on the fetched user data or error
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   // if (!currentUser) {
   //   // Если сессии нет, перенаправляем пользователя на начальную страницу
   //   router.replace("/");
@@ -102,14 +140,16 @@ const MyProfile = ({ currentUser, lang }) => {
       <button
         className="text-[#5D5D5D] font-unbounded font-[400] absolute right-[25px] top-[20px]"
         onClick={() => {
-          signOut();
+          localStorage.removeItem("authToken");
+          router.push(`/${lang.locale}/`);
+          // signOut();
         }}
       >
         {lang.profile_page.user.sign_out_btn}
       </button>
       <div>
         <input className="hidden" id="projectCoverUploads" type="file" />
-        {userRender && userRender.image !== "" ? (
+        {userData && userData.image !== "" ? (
           <div className="flex items-center">
             <div className="w-[170px] h-[170px] rounded-[100%] border-1 border-solid border-[#347AEC] relative">
               <button className="z-10 top-[5px] left-[10px] absolute w-[35px] h-[35px] rounded-[100%] bg-[#347AEC] hover:bg-[#6764E7] duration-500 flex items-center justify-center">
@@ -130,8 +170,8 @@ const MyProfile = ({ currentUser, lang }) => {
 
               <Image
                 className="rounded-[100%]"
-                src={userRender.image}
-                alt={currentUser.username}
+                src={userData?.image}
+                alt={userData.username}
                 width={170}
                 height={170}
                 loading="lazy"
@@ -142,7 +182,7 @@ const MyProfile = ({ currentUser, lang }) => {
                 {lang.profile_page.user.greeting}
               </p>
               <p className="text-[#262626] text-[22px] font-[400] font-unbounded mb-[15px]">
-                {userRender?.username}
+                {userData?.username}
               </p>
             </div>
           </div>
@@ -162,10 +202,6 @@ const MyProfile = ({ currentUser, lang }) => {
                 {firstPart} <br /> {secondPart}
               </label>
             </CldUploadButton>
-            {/* <div>
-              <button>Змінити зображення</button>
-              <button>Видалити зображення</button>
-            </div> */}
           </>
         )}
       </div>
@@ -175,7 +211,7 @@ const MyProfile = ({ currentUser, lang }) => {
             {lang.profile_page.user.greeting}
           </p>
           <p className="text-[#262626] text-[22px] font-[400] font-unbounded md:mb-[15px]">
-            {userRender?.username}
+            {userData?.username}
           </p>
         </div>
 

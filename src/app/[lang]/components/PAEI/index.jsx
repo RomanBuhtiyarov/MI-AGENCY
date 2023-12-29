@@ -317,9 +317,7 @@ export const PAEI = ({ lang }) => {
         )}
       </div>
 
-      {isShownResult && (
-        <PAEIResult answers={answers} lang={lang.paei_result} />
-      )}
+      {isShownResult && <PAEIResult answers={answers} lang={lang} />}
     </>
   );
 };

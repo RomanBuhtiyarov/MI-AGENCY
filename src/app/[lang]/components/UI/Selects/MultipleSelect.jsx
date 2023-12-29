@@ -5,45 +5,43 @@ import { Select } from "antd";
 export const MultipleSelect = ({ className = "", onChange, lang }) => {
   const options = [
     {
-      value: "Підприємець",
+      value: "entrepreneur",
       label: lang.login_page.created_profile.activity.entrepreneur,
     },
     {
-      value: "ТОП-менеджер",
+      value: "top_manager",
       label: lang.login_page.created_profile.activity.top_manager,
     },
     {
-      value: "Junior спеціаліст",
+      value: "junior_spec",
       label: lang.login_page.created_profile.activity.junior_specialist,
     },
     {
-      value: "Middle / Senior спеціаліст",
+      value: "mid_sen_spec",
       label: lang.login_page.created_profile.activity.mid_senior_specialist,
     },
     {
-      value: "HR фахівець",
+      value: "hr_spec",
       label: lang.login_page.created_profile.activity.hr_specialist,
     },
     {
-      value: "Психолог",
+      value: "psychologist",
       label: lang.login_page.created_profile.activity.psychologist,
     },
     {
-      value: "Iнше",
+      value: "other",
       label: lang.login_page.created_profile.activity.other,
     },
   ];
 
   const selectProps = {
-    mode: "tags",
     style: {
       width: "100%",
     },
     onChange: onChange,
     autoClearSearchValue: false,
     options,
-    showArrow: false,
-    suffixIcon: <p>Тест</p>,
+    showArrow: true,
     border: false,
     placeholder: lang.login_page.created_profile.activity.placeholder,
     maxTagCount: "responsive",

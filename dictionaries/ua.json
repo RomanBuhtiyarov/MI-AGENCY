@@ -375,6 +375,16 @@
       "p_default": "та я збережу всі твої результати!",
       "login_button": "Увійти через Google"
     },
+    "form": {
+      "email": "Email адреса",
+      "password": "Пароль",
+      "re_password": "Повторити Пароль",
+      "first_name": "Ім’я",
+      "last_name": "Прізвище",
+      "username": "Нікнейм",
+      "logged_in": "Зареєстровані? Увійти до облікового запису",
+      "registered": "Не маєте облікового запису? Зареєструйтесь"
+    },
     "created_profile": {
       "header": "Створити профіль",
       "name_label": "Ім’я*",

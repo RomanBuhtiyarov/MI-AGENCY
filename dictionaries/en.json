@@ -364,6 +364,16 @@
       "p_default": "and I will save all your results!",
       "login_button": "Log in with Google"
     },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "re_password": "Repeat Password",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "username": "Username",
+      "logged_in": "Already have an account? Log in",
+      "registered": "Don`t have an account? Sign up"
+    },
     "created_profile": {
       "header": "Create a profile",
       "name_label": "Name*",
