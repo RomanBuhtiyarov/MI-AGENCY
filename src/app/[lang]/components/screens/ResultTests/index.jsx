@@ -98,7 +98,7 @@ const ResultTests = ({ lang, id }) => {
             {enneagramResultData.title}
           </h1>
           <p className="mx-auto md:mx-0 w-[60px] text-center bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center">
-            {enneagramResultData.resultType} {lang.enneagram_page.n_type}
+            {enneagramResultData.type} {lang.enneagram_page.n_type}
           </p>
           <p className="my-[20px] font-medium">
             {enneagramResultData.description}
