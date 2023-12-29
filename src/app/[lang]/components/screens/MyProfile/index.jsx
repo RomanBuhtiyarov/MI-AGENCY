@@ -142,6 +142,9 @@ const MyProfile = ({ lang }) => {
         onClick={() => {
           localStorage.removeItem("authToken");
           router.push(`/${lang.locale}/`);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
           // signOut();
         }}
       >
