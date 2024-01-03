@@ -23,7 +23,7 @@ const tagRender = (props) => {
   );
 };
 
-export const Filter = ({ lang }) => {
+export const Filter = ({ lang, onFilterChange }) => {
   const optionsSocial = [
     {
       label: "Instagram",

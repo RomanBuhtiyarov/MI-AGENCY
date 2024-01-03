@@ -3,9 +3,10 @@ import Image from "next/image";
 import { Unbounded } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { useScreenSize } from "@/hooks/useScreenSize";
 const Unbound = Unbounded({ subsets: ["latin"] });
 const CardTest = ({ data }) => {
+  const { isMobile } = useScreenSize();
   const [bannerSrc, setBannerSrc] = useState(null);
   const [ownerSrc, setOwnerSrc] = useState(null);
   useEffect(() => {
@@ -35,8 +36,6 @@ const CardTest = ({ data }) => {
       >
         {ownerSrc && (
           <Image
-            blurDataURL={`/public/_assets/images/icons/${data.owner.path}`}
-            placeholder={"blur"}
             loading={"lazy"}
             className="hidden md:block mx-auto"
             src={ownerSrc}
@@ -49,8 +48,6 @@ const CardTest = ({ data }) => {
         <div className=" max-w-[350px] h-[130px] relative mx-auto">
           {bannerSrc && (
             <Image
-              blurDataURL={`/public/_assets/images/tests/${data.banner}`}
-              placeholder={"blur"}
               className="object-contain mx-auto"
               src={bannerSrc}
               alt={"banner"}
@@ -59,13 +56,15 @@ const CardTest = ({ data }) => {
           )}
         </div>
       </div>
-      <div className="h-[108px] bg-white rounded-b-[15px] pt-[12px] pb-[20px] pl-[20px] pr-[15px]">
+      <div className="h-[108px] bg-white rounded-b-[15px] pt-[12px] pb-[20px] pl-[15px] pr-[5px]">
         <div className="mb-[20px]">
           <h2 className={Unbound.className + " " + "text-[16px] font-[400]"}>
             {data.test_blocks[0].label}
           </h2>
-          <p className="w-[420px] md:w-auto text-[#5E5E5E] text-[14px] font-[500] mb-[5px] md:mb-[15px] mt-[3px]">
-            {data.test_blocks[0].description}
+          <p className="w-[100%] md:w-auto text-[#5E5E5E] text-[14px] font-[500] mb-[5px] md:mb-[15px] mt-[3px]">
+            {isMobile && data.test_blocks[0].description.length !== 0
+              ? `${data.test_blocks[0].description.slice(0, 37)}...`
+              : data.test_blocks[0].description}
           </p>
         </div>
         <Link

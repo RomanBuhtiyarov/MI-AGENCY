@@ -18,9 +18,9 @@ export const Default = ({
         <div className="default-avatar rounded-[9px] w-[67px] h-[67px] flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="43"
-            height="44"
-            viewBox="0 0 43 44"
+            width="67"
+            height="67"
+            viewBox="-12 -12 67 67"
             fill="none"
           >
             <path

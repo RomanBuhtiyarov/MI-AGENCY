@@ -13,7 +13,7 @@ const User = ({
   lang,
 }) => {
   return (
-    <div className="hidden md:flex md:gap-[8px]">
+    <div className="hidden md:flex md:gap-[10px]">
       <Default
         userData={userData}
         //  user={user}
@@ -50,7 +50,7 @@ const User = ({
             }
           >
             <ArrowButton
-              className={!userData ? "w-[80px]" : ""}
+              className={!userData ? "w-[100px]" : ""}
               label={
                 userData
                   ? `${lang.sidebar.user.user_button_auth}`

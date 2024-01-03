@@ -34,15 +34,11 @@ const BlockTest = ({
   ];
   const handleCountLetter = (number, letterCurrent) => {
     const updatedState = state.map((letterTest) =>
-      letterTest.letter === letterCurrent
-        ? { ...letterTest, number: number }
-        : letterTest
+      letterTest.letter === letterCurrent ? { ...letterTest, number: number } : letterTest,
     );
 
     // Check if the letter was found and updated. If not, add a new entry.
-    const isLetterFound = updatedState.some(
-      (el) => el.letter === letterCurrent
-    );
+    const isLetterFound = updatedState.some((el) => el.letter === letterCurrent);
     if (!isLetterFound) {
       updatedState.push({ number: number, letter: letterCurrent });
     }
@@ -55,14 +51,12 @@ const BlockTest = ({
 
   return (
     <>
-      <p className="md:hidden text-[#262626] font-unbounded font-[400] pr-[25px]">
-        {test_name}
-      </p>
-      <div className="flex justify-between items-center py-[14px] px-[19px] bg-white rounded-[5px]">
-        <p className="hidden md:block text-[#262626] font-unbounded font-[400] pr-[25px]">
+      <p className='md:hidden text-[#262626] font-unbounded font-[400] pr-[25px]'>{test_name}</p>
+      <div className='flex justify-between items-center py-[14px] px-[19px] bg-white rounded-[5px]'>
+        <p className='hidden md:block text-[#262626] font-unbounded font-[400] pr-[25px]'>
           {test_name}
         </p>
-        <div className="flex gap-[63px] md:gap-[50px]">
+        <div className='flex gap-[50px] md:gap-[50px]'>
           {BUTTONS_PARAMS?.map?.((button, _) => {
             return (
               <button
@@ -70,14 +64,11 @@ const BlockTest = ({
                 className={`w-[10px] duration-500 h-[10px]
                          ${
                            currentTabButton === button.number ||
-                           state?.find((el) => el.letter === letter)?.number ===
-                             button.number
+                           state?.find((el) => el.letter === letter)?.number === button.number
                              ? "bg-[#347AEC]"
                              : "bg-[#E1E1E1]"
                          }
-                         ${
-                           counter + button.number >= 11 && "opacity-60 bg-red"
-                         } rounded-[100%]`}
+                         ${counter + button.number >= 11 && "opacity-60 bg-red"} rounded-[100%]`}
                 type={button.type}
                 key={button.number}
                 disabled={

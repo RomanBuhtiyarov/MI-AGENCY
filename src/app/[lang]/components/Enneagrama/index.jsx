@@ -169,8 +169,6 @@ export const Enneagrama = ({ lang }) => {
       >
         <div className="flex items-center">
           <Image
-            blurDataURL={"/public/_assets/images/leave_testing_robot.png"}
-            placeholder={"blur"}
             className="hidden md:block ml-[30px] w-[192px] h-[280px]"
             src={leaveTestingRobot}
             alt={"robot look"}

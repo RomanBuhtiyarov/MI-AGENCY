@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Image, Modal } from "antd";
 import ky from "ky";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import MainButton from "../../UI/Buttons/MainButton";
 
 const success = () => {
@@ -62,6 +62,8 @@ const errorServer = () => {
 
 const MyProfile = ({ lang }) => {
   const router = useRouter();
+  const [contactMsg, setContactMsg] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   const uploadImageBtnText = lang.profile_page.user.upload_image_btn;
   const [firstPart, secondPart] = uploadImageBtnText.split(" ");
   const [publicIdImageCD, setPublicIdImageCD] = useState("");
@@ -96,8 +98,8 @@ const MyProfile = ({ lang }) => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        router.push(`/${lang.locale}/pages/sign-up`);
-        return;
+        router.replace(`/${lang.locale}/pages/sign-up`);
+        return null;
       }
 
       try {
@@ -134,7 +136,11 @@ const MyProfile = ({ lang }) => {
   //   router.replace("/");
   //   return null; // Опционально: можно вернуть null, чтобы компонент не рендерился
   // }
+  const handleButtonClick = () => {
+    setInputValue("");
 
+    setContactMsg(true);
+  };
   return (
     <section className="flex flex-col md:flex-row relative items-start gap-[20px] md:gap-[47px] bg-white max-w-[842px] w-full py-[25px] px-[30px] rounded-[15px] shadow-xl">
       <button
@@ -190,12 +196,12 @@ const MyProfile = ({ lang }) => {
             </div>
           </div>
         ) : (
-          <>
-            <div className="default-avatar rounded-[9px] w-[170px] h-[170px] flex items-center justify-center">
+          <div className="flex items-center">
+            <div className="default-avatar rounded-[9px] w-[160px] h-[160px] flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="165"
-                height="165"
+                width="150"
+                height="150"
                 viewBox="0 0 43 44"
                 fill="none"
               >
@@ -208,6 +214,14 @@ const MyProfile = ({ lang }) => {
                   fill="white"
                 />
               </svg>
+            </div>
+            <div className="md:hidden ml-[15px]">
+              <p className="mb-[5px] text-[#5E5E5E] text-[10px] font-[500]">
+                {lang.profile_page.user.greeting}
+              </p>
+              <p className="text-[#262626] text-[22px] font-[400] font-unbounded mb-[15px]">
+                {userData?.username}
+              </p>
             </div>
             {/* <CldUploadButton
               onUpload={(e, result, widget) =>
@@ -223,7 +237,7 @@ const MyProfile = ({ lang }) => {
                 {firstPart} <br /> {secondPart}
               </label>
             </CldUploadButton> */}
-          </>
+          </div>
         )}
       </div>
       <div>
@@ -247,10 +261,12 @@ const MyProfile = ({ lang }) => {
         </div>
         <div className="bg-[#F2F5F8] w-[212px] px-[14px] py-[9px] flex -items-center gap-[10px] rounded-[5px] mt-[15px]">
           <input
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             placeholder={lang.profile_page.user.placeholder}
             className="bg-transparent w-full outline-none placeholder:text-[#5E5E5E] text-[10px] font-[500]"
           />
-          <button>
+          <button onClick={handleButtonClick}>
             <svg
               className="w-[25px] h-[25px] md:w-[16px] md:h-[16px]"
               xmlns="http://www.w3.org/2000/svg"
@@ -264,6 +280,13 @@ const MyProfile = ({ lang }) => {
               />
             </svg>
           </button>
+        </div>
+        <div>
+          {contactMsg && (
+            <p className="mt-[10px] text-[10px] font-medium">
+              Дякуємо за звернення! Ми зв’яжемося з Вами найближчим часом
+            </p>
+          )}
         </div>
       </div>
     </section>

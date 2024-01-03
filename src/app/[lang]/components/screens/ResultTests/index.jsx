@@ -8,11 +8,9 @@ const ResultTests = ({ lang, id }) => {
   const [imageSrc, setImageSrc] = useState(null);
 
   const [resultTest, setResultTest] = useState(null);
-  console.log(resultTest);
   const localizedPAEIResults = paei_results(lang);
   const localizedEnneagramResults = enneagrama_results(lang);
   const [error, setError] = useState("");
-  console.log(imageSrc);
   useEffect(() => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
@@ -65,7 +63,6 @@ const ResultTests = ({ lang, id }) => {
           const imageModule = await import(
             `/public/_assets/images/paei_answers/${maxLetter}.png`
           );
-          console.log(imageModule.default);
           setImageSrc(imageModule.default);
         }
       } catch (error) {
@@ -80,13 +77,11 @@ const ResultTests = ({ lang, id }) => {
 
   if (resultTest?.test === 1) {
     return (
-      <div className=" mt-[60px] flex flex-col items-center md:items-start md:flex-row gap-[20px]">
+      <div className="mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]">
         <div>
           {imageSrc && (
             <Image
-              blurDataURL={`/public/_assets/images/enneagrama_answers/${enneagramResultData.type}.png`}
-              placeholder={"blur"}
-              className="mb-[26px] md:mb-0 radius-[15px] w-[300px] h-[300px]"
+              className="radius-[15px] w-[300px] h-[300px]"
               src={imageSrc}
               alt={"enneagram result"}
               loading="lazy"
@@ -132,13 +127,11 @@ const ResultTests = ({ lang, id }) => {
     );
   } else if (resultTest?.test === 2) {
     return (
-      <div className="md:mt-[63px] flex flex-col md:items-start md:flex-row gap-[50px]">
+      <div className="mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]">
         <div>
           {imageSrc && (
             <Image
-              blurDataURL={`/public/_assets/images/paei_answers/${maxLetter}.png`}
-              placeholder={"blur"}
-              className="mb-[26px] md:mb-0 radius-[15px] "
+              className="radius-[15px] "
               src={imageSrc}
               alt={"robot look"}
               loading="lazy"
@@ -152,7 +145,6 @@ const ResultTests = ({ lang, id }) => {
             {lang.header} {resultTest?.type}
           </h1>
 
-          {/* Используем результаты теста для отображения соответствующих описаний */}
           <p className="mt-[10px] mb-[30px] font-medium">
             {
               localizedPAEIResults.find((desc) => desc.letter === "P")[

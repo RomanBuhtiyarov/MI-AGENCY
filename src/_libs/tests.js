@@ -48,8 +48,6 @@ export const tests = (lang) => {
               </div>
               <div className="hidden md:block -scale-x-100">
                 <Image
-                  blurDataURL={"/public/_assets/images/robot_img.png"}
-                  placeholder={"blur"}
                   className="w-[150px] h-[200px]"
                   src={robotLookImg}
                   alt={"robot look"}
@@ -88,8 +86,6 @@ export const tests = (lang) => {
           <section>
             <div className="flex flex-col-reverse md:flex-row items-center gap-[27px]">
               <Image
-                blurDataURL={"/public/_assets/images/robot_img.png"}
-                placeholder={"blur"}
                 className="hidden md:block w-[150px] h-[200px]"
                 src={robotLookImg}
                 alt={"robot look"}
@@ -106,8 +102,6 @@ export const tests = (lang) => {
                 </div>
               </div>
               <Image
-                blurDataURL={"/public/_assets/images/enneagram_img.png"}
-                placeholder={"blur"}
                 className="w-[250px] h-[250px]"
                 src={enneagramImg}
                 alt={"enneagram look"}

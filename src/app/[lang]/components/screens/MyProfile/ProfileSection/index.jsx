@@ -44,9 +44,9 @@ export const ProfileSection = ({ lang }) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log(userTests);
+
   return (
-    <section className="mt-[35px]">
+    <section className="mt-[35px] mb-[35px] md:mb-0">
       {userTests?.length === 0 ? (
         <div className="text-center md:text-left">
           <h2 className=" px-[20px] md:px-0 font-unbounded text-[22px] font-[400] mb-[15px]">

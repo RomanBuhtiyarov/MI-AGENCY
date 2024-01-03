@@ -77,15 +77,12 @@ export const Form = ({ lang }) => {
         .json();
       if (loginResponse.auth_token) {
         localStorage.setItem("authToken", loginResponse.auth_token);
-        // Redirect to the "my-profile" page or any other page
-        // You can use Next.js router for navigation
         router.push(`/${lang.locale}/my-profile`);
         setTimeout(() => {
           window.location.reload();
         }, 1000);
       }
     } catch (error) {
-      // Set the error message in the component's state
       setMessageError(error.message);
     }
   };
