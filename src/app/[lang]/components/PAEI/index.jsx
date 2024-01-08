@@ -1,7 +1,7 @@
 "use client";
 
 import BlockTest from "./BlockTest";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { tests } from "@/_libs/paei";
 import { PAEIResult } from "./PAEIResult";
@@ -16,6 +16,8 @@ export const PAEI = ({ lang }) => {
   const [generalQuestions] = useState(Object.keys(localizedTests).length);
   const [isShownResult, setIsShownResult] = useState(false);
   const [answers, setAnswers] = useState([]);
+  const [height, setHeight] = useState("auto");
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const updatedCounterTest = counterTest.map((item) => ({ ...item })); // Создаем новый массив с копиями объектов
@@ -171,7 +173,16 @@ export const PAEI = ({ lang }) => {
         break;
     }
   };
+  useEffect(() => {
+    console.log("isShownResult:", isShownResult);
+    setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
+  }, [isShownResult]);
 
+  useEffect(() => {
+    console.log("isShownResult on mount:", isShownResult);
+    // Обновляем высоту при загрузке компонента
+    setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
+  }, []);
   return (
     <>
       <div className=' w-[100%] md:mt-0 flex md:gap-[96px] max-w-[780px]  justify-between'>
@@ -218,7 +229,9 @@ export const PAEI = ({ lang }) => {
                   className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
                   label={lang.test_page.next_block_btn}
                   onClick={toggleBlock}
-                  disabled={currentBlockID === generalQuestions}
+                  disabled={
+                    currentBlockID === generalQuestions || counterTest.length < 4 || counter !== 10
+                  }
                 />
               </div>
 
@@ -226,6 +239,12 @@ export const PAEI = ({ lang }) => {
                 <button
                   onClick={() => {
                     setIsShownResult(!isShownResult);
+                    setTimeout(() => {
+                      window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: "smooth", // Optional: Add smooth scrolling behavior
+                      });
+                    }, 200);
                   }}
                   className='hidden md:flex items-center justify-center flex-col gap-[5px] w-full py-[26px] font-medium'
                 >
@@ -267,7 +286,7 @@ export const PAEI = ({ lang }) => {
           </div>
         </div>
       </div>
-      <div className='w-full flex md:hidden flex-col'>
+      <div className='w-full flex md:hidden flex-col pb-[30px]'>
         <div className='flex justify-evenly'>
           <NextPrevButton
             className='previous-block block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
@@ -284,7 +303,9 @@ export const PAEI = ({ lang }) => {
             className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
             label={lang.test_page.next_block_btn}
             onClick={toggleBlock}
-            disabled={currentBlockID === generalQuestions}
+            disabled={
+              currentBlockID === generalQuestions || counterTest.length < 4 || counter !== 10
+            }
           />
         </div>
 
@@ -292,6 +313,12 @@ export const PAEI = ({ lang }) => {
           <button
             onClick={() => {
               setIsShownResult(!isShownResult);
+              setTimeout(() => {
+                window.scrollTo({
+                  top: document.documentElement.scrollHeight,
+                  behavior: "smooth", // Optional: Add smooth scrolling behavior
+                });
+              }, 200);
             }}
             className='flex items-center justify-center flex-col gap-[5px] w-full pt-[26px] md:py-[26px] font-medium'
           >
@@ -316,7 +343,9 @@ export const PAEI = ({ lang }) => {
         )}
       </div>
 
-      {isShownResult && <PAEIResult answers={answers} lang={lang} />}
+      {isShownResult && (
+        <PAEIResult answers={answers} lang={lang} contentRef={contentRef} height={height} />
+      )}
     </>
   );
 };

@@ -1,11 +1,13 @@
 "use client";
 import Image from "next/image";
+import { Modal } from "antd";
 import MainButton from "../../UI/Buttons/MainButton";
 import { useState, useEffect } from "react";
 import { paei_results } from "@/_libs/paei_results";
 import ky from "ky";
-export const PAEIResult = ({ answers, lang }) => {
+export const PAEIResult = ({ answers, lang, contentRef, height }) => {
   const localizedResults = paei_results(lang);
+  const [isAuth, setIsAuth] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const [userData, setUserData] = useState(null);
@@ -94,9 +96,7 @@ export const PAEIResult = ({ answers, lang }) => {
   useEffect(() => {
     const loadImage = async () => {
       try {
-        const imageModule = await import(
-          `/public/_assets/images/paei_answers/${maxLetter}.png`
-        );
+        const imageModule = await import(`/public/_assets/images/paei_answers/${maxLetter}.png`);
         setImageSrc(imageModule?.default);
       } catch (error) {
         console.error("Error loading image:", error);
@@ -111,22 +111,20 @@ export const PAEIResult = ({ answers, lang }) => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        router.push(`/${lang.locale}/`);
+        setIsAuth(false);
+        // router.push(`/${lang.locale}/`);
         return;
       }
 
       try {
         // Use ky to make a request with the auth token in the headers
         const response = await ky
-          .get(
-            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
-            {
-              headers: {
-                Authorization: `Token ${authToken}`,
-                "Content-Type": "application/json",
-              },
-            }
-          )
+          .get(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`, {
+            headers: {
+              Authorization: `Token ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          })
           .json();
         // Set the user data in the component state
         setUserData(response);
@@ -139,32 +137,57 @@ export const PAEIResult = ({ answers, lang }) => {
     fetchData();
   }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
 
+  const authModal = () => {
+    Modal.error({
+      title: "Авторизуйся",
+      content: (
+        <div className='flex flex-col items-center'>
+          <p className='text-left text-[16px] mb-[10px] font-unbounded'>
+            Для того, щоб зберегти результат, Вам потрібно авторизуватися!
+          </p>
+          <MainButton
+            onClick={() => {
+              router.push(`/${lang.locale}/pages/sign-up/`);
+            }}
+            label={"Авторизуватися"}
+          />
+        </div>
+      ),
+      closable: true,
+      centered: true,
+      footer: null,
+    });
+  };
+
   // Render logic based on the fetched user data or error
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   return (
-    <div className="flex flex-col items-center md:flex-row justify-between">
+    <div
+      ref={contentRef}
+      className='transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col items-center md:flex-row justify-between'
+    >
       <div>
         {imageSrc && (
           <Image
-            className="mb-[26px] md:mb-0 radius-[15px] md:mr-[30px]"
+            className='mb-[26px] md:mb-0 radius-[15px] md:mr-[30px]'
             src={imageSrc}
             alt={"robot look"}
-            loading="lazy"
+            loading='lazy'
             width={300}
             height={300}
           />
         )}
       </div>
-      <div className="md:w-[520px] md:h-[460px]">
-        <h1 className="text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]">
+      <div className='md:w-[520px]'>
+        <h1 className='text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
           {lang.header} {finalResult}
         </h1>
 
         {/* Используем результаты теста для отображения соответствующих описаний */}
-        <p className="mt-[10px] mb-[30px] font-medium">
+        <p className='mt-[10px] mb-[30px] font-medium'>
           {
             localizedResults.find((desc) => desc.letter === "P")[
               finalResult.includes("P")
@@ -175,7 +198,7 @@ export const PAEIResult = ({ answers, lang }) => {
             ]
           }
         </p>
-        <p className="mb-[30px] font-medium">
+        <p className='mb-[30px] font-medium'>
           {
             localizedResults.find((desc) => desc.letter === "A")[
               finalResult.includes("A")
@@ -186,7 +209,7 @@ export const PAEIResult = ({ answers, lang }) => {
             ]
           }
         </p>
-        <p className="mb-[30px] font-medium">
+        <p className='mb-[30px] font-medium'>
           {
             localizedResults.find((desc) => desc.letter === "E")[
               finalResult.includes("E")
@@ -197,7 +220,7 @@ export const PAEIResult = ({ answers, lang }) => {
             ]
           }
         </p>
-        <p className="mb-[30px] font-medium">
+        <p className='mb-[30px] font-medium'>
           {
             localizedResults.find((desc) => desc.letter === "I")[
               finalResult.includes("I")
@@ -209,16 +232,14 @@ export const PAEIResult = ({ answers, lang }) => {
           }
         </p>
 
-        <div className="text-center mb-[20px] md:mb-0">
+        <div className='text-center mb-[20px] md:mb-0'>
           <MainButton
-            className="save-button w-[255px] h-[40px] text-[16px] px-[10px] !important"
+            className='save-button w-[255px] h-[40px] text-[16px] px-[10px] !important'
             label={lang.paei_result.save_button}
-            onClick={handleSubmit}
+            onClick={isAuth ? handleSubmit : authModal}
           />
           {isSaved && (
-            <p className="mt-[10px] text-[10px] font-medium">
-              {lang.paei_result.saved_result_msg}
-            </p>
+            <p className='mt-[10px] text-[10px] font-medium'>{lang.paei_result.saved_result_msg}</p>
           )}
         </div>
       </div>

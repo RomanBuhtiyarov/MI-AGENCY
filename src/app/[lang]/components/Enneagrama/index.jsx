@@ -3,7 +3,7 @@ import { QuestionsCounter } from "./QuestionsCounter";
 import { QuestionsSection } from "./QuestionsSection";
 import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import MainButton from "../UI/Buttons/MainButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Modal } from "antd";
 import Link from "next/link";
 import { enneagrama } from "@/_libs/enneagrama";
@@ -30,7 +30,10 @@ export const Enneagrama = ({ lang }) => {
     localStorage.clear();
     window.location.href = `/${lang.locale}/get-tested`; // Redirect to the specified URL
   };
+  const [height, setHeight] = useState("auto");
+  console.log(height);
 
+  const contentRef = useRef(null);
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
 
@@ -73,6 +76,17 @@ export const Enneagrama = ({ lang }) => {
     }
   }, []);
 
+  useEffect(() => {
+    console.log("isShownResult:", isShownResult);
+    setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
+  }, [isShownResult]);
+
+  useEffect(() => {
+    console.log("isShownResult on mount:", isShownResult);
+    // Обновляем высоту при загрузке компонента
+    setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
+  }, []);
+
   const handleSubmit = (type = "Yes") => {
     if (currentQuestion === generalQuestions) {
       return false;
@@ -93,55 +107,53 @@ export const Enneagrama = ({ lang }) => {
   };
 
   return (
-    <div className="max-w-[842px] h-auto mt-[15px]">
-      <div className="text-end w-full flex justify-between">
+    <div className='max-w-[842px] h-auto mt-[15px]'>
+      <div className='text-end w-full flex justify-between'>
         <MainButton
-          className="md:w-[120px] md:mr-[10px] h-[30px]"
+          className='md:w-[120px] md:mr-[10px] h-[30px]'
           label={lang.enneagram_block.back_btn}
           onClick={showModal}
         />
         <QuestionsCounter
-          className="w-[250px] md:w-auto"
+          className='w-[250px] md:w-auto'
           current={currentQuestion}
           general={generalQuestions}
           lang={lang}
         />
       </div>
-      <div className="mt-[10px] mb-[20px]">
+      <div className='mt-[10px] mb-[20px]'>
         <QuestionsSection
           lang={lang}
           isShownResult={isShownResult}
           setIsShownResult={setIsShownResult}
           checkFinish={currentQuestion === generalQuestions}
-          question={
-            localizedTests.map((question) => question.text)[currentQuestion]
-          }
+          question={localizedTests.map((question) => question.text)[currentQuestion]}
         />
       </div>
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-[16px]">
+      <div className='w-full flex flex-col md:flex-row items-center justify-between gap-[16px]'>
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
+          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
           onClick={() => handleSubmit("Yes")}
           label={lang.enneagram_block.yes_btn}
         />
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
+          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
           onClick={() => handleSubmit("No")}
           label={lang.enneagram_block.yes_no_btn}
         />
         <EnneagramaButton
           disabled={currentQuestion === generalQuestions ? true : false}
-          className="w-full md:w-[270px] h-[40px] md:h-[50px]"
+          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
           onClick={() => handleSubmit("No")}
           label={lang.enneagram_block.no_btn}
         />
       </div>
-      <div className="mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto">
+      <div className='mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto'>
         {currentQuestion > 0 && (
           <NextPrevButton
-            className="previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
+            className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
             label={lang.test_page.prev_block_btn}
             onClick={() => {
               if (currentQuestion > 0) {
@@ -150,45 +162,53 @@ export const Enneagrama = ({ lang }) => {
             }}
           />
         )}
-        {currentQuestion < generalQuestions && (
+        {/* {currentQuestion < generalQuestions && (
           <NextPrevButton
             className="block-button bg-transparent w-[130px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold"
             label={lang.test_page.next_block_btn}
             onClick={() => setCurrentQuestion((prev) => prev + 1)}
           />
-        )}
+        )} */}
       </div>
-      {isShownResult && <EnneagramaResult answers={userAnswers} lang={lang} />}
+      {isShownResult && (
+        <EnneagramaResult
+          contentRef={contentRef}
+          height={height}
+          answers={userAnswers}
+          lang={lang}
+        />
+      )}
       <Modal
-        className="w-[800px] h-[360px]"
+        className='w-[800px] h-[360px]'
         open={isModalOpen}
         width={!isMobile ? 800 : 350}
         height={360}
         footer={[]}
-        closable={false}
+        closable={true}
+        onCancel={() => setIsModalOpen(false)}
       >
-        <div className="flex items-center">
+        <div className='flex items-center'>
           <Image
-            className="hidden md:block ml-[30px] w-[192px] h-[280px]"
+            className='hidden md:block ml-[30px] w-[192px] h-[280px]'
             src={leaveTestingRobot}
             alt={"robot look"}
-            loading="lazy"
+            loading='lazy'
           />
-          <div className="md:ml-[50px]">
-            <h1 className="text-center md:text-left text-[30px] md:text-[42px] font-unbounded">
+          <div className='md:ml-[50px]'>
+            <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
               {lang.enneagram_block.modal_window_h1}
             </h1>
-            <p className="text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]">
+            <p className='text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]'>
               {lang.enneagram_block.modal_window_p}
             </p>
-            <div className="flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]">
+            <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
               <EnneagramaButton
                 onClick={handleLeavePage}
-                className="w-[209px] h-[38px] md:mr-[15px]"
+                className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
                 label={lang.enneagram_block.modal_leave_btn}
               />
               <EnneagramaButton
-                className="w-[209px] h-[38px]"
+                className='w-[209px] h-[38px]'
                 onClick={handleCancel}
                 label={lang.enneagram_block.modal_continue_btn}
               />

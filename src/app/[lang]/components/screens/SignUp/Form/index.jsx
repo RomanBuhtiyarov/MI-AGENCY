@@ -12,12 +12,12 @@ const success = (lang) => {
   Modal.success({
     title: lang.login_page.created_profile.success_modal.title,
     content: (
-      <div className="text-left">
-        <p className="text-[16px] mb-[10px] font-unbounded">
+      <div className='text-left'>
+        <p className='text-[16px] mb-[10px] font-unbounded'>
           {lang.login_page.created_profile.success_modal.text}
         </p>
-        <MainButton className="ml-[50px] md:ml-[40px]">
-          <Link className="text-white" href={`/${lang.locale}/get-tested`}>
+        <MainButton className='ml-[50px] md:ml-[40px]'>
+          <Link className='text-white' href={`/${lang.locale}/get-tested`}>
             {lang.login_page.created_profile.success_modal.link}
           </Link>
         </MainButton>
@@ -46,7 +46,19 @@ export const Form = ({ lang }) => {
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [messageError, setMessageError] = useState("");
-
+  console.log(messageError);
+  const errorModal = () => {
+    Modal.error({
+      content: (
+        <div className='text-left'>
+          <p className='text-[16px] mb-[10px] font-unbounded'>{messageError}</p>
+        </div>
+      ),
+      closable: true,
+      centered: true,
+      footer: null,
+    });
+  };
   const onChangeMultipleSelectScopes = (value) => {
     setScope(value);
   };
@@ -65,15 +77,12 @@ export const Form = ({ lang }) => {
 
     try {
       const loginResponse = await ky
-        .post(
-          `https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`,
-          {
-            json: {
-              username: data.username,
-              password: data.password,
-            },
-          }
-        )
+        .post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`, {
+          json: {
+            username: data.username,
+            password: data.password,
+          },
+        })
         .json();
       if (loginResponse.auth_token) {
         localStorage.setItem("authToken", loginResponse.auth_token);
@@ -84,6 +93,7 @@ export const Form = ({ lang }) => {
       }
     } catch (error) {
       setMessageError(error.message);
+      errorModal();
     }
   };
   const handleSubmitRegister = async (e) => {
@@ -108,15 +118,12 @@ export const Form = ({ lang }) => {
         .json()
         .then(async () => {
           const loginResponse = await ky
-            .post(
-              `https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`,
-              {
-                json: {
-                  username: data.username,
-                  password: data.password,
-                },
-              }
-            )
+            .post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`, {
+              json: {
+                username: data.username,
+                password: data.password,
+              },
+            })
             .json();
           if (loginResponse.auth_token) {
             localStorage.setItem("authToken", loginResponse.auth_token);
@@ -127,12 +134,14 @@ export const Form = ({ lang }) => {
           }
         })
         .catch((registrationError) => {
-          console.log("Registration Error:", registrationError);
+          setMessageError(registrationError.message);
+          errorModal();
           // Handle registration error if needed
         });
     } catch (error) {
       // Set the error message in the component's state
       setMessageError(error.message);
+      errorModal();
     }
   };
 
@@ -146,9 +155,7 @@ export const Form = ({ lang }) => {
     } else if (first_name === "") {
       return setMessageError("Щоб продовжити реєстрацію, введіть Ваше ім'я");
     } else if (first_name === "") {
-      return setMessageError(
-        "Щоб продовжити реєстрацію, введіть Ваше прізвище"
-      );
+      return setMessageError("Щоб продовжити реєстрацію, введіть Ваше прізвище");
     } else if (password === "") {
       setMessageError("Enter your password");
     } else if (password !== repeatedPassword) {
@@ -160,7 +167,8 @@ export const Form = ({ lang }) => {
           return;
         }
       }
-      setMessageError(""); // Сбрасываем сообщение об ошибке
+      setMessageError("");
+      setModal(!modal); // Сбрасываем сообщение об ошибке
       handleSubmitRegister(); // Вызываем отправку формы
     }
   };
@@ -177,99 +185,91 @@ export const Form = ({ lang }) => {
           return;
         }
       }
-      setMessageError(""); // Сбрасываем сообщение об ошибке
+      setMessageError("");
+      setModal(!modal); // Сбрасываем сообщение об ошибке
       handleSubmitLogin(); // Вызываем отправку формы
     }
   };
 
   return (
-    <div className="mb-[50px] md:mb-0 w-full md:w-[350px] bg-white flex flex-col items-center pt-[25px] px-[30px] pb-[30px] rounded-[15px]">
-      <h2 className="text-center text-[#347AEC] font-unbounded text-[22px] font-[400] mb-[22px]">
-        {!isLoginForm ? "Sign up" : "Log in"}
+    <div className='mb-[50px] md:mb-0 w-full md:w-[350px] bg-white flex flex-col items-center pt-[25px] px-[30px] pb-[30px] rounded-[15px]'>
+      <h2 className='text-center text-[#347AEC] font-unbounded text-[22px] font-[400] mb-[22px]'>
+        {!isLoginForm ? lang.login_page.form.header_sign_up : lang.login_page.form.header_login}
       </h2>
 
-      <form className="w-[250px] flex flex-col items-center justify-between gap-[25px] py-[30px]">
+      <form className='w-[250px] flex flex-col items-center justify-between gap-[25px] py-[30px]'>
         {!isLoginForm && (
           <Input
             ref={emailRef}
-            type="email"
+            type='email'
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full text-[12px] placeholder:text-[12px]"
+            className='w-full text-[12px] placeholder:text-[12px]'
             placeholder={`${lang.login_page.form.email}*`}
           />
         )}
 
         <Input
           ref={usernameRef}
-          type="username"
+          type='username'
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full text-[12px] placeholder:text-[12px]"
+          className='w-full text-[12px] placeholder:text-[12px]'
           placeholder={`${lang.login_page.form.username}*`}
         />
         {!isLoginForm && (
           <>
             <Input
               ref={firstnameRef}
-              type="firstname"
+              type='firstname'
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-full text-[12px] placeholder:text-[12px]"
+              className='w-full text-[12px] placeholder:text-[12px]'
               placeholder={`${lang.login_page.form.first_name}*`}
             />
             <Input
               ref={lastnameRef}
-              type="lastname"
+              type='lastname'
               onChange={(e) => setLastName(e.target.value)}
-              className="w-full text-[12px] placeholder:text-[12px]"
+              className='w-full text-[12px] placeholder:text-[12px]'
               placeholder={`${lang.login_page.form.last_name}*`}
             />
           </>
         )}
         <Input
           ref={passwordRef}
-          type="password"
+          type='password'
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full text-[12px] placeholder:text-[12px]"
+          className='w-full text-[12px] placeholder:text-[12px]'
           placeholder={`${lang.login_page.form.password}*`}
         />
         {!isLoginForm && (
           <>
             <Input
               ref={passwordRef}
-              type="password"
+              type='password'
               onChange={(e) => setRepeatedPassword(e.target.value)}
-              className="w-full text-[12px] placeholder:text-[12px]"
+              className='w-full text-[12px] placeholder:text-[12px]'
               placeholder={`${lang.login_page.form.re_password}*`}
             />
-            <MultipleSelect
-              lang={lang}
-              onChange={(value) => onChangeMultipleSelectScopes(value)}
-            />
+            <MultipleSelect lang={lang} onChange={(value) => onChangeMultipleSelectScopes(value)} />
           </>
         )}
 
         <MainButton
           onClick={!isLoginForm ? handleRegistrationButton : handleLoginButton}
-          className="w-[200px] h-[40px] text-[12px]"
-          label={
-            !isLoginForm
-              ? lang.login_page.created_profile.register_btn
-              : "Увійти"
-          }
+          className='w-[200px] h-[40px] text-[12px]'
+          label={!isLoginForm ? lang.login_page.created_profile.register_btn : "Увійти"}
         />
       </form>
       <button
-        className="text-[#347AEC] hover:text-[#6764E7] duration-500 mx-auto block mt-[15px] px-[20px] font-unbounded"
+        className='text-[#347AEC] hover:text-[#6764E7] duration-500 mx-auto block mt-[15px] px-[20px] font-unbounded'
         onClick={() => setIsLoginForm(!isLoginForm)}
       >
-        {!isLoginForm
-          ? `${lang.login_page.form.logged_in}`
-          : `${lang.login_page.form.registered}`}
+        {!isLoginForm ? `${lang.login_page.form.logged_in}` : `${lang.login_page.form.registered}`}
       </button>
       {messageError && (
         <Alert
-          className="mt-[30px] md:mt-[15px] rounded-t-[0px] border-t-0"
+          className='mt-[30px] md:mt-[15px] rounded-t-[0px] border-t-0'
           message={messageError}
-          type="info"
+          type='info'
           closable
           onClose={onCloseErrorAlert}
         />

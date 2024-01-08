@@ -25,15 +25,12 @@ export default function Sidebar({ lang }) {
       try {
         // Use ky to make a request with the auth token in the headers
         const response = await ky
-          .get(
-            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
-            {
-              headers: {
-                Authorization: `Token ${authToken}`,
-                "Content-Type": "application/json",
-              },
-            }
-          )
+          .get(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`, {
+            headers: {
+              Authorization: `Token ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          })
           .json();
         // Set the user data in the component state
         setUserData(response);
@@ -51,8 +48,8 @@ export default function Sidebar({ lang }) {
     return <div>Error: {error}</div>;
   }
   return (
-    <aside className="w-full h-[80px] md:w-[250px] md:h-[610px]">
-      <div className="w-full h-full bg-white shadow-lg rounded-t-[10px] md:rounded-[15px] pr-[0px] py-[15px] md:px-[20px] md:py-[25px] flex flex-row md:flex-col justify-center md:justify-between items-center md:items-start">
+    <aside className='w-full h-[80px] md:w-[250px] md:h-[610px]'>
+      <div className='w-full h-full bg-white shadow-lg rounded-t-[10px] md:rounded-[15px] pr-[0px] py-[15px] md:px-[20px] md:py-[25px] flex flex-row md:flex-col justify-center md:justify-between items-center md:items-start'>
         <div>
           <div>
             <User
@@ -62,12 +59,10 @@ export default function Sidebar({ lang }) {
               lang={lang}
             />
           </div>
-          <div className="hidden md:block pt-[28px] pb-[20px]">
+          <div className='hidden md:block pt-[28px] pb-[20px]'>
             <OpacityDivider />
           </div>
-          <p className="hidden md:flex text-[#5E5E5E] text-[10px] font-[500] mb-[20px]">
-            {lang.sidebar.discover}
-          </p>
+
           <nav>
             <Nav
               userData={userData}
