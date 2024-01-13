@@ -5,7 +5,8 @@ import MainButton from "../../../UI/Buttons/MainButton";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Alert, Modal } from "antd";
-import ky from "ky";
+import axios from "axios";
+// import ky from "ky";
 import Link from "next/link";
 import { validationPassword } from "@/_helpers/validationPassword";
 const success = (lang) => {
@@ -14,7 +15,7 @@ const success = (lang) => {
     content: (
       <div className='text-left'>
         <p className='text-[16px] mb-[10px] font-unbounded'>
-          {lang.login_page.created_profile.success_modal.text}
+          {lang.login_page.created_profile.success_modal.register_text}
         </p>
         <MainButton className='ml-[50px] md:ml-[40px]'>
           <Link className='text-white' href={`/${lang.locale}/get-tested`}>
@@ -41,13 +42,10 @@ export const Form = ({ lang }) => {
   const [scope, setScope] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [messageError, setMessageError] = useState("");
-  console.log(messageError);
-  const errorModal = () => {
+  const errorModal = (messageError) => {
     Modal.error({
       content: (
         <div className='text-left'>
@@ -66,34 +64,39 @@ export const Form = ({ lang }) => {
   const onCloseErrorAlert = () => {
     setMessageError("");
   };
+
   const handleSubmitLogin = async (e) => {
     if (e) {
       e.preventDefault();
     }
     const data = {
-      username: username,
+      email: email,
       password: password,
     };
 
     try {
-      const loginResponse = await ky
-        .post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`, {
-          json: {
-            username: data.username,
-            password: data.password,
-          },
-        })
-        .json();
-      if (loginResponse.auth_token) {
-        localStorage.setItem("authToken", loginResponse.auth_token);
+      const loginResponse = await axios.post(
+        `https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`,
+        {
+          email: data.email,
+          password: data.password,
+        },
+      );
+      if (loginResponse.data.auth_token) {
+        localStorage.setItem("authToken", loginResponse.data.auth_token);
         router.push(`/${lang.locale}/my-profile`);
         setTimeout(() => {
           window.location.reload();
         }, 1000);
       }
     } catch (error) {
-      setMessageError(error.message);
-      errorModal();
+      const fieldError = Object.values(error.response.data)[0];
+
+      if (Array.isArray(fieldError) && fieldError.length > 0) {
+        const errorMessage = fieldError[0];
+
+        errorModal(errorMessage);
+      }
     }
   };
   const handleSubmitRegister = async (e) => {
@@ -102,8 +105,6 @@ export const Form = ({ lang }) => {
     }
     const data = {
       first_name: first_name,
-      last_name: last_name,
-      username: username,
       password: password,
       re_password: repeatedPassword,
       email: email,
@@ -111,80 +112,79 @@ export const Form = ({ lang }) => {
     };
 
     try {
-      await ky
-        .post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/`, {
-          json: data,
-        })
-        .json()
-        .then(async () => {
-          const loginResponse = await ky
-            .post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`, {
-              json: {
-                username: data.username,
-                password: data.password,
-              },
-            })
-            .json();
-          if (loginResponse.auth_token) {
-            localStorage.setItem("authToken", loginResponse.auth_token);
-            // Redirect to the "my-profile" page or any other page
-            // You can use Next.js router for navigation
-            router.push(`/${lang.locale}/my-profile`);
-            success(lang);
-          }
-        })
-        .catch((registrationError) => {
-          setMessageError(registrationError.message);
-          errorModal();
-          // Handle registration error if needed
-        });
+      // Register user
+      await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/`, data);
+
+      // Login user after registration
+      const loginResponse = await axios.post(
+        `https://psymi.com.ua/${lang.backend_locale}/api/auth/token/login/`,
+        {
+          email: data.email,
+          password: data.password,
+        },
+      );
+
+      // Check if the login was successful
+      if (loginResponse.data.auth_token) {
+        // Store the auth token in localStorage
+        localStorage.setItem("authToken", loginResponse.data.auth_token);
+
+        // Redirect to the "my-profile" page or any other page
+        // You can use Next.js router for navigation
+        router.push(`/${lang.locale}/my-profile`);
+
+        // Call the success function with the language
+        success(lang);
+      }
     } catch (error) {
-      // Set the error message in the component's state
-      setMessageError(error.message);
-      errorModal();
+      console.log(error.response.data);
+      const fieldError = Object.values(error.response.data)[0];
+
+      if (Array.isArray(fieldError) && fieldError.length > 0) {
+        const errorMessage = fieldError[0];
+
+        // Display the error message in your modal window
+        // Update this part with your code to show the modal
+
+        // Set the error message in the component's state (optional)
+        // setMessageError(errorMessage);
+        errorModal(errorMessage);
+      }
     }
   };
 
   const handleRegistrationButton = () => {
-    const validationResult = validationPassword(password);
+    // const validationResult = validationPassword(password);
     if (email === "") {
-      setMessageError("Ви не ввели пошту!");
+      setMessageError(lang.login_page.handle_errors.email_empty);
       return false;
-    } else if (username === "") {
-      return setMessageError("Щоб продовжити реєстрацію, введіть Ваш нікнейм");
     } else if (first_name === "") {
-      return setMessageError("Щоб продовжити реєстрацію, введіть Ваше ім'я");
-    } else if (first_name === "") {
-      return setMessageError("Щоб продовжити реєстрацію, введіть Ваше прізвище");
+      return setMessageError(lang.login_page.handle_errors.email_empty);
     } else if (password === "") {
-      setMessageError("Enter your password");
+      setMessageError(lang.login_page.handle_errors.password_empty);
     } else if (password !== repeatedPassword) {
-      setMessageError("Passwords do not match");
+      setMessageError(lang.login_page.handle_errors.password_match_error);
+    } else if (scope === "") {
+      setMessageError(lang.login_page.handle_errors.scope_empty);
     } else {
-      for (const rule in validationResult) {
-        if (validationResult[rule].violated) {
-          setMessageError(validationResult[rule].message);
-          return;
-        }
-      }
+      // for (const rule in validationResult) {
+      //   if (validationResult[rule].violated) {
+      //     setMessageError(validationResult[rule].message);
+      //     return;
+      //   }
+      // }
       setMessageError("");
       setModal(!modal); // Сбрасываем сообщение об ошибке
       handleSubmitRegister(); // Вызываем отправку формы
     }
   };
   const handleLoginButton = () => {
-    const validationResult = validationPassword(password);
-    if (username === "") {
-      return setMessageError("Введіть Ваш нікнейм");
+    // const validationResult = validationPassword(password);
+    if (email === "") {
+      return setMessageError(lang.login_page.handle_errors.email_empty);
     } else if (password === "") {
-      setMessageError("Enter your password");
+      setMessageError(lang.login_page.handle_errors.password_empty);
     } else {
-      for (const rule in validationResult) {
-        if (validationResult[rule].violated) {
-          setMessageError(validationResult[rule].message);
-          return;
-        }
-      }
       setMessageError("");
       setModal(!modal); // Сбрасываем сообщение об ошибке
       handleSubmitLogin(); // Вызываем отправку формы
@@ -198,40 +198,22 @@ export const Form = ({ lang }) => {
       </h2>
 
       <form className='w-[250px] flex flex-col items-center justify-between gap-[25px] py-[30px]'>
+        <Input
+          ref={emailRef}
+          type='email'
+          onChange={(e) => setEmail(e.target.value)}
+          className='w-full text-[12px] placeholder:text-[12px]'
+          placeholder={`${lang.login_page.form.email}*`}
+        />
+
         {!isLoginForm && (
           <Input
-            ref={emailRef}
-            type='email'
-            onChange={(e) => setEmail(e.target.value)}
+            ref={firstnameRef}
+            type='firstname'
+            onChange={(e) => setFirstName(e.target.value)}
             className='w-full text-[12px] placeholder:text-[12px]'
-            placeholder={`${lang.login_page.form.email}*`}
+            placeholder={`${lang.login_page.form.first_name}*`}
           />
-        )}
-
-        <Input
-          ref={usernameRef}
-          type='username'
-          onChange={(e) => setUsername(e.target.value)}
-          className='w-full text-[12px] placeholder:text-[12px]'
-          placeholder={`${lang.login_page.form.username}*`}
-        />
-        {!isLoginForm && (
-          <>
-            <Input
-              ref={firstnameRef}
-              type='firstname'
-              onChange={(e) => setFirstName(e.target.value)}
-              className='w-full text-[12px] placeholder:text-[12px]'
-              placeholder={`${lang.login_page.form.first_name}*`}
-            />
-            <Input
-              ref={lastnameRef}
-              type='lastname'
-              onChange={(e) => setLastName(e.target.value)}
-              className='w-full text-[12px] placeholder:text-[12px]'
-              placeholder={`${lang.login_page.form.last_name}*`}
-            />
-          </>
         )}
         <Input
           ref={passwordRef}
@@ -252,11 +234,68 @@ export const Form = ({ lang }) => {
             <MultipleSelect lang={lang} onChange={(value) => onChangeMultipleSelectScopes(value)} />
           </>
         )}
+        {!isLoginForm && (
+          <Alert
+            className='mt-[20px]'
+            message={
+              <div className='px-[30px]'>
+                <ol className='list-disc'>
+                  <li
+                    className={
+                      /^.{8,16}$/.test(password) ? "line-through text-green-600" : "text-red-600"
+                    }
+                  >
+                    {lang.login_page.handle_errors.alert_modal.password_length}
+                  </li>
+                  <li
+                    className={
+                      /^\S*$/.test(password) ? "line-through text-green-600" : "text-red-600"
+                    }
+                  >
+                    {lang.login_page.handle_errors.alert_modal.password_spacing}
+                  </li>
+                  <li
+                    className={
+                      /^(?=.*[A-Z]).*$/.test(password)
+                        ? "line-through text-green-600"
+                        : "text-red-600"
+                    }
+                  >
+                    {lang.login_page.handle_errors.alert_modal.password_uppercase}
+                  </li>
+                  <li
+                    className={
+                      /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)
+                        ? "line-through text-green-600"
+                        : "text-red-600"
+                    }
+                  >
+                    {lang.login_page.handle_errors.alert_modal.password_spec_key}
+                    <br />
+                    (!@#$%^&*)
+                  </li>
+                  <li
+                    className={
+                      password === repeatedPassword ? "line-through text-green-600" : "text-red-600"
+                    }
+                  >
+                    {lang.login_page.handle_errors.alert_modal.passwords_match}
+                  </li>
+                </ol>
+              </div>
+            }
+            type='warning'
+          />
+        )}
 
         <MainButton
           onClick={!isLoginForm ? handleRegistrationButton : handleLoginButton}
           className='w-[200px] h-[40px] text-[12px]'
-          label={!isLoginForm ? lang.login_page.created_profile.register_btn : "Увійти"}
+          label={
+            !isLoginForm
+              ? lang.login_page.created_profile.register_btn
+              : lang.login_page.created_profile.login_btn
+          }
         />
       </form>
       <button
@@ -267,7 +306,7 @@ export const Form = ({ lang }) => {
       </button>
       {messageError && (
         <Alert
-          className='mt-[30px] md:mt-[15px] rounded-t-[0px] border-t-0'
+          className='mt-[30px] md:mt-[15px] rounded-[0px]'
           message={messageError}
           type='info'
           closable

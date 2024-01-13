@@ -4,6 +4,7 @@ import ky from "ky";
 import { paei_results } from "@/_libs/paei_results";
 import { enneagrama_results } from "@/_libs/enneagrama_results";
 import Image from "next/image";
+import axios from "axios";
 const ResultTests = ({ lang, id }) => {
   const [imageSrc, setImageSrc] = useState(null);
 
@@ -21,19 +22,17 @@ const ResultTests = ({ lang, id }) => {
 
       try {
         // Use ky to make a request with the auth token in the headers
-        const response = await ky
-          .get(
-            `https://psymi.com.ua/${lang.backend_locale}/api/test-results/${id}/`,
-            {
-              headers: {
-                Authorization: `Token ${authToken}`,
-                "Content-Type": "application/json",
-              },
-            }
-          )
-          .json();
+        const response = await axios.get(
+          `https://psymi.com.ua/${lang.backend_locale}/api/test-results/${id}/`,
+          {
+            headers: {
+              Authorization: `Token ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          },
+        );
         // Set the user data in the component state
-        setResultTest(response);
+        setResultTest(response.data);
       } catch (error) {
         setError("An error occurred while fetching user data");
       }
@@ -48,7 +47,7 @@ const ResultTests = ({ lang, id }) => {
     return <div>Error: {error}</div>;
   }
   const enneagramResultData = localizedEnneagramResults.find(
-    (result) => result.type === parseInt(resultTest?.type)
+    (result) => result.type === parseInt(resultTest?.type),
   );
   const maxLetter = (resultTest?.type.match(/[A-Z]/) || [""])[0];
   useEffect(() => {
@@ -60,9 +59,7 @@ const ResultTests = ({ lang, id }) => {
           );
           setImageSrc(imageModule.default);
         } else if (resultTest.test === 2) {
-          const imageModule = await import(
-            `/public/_assets/images/paei_answers/${maxLetter}.png`
-          );
+          const imageModule = await import(`/public/_assets/images/paei_answers/${maxLetter}.png`);
           setImageSrc(imageModule.default);
         }
       } catch (error) {
@@ -77,47 +74,41 @@ const ResultTests = ({ lang, id }) => {
 
   if (resultTest?.test === 1) {
     return (
-      <div className="mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]">
+      <div className='mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]'>
         <div>
           {imageSrc && (
             <Image
-              className="radius-[15px] w-[300px] h-[300px]"
+              className='radius-[15px] w-[300px] h-[300px]'
               src={imageSrc}
               alt={"enneagram result"}
-              loading="lazy"
+              loading='lazy'
             />
           )}
         </div>
-        <div className="md:w-[520px] md:h-[460px]">
-          <h1 className="text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]">
+        <div className='md:w-[520px] md:h-[460px]'>
+          <h1 className='text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
             {enneagramResultData.title}
           </h1>
-          <p className="mx-auto md:mx-0 w-[60px] text-center bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center">
+          <p className='mx-auto md:mx-0 w-[60px] text-center bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center'>
             {enneagramResultData.type} {lang.enneagram_page.n_type}
           </p>
-          <p className="my-[20px] font-medium">
-            {enneagramResultData.description}
-          </p>
-          <p className="mb-[20px] font-medium">
-            <span className="text-[#347AEC] font-semibold">
-              {lang.enneagram_page.lifeCreed}
-            </span>{" "}
+          <p className='my-[20px] font-medium'>{enneagramResultData.description}</p>
+          <p className='mb-[20px] font-medium'>
+            <span className='text-[#347AEC] font-semibold'>{lang.enneagram_page.lifeCreed}</span>{" "}
             {enneagramResultData.lifeCreed}
           </p>
-          <p className="mb-[20px] font-medium">
-            <span className="text-[#347AEC] font-semibold">
-              {lang.enneagram_page.keyword}
-            </span>{" "}
+          <p className='mb-[20px] font-medium'>
+            <span className='text-[#347AEC] font-semibold'>{lang.enneagram_page.keyword}</span>{" "}
             {enneagramResultData.keyword}
           </p>
-          <p className="mb-[20px] font-medium">
-            <span className="text-[#347AEC] font-semibold">
+          <p className='mb-[20px] font-medium'>
+            <span className='text-[#347AEC] font-semibold'>
               {lang.enneagram_page.careerOrientations}
             </span>
             {enneagramResultData.careerOrientations}
           </p>
-          <p className="mb-[20px] font-medium">
-            <span className="text-[#347AEC] font-semibold font-semibold">
+          <p className='mb-[20px] font-medium'>
+            <span className='text-[#347AEC] font-semibold font-semibold'>
               {lang.enneagram_page.possibleProfessions}
             </span>{" "}
             {enneagramResultData.possibleProfessions}
@@ -127,25 +118,25 @@ const ResultTests = ({ lang, id }) => {
     );
   } else if (resultTest?.test === 2) {
     return (
-      <div className="mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]">
+      <div className='mb-[50px] md:mb-0 flex flex-col items-center md:items-start md:flex-row gap-[20px]'>
         <div>
           {imageSrc && (
             <Image
-              className="radius-[15px] "
+              className='radius-[15px] '
               src={imageSrc}
               alt={"robot look"}
-              loading="lazy"
+              loading='lazy'
               width={300}
               height={300}
             />
           )}
         </div>
-        <div className="md:w-[520px] md:h-[460px]">
-          <h1 className="text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]">
+        <div className='md:w-[520px] md:h-[460px]'>
+          <h1 className='text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
             {lang.header} {resultTest?.type}
           </h1>
 
-          <p className="mt-[10px] mb-[30px] font-medium">
+          <p className='mt-[10px] mb-[30px] font-medium'>
             {
               localizedPAEIResults.find((desc) => desc.letter === "P")[
                 resultTest?.type.includes("P")
@@ -156,7 +147,7 @@ const ResultTests = ({ lang, id }) => {
               ]
             }
           </p>
-          <p className="mb-[30px] font-medium">
+          <p className='mb-[30px] font-medium'>
             {
               localizedPAEIResults.find((desc) => desc.letter === "A")[
                 resultTest?.type.includes("A")
@@ -167,7 +158,7 @@ const ResultTests = ({ lang, id }) => {
               ]
             }
           </p>
-          <p className="mb-[30px] font-medium">
+          <p className='mb-[30px] font-medium'>
             {
               localizedPAEIResults.find((desc) => desc.letter === "E")[
                 resultTest?.type.includes("E")
@@ -178,7 +169,7 @@ const ResultTests = ({ lang, id }) => {
               ]
             }
           </p>
-          <p className="mb-[30px] font-medium">
+          <p className='mb-[30px] font-medium'>
             {
               localizedPAEIResults.find((desc) => desc.letter === "I")[
                 resultTest?.type.includes("I")

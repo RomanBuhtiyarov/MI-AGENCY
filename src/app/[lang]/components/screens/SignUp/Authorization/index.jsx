@@ -4,7 +4,13 @@ import Image from "next/image";
 import LoginGoogle from "../../../UI/Buttons/LoginGoogle";
 import { signIn } from "next-auth/react";
 import { Form } from "../Form";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
 export const Authorization = ({ session, lang }) => {
+  useEffect(() => {
+    const isAuth = Boolean(localStorage.getItem("authToken"));
+    isAuth && redirect(`/${lang.locale}/my-profile/`);
+  }, []);
   return (
     <section className='flex flex-col md:flex-row items-center md:items-start md:gap-[50px]'>
       <Image src={avatarImg} alt={"robot"} width={190} height={255} loading={"lazy"} />

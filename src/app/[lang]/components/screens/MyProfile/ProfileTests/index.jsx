@@ -6,6 +6,7 @@ import { enneagrama_results } from "@/_libs/enneagrama_results";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import axios from "axios";
 export const ProfileTests = ({ lang }) => {
   const { isMobile } = useScreenSize();
   const [userTests, setUserTests] = useState(null);
@@ -23,16 +24,18 @@ export const ProfileTests = ({ lang }) => {
 
       try {
         // Use ky to make a request with the auth token in the headers
-        const response = await ky
-          .get(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/me/`, {
+        const response = await axios.get(
+          `https://psymi.com.ua/${lang.backend_locale}/api/test-results/me/`,
+          {
             headers: {
               Authorization: `Token ${authToken}`,
               "Content-Type": "application/json",
             },
-          })
-          .json();
+          },
+        );
+
         // Set the user data in the component state
-        setUserTests(response);
+        setUserTests(response.data);
       } catch (error) {
         setError("An error occurred while fetching user data");
       }

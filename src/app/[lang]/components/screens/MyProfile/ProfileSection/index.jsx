@@ -5,6 +5,7 @@ import MainButton from "../../../UI/Buttons/MainButton";
 import ky from "ky";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 export const ProfileSection = ({ lang }) => {
   const router = useRouter();
   const [userTests, setUserTests] = useState(null);
@@ -19,7 +20,7 @@ export const ProfileSection = ({ lang }) => {
 
       try {
         // Use ky to make a request with the auth token in the headers
-        const response = await ky
+        const response = await axios
           .get(
             `https://psymi.com.ua/${lang.backend_locale}/api/test-results/me/`,
             {
@@ -29,9 +30,9 @@ export const ProfileSection = ({ lang }) => {
               },
             }
           )
-          .json();
+          
         // Set the user data in the component state
-        setUserTests(response);
+        setUserTests(response.data);
       } catch (error) {
         setError("An error occurred while fetching user data");
       }

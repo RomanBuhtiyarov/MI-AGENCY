@@ -27,11 +27,12 @@ export const Enneagrama = ({ lang }) => {
   };
 
   const handleLeavePage = () => {
-    localStorage.clear();
+    localStorage.removeItem("currentQuestion");
+    localStorage.removeItem("generalCount");
+    localStorage.removeItem("userAnswers");
     window.location.href = `/${lang.locale}/get-tested`; // Redirect to the specified URL
   };
   const [height, setHeight] = useState("auto");
-  console.log(height);
 
   const contentRef = useRef(null);
   const [isShownResult, setIsShownResult] = useState(false);
@@ -77,12 +78,10 @@ export const Enneagrama = ({ lang }) => {
   }, []);
 
   useEffect(() => {
-    console.log("isShownResult:", isShownResult);
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
   }, [isShownResult]);
 
   useEffect(() => {
-    console.log("isShownResult on mount:", isShownResult);
     // Обновляем высоту при загрузке компонента
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
   }, []);

@@ -16,8 +16,8 @@
       "second_part": "бізнесу / СЕО"
     },
     {
-      "first_part": "Для ТОП",
-      "second_part": "менеджерів"
+      "first_part": "Для C-Level",
+      "second_part": ""
     },
     {
       "first_part": "Для HR Team",
@@ -70,6 +70,11 @@
     }
   },
   "test_page": {
+    "auth_modal": {
+      "title": "Авторизуйся!",
+      "description": "Для того, щоб зберегти результат, Вам потрібно авторизуватися!",
+      "button_label": "Авторизуватися"
+    },
     "next_block_btn": "Наступний блок",
     "prev_block_btn": "Попередній блок",
     "pass_the_test_btn": "Пройти тестування",
@@ -170,6 +175,7 @@
     "possibleProfessions": "Можливі професії: ",
     "get_result_btn": "Дізнатися результат",
     "save_button": "Зберегти результат",
+
     "saved_result_msg": "Результат збережено в особистому кабінеті"
   },
   "enneagram_block": {
@@ -368,11 +374,26 @@
       "logged_in": "Зареєстровані? Увійти до облікового запису",
       "registered": "Не маєш облікового запису? Зареєструйся"
     },
+    "handle_errors": {
+      "email_empty": "Ви не ввели Вашу пошту!",
+      "name_empty": "Ви не ввели Ваше ім'я!",
+      "scope_empty": "Ви не обрали ні один напрямок!",
+      "password_empty": "Ви не ввели пароль!",
+      "password_match_empty": "Ви не повторили пароль!",
+      "passwords_match_error": "Паролі повинні співпадати!",
+      "alert_modal": {
+        "password_length": "Пароль повинен містити 8-16 символів!",
+        "password_spacing": "Пароль не повинен містити пробілів!",
+        "password_uppercase": "Пароль повинен містити хоча б один символ верхнього регістру!",
+        "password_spec_key": "Пароль повинен містити принаймні один спеціальний символ:",
+        "passwords_match": "Паролі повинні співпадати!"
+      }
+    },
     "created_profile": {
       "header": "Створити профіль",
       "name_label": "Ім’я*",
       "activity": {
-        "ceo_founder": "CEO & Founder",
+        "ceo_n_founder": "CEO & Founder",
         "ceo": "CEO",
         "c_level": "C-Level спеціаліст",
         "junior_specialist": "Junior спеціаліст",
@@ -394,8 +415,13 @@
       },
       "success_modal": {
         "title": "Успіх!",
-        "text": "Ви успішно зареєструвалися",
+        "register_text": "Ви успішно зареєструвалися!",
+        "upload_photo_text": "Ви успішно встановили зображення!",
         "link": "Перейти до тестів"
+      },
+      "error_modal": {
+        "title": "Помилка!",
+        "text": "Щось пішло не так!"
       }
     }
   },

@@ -174,12 +174,10 @@ export const PAEI = ({ lang }) => {
     }
   };
   useEffect(() => {
-    console.log("isShownResult:", isShownResult);
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
   }, [isShownResult]);
 
   useEffect(() => {
-    console.log("isShownResult on mount:", isShownResult);
     // Обновляем высоту при загрузке компонента
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
   }, []);

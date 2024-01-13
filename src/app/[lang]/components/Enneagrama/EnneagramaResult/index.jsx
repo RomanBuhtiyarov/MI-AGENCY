@@ -3,12 +3,12 @@ import MainButton from "../../UI/Buttons/MainButton";
 import { Modal } from "antd";
 import { useEffect, useState, useRef } from "react";
 import { enneagrama_results } from "@/_libs/enneagrama_results";
-import ky from "ky";
+// import ky from "ky";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [modal, setModal] = useState(false);
-  console.log(isAuth);
   const [imageSrc, setImageSrc] = useState(null);
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState("");
@@ -53,15 +53,14 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
       test: 1,
       user: userData.id,
       type: enneagramResultData.type.toString(),
-      description: "string",
+      description: "",
     };
     try {
-      await ky
-        .post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, {
-          json: data,
-        })
-        .json();
+      await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
       setIsSaved(!isSaved);
+      localStorage.removeItem("currentQuestion");
+      localStorage.removeItem("generalCount");
+      localStorage.removeItem("userAnswers");
     } catch (error) {
       // Set the error message in the component's state
       setMessageError(error.message);
@@ -88,24 +87,21 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
   useEffect(() => {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
-      if (!authToken) {
-        setIsAuth(false);
-        // router.push(`/${lang.locale}/`);
-        return;
-      }
+      !authToken ? setIsAuth(false) : setIsAuth(true);
 
       try {
         // Use ky to make a request with the auth token in the headers
-        const response = await ky
-          .get(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`, {
+        const response = await axios.get(
+          `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+          {
             headers: {
               Authorization: `Token ${authToken}`,
               "Content-Type": "application/json",
             },
-          })
-          .json();
+          },
+        );
         // Set the user data in the component state
-        setUserData(response);
+        setUserData(response.data);
       } catch (error) {
         setError("An error occurred while fetching user data");
       }
@@ -114,19 +110,20 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
     // Call the fetchData function when the component mounts
     fetchData();
   }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
+
   const authModal = () => {
     Modal.error({
-      title: "Авторизуйся",
+      title: lang.test_page.auth_modal.title,
       content: (
         <div className='flex flex-col items-center'>
           <p className='text-left text-[16px] mb-[10px] font-unbounded'>
-            Для того, щоб зберегти результат, Вам потрібно авторизуватися!
+            {lang.test_page.auth_modal.description}
           </p>
           <MainButton
             onClick={() => {
               router.push(`/${lang.locale}/pages/sign-up/`);
             }}
-            label={"Авторизуватися"}
+            label={lang.test_page.auth_modal.button_label}
           />
         </div>
       ),
@@ -135,14 +132,13 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
       footer: null,
     });
   };
-  // Render logic based on the fetched user data or error
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // // Render logic based on the fetched user data or error
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
   return (
     <div
       ref={contentRef}
-      style={{ maxHeight: height }}
       className='transition-max-height duration-300 ease-in-out overflow-hidden mb-[50px] mt-[20px] flex flex-col items-center md:items-start md:flex-row justify-between'
     >
       <div>
@@ -155,7 +151,7 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
           />
         )}
       </div>
-      <div className='md:w-[520px] md:h-[460px]'>
+      <div className='md:w-[520px]'>
         <h1 className='text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
           {title}
         </h1>

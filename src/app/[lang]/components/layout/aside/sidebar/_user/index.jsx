@@ -13,13 +13,13 @@ const User = ({
   lang,
 }) => {
   return (
-    <div className="hidden md:flex md:gap-[10px]">
+    <div className='hidden md:flex md:gap-[10px]'>
       <Default
         userData={userData}
         //  user={user}
       />
       <div>
-        <div className="mb-[6px]">
+        <div className='mb-[6px]'>
           {/* {user ? (
             <p className={font.className + " " + "text-[#262626] font-[400]"}>
               {lang.sidebar.user.user_greating}
@@ -33,22 +33,16 @@ const User = ({
           {userData ? (
             <p className={font.className + " " + "text-[#262626] font-[400]"}>
               {lang.sidebar.user.user_greating}
-              {userData.username}
+              {userData.first_name}
             </p>
           ) : (
-            <p className="font-[500] text-[12px] text-[#5E5E5E] mb-[5px]">
+            <p className='font-[500] text-[12px] text-[#5E5E5E] mb-[5px]'>
               {lang.sidebar.user.user_greating_default}
             </p>
           )}
         </div>
         <div>
-          <Link
-            href={
-              userData
-                ? `/${lang.locale}/my-profile`
-                : `/${lang.locale}/pages/sign-up`
-            }
-          >
+          <Link href={userData ? `/${lang.locale}/my-profile` : `/${lang.locale}/pages/sign-up`}>
             <ArrowButton
               className={!userData ? "w-[100px]" : ""}
               label={

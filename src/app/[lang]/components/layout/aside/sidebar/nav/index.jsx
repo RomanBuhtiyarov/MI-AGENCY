@@ -5,11 +5,7 @@ import { ItemNav } from "./item_nav";
 import { useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
-export const Nav = ({
-  lang,
-  // , user
-  userData,
-}) => {
+export const Nav = ({ lang, userData }) => {
   const asideElements = asideNav();
   const { isMobile } = useScreenSize();
   const changeOrder = () => {
@@ -24,7 +20,7 @@ export const Nav = ({
   }
   const [currentTab, setCurrentTab] = useState("1");
   return (
-    <ul className="flex flex-row md:flex-col items-start gap-[20px]">
+    <ul className='flex flex-row md:flex-col items-start gap-[20px]'>
       {asideElements
         .filter((el) => {
           return !isMobile ? el.slug !== "my-profile" : true;
@@ -44,7 +40,6 @@ export const Nav = ({
                 })[newIndex],
                 locale: lang.locale,
                 userData: userData,
-                // user: user,
                 mobileOrder: mobileOrder, // передайте порядок как часть данных
               }}
               setCurrentTab={setCurrentTab}

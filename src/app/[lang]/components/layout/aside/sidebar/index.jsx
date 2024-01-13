@@ -6,7 +6,8 @@ import { OpacityDivider } from "@/app/[lang]/components/UI/Dividers/OpacityDivid
 import { Nav } from "./nav";
 import { Lang } from "@/app/[lang]/components/layout/aside/sidebar/lang";
 import { Socials } from "@/app/[lang]/components/layout/aside/sidebar/socials";
-import ky from "ky";
+import axios from "axios";
+// import ky from "ky";
 // import getCurrentUser from "@/actions/getCurrentUser";
 
 const Unbound = Unbounded({ subsets: ["latin"] });
@@ -14,6 +15,7 @@ const Unbound = Unbounded({ subsets: ["latin"] });
 export default function Sidebar({ lang }) {
   // const user = await getCurrentUser();
   const [userData, setUserData] = useState(null);
+  console.log(userData);
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -23,17 +25,17 @@ export default function Sidebar({ lang }) {
       }
 
       try {
-        // Use ky to make a request with the auth token in the headers
-        const response = await ky
-          .get(`https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`, {
+        const response = await axios.get(
+          `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+          {
             headers: {
               Authorization: `Token ${authToken}`,
               "Content-Type": "application/json",
             },
-          })
-          .json();
+          },
+        );
         // Set the user data in the component state
-        setUserData(response);
+        setUserData(response.data);
       } catch (error) {
         setError("An error occurred while fetching user data");
       }

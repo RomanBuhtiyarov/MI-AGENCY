@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     formats: ["image/webp"],
-    domains: ["lh3.googleusercontent.com"],
+    domains: ["lh3.googleusercontent.com", "psymi.com.ua"],
   },
 };
 

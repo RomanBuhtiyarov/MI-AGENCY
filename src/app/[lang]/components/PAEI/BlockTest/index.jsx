@@ -56,6 +56,16 @@ const BlockTest = ({
         <p className='hidden md:block text-[#262626] font-unbounded font-[400]'>{test_name}</p>
         <div className='flex gap-[50px] md:gap-[50px]'>
           {BUTTONS_PARAMS?.map?.((button, _) => {
+            const isDisabled =
+              counter - currentTabButton + button.number > 10 ||
+              (state.length === 2 &&
+                currentTabButton === 0 &&
+                counter >= 6 &&
+                counter + button.number > 9) ||
+              (state.length === 2 && counter === 2 && button.number < 4) ||
+              (state.length === 2 && counter === 3 && button.number < 3) ||
+              (state.length === 2 && counter === 4 && button.number < 2);
+            console.log(counter, currentTabButton, state);
             return (
               <button
                 onClick={() => handleCountLetter(button.number, letter)}
@@ -64,19 +74,13 @@ const BlockTest = ({
                            currentTabButton === button.number ||
                            state?.find((el) => el.letter === letter)?.number === button.number
                              ? "bg-[#347AEC]"
-                             : "bg-[#E1E1E1]"
+                             : "bg-[#E0E0E0]"
                          }
-                         ${counter + button.number >= 11 && "opacity-60 bg-red"} rounded-[100%]`}
+                         ${isDisabled && "opacity-50"}
+                         rounded-[100%]`}
                 type={button.type}
                 key={button.number}
-                disabled={
-                  counter - currentTabButton + button.number > 10 ||
-                  // Specific logic for when the counter is at a certain value and based on index.
-                  (state.length === 2 &&
-                    currentTabButton === 0 &&
-                    counter >= 6 &&
-                    counter + button.number > 9)
-                }
+                disabled={isDisabled}
               />
             );
           })}

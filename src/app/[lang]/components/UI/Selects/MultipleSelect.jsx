@@ -5,24 +5,44 @@ import { Select } from "antd";
 export const MultipleSelect = ({ className = "", onChange, lang }) => {
   const options = [
     {
-      value: "entrepreneur",
-      label: lang.login_page.created_profile.activity.entrepreneur,
+      value: "ceo_n_founder",
+      label: lang.login_page.created_profile.activity.ceo_n_founder,
     },
     {
-      value: "top_manager",
-      label: lang.login_page.created_profile.activity.top_manager,
+      value: "ceo",
+      label: lang.login_page.created_profile.activity.ceo,
+    },
+    {
+      value: "c_lvl_spec",
+      label: lang.login_page.created_profile.activity.c_level,
     },
     {
       value: "junior_spec",
       label: lang.login_page.created_profile.activity.junior_specialist,
     },
     {
-      value: "mid_sen_spec",
-      label: lang.login_page.created_profile.activity.mid_senior_specialist,
+      value: "mid_spec",
+      label: lang.login_page.created_profile.activity.middle_specialist,
     },
     {
-      value: "hr_spec",
-      label: lang.login_page.created_profile.activity.hr_specialist,
+      value: "sen_spec",
+      label: lang.login_page.created_profile.activity.senior_specialist,
+    },
+    {
+      value: "hrd",
+      label: lang.login_page.created_profile.activity.hrd,
+    },
+    {
+      value: "hrg",
+      label: lang.login_page.created_profile.activity.hrg,
+    },
+    {
+      value: "hr",
+      label: lang.login_page.created_profile.activity.hr,
+    },
+    {
+      value: "recruiter",
+      label: lang.login_page.created_profile.activity.recruiter,
     },
     {
       value: "psychologist",
