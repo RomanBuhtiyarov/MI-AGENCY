@@ -65,7 +65,6 @@ const BlockTest = ({
               (state.length === 2 && counter === 2 && button.number < 4) ||
               (state.length === 2 && counter === 3 && button.number < 3) ||
               (state.length === 2 && counter === 4 && button.number < 2);
-            console.log(counter, currentTabButton, state);
             return (
               <button
                 onClick={() => handleCountLetter(button.number, letter)}

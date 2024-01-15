@@ -30,6 +30,20 @@ const success = (lang) => {
   });
 };
 
+const errorModal = (messageError) => {
+  Modal.error({
+    title: lang.login_page.created_profile.error_modal.title,
+    content: (
+      <div className='text-left'>
+        <p className='text-[16px] mb-[10px] font-unbounded'>{messageError}</p>
+      </div>
+    ),
+    closable: true,
+    centered: true,
+    footer: null,
+  });
+};
+
 export const Form = ({ lang }) => {
   const router = useRouter();
   const emailRef = useRef(null);
@@ -45,18 +59,7 @@ export const Form = ({ lang }) => {
   const [first_name, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [messageError, setMessageError] = useState("");
-  const errorModal = (messageError) => {
-    Modal.error({
-      content: (
-        <div className='text-left'>
-          <p className='text-[16px] mb-[10px] font-unbounded'>{messageError}</p>
-        </div>
-      ),
-      closable: true,
-      centered: true,
-      footer: null,
-    });
-  };
+
   const onChangeMultipleSelectScopes = (value) => {
     setScope(value);
   };
@@ -137,7 +140,6 @@ export const Form = ({ lang }) => {
         success(lang);
       }
     } catch (error) {
-      console.log(error.response.data);
       const fieldError = Object.values(error.response.data)[0];
 
       if (Array.isArray(fieldError) && fieldError.length > 0) {

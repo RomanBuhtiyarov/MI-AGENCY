@@ -11,7 +11,7 @@ import MainButton from "../../UI/Buttons/MainButton";
 
 const success = (lang) => {
   Modal.success({
-    title: "Успіх!",
+    title: lang.login_page.created_profile.success_modal.title,
     content: (
       <>
         <div>
@@ -47,6 +47,7 @@ const success = (lang) => {
 // };
 const errorModal = (messageError) => {
   Modal.error({
+    title: lang.login_page.created_profile.error_modal.title,
     content: (
       <div className='text-left'>
         <p className='text-[16px] mb-[10px] font-unbounded'>{messageError}</p>
@@ -66,10 +67,8 @@ const MyProfile = ({ lang }) => {
   const [firstPart, secondPart] = uploadImageBtnText.split(" ");
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState("");
-
   const handleSetPhoto = async (e) => {
     if (e) {
-      console.log("Prevented");
       e.preventDefault();
     }
     try {
@@ -83,7 +82,6 @@ const MyProfile = ({ lang }) => {
           // "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Ping!");
       if (inputFileRef.current) {
         inputFileRef.current.value = null;
       }
@@ -115,12 +113,10 @@ const MyProfile = ({ lang }) => {
           },
         },
       );
-      if (inputFileRef.current) {
-        inputFileRef.current.value = null;
-      }
+
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 2000);
     } catch (err) {
       const fieldError = Object.values(error.response.data)[0];
 
@@ -135,7 +131,6 @@ const MyProfile = ({ lang }) => {
     if (e) {
       e.preventDefault();
     }
-    console.log(phone);
     try {
       const authToken = localStorage.getItem("authToken");
 

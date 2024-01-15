@@ -15,7 +15,6 @@ const Unbound = Unbounded({ subsets: ["latin"] });
 export default function Sidebar({ lang }) {
   // const user = await getCurrentUser();
   const [userData, setUserData] = useState(null);
-  console.log(userData);
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchData = async () => {
