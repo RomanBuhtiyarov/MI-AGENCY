@@ -25,9 +25,15 @@ export const PAEIDescription = ({ lang }) => {
     <div className='max-w-[595px] w-full flex flex-row-reverse justify-between relative'>
       <button className='absolute right-0' onClick={toggleAccordion}>
         {isOpen ? (
-          <MainButton className='text-[14px] md:text-[16px]' label={"Сховати"} />
+          <MainButton
+            className='text-[14px] md:text-[16px]'
+            label={lang.paei_description.hide_btn}
+          />
         ) : (
-          <MainButton className='text-[14px] md:text-[16px]' label={"Детальніше"} />
+          <MainButton
+            className='text-[14px] md:text-[16px]'
+            label={lang.paei_description.show_btn}
+          />
         )}
       </button>
       <div

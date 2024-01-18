@@ -123,6 +123,8 @@
     "points": "points"
   },
   "paei_description": {
+    "show_btn": "More",
+    "hide_btn": "Hide",
     "p_header": "WHAT SHOULD BE DONE?",
     "p_description": "This management function meets customer needs. The short-term performance of the company depends on this.",
     "a_header": "HOW SHOULD IT BE DONE?",

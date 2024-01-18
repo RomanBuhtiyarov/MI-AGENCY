@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { paei_results } from "@/_libs/paei_results";
 // import ky from "ky";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 export const PAEIResult = ({ answers, lang, contentRef, height }) => {
+  const router = useRouter();
   const localizedResults = paei_results(lang);
   const [isAuth, setIsAuth] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -142,7 +144,8 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
           </p>
           <MainButton
             onClick={() => {
-              router.push(`/${lang.locale}/pages/sign-up/`);
+              window.location.href = `/${lang.locale}/pages/sign-up/`;
+              // router.push(`/${lang.locale}/pages/sign-up/`);
             }}
             label={lang.test_page.auth_modal.button_label}
           />

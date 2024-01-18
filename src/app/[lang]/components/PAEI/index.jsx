@@ -18,7 +18,6 @@ export const PAEI = ({ lang }) => {
   const [answers, setAnswers] = useState([]);
   const [height, setHeight] = useState("auto");
   const contentRef = useRef(null);
-
   useEffect(() => {
     const updatedCounterTest = counterTest.map((item) => ({ ...item })); // Создаем новый массив с копиями объектов
     const updatedCounter = updatedCounterTest
@@ -212,16 +211,18 @@ export const PAEI = ({ lang }) => {
               )}
             <div className='flex flex-col'>
               <div className='hidden md:flex justify-end mt-[20px]'>
-                <NextPrevButton
-                  className='previous-block block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
-                  label={lang.test_page.prev_block_btn}
-                  onClick={() => {
-                    if (currentBlockID > 0) {
-                      goToPreviousBlock();
-                    }
-                  }}
-                  disabled={currentBlockID === 1}
-                />
+                {currentBlockID > 1 && (
+                  <NextPrevButton
+                    className='previous-block block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
+                    label={lang.test_page.prev_block_btn}
+                    onClick={() => {
+                      if (currentBlockID > 1) {
+                        goToPreviousBlock();
+                      }
+                    }}
+                    disabled={currentBlockID === 1}
+                  />
+                )}
 
                 <NextPrevButton
                   className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
