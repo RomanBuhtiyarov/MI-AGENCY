@@ -21,6 +21,7 @@
     "axios": "^1.6.5",
     "bcrypt": "^5.1.0",
     "dropzone": "^6.0.0-beta.2",
+    "franc-min": "^6.2.0",
     "ky": "^0.33.3",
     "negotiator": "^0.6.3",
     "next": "13.4.7",

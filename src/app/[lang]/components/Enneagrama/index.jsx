@@ -38,6 +38,23 @@ export const Enneagrama = ({ lang }) => {
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
 
+  useEffect(() => {
+    // Завантаження даних з localStorage при старті компоненту
+    const storedCurrentQuestion = localStorage?.getItem("currentQuestion");
+    const storedGeneralCount = localStorage?.getItem("generalCount");
+    const storedUserAnswers = localStorage?.getItem("userAnswers");
+
+    // Встановлення станів з даних localStorage, якщо вони існують
+    if (storedCurrentQuestion) {
+      setCurrentQuestion(parseInt(storedCurrentQuestion, 10));
+    }
+    if (storedGeneralCount) {
+      setGeneralCount(parseInt(storedGeneralCount, 10));
+    }
+    if (storedUserAnswers || Object.keys(userAnswers).length === 0) {
+      setUserAnswers(JSON.parse(storedUserAnswers));
+    }
+  }, []);
   const [generalCount, setGeneralCount] = useState(() => {
     const storedGeneralCount = localStorage.getItem("generalCount");
     return storedGeneralCount ? parseInt(storedGeneralCount, 10) : 0;
@@ -58,24 +75,6 @@ export const Enneagrama = ({ lang }) => {
     localStorage.setItem("generalCount", generalCount);
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
   }, [currentQuestion, generalCount, userAnswers]);
-
-  useEffect(() => {
-    // Завантаження даних з localStorage при старті компоненту
-    const storedCurrentQuestion = localStorage?.getItem("currentQuestion");
-    const storedGeneralCount = localStorage?.getItem("generalCount");
-    const storedUserAnswers = localStorage?.getItem("userAnswers");
-
-    // Встановлення станів з даних localStorage, якщо вони існують
-    if (storedCurrentQuestion) {
-      setCurrentQuestion(parseInt(storedCurrentQuestion, 10));
-    }
-    if (storedGeneralCount) {
-      setGeneralCount(parseInt(storedGeneralCount, 10));
-    }
-    if (storedUserAnswers || Object.keys(userAnswers).length === 0) {
-      setUserAnswers(JSON.parse(storedUserAnswers));
-    }
-  }, []);
 
   useEffect(() => {
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
@@ -129,28 +128,31 @@ export const Enneagrama = ({ lang }) => {
           question={localizedTests.map((question) => question.text)[currentQuestion]}
         />
       </div>
-      <div className='w-full flex flex-col md:flex-row items-center justify-between gap-[16px]'>
-        <EnneagramaButton
-          disabled={currentQuestion === generalQuestions ? true : false}
-          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
-          onClick={() => handleSubmit("Yes")}
-          label={lang.enneagram_block.yes_btn}
-        />
-        <EnneagramaButton
-          disabled={currentQuestion === generalQuestions ? true : false}
-          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
-          onClick={() => handleSubmit("No")}
-          label={lang.enneagram_block.yes_no_btn}
-        />
-        <EnneagramaButton
-          disabled={currentQuestion === generalQuestions ? true : false}
-          className='w-full md:w-[270px] h-[40px] md:h-[50px]'
-          onClick={() => handleSubmit("No")}
-          label={lang.enneagram_block.no_btn}
-        />
-      </div>
+      {currentQuestion !== generalQuestions && (
+        <div className='w-full flex flex-col md:flex-row items-center justify-between gap-[16px]'>
+          <EnneagramaButton
+            disabled={currentQuestion === generalQuestions ? true : false}
+            className='w-full md:w-[270px] h-[40px] md:h-[50px]'
+            onClick={() => handleSubmit("Yes")}
+            label={lang.enneagram_block.yes_btn}
+          />
+          <EnneagramaButton
+            disabled={currentQuestion === generalQuestions ? true : false}
+            className='w-full md:w-[270px] h-[40px] md:h-[50px]'
+            onClick={() => handleSubmit("No")}
+            label={lang.enneagram_block.yes_no_btn}
+          />
+          <EnneagramaButton
+            disabled={currentQuestion === generalQuestions ? true : false}
+            className='w-full md:w-[270px] h-[40px] md:h-[50px]'
+            onClick={() => handleSubmit("No")}
+            label={lang.enneagram_block.no_btn}
+          />
+        </div>
+      )}
+
       <div className='mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto'>
-        {currentQuestion > 0 && (
+        {currentQuestion > 0 && currentQuestion !== generalQuestions && (
           <NextPrevButton
             className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
             label={lang.test_page.prev_block_btn}

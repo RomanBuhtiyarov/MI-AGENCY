@@ -60,13 +60,29 @@
         "key": "news",
         "our-articles": "Наші статті"
       }
-    ]
+    ],
+    "language": "Мова"
   },
   "news_page": {
     "filter": {
+      "title": "Фільтр",
       "resource": "Ресурс",
       "sphere": "Сфера",
-      "language": "Мова"
+      "language": "Мова",
+      "apply_filters": "Застосувати фільтри",
+      "sphere_options": {
+        "it": "IT",
+        "hr": "HR",
+        "psychology": "Психологія",
+        "management": "Менеджмент",
+        "brand": "Бренд",
+        "business": "Бізнес",
+        "ai": "AI"
+      },
+      "lang_options": {
+        "eng": "Англійська",
+        "ua": "Українська"
+      }
     }
   },
   "test_page": {
@@ -369,10 +385,8 @@
       "header_login": "Вхід",
       "email": "Email адреса",
       "password": "Пароль",
-      "re_password": "Повторити Пароль",
+      "re_password": "Повторити пароль",
       "first_name": "Ім’я",
-      "last_name": "Прізвище",
-      "username": "Нікнейм",
       "logged_in": "Зареєстровані? Увійти до облікового запису",
       "registered": "Не маєш облікового запису? Зареєструйся"
     },

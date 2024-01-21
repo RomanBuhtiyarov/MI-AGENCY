@@ -3,13 +3,7 @@ import { useCallback, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
-export const ItemLang = ({
-  activeLang,
-  setActiveLang,
-  data,
-  pathName,
-  isMobile,
-}) => {
+export const ItemLang = ({ activeLang, setActiveLang, data, pathName, isMobile, lang }) => {
   const newLang = activeLang === "ua" ? "en" : "ua"; // Переключаем язык между "ua" и "en"
   const [imageSrc, setImageSrc] = useState(null);
   const redirectedPathName = (locale) => {
@@ -40,7 +34,7 @@ export const ItemLang = ({
         progress: undefined,
         style: { width: `${isMobile ? "100%" : "370px"}` },
         theme: "light",
-      }
+      },
     );
   };
   const changeLang = useCallback(() => {
@@ -60,9 +54,7 @@ export const ItemLang = ({
   useEffect(() => {
     const loadImage = async () => {
       try {
-        const imageModule = await import(
-          `/public/_assets/images/lang/${data.image}`
-        );
+        const imageModule = await import(`/public/_assets/images/lang/${data.image}`);
         setImageSrc(imageModule?.default);
       } catch (error) {
         console.error("Error loading image:", error);
@@ -78,19 +70,22 @@ export const ItemLang = ({
         <button
           key={data.key}
           onClick={isMobile ? changeLangMobile : changeLang}
-          className="flex  md:block ml-[20px] md:ml-0 w-[50px] md:w-[24px] justify-center"
+          className='flex flex-col text-center md:flex-row items-center gap-[7px] md:gap-[14px] item-nav'
         >
           {imageSrc && (
             <Image
               className={`${
                 activeLang === data.key ? "grayscale-0" : "grayscale"
-              } w-[24px] h-[24px]`}
+              } w-[35px] h-[35px] md:w-[24px] md:h-[24px]`}
               aria-label={"Change to:" + data.alt}
               src={imageSrc}
               alt={data.alt}
               loading={"lazy"}
             />
           )}
+          <p className='md:hidden text-[9px] md:text-[16px] w-[50px] md:w-auto'>
+            {lang?.sidebar.language}
+          </p>
         </button>
       </Link>
     </>

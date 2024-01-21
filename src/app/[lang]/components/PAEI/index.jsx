@@ -15,9 +15,27 @@ export const PAEI = ({ lang }) => {
   const [counter, setCounter] = useState(0);
   const [generalQuestions] = useState(Object.keys(localizedTests).length);
   const [isShownResult, setIsShownResult] = useState(false);
-  const [answers, setAnswers] = useState([]);
   const [height, setHeight] = useState("auto");
   const contentRef = useRef(null);
+  useEffect(() => {
+    // Завантаження даних з localStorage при старті компоненту
+    const storedPAEIAnswers = localStorage?.getItem("paeiAnswers");
+
+    if (storedPAEIAnswers || Object.keys(answers).length === 0) {
+      setAnswers(JSON.parse(storedPAEIAnswers));
+    }
+  }, []);
+  const [answers, setAnswers] = useState(() => {
+    const storedPAEIAnswers = localStorage.getItem("paeiAnswers");
+    return storedPAEIAnswers ? JSON.parse(storedPAEIAnswers) : [];
+  });
+  console.log(answers);
+
+  useEffect(() => {
+    // Зберігаємо дані в локальному сховищі
+    localStorage.setItem("paeiAnswers", JSON.stringify(answers));
+  }, [answers]);
+
   useEffect(() => {
     const updatedCounterTest = counterTest.map((item) => ({ ...item })); // Создаем новый массив с копиями объектов
     const updatedCounter = updatedCounterTest
@@ -223,15 +241,18 @@ export const PAEI = ({ lang }) => {
                     disabled={currentBlockID === 1}
                   />
                 )}
-
-                <NextPrevButton
-                  className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
-                  label={lang.test_page.next_block_btn}
-                  onClick={toggleBlock}
-                  disabled={
-                    currentBlockID === generalQuestions || counterTest.length < 4 || counter !== 10
-                  }
-                />
+                {currentBlockID < 10 && (
+                  <NextPrevButton
+                    className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
+                    label={lang.test_page.next_block_btn}
+                    onClick={toggleBlock}
+                    disabled={
+                      currentBlockID === generalQuestions ||
+                      counterTest.length < 4 ||
+                      counter !== 10
+                    }
+                  />
+                )}
               </div>
 
               {answers.length === 10 && (
@@ -287,25 +308,29 @@ export const PAEI = ({ lang }) => {
       </div>
       <div className='w-full flex md:hidden flex-col pb-[30px]'>
         <div className='flex justify-evenly'>
-          <NextPrevButton
-            className='previous-block block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
-            label={lang.test_page.prev_block_btn}
-            onClick={() => {
-              if (currentBlockID > 0) {
-                goToPreviousBlock();
-              }
-            }}
-            disabled={currentBlockID === 1}
-          />
+          {currentBlockID > 1 && (
+            <NextPrevButton
+              className='previous-block block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
+              label={lang.test_page.prev_block_btn}
+              onClick={() => {
+                if (currentBlockID > 0) {
+                  goToPreviousBlock();
+                }
+              }}
+              disabled={currentBlockID === 1}
+            />
+          )}
 
-          <NextPrevButton
-            className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
-            label={lang.test_page.next_block_btn}
-            onClick={toggleBlock}
-            disabled={
-              currentBlockID === generalQuestions || counterTest.length < 4 || counter !== 10
-            }
-          />
+          {currentBlockID < 10 && (
+            <NextPrevButton
+              className='block-button bg-transparent w-[140px] h-[17px] text-black hover:bg-transparent hover:font-bold'
+              label={lang.test_page.next_block_btn}
+              onClick={toggleBlock}
+              disabled={
+                currentBlockID === generalQuestions || counterTest.length < 4 || counter !== 10
+              }
+            />
+          )}
         </div>
 
         {answers.length === 10 && (

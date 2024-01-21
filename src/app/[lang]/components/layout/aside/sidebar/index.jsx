@@ -18,31 +18,33 @@ export default function Sidebar({ lang }) {
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const authToken = localStorage.getItem("authToken");
-      if (!authToken) {
-        return;
-      }
+      if (typeof window !== "undefined") {
+        const authToken = localStorage.getItem("authToken");
+        if (!authToken) {
+          return;
+        }
 
-      try {
-        const response = await axios.get(
-          `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
-          {
-            headers: {
-              Authorization: `Token ${authToken}`,
-              "Content-Type": "application/json",
+        try {
+          const response = await axios.get(
+            `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+            {
+              headers: {
+                Authorization: `Token ${authToken}`,
+                "Content-Type": "application/json",
+              },
             },
-          },
-        );
-        // Set the user data in the component state
-        setUserData(response.data);
-      } catch (error) {
-        setError("An error occurred while fetching user data");
+          );
+          // Set the user data in the component state
+          setUserData(response.data);
+        } catch (error) {
+          setError("An error occurred while fetching user data");
+        }
       }
     };
 
     // Call the fetchData function when the component mounts
     fetchData();
-  }, [localStorage.getItem("authToken")]); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
+  }, []); // The empty dependency array ensures the effect runs only once, similar to componentDidMount
 
   // Render logic based on the fetched user data or error
   if (error) {
@@ -72,7 +74,7 @@ export default function Sidebar({ lang }) {
             />
           </nav>
         </div>
-        <div>
+        <div className='hidden md:block'>
           <Lang />
           <Socials />
         </div>

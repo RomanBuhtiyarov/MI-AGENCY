@@ -4,7 +4,7 @@ import { asideNav } from "@/_libs/aside-nav";
 import { ItemNav } from "./item_nav";
 import { useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
-
+import { Lang } from "../lang";
 export const Nav = ({ lang, userData }) => {
   const asideElements = asideNav();
   const { isMobile } = useScreenSize();
@@ -47,6 +47,9 @@ export const Nav = ({ lang, userData }) => {
             />
           );
         })}
+      <li className='md:hidden'>
+        <Lang lang={lang} />
+      </li>
     </ul>
   );
 };

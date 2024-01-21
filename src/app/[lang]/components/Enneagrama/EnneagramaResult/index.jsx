@@ -121,7 +121,7 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
           </p>
           <MainButton
             onClick={() => {
-              router.push(`/${lang.locale}/pages/sign-up/`);
+              window.location.href = `/${lang.locale}/pages/sign-up/`;
             }}
             label={lang.test_page.auth_modal.button_label}
           />

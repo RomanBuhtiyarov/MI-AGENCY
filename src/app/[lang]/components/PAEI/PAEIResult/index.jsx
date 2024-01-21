@@ -85,6 +85,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
     };
     try {
       await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
+      localStorage.removeItem("paeiAnswers");
       setIsSaved(!isSaved);
     } catch (error) {
       // Set the error message in the component's state
@@ -165,7 +166,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
   return (
     <div
       ref={contentRef}
-      className='transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col items-center md:flex-row justify-between'
+      className='transition-max-height duration-300 ease-in-out overflow-hidden flex flex-col items-center md:items-start md:flex-row justify-between'
     >
       <div>
         {imageSrc && (
@@ -180,8 +181,8 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
         )}
       </div>
       <div className='md:w-[520px]'>
-        <h1 className='text-center text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
-          {lang.header} {finalResult}
+        <h1 className='text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
+          {lang.paei_result.header} {finalResult}
         </h1>
 
         {/* Используем результаты теста для отображения соответствующих описаний */}

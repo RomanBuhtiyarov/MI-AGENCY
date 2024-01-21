@@ -6,18 +6,19 @@ import langList from "@/_libs/lang-list";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useScreenSize } from "@/hooks/useScreenSize";
-export const Lang = () => {
+export const Lang = ({ lang }) => {
   const pathName = usePathname();
   const { isMobile } = useScreenSize();
   const [activeLang, setActiveLang] = useState(pathName.split("/")[1]);
   return (
-    <div className="flex items-center gap-[10px]">
+    <div className='flex items-center gap-[10px]'>
       {langList
         .filter((el) => {
           return isMobile ? el.key === activeLang : true;
         })
         ?.map?.((l, _) => (
           <ItemLang
+            lang={lang}
             key={l.key}
             activeLang={activeLang}
             setActiveLang={setActiveLang}

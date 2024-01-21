@@ -61,13 +61,29 @@
         "key": "news",
         "our-articles": "Our articles"
       }
-    ]
+    ],
+    "language": "Language"
   },
   "news_page": {
     "filter": {
+      "title": "Filter",
       "resource": "Resource",
       "sphere": "Sphere",
-      "language": "Language"
+      "language": "Language",
+      "apply_filters": "Apply filters",
+      "sphere_options": {
+        "it": "IT",
+        "hr": "HR",
+        "psychology": "Psychology",
+        "management": "Management",
+        "brand": "Brand",
+        "business": "Business",
+        "ai": "AI"
+      },
+      "lang_options": {
+        "eng": "English",
+        "ua": "Ukrainian"
+      }
     }
   },
   "test_page": {
@@ -368,10 +384,8 @@
       "header_login": "Log in",
       "email": "Email",
       "password": "Password",
-      "re_password": "Repeat Password",
+      "re_password": "Repeat password",
       "first_name": "First Name",
-      "last_name": "Last Name",
-      "username": "Username",
       "logged_in": "Already have an account? Log in",
       "registered": "Don`t have an account? Sign up"
     },
