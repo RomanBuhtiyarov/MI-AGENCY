@@ -17,19 +17,11 @@ export const PAEI = ({ lang }) => {
   const [isShownResult, setIsShownResult] = useState(false);
   const [height, setHeight] = useState("auto");
   const contentRef = useRef(null);
-  useEffect(() => {
-    // Завантаження даних з localStorage при старті компоненту
-    const storedPAEIAnswers = localStorage?.getItem("paeiAnswers");
-
-    if (storedPAEIAnswers || Object.keys(answers).length === 0) {
-      setAnswers(JSON.parse(storedPAEIAnswers));
-    }
-  }, []);
   const [answers, setAnswers] = useState(() => {
     const storedPAEIAnswers = localStorage.getItem("paeiAnswers");
-    return storedPAEIAnswers ? JSON.parse(storedPAEIAnswers) : [];
+    const parsedPAEIAnswers = JSON.parse(storedPAEIAnswers);
+    return parsedPAEIAnswers ?? [];
   });
-  console.log(answers);
 
   useEffect(() => {
     // Зберігаємо дані в локальному сховищі
