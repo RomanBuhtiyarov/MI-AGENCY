@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Unbounded";
+  src: url("../../../public/fonts/Unbounded-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal; /* Або вкажіть потрібні варіанти: 200, 300,... 900 */
+  font-style: normal;
+  font-display: swap; /* Оптимізація завантаження */
+}

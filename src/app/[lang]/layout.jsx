@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./fonts.css";
 import classNames from "classnames";
 import { Montserrat } from "next/font/google";
 import Sidebar from "./components/layout/aside/sidebar";
