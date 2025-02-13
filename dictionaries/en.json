@@ -120,6 +120,10 @@
       {
         "label": "Innovative intelligence",
         "description": ""
+      },
+      {
+        "label": "Innovative potential of the individual",
+        "description": "The test allows you to determine how open you are to n..."
       }
     ]
   },
@@ -455,6 +459,291 @@
         "result": "Result",
         "date": "Date of Completion",
         "more_info_btn": "More Info"
+      }
+    }
+  },
+  "ipi_page": {
+    "title": "Innovative potential of the individual",
+    "description": "This test helps identify how open you are to new ideas, your readiness to act in uncertain conditions, and your ability to implement innovations in both professional and personal activities. It also evaluates your style of seeking new information, level of creativity, attitude toward innovations, risk tolerance, comfort with uncertainty, and ability to perform effectively in new environments.",
+    "robot_hint_p_1": "You will be presented with pairs of opposing statements. ",
+    "robot_hint_h3": "Choose the one that best reflects your perspective. ",
+    "robot_hint_p_2": "Indicate the degree of your agreement with a number: ",
+    "point_3": "Fully agree",
+    "point_2": "Mostly agree",
+    "point_1": "Partially agree",
+    "point_0": "Both statements are equally valid in your opinion",
+    "description_2": "Answer quickly, relying on your first impression, and avoid overthinking.",
+    "get_result_btn": "Find out the result"
+  },
+  "ipi_test": {
+    "block_1": [
+      "All the knowledge in the world can be obtained from open sources.",
+      "To understand the essence of something, it is not enough to ask an expert or read specialized literature."
+    ],
+    "block_2": [
+      "My strength lies more in carefully refining and perfecting existing material rather than coming up with new ideas.",
+      "The ability to come up with new and original ideas sets me apart from most people."
+    ],
+    "block_3": [
+      "Any changes in the socio-political situation lead to another crisis.",
+      "I am confident that the transformations happening in the world are necessary."
+    ],
+    "block_4": [
+      "I usually find it difficult to start a new task.",
+      "I easily and gladly take on new tasks."
+    ],
+    "block_5": [
+      "Extreme sports and hobbies are definitely not for me.",
+      "I could overcome fear for my safety and master an extreme sport."
+    ],
+    "block_6": [
+      "A good job is one where it’s always clear what and how to do.",
+      "A good job is one that doesn’t let you get bored and presents challenges."
+    ],
+    "block_7": [
+      "I feel fear and anxiety in new and unfamiliar situations.",
+      "I feel excitement and exhilaration in new and unusual situations."
+    ],
+    "block_8": [
+      "I tend to do everything in a way that is familiar to me.",
+      "When someone tells me how to do something, I think about how it can be done differently."
+    ],
+    "block_9": [
+      "Changes in my life usually cause me anxiety and worry.",
+      "Changes in my life do not cause me anxiety or worry."
+    ],
+    "block_10": [
+      "It’s very important for me to follow the accepted rules in my environment.",
+      "I believe that rules exist to be broken."
+    ],
+    "block_11": [
+      "I usually think over decisions multiple times to avoid mistakes.",
+      "I willingly and boldly take risks."
+    ],
+    "block_12": [
+      "Familiar things are more desirable to me than unfamiliar ones.",
+      "The unfamiliar is more appealing to me than the familiar."
+    ],
+    "block_13": [
+      "Most life situations are typical and predictable.",
+      "I can find something interesting in any situation."
+    ],
+    "block_14": [
+      "When I take on work, I value my time and do everything in ways that I have personally tested.",
+      "I enjoy thinking about how to do ordinary things in new ways."
+    ],
+    "block_15": [
+      "I am more of a conservative person who lives by the rules accepted in society.",
+      "I try to intuitively follow the natural rhythm of the world."
+    ],
+    "block_16": [
+      "Changing one’s work style, chosen profession, or way of life is driven by necessity.",
+      "In my life, I have experience changing professions, jobs, or lifestyles at my own will."
+    ],
+    "block_17": [
+      "I carefully consider whether it is worth taking on new tasks at work.",
+      "I can take on a job that seems interesting to me, even if I’m not sure whether I’ll manage it."
+    ],
+    "block_18": [
+      "Important decisions should only be made with sufficient information on the matter.",
+      "Many of the most important decisions are made based on incomplete information."
+    ],
+    "block_19": [
+      "Climbing the social and professional ladder is the main reason I strive to learn new information, even if it does not interest me.",
+      "The reason I try to learn something new in my professional field is my curiosity."
+    ],
+    "block_20": [
+      "I prefer familiar ways of doing work.",
+      "I always come up with new ways to perform routine tasks."
+    ],
+    "block_21": [
+      "I have difficulty adapting to a new team, job, or vacation destination.",
+      "I easily integrate into new groups of acquaintances and enjoy visiting new places for leisure."
+    ],
+    "block_22": [
+      "Unexpected changes in my daily schedule irritate me.",
+      "Throughout the day, I prefer to act spontaneously and listen to my intuition whenever possible."
+    ],
+    "block_23": [
+      "My principle is \"measure seven times, cut once.\"",
+      "Success in my endeavors is more likely due to perseverance than meticulous calculations."
+    ],
+    "block_24": [
+      "Teachers and mentors should provide clear instructions and have precise evaluation criteria.",
+      "Teachers and mentors who formulate tasks vaguely give an opportunity to show initiative and originality."
+    ],
+    "block_25": [
+      "I reluctantly agree to take on new tasks at work.",
+      "I am not intimidated by the prospect of suddenly having to master a new field of knowledge on my own."
+    ],
+    "block_26": [
+      "My friends say it is easier for me to refine existing ideas to perfection.",
+      "My friends say that my ideas are new and original."
+    ],
+    "block_27": [
+      "I consider my views conservative.",
+      "I have broad and unbiased views of reality."
+    ],
+    "block_28": [
+      "If I travel somewhere for the first time, I prefer to have someone who has already been there as a guide.",
+      "I easily navigate unfamiliar areas."
+    ],
+    "block_29": [
+      "I make decisions not intuitively but only after thorough deliberation.",
+      "Actions, not deliberations, help me achieve my desired results."
+    ],
+    "block_30": [
+      "I avoid tasks where I doubt the correctness of the solution.",
+      "There is no problem that cannot be solved."
+    ]
+  },
+  "ipi_results": {
+    "more": "Learn more",
+    "total": {
+      "title": "Integrative level of innovation potential",
+      "description_1": "This scale ",
+      "description_2": "assesses the overall ability to integrate various aspects of one’s activities to implement innovations.",
+      "description_3": "",
+      "low_level": {
+        "title": "Total score 90 or below: ",
+        "level": "LOW LEVEL",
+        "description": "Indicates a preference for traditional approaches and routine tasks, with potential difficulties in implementing new ideas. Innovations may be met with resistance or overlooked due to a low level of integration between knowledge, skills, and creativity. Stability is prioritized in professional activities."
+      },
+      "optimal_level": {
+        "title": "Total score from 91 to 163 (inclusive): ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Reflects a balanced combination of stability and openness to innovation. Innovations are viewed as opportunities for growth, but their implementation is based on rationality and actual needs. The integration of knowledge, skills, and creative approaches occurs consciously, considering efficiency and long-term prospects. Adaptation to changes is harmonized with structured and well-thought-out decisions, promoting stability and gradual improvement of activities."
+      },
+      "high_level": {
+        "title": "Total score above 164: ",
+        "level": "HIGH LEVEL",
+        "description": "Indicates a high ability to integrate knowledge, skills, and creative abilities to achieve results. Characterized by the capacity to effectively combine different aspects of activity, quickly adapt to changes, and create innovative solutions even in complex conditions. This level of integration fosters strategic thinking, idea generation, and successful implementation in both professional and personal domains."
+      }
+    },
+    "abilityDiscover": {
+      "title": "Ability to discover new information",
+      "description_1": "This scale ",
+      "description_2": "assesses the tendency to explore and find new information ",
+      "description_3": "in familiar or routine situations.",
+      "low_level": {
+        "title": "Total score of 17 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Reflects a formal, accumulative approach to seeking information. A conservative mindset prevails, with a preference for traditional ways of working and reluctance to step outside familiar patterns. In professional activities, routine tasks are prioritized, and risks associated with new approaches or projects are minimized."
+      },
+      "optimal_level": {
+        "title": "Total score from 18 to 28 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Indicates a balanced approach to searching for and utilizing new knowledge. New information is acquired consciously, depending on situational needs. Preference is given to proven methods, but experimentation and integration of new data into work processes are allowed. In professional activities, stability is combined with selective openness to new approaches, especially if they contribute to efficiency and development."
+      },
+      "high_level": {
+        "title": "Total score of 29 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Characterized by a deliberately intensive approach to finding new information, actively gathering data even in familiar situations, striving for novelty, and seeking to refine conventional ways of working. Demonstrates an ability to explore new informational spaces, quickly adapt, and expand competencies. In the professional sphere, there is a strong focus on mastering new working methods, participating in new projects, and expanding business opportunities."
+      }
+    },
+    "creativity": {
+      "title": "Creativity",
+      "description_1": "This scale ",
+      "description_2": "measures the ability to generate new and original ideas, ",
+      "description_3": "seek unconventional solutions, and create innovations.",
+      "low_level": {
+        "title": "Total score of 13 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Indicates low creative activity. There is a tendency to search for a single perfect and correct solution, often overlooking alternative options."
+      },
+      "optimal_level": {
+        "title": "Total score from 14 to 26 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Characterized by a balanced combination of standard and creative approaches in problem-solving. Idea generation occurs as needed, with consideration of their realistic implementation. There is openness to experimentation, but preference is given to proven methods with the possibility of adaptation. In non-standard situations, creative solutions may be applied, but within a logical framework."
+      },
+      "high_level": {
+        "title": "Total score of 27 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Demonstrates high cognitive flexibility, openness to new ideas, and the ability to generate unconventional solutions. Various approaches are easily combined, integrating knowledge and skills to create innovative solutions. Shows a strong ability for in-depth problem analysis and finding alternative solutions. High creativity supports the effective application of new strategies in professional settings and adaptation to change."
+      }
+    },
+    "methodNewPhenomena": {
+      "title": "Method of implementing innovative ability in evaluating new phenomena",
+      "description_1": "This scale ",
+      "description_2": "measures the ability to perceive innovations and new developments, ",
+      "description_3": "as well as the level of impartiality in evaluating new ideas.",
+      "low_level": {
+        "title": "Total score of 16 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Characterized by a negatively generalized approach to assessing new phenomena, manifesting as conservatism, bias, and a critical attitude toward change. Innovations often cause concern or resistance, and adapting to new conditions requires significant effort."
+      },
+      "optimal_level": {
+        "title": "Total score from 17 to 29 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Reflects a balanced approach to assessing new phenomena. Innovations are perceived without excessive criticism, yet not accepted uncritically. There is a cautious approach to implementing changes, considering both potential risks and benefits. New ideas are evaluated rationally, striving to combine proven methods with progressive solutions."
+      },
+      "high_level": {
+        "title": "Total score of 30 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Characterized by a positively differentiated approach to assessing new phenomena, expressing a high appreciation for innovation and openness to new developments. There is a strong readiness for change, confidence in unfamiliar situations, and the ability to effectively adapt to new conditions. Innovations are seen as opportunities for growth, without biases or fear of the unknown."
+      }
+    },
+    "methodNewSituation": {
+      "title": "Method of implementing innovative ability in a new situation",
+      "description_1": "This scale ",
+      "description_2": "assesses the ability to effectively adapt to new conditions, take initiative, ",
+      "description_3": "and demonstrate independence in unfamiliar situations.",
+      "low_level": {
+        "title": "Total score of 14 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Characterized by a forced-adaptive approach to new phenomena, manifesting as low efficiency in working with new materials, uncertainty, and hesitation in unfamiliar professional situations. Preference is given to traditional and familiar approaches, with resistance to innovation."
+      },
+      "optimal_level": {
+        "title": "Total score from 15 to 27 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Reflects a balanced ability to adapt to new conditions. In most cases, there is readiness to accept change and work in non-standard situations, though adaptation may require additional time or information. New tasks are approached with interest, but implementation of changes is usually done gradually and with caution."
+      },
+      "high_level": {
+        "title": "Total score of 28 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Characterized by high initiative, rapid adaptability, and the effective implementation of new approaches. Individuals with this level quickly engage in solving complex and unfamiliar tasks, demonstrating decisiveness, independence, and perseverance. Change is perceived as an opportunity for growth, contributing to the generation of innovative solutions and leadership influence. This level allows not only for adaptation to new conditions but also for actively shaping them through transformative initiatives."
+      }
+    },
+    "readiness": {
+      "title": "Readiness for risk",
+      "description_1": "This scale ",
+      "description_2": "assesses the tendency to make decisions under uncertainty or potential losses, ",
+      "description_3": "as well as the willingness to take responsibility for risk-oriented actions in pursuit of results.",
+      "low_level": {
+        "title": "Total score of 11 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Reflects a low willingness to take risks, with a preference for caution and decisiveness. Stability and predictability are valued, and decision-making is guided by the principle of \"a bird in the hand is worth two in the bush.\" Risk is generally avoided in favor of safer, well-established approaches."
+      },
+      "optimal_level": {
+        "title": "Total score from 12 to 24 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Represents a balanced approach to risk-taking that combines caution and decisiveness. Risk is seen as a tool for achieving goals, but decisions are made after thorough analysis of potential consequences. There is a willingness to act in new or uncertain situations, provided that enough information is available to justify the decision. This level promotes effective risk management and ensures that choices are based on logic rather than impulse."
+      },
+      "high_level": {
+        "title": "Total score of 25 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Indicates a strong readiness to act in uncertain and even risky conditions. Characterized by decisiveness, courage, and openness to innovation. Risk-taking is viewed as an opportunity to maximize potential gains. Individuals at this level believe that delaying important decisions, overanalyzing, or hesitating may result in missed opportunities for success."
+      }
+    },
+    "tolerance": {
+      "title": "Tolerance for uncertainty",
+      "description_1": "This scale ",
+      "description_2": "assesses the ability to function in ambiguous situations or with incomplete information, ",
+      "description_3": "evaluating whether uncertainty is perceived as a challenge for growth or a barrier to productivity.",
+      "low_level": {
+        "title": "Total score of 12 or less: ",
+        "level": "LOW LEVEL",
+        "description": "Characterized by a tendency toward anxiety in situations that cannot yet be fully understood. A lack of information about a task, its objectives, or conditions may cause concern or frustration, potentially leading to procrastination or complete avoidance of action."
+      },
+      "optimal_level": {
+        "title": "Total score from 13 to 25 inclusive: ",
+        "level": "OPTIMAL LEVEL",
+        "description": "Reflects a flexible approach to uncertainty. While structure and predictability remain important, there is an ability to adapt when changes or information gaps arise. Uncertainty does not provoke excessive anxiety but requires additional analysis and risk assessment before making decisions. This level of tolerance allows for effective functioning in new conditions while maintaining stability and a measured approach to change."
+      },
+      "high_level": {
+        "title": "Total score of 26 or more: ",
+        "level": "HIGH LEVEL",
+        "description": "Indicates a positive attitude toward ambiguous, uncertain, and potentially stressful situations, regardless of their emotional impact. Uncertainty is viewed as an opportunity for choice, development, and gaining new experience. Actions continue even in the absence of complete information for rapid decision-making or task execution. A defining characteristic is the ability to act efficiently and productively in any uncertain scenario, facilitating successful innovation and adaptation in the professional sphere."
       }
     }
   }

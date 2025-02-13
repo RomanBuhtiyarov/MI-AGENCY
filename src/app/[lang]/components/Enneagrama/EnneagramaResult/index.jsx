@@ -155,7 +155,7 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
         <h1 className='text-center md:text-left text-[22px] md:text-[30px] font-unbounded mb-[10px]'>
           {title}
         </h1>
-        <p className='mx-auto md:mx-0 w-[60px] text-center bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center'>
+        <p className='mx-auto md:mx-0 w-[60px] bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center'>
           {resultType} {lang.enneagram_page.n_type}
         </p>
         <p className='my-[20px] font-medium'>{description}</p>
@@ -174,7 +174,7 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
           {careerOrientations}
         </p>
         <p className='mb-[20px] font-medium'>
-          <span className='text-[#347AEC] font-semibold font-semibold'>
+          <span className='text-[#347AEC] font-semibold'>
             {lang.enneagram_page.possibleProfessions}
           </span>{" "}
           {possibleProfessions}

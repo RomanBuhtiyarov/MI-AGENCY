@@ -4,6 +4,7 @@ import { Unbounded } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { cn } from "@/_helpers/cn";
 const Unbound = Unbounded({ subsets: ["latin"] });
 const CardTest = ({ data }) => {
   const { isMobile } = useScreenSize();
@@ -12,14 +13,12 @@ const CardTest = ({ data }) => {
   useEffect(() => {
     const loadImage = async () => {
       try {
-        const bannerModule = await import(
-          `/public/_assets/images/tests/${data.banner}`
-        );
+        const bannerModule = await import(`/public/_assets/images/tests/${data.banner}`);
         setBannerSrc(bannerModule.default);
-        const ownerModule = await import(
-          `/public/_assets/images/icons/${data.owner.path}`
-        );
-        setOwnerSrc(ownerModule.default);
+        if (data?.owner?.path) {
+          const ownerModule = await import(`/public/_assets/images/icons/${data.owner.path}`);
+          setOwnerSrc(ownerModule.default);
+        }
       } catch (error) {
         console.error("Error loading image:", error);
       }
@@ -29,15 +28,21 @@ const CardTest = ({ data }) => {
       loadImage();
     }
   }, [data]);
+
   return (
-    <div className="max-w-[408px] w-full shadow-lg rounded-[15px]">
+    <div className='max-w-[408px] w-full shadow-lg rounded-[15px]'>
       <div
-        className={`bg-gradient-to-r w-full h-[176px] bg-gradient-to-r from-[#347AEC] to-[#6764E7] rounded-t-[15px] pt-[12px] pb-[24px] overflow-hidden`}
+        className={cn(
+          "bg-gradient-to-r w-full h-[176px] from-[#347AEC] to-[#6764E7] rounded-t-[15px] pt-[12px] pb-[24px] overflow-hidden",
+          {
+            "bg-none": data?.stretchBanner,
+          },
+        )}
       >
         {ownerSrc && (
           <Image
             loading={"lazy"}
-            className="hidden md:block mx-auto"
+            className='hidden md:block mx-auto'
             src={ownerSrc}
             alt={"owner"}
             width={64}
@@ -45,10 +50,17 @@ const CardTest = ({ data }) => {
           />
         )}
 
-        <div className=" max-w-[350px] h-[130px] relative mx-auto">
+        <div
+          className={cn("max-w-[350px] h-[130px] relative mx-auto", {
+            "w-[408px] h-[177px] max-w-full": data.stretchBanner,
+          })}
+        >
           {bannerSrc && (
             <Image
-              className="object-contain mx-auto"
+              className={cn("object-contain mx-auto", {
+                "!w-[408px] !h-[164px] object-cover rounded-tl-[15px] rounded-tr-[15px]":
+                  data?.stretchBanner,
+              })}
               src={bannerSrc}
               alt={"banner"}
               fill
@@ -56,15 +68,15 @@ const CardTest = ({ data }) => {
           )}
         </div>
       </div>
-      <div className="h-[108px] bg-white rounded-b-[15px] pt-[12px] pb-[20px] pl-[15px] pr-[5px]">
-        <div className="mb-[20px]">
+      <div className='h-[108px] bg-white rounded-b-[15px] pt-[12px] pb-[20px] pl-[15px] pr-[5px]'>
+        <div className='mb-[20px]'>
           <h2 className={Unbound.className + " " + "text-[16px] font-[400]"}>
-            {data.test_blocks[0].label}
+            {data.test_blocks[0]?.label}
           </h2>
-          <p className="w-[100%] md:w-auto text-[#5E5E5E] text-[14px] font-[500] mb-[5px] md:mb-[15px] mt-[3px]">
-            {isMobile && data.test_blocks[0].description.length !== 0
-              ? `${data.test_blocks[0].description.slice(0, 37)}...`
-              : data.test_blocks[0].description}
+          <p className='w-[100%] md:w-auto text-[#5E5E5E] text-[13px] font-medium leading-normal mb-[5px] md:mb-[15px] mt-1'>
+            {isMobile && data.test_blocks[0]?.description.length !== 0
+              ? `${data.test_blocks[0]?.description.slice(0, 37)}...`
+              : data.test_blocks[0]?.description}
           </p>
         </div>
         <Link
