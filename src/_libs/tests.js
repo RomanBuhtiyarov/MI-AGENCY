@@ -2,8 +2,12 @@ import Image from "next/image";
 import { Enneagrama } from "@/app/[lang]/components/Enneagrama";
 import { PAEIDescription } from "@/app/[lang]/components/PAEI/PAEIDescription";
 import { PAEI } from "@/app/[lang]/components/PAEI";
+import { IPI } from "@/app/[lang]/components/IPI";
 import enneagramImg from "/public/_assets/images/enneagram_img.png";
 import robotLookImg from "/public/_assets/images/robot_img.png";
+import robotLookImg2 from "/public/_assets/images/robot_img_2.png";
+import borderSideCheck from "/public/_assets/images/borderSideCheck.png";
+
 export const tests = (lang) => {
   return [
     {
@@ -32,7 +36,7 @@ export const tests = (lang) => {
           <section className='flex flex-col items-start gap-[20px] mb-[50px]'>
             <PAEIDescription lang={lang} />
             <div className='flex items-center gap-[27px] mt-[10px] md:mt-0'>
-              <div className='relative border border-solid border-2 border-[#347AEC] py-[15px] px-[24px] max-w-[595px] rounded-[15px]'>
+              <div className='relative border-solid border-2 border-[#347AEC] py-[15px] px-[24px] max-w-[595px] rounded-[15px]'>
                 <div className='text-[#262626] leading-[130%]'>
                   <p className='font-[500] mb-[10px]'>{lang.paei_page.robot_hint_p}</p>
                   <h3 className='font-[700]'>{lang.paei_page.robot_hint_h3}</h3>
@@ -80,7 +84,7 @@ export const tests = (lang) => {
                 alt={"robot look"}
                 loading='lazy'
               />
-              <div className='w-full md:w-[400px] relative md:border md:border-solid md:border-2 md:border-[#347AEC] py-[15px] md:px-[24px] w-[369px] rounded-[15px]'>
+              <div className='md:w-[400px] relative md:border-solid md:border-2 md:border-[#347AEC] py-[15px] md:px-[24px] w-[369px] rounded-[15px]'>
                 <div className='text-[#262626] leading-[130%]'>
                   <p className='font-[500] mb-[10px]'>{lang.enneagram_page.robot_hint_p}</p>
                   <h3 className='font-[700]'>{lang.enneagram_page.robot_hint_h3}</h3>
@@ -137,6 +141,69 @@ export const tests = (lang) => {
         path: "logo_owner.png",
       },
       development: true,
+    },
+    {
+      label: lang.ipi_page.title,
+      type: "ipi",
+      description: "Тест дозволяє виявити, наскільки ви відкриті до нови...",
+      banner: "ipi_banner.png",
+      stretchBanner: true,
+      development: false,
+      page: {
+        title: lang.ipi_page.title,
+        description: (
+          <p className='text-[#262626] font-[400] leading-5 tracking-wide'>
+            {lang.ipi_page.description}
+          </p>
+        ),
+        children: (
+          <section className='flex flex-col items-start gap-[20px] mb-[50px]'>
+            <div className='flex items-center gap-[27px] mt-[10px] md:mt-0'>
+              <div className='relative border-solid border-[3px] border-[#347AEC] py-[15px] px-[24px] max-w-[595px] rounded-[15px]'>
+                <div className='text-[#262626] leading-[130%]'>
+                  <p className='font-[500] mb-[10px]'>
+                    {lang.ipi_page.robot_hint_p_1}{" "}
+                    <span className='font-semibold'>{lang.ipi_page.robot_hint_h3}</span>
+                    <span className='font-[500] mb-[10px]'>{lang.ipi_page.robot_hint_p_2}</span>
+                  </p>
+                  <p className='mb-[10px]'>
+                    <p>
+                      <span className='text-[#347AEC] font-black'>3</span> - {lang.ipi_page.point_3}
+                    </p>
+                    <p>
+                      <span className='text-[#347AEC] font-black'>2</span> - {lang.ipi_page.point_2}
+                    </p>
+                    <p>
+                      <span className='text-[#347AEC] font-black'>1</span> - {lang.ipi_page.point_1}
+                    </p>
+                    <p>
+                      <span className='text-[#347AEC] font-black'>0</span> - {lang.ipi_page.point_0}
+                    </p>
+                  </p>
+                  <p>
+                    <span className='font-semibold'>{lang.ipi_page.description_2}</span>
+                  </p>
+                </div>
+              </div>
+              <div className='relative'>
+                <Image
+                  src={borderSideCheck}
+                  alt='check'
+                  loading='lazy'
+                  className='w-[58px] h-[74px] top-[100px] absolute -left-[30px] bg-[#F2F5F8]'
+                />
+                <Image
+                  className='w-[244px] h-[244px]'
+                  src={robotLookImg2}
+                  alt={"robot look"}
+                  loading='lazy'
+                />
+              </div>
+            </div>
+            <IPI lang={lang} />
+          </section>
+        ),
+      },
     },
   ];
 };
