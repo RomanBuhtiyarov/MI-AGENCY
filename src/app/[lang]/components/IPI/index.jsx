@@ -197,7 +197,7 @@ export const IPI = ({ lang }) => {
           </svg>
         </button>
       )}
-      {isShownResult && (
+      {isShownResult && currentQuestion + 1 === generalQuestions && (
         <IPIResult
           contentRef={contentRef}
           answers={userAnswers}
