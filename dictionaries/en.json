@@ -127,24 +127,28 @@
         "description": "A psychological model describing 9 deep..."
       },
       {
-        "label": "MBTI",
-        "description": "Intended for psychological assessment of characte..."
-      },
-      {
-        "label": "Emotional intelligence",
-        "description": "The technique of N. Hall is intended for detection..."
-      },
-      {
-        "label": "Adaptive intelligence",
-        "description": ""
-      },
-      {
-        "label": "Innovative intelligence",
-        "description": ""
+        "label": "Test MBI",
+        "description": "The MBI test is designed to assess the level of burnout a..."
       },
       {
         "label": "Innovative potential of the individual",
         "description": "The test allows you to determine how open you are to n..."
+      },
+      {
+        "label": "Test MBTI",
+        "description": "MBTI is widely used for self-knowledge..."
+      },
+      {
+        "label": "Emotional intelligence",
+        "description": "The emotional intelligence test shows how you..."
+      },
+      {
+        "label": "Spiritual intelligence",
+        "description": "The Spiritual Intelligence Test will help you understand..."
+      },
+      {
+        "label": "New test",
+        "description": ""
       }
     ]
   },

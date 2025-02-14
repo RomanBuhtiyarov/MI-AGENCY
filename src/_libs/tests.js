@@ -15,10 +15,6 @@ export const tests = (lang) => {
       type: "paei",
       description: "В основі методики лежить PAEI-концепція, згід...",
       banner: "paei_banner.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
       development: false,
       page: {
         title: lang.paei_page.title,
@@ -61,10 +57,6 @@ export const tests = (lang) => {
       type: "eneagrama",
       description: "Психологічна модель, що описує 9 глибинних...",
       banner: "enneagram_banner.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
       development: false,
       page: {
         title: lang.enneagram_page.title,
@@ -103,44 +95,11 @@ export const tests = (lang) => {
       },
     },
     {
-      label: "MBTI",
-      description: "Призначений для психологічної оцінки характе...",
-      banner: "MBTI_banner.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
+      label: "MBI",
+      description: "Тест MBI розроблений для оцінки рівня вигорання. В...",
+      banner: "MBI_banner.svg",
       development: true,
-    },
-    {
-      label: "Емоційний інтелект",
-      description: "Методика Н. Холла призначена для виявлен...",
-      banner: "Emotional intelligence.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
-      development: true,
-    },
-    {
-      label: "Адаптивний інтелект",
-      description: <span className='opacity-0'>1</span>,
-      banner: "Adaptive intelligence.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
-      development: true,
-    },
-    {
-      label: "Інноваційний інтелект",
-      description: <span className='opacity-0'>1</span>,
-      banner: "Innovative intelligence.png",
-      owner: {
-        type: "image",
-        path: "logo_owner.png",
-      },
-      development: true,
+      stretchBanner: true,
     },
     {
       label: lang.ipi_page.title,
@@ -204,6 +163,34 @@ export const tests = (lang) => {
           </section>
         ),
       },
+    },
+    {
+      label: "MBTI",
+      description: "Призначений для психологічної оцінки характе...",
+      banner: "MBTI_banner.svg",
+      development: true,
+      stretchBanner: true,
+    },
+    {
+      label: "Емоційний інтелект",
+      description: "Методика Н. Холла призначена для виявлен...",
+      banner: "EmotionalIntelligence_banner.svg",
+      stretchBanner: true,
+      development: true,
+    },
+    {
+      label: "Духовний інтелект",
+      description: "Тест на духовний інтелект допоможе зрозуміти, як ви...",
+      banner: "SpiritualIntelligence_banner.svg",
+      development: true,
+      stretchBanner: true,
+    },
+    {
+      label: "New Test",
+      description: "",
+      banner: "newTest_banner.svg",
+      development: true,
+      stretchBanner: true,
     },
   ];
 };
