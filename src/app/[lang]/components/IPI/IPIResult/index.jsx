@@ -43,7 +43,7 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
     let total = 0;
 
     questions.forEach((question) => {
-      const correctAnswer = answers[question.number.toString()];
+      const correctAnswer = answers[(question.number - 1).toString()];
       const questionType = question.type;
 
       if (correctAnswer) {

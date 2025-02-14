@@ -95,10 +95,6 @@ export const IPI = ({ lang }) => {
     }));
   };
 
-  console.log(currentQuestion);
-  console.log(currentQuestion + 1 === generalQuestions);
-  console.log(isShownResult && currentQuestion + 1 === generalQuestions);
-
   return (
     <div className='max-w-[842px] h-auto mt-[15px]'>
       <div className='text-end w-full flex justify-between'>
