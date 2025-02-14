@@ -1,16 +1,21 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const GreatingBlock = ({ lang }) => {
-  const [imageSrc, setImageSrc] = useState(null);
+  const router = useRouter();
+  const [imageRobotSrc, setRobotImageSrc] = useState(null);
+  const [imageLogoSrc, setLogoImageSrc] = useState(null);
   useEffect(() => {
     const loadImage = async () => {
       try {
-        const imageModule = await import(`/public/_assets/images/greating/greating.png`);
-        setImageSrc(imageModule?.default);
+        const imageRobotModule = await import(`/public/_assets/images/greating/greating_robot.svg`);
+        setRobotImageSrc(imageRobotModule?.default);
+        const imageLogoModule = await import(`/public/_assets/images/PSYMI_logo.svg`);
+        setLogoImageSrc(imageLogoModule?.default);
       } catch (error) {
-        console.error("Error loading image:", error);
+        console.error("Error loading images:", error);
       }
     };
 
@@ -18,29 +23,50 @@ const GreatingBlock = ({ lang }) => {
   }, []);
 
   return (
-    <section className='flex flex-col md:flex-row items-center md:items-start gap-[40px] pt-[0px] md:pt-[60px]'>
-      <div className='relative'>
-        {imageSrc && (
+    <section className='flex mt-[81px]'>
+      <div className='w-[547px]'>
+        {imageLogoSrc && (
           <Image
             className='relative z-10'
-            src={imageSrc}
-            alt={"hello world"}
-            width={156}
-            height={207}
+            src={imageLogoSrc}
+            alt={"logo"}
+            width={547}
+            height={103}
           />
         )}
-        <div className='absolute top-[45px] left-0 w-[150px] h-[150px] bg-gradient-to-r from-[#347AEC] to-[#6764E7] rounded-[50%]'></div>
-      </div>
-      <div className='md:border-solid md:border-4 md:border-[#4485ED] rounded-[15px] md:pt-[16px] md:px-[31px] md:pb-[19px]'>
-        <div className='max-w-[570px] w-full flex flex-col gap-[10px]'>
-          <p className='text-[#4485ED] font-[500] text-[18px]'>{lang.greatings_block.greating}</p>
-          <p className='font-[500] leading-5 tracking-normal'>
-            {lang.greatings_block.description_1}
-          </p>
-          <p className='font-[500] leading-5 tracking-normal'>
-            {lang.greatings_block.description_2}
+        <div className='mt-[27px]'>
+          <p className='text-[#262626] text-3xl font-bold uppercase leading-[40.5px]'>
+            {lang.greatings_block.title}
           </p>
         </div>
+        <div className='cursor-pointer bg-white mt-[18px] w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
+          {lang.greatings_block.description}
+        </div>
+        <div className='mt-[18.5px] flex gap-5'>
+          <button
+            className='bg-white rounded-[10px] text-[#347AEC] font-semibold uppercase flex items-center px-[22px] py-[14px]'
+            onClick={() => router.push(`pages/sign-up`)}
+          >
+            {lang.greatings_block.registration}
+          </button>
+          <button
+            className='bg-white rounded-[10px] text-[#262626] font-semibold uppercase flex items-center px-[16.5px] py-[14px] border-solid border-[3px] border-[#347AEC] '
+            onClick={() => router.push(`get-tested`)}
+          >
+            {lang.greatings_block.take_test}
+          </button>
+        </div>
+      </div>
+      <div>
+        {imageRobotSrc && (
+          <Image
+            className='relative z-10'
+            src={imageRobotSrc}
+            alt={"hello world"}
+            width={356}
+            height={468}
+          />
+        )}
       </div>
     </section>
   );
