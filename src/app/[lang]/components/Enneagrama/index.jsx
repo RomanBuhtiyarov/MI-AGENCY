@@ -11,7 +11,7 @@ import Image from "next/image";
 import { EnneagramaResult } from "./EnneagramaResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import leaveTestingRobot from "/public/_assets/images/leave_testing_robot.png";
+import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 
 export const Enneagrama = ({ lang }) => {
   const { isMobile } = useScreenSize();

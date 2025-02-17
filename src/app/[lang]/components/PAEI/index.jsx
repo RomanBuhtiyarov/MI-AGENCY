@@ -196,7 +196,9 @@ export const PAEI = ({ lang }) => {
         <div className='text-[16px]'>
           <div className='flex items-center justify-start md:justify-end gap-[50px] md:gap-[50px] max-w-[545px] w-full pl-[22px] md:pl-0 md:pr-[19px] mb-[12px]'>
             {new Array(4).fill(null).map((_, i) => (
-              <div className='text-[#5D5D5D] font-[600]'>{i + 1}</div>
+              <div key={i} className='text-[#5D5D5D] font-[600]'>
+                {i + 1}
+              </div>
             ))}
           </div>
           <div className='min-w-[200px] w-[100%] md:w-[545px] flex flex-col gap-[10px] md:gap-[20px]'>
