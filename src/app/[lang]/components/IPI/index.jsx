@@ -11,7 +11,7 @@ import Image from "next/image";
 import { IPIResult } from "./IPIResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import leaveTestingRobot from "/public/_assets/images/leave_testing_robot.png";
+import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import { Checkbox } from "../UI/Checkbox/Checkbox";
 import { cn } from "@/_helpers/cn";
 

@@ -11,7 +11,7 @@ const MainButton = ({
   children,
 }) => {
   return (
-    <buttonc
+    <button
       type={type}
       disabled={disabled}
       onClick={onClick}
@@ -24,7 +24,7 @@ const MainButton = ({
       )}
     >
       {children ?? label}
-    </buttonc>
+    </button>
   );
 };
 

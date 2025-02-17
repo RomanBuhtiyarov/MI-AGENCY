@@ -33,10 +33,10 @@ export default async function RootLayout({ children, params }) {
         />
         <main>
           <Providers>
-            <div className='md:mb-[12px] ml-[5px] md:fixed'>
+            <div className='md:mb-[12px] ml-[25px] md:fixed'>
               <Logo lang={lang} />
             </div>
-            <div className='fixed z-50 left-0 right-0 bottom-0 md:left-[70px] md:right-auto md:bottom-auto md:top-[90px]'>
+            <div className='fixed z-50 left-0 right-0 bottom-0 md:left-[70px] md:right-auto md:bottom-auto md:top-[100px]'>
               <Sidebar lang={lang} />
             </div>
             <div className='md:pl-[350px]'>{children}</div>
