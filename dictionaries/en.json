@@ -771,5 +771,122 @@
         "description": "Indicates a positive attitude toward ambiguous, uncertain, and potentially stressful situations, regardless of their emotional impact. Uncertainty is viewed as an opportunity for choice, development, and gaining new experience. Actions continue even in the absence of complete information for rapid decision-making or task execution. A defining characteristic is the ability to act efficiently and productively in any uncertain scenario, facilitating successful innovation and adaptation in the professional sphere."
       }
     }
+  },
+  "mbi_page": {
+    "title": "Test MBI",
+    "description_1": "The MBI ",
+    "description_2": "test is designed to assess ",
+    "description_3": "the level of burnout. ",
+    "description_4": "It examines components such as emotional exhaustion, feelings of detachment, and reduced personal accomplishments. This helps determine the degree of ",
+    "description_5": "burnout and its impact on an individual.",
+    "robot_hint_1": "For each statement, choose the answer, ",
+    "robot_hint_2": "that most accurately reflects your current state. ",
+    "robot_hint_3": "Evaluate how often you experience the described feeling and select your response according to the provided scale.",
+    "robot_hint_4": "Answer quickly, relying on your first impression, and avoid overthinking.",
+    "answer_options": "Answer options",
+    "answers": {
+      "never": "Never",
+      "several_year": "Several times a year",
+      "once_month": "Once a month",
+      "serveral_month": "Several times a month",
+      "once_week": "Once a week",
+      "several_week": "Several times a week",
+      "every_day": "Every day"
+    },
+    "blocks": "blocks",
+    "done": "Passed"
+  },
+  "mbi_test": {
+    "question_1": "I feel emotionally exhausted by my work.",
+    "question_2": "Working with people all day requires a lot of effort.",
+    "question_3": "I feel that my job is breaking me.",
+    "question_4": "I do many useful things in this job.",
+    "question_5": "I feel that I care for some colleagues or clients impersonally, like they are objects.",
+    "question_6": "I am disappointed with my job.",
+    "question_7": "I feel full of energy.",
+    "question_8": "I feel that I work too much at my job.",
+    "question_9": "I easily understand what my colleagues or clients are feeling.",
+    "question_10": "I get the impression that my colleagues or clients hold me responsible for part of their problems.",
+    "question_11": "I don’t care what happens to some of my colleagues or clients.",
+    "question_12": "I solve my colleagues’ or clients’ problems effectively.",
+    "question_13": "Working in direct contact with people is very stressful for me.",
+    "question_14": "I feel like I am on the edge of a cliff.",
+    "question_15": "I have become more insensitive to people since I started working.",
+    "question_16": "I feel tired when I wake up in the morning and realize I have to face a new workday.",
+    "question_17": "I deal with emotional people at work very calmly.",
+    "question_18": "My job makes me feel like I have a positive impact on people.",
+    "question_19": "I can easily create a relaxed atmosphere with my colleagues or clients.",
+    "question_20": "At the end of the workday, I have no patience left.",
+    "question_21": "I feel invigorated when I’m around my colleagues or clients at work.",
+    "question_22": "I’m afraid this job is making me indifferent."
+  },
+  "mbi_results": {
+    "more": "Learn more",
+    "scores": "points",
+    "title": "MBI result",
+    "emotional_burnout": {
+      "title": "Emotional Burnout",
+      "description_1": "Emotional Burnout: ",
+      "description_2": "The scale assesses the state of physical and emotional exhaustion resulting from constant work-related stress. This condition is characterized by fatigue at the mere thought of work, chronic exhaustion, sleep problems, and physical ailments. For the MBI, as well as for most authors, \"exhaustion is a key component of the syndrome\".",
+      "low": {
+        "title": "Total score of 16 or less: ",
+        "level": "Absence of Burnout",
+        "description_1": "Signs of burnout are absent. Energy levels, a positive attitude towards work, and interactions with others remain stable. Emotional and physical well-being is maintained without feelings of overload or chronic fatigue. ",
+        "description_2": "Work brings satisfaction, and its results serve as motivation for growth and the achievement of new goals. Challenges do not significantly impact productivity or overall mood."
+      },
+      "medium": {
+        "title": "Total score from 17 to 26 inclusive: ",
+        "level": "Moderate burnout",
+        "description_1": "Moderate burnout is accompanied by signs of chronic fatigue, decreased productivity, and sleep disturbances.",
+        "description_2": "Difficulty concentrating may arise, and routine tasks can cause irritation or a sense of overload. In professional activities, a loss of interest and motivation may appear; however, outside of work, emotional well-being remains relatively stable. This state indicates the need to focus on restoring balance between work and personal life."
+      },
+      "high": {
+        "title": "Total score more than 27: ",
+        "level": "Severe burnout",
+        "description_1": "Severe burnout is characterized by intense physical and emotional exhaustion. Persistent fatigue, even after rest, apathy, decreased motivation, and loss of interest in work become dominant feelings.",
+        "description_2": "This condition can lead to a loss of confidence in one’s abilities, difficulties in interacting with colleagues or clients, and a sense of hopelessness. It is often accompanied by high levels of stress, negatively affecting both professional life and overall health."
+      }
+    },
+    "alienation": {
+      "title": "Alienation",
+      "description_1": "Alienation: ",
+      "description_2": "The scale assesses the feeling of detachment and loss of empathy towards others. This state may be characterized by indifference, cynicism, and a negative attitude toward people. Feelings of guilt, avoidance of social interactions, and emotional withdrawal may also occur. In a professional setting, it manifests as a lack of empathy and reluctance to establish emotional connections with others.",
+      "low": {
+        "title": "Total score of 6 or less: ",
+        "level": "The absence of detachment",
+        "description": "The absence of detachment indicates emotional stability, the ability to empathize, and a positive attitude toward others. Interaction with people remains appropriate, without feelings of alienation or indifference. Stressful situations are effectively managed, and healthy relationships with colleagues and clients are maintained."
+      },
+      "medium": {
+        "title": "Total score from 7 to 12 inclusive: ",
+        "level": "Moderate level of detachment",
+        "description": "A moderate level of detachment manifests as emotional distancing, cynicism, or a negative attitude toward others. Interaction with colleagues or clients may present difficulties in establishing an emotional connection. This condition is not critical but requires attention to prevent further deterioration."
+      },
+      "high": {
+        "title": "Total score 13 or more: ",
+        "level": "High level of detachment",
+        "description": "A significant level is characterized by a pronounced sense of detachment, indifference, or even cynicism in relationships with others. Social interactions become burdensome, a sense of guilt for indifference may arise, and the ability for empathy significantly decreases. This state can negatively impact both professional performance and emotional well-being."
+      }
+    },
+    "personal_accomplishments": {
+      "title": "Personal Accomplishments",
+      "description_1": "Personal Accomplishments: ",
+      "description_2": "This scale reflects self-perception of personal success and effectiveness. A person may evaluate themselves negatively, feeling that their efforts are unproductive and the situation is not improving. This can lead to self-doubt and demotivation. A reduction in personal accomplishments is often a result of exhaustion and depersonalization, which further exacerbate overall burnout.",
+      "low": {
+        "title": "Total score of 7 or less: ",
+        "level": "Low assessment of personal achievements",
+        "description": "A low level of personal accomplishment is characterized by significant self-doubt and an inability to achieve professional success effectively. Feelings of hopelessness, lack of motivation, and reduced confidence in professional abilities may arise. This state negatively impacts productivity and the overall attitude toward work."
+      },
+      "medium": {
+        "title": "Total score from 8 to 32 inclusive: ",
+        "level": "Moderate assessment of personal achievements",
+        "description": "A moderate level of personal accomplishment indicates occasional self-doubt. Despite these challenges, success in professional activities is still achievable. However, there may be instances of reduced confidence and motivation. Maintaining a stable emotional state while fulfilling professional responsibilities can sometimes be difficult."
+      },
+      "high": {
+        "title": "Total score of 33 or more: ",
+        "level": "High assessment of personal achievements",
+        "description": "A high level of personal accomplishment demonstrates strong motivation, confidence in abilities, and the capacity to achieve set goals. Efficiency in completing tasks remains high, and professional activities bring satisfaction and a sense of self-fulfillment.",
+        "additional": "A high score in the first two sections and a low score in the last section may indicate burnout."
+      }
+    }
   }
 }

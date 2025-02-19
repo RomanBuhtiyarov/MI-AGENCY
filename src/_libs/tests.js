@@ -8,6 +8,8 @@ import robotLookImg2 from "/public/_assets/images/robot_img_2.png";
 import borderSideCheck from "/public/_assets/images/borderSideCheck.png";
 import paeiBorder from "/public/_assets/images/borders/paei_border.png";
 import eneagramaBorder from "/public/_assets/images/borders/eneagrama_border.png";
+import mbiBorder from "/public/_assets/images/borders/mbi_border.png";
+import MBI from "@/app/[lang]/components/MBI";
 
 export const tests = (lang) => {
   return [
@@ -93,14 +95,13 @@ export const tests = (lang) => {
                     <h3 className='font-bold'>{lang.enneagram_page.robot_hint_h3}</h3>
                   </div>
                 </div>
+                <Image
+                  className='min-w-[400px] absolute right-[0px] top-[0px]'
+                  src={eneagramaBorder}
+                  alt={"eneagramaBorder"}
+                  loading='lazy'
+                />
               </div>
-
-              <Image
-                className='min-w-[400px] absolute right-[515px] top-[270px]'
-                src={eneagramaBorder}
-                alt={"eneagramaBorder"}
-                loading='lazy'
-              />
               <Image
                 className='w-[250px] h-[250px]'
                 src={enneagramImg}
@@ -114,10 +115,122 @@ export const tests = (lang) => {
       },
     },
     {
-      label: "MBI",
+      label: lang.mbi_page.title,
+      type: "mbi",
       description: "Тест MBI розроблений для оцінки рівня вигорання. В...",
       banner: "MBI_banner.svg",
-      development: true,
+      page: {
+        title: lang.mbi_page.title + "123",
+        description: (
+          <p className='text-base text-[#262626] font-medium'>
+            <span className='font-bold'>{lang.mbi_page.description_1}</span>
+            {lang.mbi_page.description_2}
+            <span className='font-bold'>{lang.mbi_page.description_3}</span>
+            {lang.mbi_page.description_4}
+            <span className='font-bold'>{lang.mbi_page.description_5}</span>
+          </p>
+        ),
+        children: (
+          <div>
+            <div className='relative text-[#262626] w-[1050px]'>
+              <Image
+                src={mbiBorder}
+                width={681}
+                height={163}
+                className='absolute top'
+                alt='mbi border'
+              />
+              <p className=' font-medium text-base w-[600px] pt-[17px] pl-[20px]'>
+                {lang.mbi_page.robot_hint_1}
+                <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
+                {lang.mbi_page.robot_hint_3}
+              </p>
+              <p className='font-bold w-[600px] pl-[20px] pt-[20px]'>
+                {lang.mbi_page.robot_hint_3}
+              </p>
+              <Image
+                src={robotLookImg2}
+                alt='robot'
+                loading='lazy'
+                width={236}
+                height={236}
+                className='absolute right-[190px] -top-[30px]'
+              />
+            </div>
+            <div className='mt-[48px]'>
+              <div className='font-unbounded text-3xl text-[#262626]'>
+                {lang.mbi_page.answer_options}
+              </div>
+              <div className='flex gap-6 mt-[21px]'>
+                <div className='flex flex-col gap-[14px]'>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.never}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      0
+                    </div>
+                  </div>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.several_year}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      1
+                    </div>
+                  </div>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.once_month}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      2
+                    </div>
+                  </div>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.serveral_month}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      3
+                    </div>
+                  </div>
+                </div>
+                <div className='flex flex-col gap-[14px]'>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.once_week}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      4
+                    </div>
+                  </div>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[16px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.several_week}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      5
+                    </div>
+                  </div>
+                  <div className='flex gap-5'>
+                    <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
+                      {lang.mbi_page.answers.every_day}
+                    </div>
+                    <div className='bg-white text-[#347AEC] text-[17px] font-unbounded font-bold leading-[130%] w-[56px] h-[49px] pt-[14px] pl-[21px] rounded-[5px] shadow-shadow-20'>
+                      6
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='mt-[37px]'>
+              <MBI lang={lang} />
+            </div>
+          </div>
+        ),
+      },
+      development: false,
       stretchBanner: true,
     },
     {

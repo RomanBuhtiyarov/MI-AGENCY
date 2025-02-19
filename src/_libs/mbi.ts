@@ -1,0 +1,26 @@
+export const mbi = (lang) => {
+  return [
+    { label: lang.mbi_test.question_1, type: 1 },
+    { label: lang.mbi_test.question_2, type: 1 },
+    { label: lang.mbi_test.question_3, type: 1 },
+    { label: lang.mbi_test.question_4, type: 3 },
+    { label: lang.mbi_test.question_5, type: 2 },
+    { label: lang.mbi_test.question_6, type: 1 },
+    { label: lang.mbi_test.question_7, type: 3 },
+    { label: lang.mbi_test.question_8, type: 1 },
+    { label: lang.mbi_test.question_9, type: 3 },
+    { label: lang.mbi_test.question_10, type: 2 },
+    { label: lang.mbi_test.question_11, type: 2 },
+    { label: lang.mbi_test.question_12, type: 3 },
+    { label: lang.mbi_test.question_13, type: 1 },
+    { label: lang.mbi_test.question_14, type: 1 },
+    { label: lang.mbi_test.question_15, type: 2 },
+    { label: lang.mbi_test.question_16, type: 1 },
+    { label: lang.mbi_test.question_17, type: 3 },
+    { label: lang.mbi_test.question_18, type: 3 },
+    { label: lang.mbi_test.question_19, type: 3 },
+    { label: lang.mbi_test.question_20, type: 1 },
+    { label: lang.mbi_test.question_21, type: 3 },
+    { label: lang.mbi_test.question_22, type: 2 },
+  ];
+};

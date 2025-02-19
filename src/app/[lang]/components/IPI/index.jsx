@@ -5,7 +5,6 @@ import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import MainButton from "../UI/Buttons/MainButton";
 import { useState, useEffect, useRef } from "react";
 import { Modal } from "antd";
-import Link from "next/link";
 import { ipi } from "@/_libs/ipi";
 import Image from "next/image";
 import { IPIResult } from "./IPIResult";
