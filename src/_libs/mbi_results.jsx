@@ -7,7 +7,7 @@ import Image from "next/image";
 export const mbi_results = ({ lang, emotional_burnout, alienation, personal_accomplishments }) => {
   let emotional_burnoutKey = "";
   let imageSrc = "";
-
+  let emotionalLevel = "";
   if (emotional_burnout <= 16) {
     emotional_burnoutKey = "low";
     imageSrc = lowLevelImage;
@@ -24,6 +24,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
 
   return [
     {
+      level: emotional_burnoutKey,
       max: 54,
       value: emotional_burnout,
       title: (
@@ -62,6 +63,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       ),
     },
     {
+      level: alienationKey,
       max: 30,
       value: alienation,
       title: <div className='font-unbounded text-3xl'>{lang.mbi_results.alienation.title}</div>,
@@ -84,6 +86,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       ),
     },
     {
+      level: personal_accomplishmentsKey,
       max: 48,
       value: personal_accomplishments,
       title: (

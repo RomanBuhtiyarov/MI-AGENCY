@@ -6,7 +6,7 @@ import optimalLevelImage from "/public/_assets/images/ipi_answers/optimal.png";
 import highLevelImage from "/public/_assets/images/ipi_answers/high.png";
 import { ipi_results } from "@/_libs/ipi_results";
 
-const ProgressBar = ({ max, value }) => {
+const ProgressBar = ({ max, value, level }) => {
   return (
     <div className='mt-[9px] w-[546px]'>
       <div className='flex justify-between px-[7px] mb-[5px] text-[#5D5D5D] font-semibold'>
@@ -17,7 +17,14 @@ const ProgressBar = ({ max, value }) => {
         <div className='bg-white rounded-[9px] p-[10px]  '>
           <div className='flex-start rounded-[29px] w-[521px]  h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
             <div
-              className='rounded-[6px] h-full items-baseline justify-center overflow-hidden break-all bg-[#6764E7] relative transition-all duration-300 ease-in-out;'
+              className={cn(
+                "rounded-[6px] h-full items-baseline justify-center overflow-hidden break-all bg-gradient-to-r from-[#4485ED] to-[#6764E7] relative transition-all duration-300 ease-in-out",
+                {
+                  "opacity-40": level === "low",
+                  "opacity-70": level === "medium",
+                  "": level === "high",
+                },
+              )}
               style={{ width: `${(value / max) * 100}%` }}
             />
           </div>
@@ -56,34 +63,38 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
     return { scores, total };
   }, [answers, questions]);
 
-  const { resultImage, totalText } = useMemo(() => {
+  const { resultImage, totalText, totalLevel } = useMemo(() => {
     let resultImage;
     const totalText = {};
+    let totalLevel = "";
     if (total <= 90) {
       resultImage = lowLevelImage;
       totalText.title = lang.ipi_results.total.low_level.title;
       totalText.level = lang.ipi_results.total.low_level.level;
       totalText.description = lang.ipi_results.total.low_level.description;
+      totalLevel = "low";
     } else if (total <= 163) {
       resultImage = optimalLevelImage;
       totalText.title = lang.ipi_results.total.optimal_level.title;
       totalText.level = lang.ipi_results.total.optimal_level.level;
       totalText.description = lang.ipi_results.total.optimal_level.description;
+      totalLevel = "medium";
     } else {
       resultImage = highLevelImage;
       totalText.title = lang.ipi_results.total.high_level.title;
       totalText.level = lang.ipi_results.total.high_level.level;
       totalText.description = lang.ipi_results.total.high_level.description;
+      totalLevel = "high";
     }
 
-    return { resultImage, totalText };
+    return { resultImage, totalText, totalLevel };
   }, [total]);
 
   return (
     <div ref={contentRef}>
       <div>
         <div className='text-[#262626] text-3xl font-unbounded'>{lang.ipi_results.total.title}</div>
-        <ProgressBar max={210} value={total} />
+        <ProgressBar max={210} value={total} level={totalLevel} />
         <div
           className={cn(
             "cursor-pointer font-unbounded text-xs font-medium text-[#262626] mt-[10px] flex items-center gap-2 duration-300",
@@ -94,12 +105,15 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
           onClick={() => toggleExpanded(0)}
         >
           {lang.ipi_results.more}{" "}
-          <img
-            src={arrowRight.src}
-            alt='more'
-            className={cn("duration-300", {
-              "rotate-90 ": expanded[0],
+          <div
+            className={cn("w-[5px] h-[11px] bg-[#262626] duration-300", {
+              "bg-[#347AEC] rotate-90 w-[8px] h-[16px]": expanded[0],
             })}
+            style={{
+              WebkitMask: `url(${arrowRight.src})`,
+              WebkitMaskSize: "contain",
+              WebkitMaskRepeat: "no-repeat",
+            }}
           />
         </div>
         {expanded[0] && (
@@ -129,7 +143,11 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
         return (
           <div key={result.title} className='mt-4'>
             <div className='text-[#262626] text-3xl font-unbounded'>{result.title}</div>
-            <ProgressBar max={35} value={score} />
+            <ProgressBar
+              max={35}
+              value={score}
+              level={levelkey === "optimal" ? "medium" : levelkey}
+            />
             <div
               className={cn(
                 "cursor-pointer font-unbounded text-xs font-medium text-[#262626] mt-[10px] flex items-center gap-2 duration-300",
@@ -140,12 +158,15 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
               onClick={() => toggleExpanded(expandedIndex)}
             >
               {lang.ipi_results.more}{" "}
-              <img
-                src={arrowRight.src}
-                alt='more'
-                className={cn("duration-300", {
-                  "rotate-90 ": expanded[expandedIndex],
+              <div
+                className={cn("w-[5px] h-[11px] bg-[#262626] duration-300", {
+                  "bg-[#347AEC] rotate-90 w-[8px] h-[16px]": expanded[expandedIndex],
                 })}
+                style={{
+                  WebkitMask: `url(${arrowRight.src})`,
+                  WebkitMaskSize: "contain",
+                  WebkitMaskRepeat: "no-repeat",
+                }}
               />
             </div>
             {expanded[expandedIndex] && (

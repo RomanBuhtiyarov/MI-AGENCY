@@ -141,17 +141,16 @@ export const IPI = ({ lang }) => {
       </div>
 
       <div className='mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto'>
-        {currentQuestion > 0 && (
-          <NextPrevButton
-            className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
-            label={lang.test_page.prev_block_btn}
-            onClick={() => {
-              if (currentQuestion > 0) {
-                setCurrentQuestion((prev) => prev - 1);
-              }
-            }}
-          />
-        )}
+        <NextPrevButton
+          disabled={currentQuestion === 0}
+          className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
+          label={lang.test_page.prev_block_btn}
+          onClick={() => {
+            if (currentQuestion > 0) {
+              setCurrentQuestion((prev) => prev - 1);
+            }
+          }}
+        />
         {currentQuestion < generalQuestions && (
           <NextPrevButton
             disabled={!selectedValue || currentQuestion + 1 === generalQuestions}

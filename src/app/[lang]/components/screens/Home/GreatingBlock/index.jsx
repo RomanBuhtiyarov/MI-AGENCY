@@ -23,7 +23,7 @@ const GreatingBlock = ({ lang }) => {
   }, []);
 
   return (
-    <section className='flex mt-[81px]'>
+    <section className='flex mt-[81px] items-end'>
       <div className='w-[547px]'>
         {imageLogoSrc && (
           <Image
@@ -63,8 +63,8 @@ const GreatingBlock = ({ lang }) => {
             className='relative z-10'
             src={imageRobotSrc}
             alt={"hello world"}
-            width={356}
-            height={468}
+            width={176}
+            height={264}
           />
         )}
       </div>
