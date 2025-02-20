@@ -25,7 +25,7 @@ export const Authorization = ({ session, lang }) => {
           width={434}
           height={151}
           loading='lazy'
-          className='absolute top-[0px] -left-[55px]'
+          className='absolute top-[0px] -left-[55px] mobile:hidden'
         />
         <p className='text-[#262626] font-medium max-w-[350px] leading-5 mb-[65px]'>
           <span className='text-[#347AEC] font-[700] leading-5'>

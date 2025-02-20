@@ -96,14 +96,14 @@ export const IPI = ({ lang }) => {
 
   return (
     <div className='max-w-[842px] h-auto mt-[15px]'>
-      <div className='text-end w-full flex justify-between'>
+      <div className='text-end w-full flex justify-between mobile:justify-normal mobile:gap-[6px]'>
         <MainButton
           className='md:w-[120px] md:mr-[10px] h-[30px]'
           label={lang.enneagram_block.back_btn}
           onClick={showModal}
         />
         <QuestionsCounter
-          className='w-[250px] md:w-auto'
+          className='mobile:flex-1'
           curr={currentQuestion + 1}
           general={generalQuestions}
           lang={lang}
@@ -120,7 +120,7 @@ export const IPI = ({ lang }) => {
       </div>
 
       <div className='flex justify-center flex-col items-center'>
-        <div className='w-[512px] border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
+        <div className='mobile:px-[24px] mobile:gap-[45px] max-w-[512px] border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
           <Checkbox value={1} checked={selectedValue === 1} onChange={handleSubmit} />
           <Checkbox value={2} checked={selectedValue === 2} onChange={handleSubmit} />
           <Checkbox value={3} checked={selectedValue === 3} onChange={handleSubmit} />
@@ -129,7 +129,7 @@ export const IPI = ({ lang }) => {
           <Checkbox value={6} checked={selectedValue === 6} onChange={handleSubmit} />
           <Checkbox value={7} checked={selectedValue === 7} onChange={handleSubmit} />
         </div>
-        <div className='w-[512px] flex gap-[58px] items-center justify-center mt-[10px] text-[#5D5D5D] font-medium font-unbounded'>
+        <div className='max-w-[512px] mobile:gap-[47px] flex gap-[58px] items-center justify-center mt-[10px] text-[#5D5D5D] font-medium font-unbounded'>
           <span>3</span>
           <span>2</span>
           <span>1</span>
@@ -140,7 +140,7 @@ export const IPI = ({ lang }) => {
         </div>
       </div>
 
-      <div className='mb-[50px] md:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto'>
+      <div className='mb-[50px] md:mb-0 mobile:mb-0 flex justify-evenly mt-[20px] w-[300px] mx-auto'>
         <NextPrevButton
           disabled={currentQuestion === 0}
           className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'

@@ -25,7 +25,7 @@ const ArrowButton = ({
         </>
       ) : (
         <>
-          <span>{label}</span>
+          <span className="text-white">{label}</span>
           <ArrowIcon
             isPreviousBlock={isPreviousBlock}
             isBlockButton={isBlockButton}

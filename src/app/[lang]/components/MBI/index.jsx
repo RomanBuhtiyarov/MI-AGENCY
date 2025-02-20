@@ -11,9 +11,11 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
   const relativeIndex = index + (currentPage - 1) * 7;
 
   return (
-    <div className='bg-white justify-between w-[661px] h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px]'>
-      <span className='max-w-[310px] font-medium'>{label}</span>
-      <span className='flex gap-6'>
+    <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px]'>
+      <div className='max-w-[310px] font-medium mobile:text-center mobile:max-w-full mobile:mb-[17px] mobile:text-sm'>
+        {label}
+      </div>
+      <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>
         {[0, 1, 2, 3, 4, 5, 6].map((value) => (
           <Checkbox
             key={value}
@@ -25,7 +27,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
             className='w-[19px] h-[19px]'
           />
         ))}
-      </span>
+      </div>
     </div>
   );
 };
@@ -79,9 +81,9 @@ const MBI = ({ lang }) => {
 
   return (
     <div>
-      <div className='flex gap-[50px]'>
-        <div className='w-[661px]'>
-          <div className='flex gap-[34px] justify-end  pr-[32px]'>
+      <div className='flex gap-[50px] mobile:block'>
+        <div className='max-w-[661px]'>
+          <div className='flex gap-[34px] justify-end pr-[32px] mobile:justify-center mobile:pr-1'>
             {[0, 1, 2, 3, 4, 5, 6].map((number) => (
               <div key={number} className='text-[#5D5D5D] font-semibold '>
                 {number}
@@ -103,7 +105,7 @@ const MBI = ({ lang }) => {
               );
             })}
           </div>
-          <div className='mt-[21px] flex justify-center w-[661px]'>
+          <div className='mt-[21px] flex justify-center max-w-[661px]'>
             <NextPrevButton
               className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
               label={lang.test_page.prev_block_btn}
@@ -121,6 +123,8 @@ const MBI = ({ lang }) => {
               }}
             />
           </div>
+        </div>
+        <div className="flex flex-col mobile:flex-col-reverse">
           <div>
             {Object.keys(userAnswers).length && currentPage === 3 && (
               <button
@@ -133,7 +137,7 @@ const MBI = ({ lang }) => {
                     });
                   }, 200);
                 }}
-                className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px]'
+                className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px] mobile:mb-[30px]'
               >
                 <span className='text-[#262626] text-center font-unbounded text-[16px] md:text-[22px]'>
                   {lang.ipi_page.get_result_btn}
@@ -156,13 +160,13 @@ const MBI = ({ lang }) => {
               </button>
             )}
           </div>
-        </div>
-        <div className='flex items-center justify-center flex-col'>
-          <div className='font-unbounded'>{lang.mbi_page.done}</div>
-          <div className='text-[40px] font-unbounded bg-gradient-to-r from-[#4485ED] to-[#6764E7] text-transparent bg-clip-text'>
-            {currentPage} / 3
+          <div className='flex items-center justify-center flex-col mobile:mt-[15px] mobile:mb-[15px]'>
+            <div className='font-unbounded'>{lang.mbi_page.done}</div>
+            <div className='text-[40px] font-unbounded bg-gradient-to-r from-[#4485ED] to-[#6764E7] text-transparent bg-clip-text'>
+              {currentPage} / 3
+            </div>
+            <div className='text-[#5D5D5D] font-medium'>{lang.mbi_results.blocks}</div>
           </div>
-          <div className='text-[#5D5D5D] font-medium'>{lang.mbi_results.blocks}</div>
         </div>
       </div>
       {isShownResult && currentPage === 3 && (
