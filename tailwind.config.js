@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: { max: "480px" },
+      },
       fontFamily: {
         // 'unbounded': ['__Unbounded_a10cd1']
         unbounded: ["Unbounded", "sans-serif"],
@@ -19,6 +22,9 @@ module.exports = {
       },
       boxShadow: {
         "shadow-20": "0px 0px 20px 0px rgba(109, 124, 140, 0.10)",
+      },
+      dropShadow: {
+        drop: "0px 4px 4px rgba(0, 0, 0, 0.25)",
       },
     },
   },

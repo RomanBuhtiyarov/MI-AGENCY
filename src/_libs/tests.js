@@ -35,7 +35,7 @@ export const tests = (lang) => {
           <section className='flex flex-col items-start gap-[20px] mb-[50px]'>
             <PAEIDescription lang={lang} />
             <div className='relative flex items-center gap-[27px] mt-[10px] md:mt-0 mb-[27px]'>
-              <div className=' py-[15px] px-[24px] max-w-[590px] rounded-[15px]'>
+              <div className='py-[15px] px-[24px] max-w-[590px] rounded-[15px] border-0 border-[#347AEC] border-solid mobile:border-2'>
                 <div className='text-[#262626] leading-[130%]'>
                   <p className='font-medium mb-[10px] leading-[20.8px]'>
                     {lang.paei_page.robot_hint_p}
@@ -46,12 +46,12 @@ export const tests = (lang) => {
                   src={paeiBorder}
                   alt='check'
                   loading='lazy'
-                  className='min-w-[640px] top-[0px] absolute left-[10px] -z-10 bg-[#F2F5F8]'
+                  className='min-w-[640px] top-[0px] absolute left-[10px] -z-10 bg-[#F2F5F8] mobile:hidden'
                   width={640}
                 />
               </div>
               <Image
-                className='w-[269px] h-[269px] absolute -right-[270px] -top-[105px]'
+                className='w-[269px] h-[269px] absolute -right-[270px] -top-[105px] mobile:hidden'
                 src={robotLookImg2}
                 alt={"robot look"}
                 loading='lazy'
@@ -80,30 +80,30 @@ export const tests = (lang) => {
         ),
         children: (
           <section>
-            <div className='flex flex-col-reverse md:flex-row items-center gap-[27px] mb-[105px]'>
+            <div className='flex flex-col-reverse md:flex-row items-center gap-[27px] mb-[105px] mobile:items-start'>
               <Image
-                className='hidden md:block w-[269px] h-[269px] absolute top-[310px] left-[382px]'
+                className='hidden md:block w-[269px] h-[269px] absolute top-[310px] left-[382px] mobile:hidden'
                 src={robotLookImg2}
                 alt={"robot look"}
                 loading='lazy'
               />
-              <div className='relative flex -ml-[54px]'>
-                <div className='w-[269px]' />
-                <div className='md:w-[380px] relative py-[15px] md:px-[24px] w-[320px] rounded-[15px]'>
+              <div className='relative flex -ml-[54px] mobile:-ml-0'>
+                <div className='w-[269px] mobile:hidden' />
+                <div className='md:w-[380px] relative py-[15px] md:px-[24px] w-[320px] rounded-[15px] mobile:w-full'>
                   <div className='text-[#262626] leading-[130%]'>
                     <p className='font-medium mb-[10px]'>{lang.enneagram_page.robot_hint_p}</p>
                     <h3 className='font-bold'>{lang.enneagram_page.robot_hint_h3}</h3>
                   </div>
                 </div>
                 <Image
-                  className='min-w-[400px] absolute right-[0px] top-[0px]'
+                  className='min-w-[400px] absolute right-[0px] top-[0px] mobile:hidden'
                   src={eneagramaBorder}
                   alt={"eneagramaBorder"}
                   loading='lazy'
                 />
               </div>
               <Image
-                className='w-[250px] h-[250px]'
+                className='w-[250px] h-[250px] mobile:mx-auto'
                 src={enneagramImg}
                 alt={"enneagram look"}
                 loading='lazy'
@@ -132,20 +132,20 @@ export const tests = (lang) => {
         ),
         children: (
           <div>
-            <div className='relative text-[#262626] w-[1050px]'>
+            <div className='relative text-[#262626] max-w-[1050px]'>
               <Image
                 src={mbiBorder}
                 width={681}
                 height={163}
-                className='absolute top'
+                className='absolute top mobile:hidden'
                 alt='mbi border'
               />
-              <p className=' font-medium text-base w-[600px] pt-[17px] pl-[20px]'>
+              <p className='font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pl-0'>
                 {lang.mbi_page.robot_hint_1}
                 <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
                 {lang.mbi_page.robot_hint_3}
               </p>
-              <p className='font-bold w-[600px] pl-[20px] pt-[20px]'>
+              <p className='font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pl-0'>
                 {lang.mbi_page.robot_hint_3}
               </p>
               <Image
@@ -154,14 +154,14 @@ export const tests = (lang) => {
                 loading='lazy'
                 width={236}
                 height={236}
-                className='absolute right-[190px] -top-[30px]'
+                className='absolute right-[190px] -top-[30px] mobile:hidden'
               />
             </div>
             <div className='mt-[48px]'>
-              <div className='font-unbounded text-3xl text-[#262626]'>
+              <div className='font-unbounded text-3xl text-[#262626] mobile:text-center'>
                 {lang.mbi_page.answer_options}
               </div>
-              <div className='flex gap-6 mt-[21px]'>
+              <div className='flex gap-6 mt-[21px] mobile:flex-col mobile:gap-[14px] mobile:items-center'>
                 <div className='flex flex-col gap-[14px]'>
                   <div className='flex gap-5'>
                     <div className='bg-white text-[17px] font-semibold leading-[130%] w-[259px] h-[49px] pt-[14px] pl-[19px] rounded-[5px] shadow-shadow-20'>
@@ -281,10 +281,10 @@ export const tests = (lang) => {
                   src={borderSideCheck}
                   alt='check'
                   loading='lazy'
-                  className='w-[58px] h-[74px] top-[100px] absolute -left-[30px] bg-[#F2F5F8]'
+                  className='w-[58px] h-[74px] top-[100px] absolute -left-[30px] bg-[#F2F5F8] mobile:hidden'
                 />
                 <Image
-                  className='w-[244px] h-[244px]'
+                  className='w-[244px] h-[244px] mobile:hidden'
                   src={robotLookImg2}
                   alt={"robot look"}
                   loading='lazy'

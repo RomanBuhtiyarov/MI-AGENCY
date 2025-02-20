@@ -8,14 +8,14 @@ import { ipi_results } from "@/_libs/ipi_results";
 
 const ProgressBar = ({ max, value, level }) => {
   return (
-    <div className='mt-[9px] w-[546px]'>
-      <div className='flex justify-between px-[7px] mb-[5px] text-[#5D5D5D] font-semibold'>
-        <div>{value}</div>
-        <div>{max}</div>
+    <div className='mt-[9px] max-w-[546px]'>
+      <div className='flex justify-between px-[7px] mb-[5px] text-[#5D5D5D] font-semibold mobile:pr-[50px]'>
+        <div className="text-[#5D5D5D]">{value}</div>
+        <div className="text-[#5D5D5D]">{max}</div>
       </div>
       <div className='flex items-center gap-[11px]'>
-        <div className='bg-white rounded-[9px] p-[10px]  '>
-          <div className='flex-start rounded-[29px] w-[521px]  h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
+        <div className='bg-white rounded-[9px] p-[10px] mobile:flex-1'>
+          <div className='flex-start rounded-[29px] max-w-[521px] h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
             <div
               className={cn(
                 "rounded-[6px] h-full items-baseline justify-center overflow-hidden break-all bg-gradient-to-r from-[#4485ED] to-[#6764E7] relative transition-all duration-300 ease-in-out",
@@ -95,45 +95,22 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
       <div>
         <div className='text-[#262626] text-3xl font-unbounded'>{lang.ipi_results.total.title}</div>
         <ProgressBar max={210} value={total} level={totalLevel} />
-        <div
-          className={cn(
-            "cursor-pointer font-unbounded text-xs font-medium text-[#262626] mt-[10px] flex items-center gap-2 duration-300",
-            {
-              "text-[#347AEC] text-[17px]": expanded[0],
-            },
-          )}
-          onClick={() => toggleExpanded(0)}
-        >
-          {lang.ipi_results.more}{" "}
-          <div
-            className={cn("w-[5px] h-[11px] bg-[#262626] duration-300", {
-              "bg-[#347AEC] rotate-90 w-[8px] h-[16px]": expanded[0],
-            })}
-            style={{
-              WebkitMask: `url(${arrowRight.src})`,
-              WebkitMaskSize: "contain",
-              WebkitMaskRepeat: "no-repeat",
-            }}
-          />
-        </div>
-        {expanded[0] && (
-          <div>
-            <div className='text-[#262626] font-medium leading-[20.8px] mt-[29px]'>
-              {lang.ipi_results.total.description_1}
-              <span className='font-bold'>{lang.ipi_results.total.description_2}</span>
-              {lang.ipi_results.total.description_3}
-            </div>
-            <div className='mt-[39px] flex gap-[28px]'>
-              <img src={resultImage.src} alt='result' className='w-[271px] h-[271px]' />
-              <div>
-                <div className='text-[#262626] font-bold text-[25px] leading-[32.5px]'>
-                  {totalText.title} <span className='text-[#347AEC]'>{totalText.level}</span>
-                </div>
-                <div className='mt-[9px] text-lg leading-[23.4px]'>{totalText.description}</div>
+        <div>
+          <div className='text-[#262626] font-medium leading-[20.8px] mt-[29px]'>
+            {lang.ipi_results.total.description_1}
+            <span className='font-bold'>{lang.ipi_results.total.description_2}</span>
+            {lang.ipi_results.total.description_3}
+          </div>
+          <div className='mt-[39px] flex gap-[28px] mobile:flex-col mobile:items-center'>
+            <img src={resultImage.src} alt='result' className='w-[271px] h-[271px] mobile:w-full mobile:h-[391px]' />
+            <div>
+              <div className='text-[#262626] font-bold text-[25px] leading-[32.5px]'>
+                {totalText.title} <span className='text-[#347AEC]'>{totalText.level}</span>
               </div>
+              <div className='mt-[9px] text-lg leading-[23.4px]'>{totalText.description}</div>
             </div>
           </div>
-        )}
+        </div>
       </div>
       {localizedResults?.map((result, index) => {
         const expandedIndex = index + 1;
@@ -142,7 +119,7 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
 
         return (
           <div key={result.title} className='mt-4'>
-            <div className='text-[#262626] text-3xl font-unbounded'>{result.title}</div>
+            <div className='text-[#262626] text-3xl font-unbounded mobile:text-[27px]'>{result.title}</div>
             <ProgressBar
               max={35}
               value={score}
@@ -170,11 +147,11 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
               />
             </div>
             {expanded[expandedIndex] && (
-              <div>
+              <div className="leading-[20.8px]">
                 {result.description}
                 <div className='mt-[19px]'>
                   {result[levelkey].title}
-                  {result[levelkey].description}
+                  <span className="leading-[23.4px]">{result[levelkey].description}</span>
                 </div>
               </div>
             )}

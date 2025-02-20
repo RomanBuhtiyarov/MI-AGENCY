@@ -5,6 +5,7 @@ import { memo, useState, useEffect } from "react";
 import ArrowButton from "@/app/[lang]/components/UI/Buttons/ArrowButton";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { cn } from "@/_helpers/cn";
 
 const User = ({
   font,
@@ -44,7 +45,9 @@ const User = ({
         <div>
           <Link href={userData ? `/${lang.locale}/my-profile` : `/${lang.locale}/pages/sign-up`}>
             <ArrowButton
-              className={!userData ? "w-[100px]" : ""}
+              className={cn("", {
+                "w-[100px]": !userData,
+              })}
               label={
                 userData
                   ? `${lang.sidebar.user.user_button_auth}`

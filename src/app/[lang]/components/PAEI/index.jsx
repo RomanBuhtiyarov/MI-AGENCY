@@ -192,7 +192,7 @@ export const PAEI = ({ lang }) => {
   }, []);
   return (
     <>
-      <div className=' w-[100%] md:mt-0 flex md:gap-[96px] max-w-[780px]  justify-between'>
+      <div className='w-[100%] md:mt-0 flex md:gap-[96px] max-w-[780px] justify-between mobile:gap-[36px] mobile:justify-center '>
         <div className='text-[16px]'>
           <div className='flex items-center justify-start md:justify-end gap-[50px] md:gap-[50px] max-w-[545px] w-full pl-[22px] md:pl-0 md:pr-[19px] mb-[12px]'>
             {new Array(4).fill(null).map((_, i) => (

@@ -29,20 +29,48 @@ const ClientsBlock = ({ lang }) => {
 
   return (
     <section className='mt-[21px]'>
-      <div className='text-[#262626] uppercase text-[40px] leading-[54px] font-bold'>
+      <div className='text-[#262626] uppercase text-[40px] leading-[54px] font-bold mobile:text-[35px] mobile:leading-[47px]'>
         {lang.clients_block.title}
       </div>
 
-      {clients.map(({ image, label }, index) => (
-        <div className='flex gap-2 mt-[13px]' key={index}>
-          <div className='w-[62px] h-[62px] bg-white rounded-[10px] flex items-center justify-center'>
-            <img src={image} alt='client' />
+      <div className='flex mt-[34px] max-w-[877px]'>
+        <div className='flex mobile:block'>
+          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+              <img src={firstClientImage.src} alt='client' />
+            </div>
+            <div className='mobile:text-sm flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+              {lang.clients_block.client_1}
+            </div>
           </div>
-          <div className='bg-white w-full flex items-center px-[18px] py-[15px] rounded-[10px] uppercase text-[#347AEC] leading-[32px] text-[24px] font-bold'>
-            {label}
+          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+              <img src={secondClientImage.src} alt='client' />
+            </div>
+            <div className='mobile:text-sm flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+              {lang.clients_block.client_2}
+            </div>
           </div>
         </div>
-      ))}
+        <div className='flex mobile:block'>
+          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+              <img src={thirdClientImage.src} alt='client' />
+            </div>
+            <div className='mobile:text-sm flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+              {lang.clients_block.client_3}
+            </div>
+          </div>
+          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+              <img src={fourthClientImage.src} alt='client' />
+            </div>
+            <div className='mobile:text-sm flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+              {lang.clients_block.client_4}
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

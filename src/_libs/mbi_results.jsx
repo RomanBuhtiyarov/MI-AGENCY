@@ -7,7 +7,6 @@ import Image from "next/image";
 export const mbi_results = ({ lang, emotional_burnout, alienation, personal_accomplishments }) => {
   let emotional_burnoutKey = "";
   let imageSrc = "";
-  let emotionalLevel = "";
   if (emotional_burnout <= 16) {
     emotional_burnoutKey = "low";
     imageSrc = lowLevelImage;
@@ -31,18 +30,18 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
         <div className='font-unbounded text-3xl'>{lang.mbi_results.emotional_burnout.title}</div>
       ),
       content: (
-        <div>
-          <div className='max-w-[843px] mt-[14px] leading-[20.8px]'>
+        <div className='max-w-[843px]'>
+          <div className='mt-[14px] leading-[20.8px]'>
             <span className='font-bold'>{lang.mbi_results.emotional_burnout.description_1}</span>
             {lang.mbi_results.emotional_burnout.description_2}
           </div>
-          <div className='flex gap-[41px]  mt-[23px]'>
+          <div className='flex gap-[41px] mt-[23px] mobile:block'>
             <Image
               src={imageSrc}
               width={254}
               height={279}
               alt='robot'
-              className='w-[254px] h-[279px]'
+              className='w-[254px] h-[279px] mobile:w-full mobile:h-[391px]'
             />
             <div className='max-w-[547px]'>
               <div className='text-[25px] leading-[130%] font-bold'>
@@ -68,12 +67,12 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       value: alienation,
       title: <div className='font-unbounded text-3xl'>{lang.mbi_results.alienation.title}</div>,
       content: (
-        <div>
-          <div className='max-w-[843px] mt-[14px] leading-[20.8px]'>
+        <div className='max-w-[843px]'>
+          <div className='mt-[14px] leading-[20.8px]'>
             <span className='font-bold'>{lang.mbi_results.alienation.description_1}</span>
             {lang.mbi_results.alienation.description_2}
           </div>
-          <div className='text-[25px] leading-[130%] font-bold max-w-[547px] mt-4'>
+          <div className='text-[25px] leading-[130%] font-bold mt-4'>
             {lang.mbi_results.alienation[alienationKey].title}
             <span className='uppercase text-[#347AEC]'>
               {lang.mbi_results.alienation[alienationKey].level}

@@ -23,11 +23,11 @@ const GreatingBlock = ({ lang }) => {
   }, []);
 
   return (
-    <section className='flex mt-[81px] items-end'>
-      <div className='w-[547px]'>
+    <section className='flex mt-[81px] items-end mobile:mt-[28px]'>
+      <div className='max-w-[547px]'>
         {imageLogoSrc && (
           <Image
-            className='relative z-10'
+            className='relative z-10 max-w-[547px] max-h-[103px] w-full mobile:w-[408px]'
             src={imageLogoSrc}
             alt={"logo"}
             width={547}
@@ -35,14 +35,14 @@ const GreatingBlock = ({ lang }) => {
           />
         )}
         <div className='mt-[27px]'>
-          <p className='text-[#262626] text-3xl font-bold uppercase leading-[40.5px]'>
+          <p className='text-[#262626] text-3xl font-bold uppercase leading-[40.5px] mobile:text-[20px] mobile:leading-[27px]'>
             {lang.greatings_block.title}
           </p>
         </div>
-        <div className='cursor-pointer bg-white mt-[18px] w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
+        <div className='cursor-pointer bg-white mt-[18px] max-w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
           {lang.greatings_block.description}
         </div>
-        <div className='mt-[18.5px] flex gap-5'>
+        <div className='mt-[18.5px] flex gap-5 mobile:justify-between'>
           <button
             className='bg-white rounded-[10px] text-[#347AEC] font-semibold uppercase flex items-center px-[22px] py-[14px]'
             onClick={() => router.push(`pages/sign-up`)}
@@ -60,7 +60,7 @@ const GreatingBlock = ({ lang }) => {
       <div>
         {imageRobotSrc && (
           <Image
-            className='relative z-10'
+            className='relative z-10 mobile:hidden'
             src={imageRobotSrc}
             alt={"hello world"}
             width={176}
