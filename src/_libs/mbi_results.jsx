@@ -1,7 +1,7 @@
 import React from "react";
-import lowLevelImage from "/public/_assets/images/mbi_answers/low.svg";
-import mediumLevelImage from "/public/_assets/images/mbi_answers/medium.svg";
-import highLevelImage from "/public/_assets/images/mbi_answers/high.svg";
+import lowLevelImage from "/public/_assets/images/mbi_answers/low.png";
+import mediumLevelImage from "/public/_assets/images/mbi_answers/medium.png";
+import highLevelImage from "/public/_assets/images/mbi_answers/high.png";
 import Image from "next/image";
 
 export const mbi_results = ({ lang, emotional_burnout, alienation, personal_accomplishments }) => {

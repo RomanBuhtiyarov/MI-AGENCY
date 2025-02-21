@@ -28,7 +28,7 @@
     "title": "Our Clients:",
     "client_1": "Business Owners & Top Management",
     "client_2": "HR & Recruiting Departments",
-    "client_3": "Corporate Psychologists & Business Coaches",
+    "client_3": "Psychologists & Business Coaches",
     "client_4": "HR & Recruiting Agencies"
   },
   "test_platforms": [
@@ -825,6 +825,7 @@
     "scores": "points",
     "title": "MBI result",
     "blocks": "blocks",
+    "saved_results": "Save result",
     "emotional_burnout": {
       "title": "Emotional Burnout",
       "description_1": "Emotional Burnout: ",

@@ -10,7 +10,7 @@ const GreatingBlock = ({ lang }) => {
   useEffect(() => {
     const loadImage = async () => {
       try {
-        const imageRobotModule = await import(`/public/_assets/images/greating/greating_robot.svg`);
+        const imageRobotModule = await import(`/public/_assets/images/greating/greating_robot.png`);
         setRobotImageSrc(imageRobotModule?.default);
         const imageLogoModule = await import(`/public/_assets/images/PSYMI_logo.svg`);
         setLogoImageSrc(imageLogoModule?.default);
@@ -39,7 +39,7 @@ const GreatingBlock = ({ lang }) => {
             {lang.greatings_block.title}
           </p>
         </div>
-        <div className='cursor-pointer bg-white mt-[18px] max-w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
+        <div className='bg-white mt-[18px] max-w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
           {lang.greatings_block.description}
         </div>
         <div className='mt-[18.5px] flex gap-5 mobile:justify-between'>

@@ -33,17 +33,17 @@ const ClientsBlock = ({ lang }) => {
         {lang.clients_block.title}
       </div>
 
-      <div className='flex mt-[34px] max-w-[877px]'>
+      <div className='flex mt-[30px] max-w-[877px]'>
         <div className='flex mobile:block'>
-          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+          <div className='flex flex-col gap-[14px] items-center'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={firstClientImage.src} alt='client' />
             </div>
-            <div className='mobile:text-xs flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            <div className='max-w-[310px] mobile:text-xs flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
               {lang.clients_block.client_1}
             </div>
           </div>
-          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+          <div className='flex flex-col gap-[14px] items-center'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={secondClientImage.src} alt='client' />
             </div>
@@ -53,7 +53,7 @@ const ClientsBlock = ({ lang }) => {
           </div>
         </div>
         <div className='flex mobile:block'>
-          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+          <div className='flex flex-col gap-[14px] items-center'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={thirdClientImage.src} alt='client' />
             </div>
@@ -61,7 +61,7 @@ const ClientsBlock = ({ lang }) => {
               {lang.clients_block.client_3}
             </div>
           </div>
-          <div className='flex flex-col gap-[14px] mt-[13px] items-center'>
+          <div className='flex flex-col gap-[14px] items-center'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={fourthClientImage.src} alt='client' />
             </div>

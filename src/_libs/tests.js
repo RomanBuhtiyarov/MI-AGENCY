@@ -132,29 +132,31 @@ export const tests = (lang) => {
         ),
         children: (
           <div>
-            <div className='relative text-[#262626] max-w-[1050px]'>
-              <Image
-                src={mbiBorder}
-                width={681}
-                height={163}
-                className='absolute top mobile:hidden'
-                alt='mbi border'
-              />
-              <p className='font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pl-0'>
-                {lang.mbi_page.robot_hint_1}
-                <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
-                {lang.mbi_page.robot_hint_3}
-              </p>
-              <p className='font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pl-0'>
-                {lang.mbi_page.robot_hint_3}
-              </p>
+            <div className='flex gap-[30px] items-center text-[#262626] max-w-[1050px]'>
+              <div className="border-2 border-none border-[#347AEC] mobile:border-solid rounded-[15px]">
+                <Image
+                  src={mbiBorder}
+                  width={681}
+                  height={163}
+                  className='absolute top mobile:hidden'
+                  alt='mbi border'
+                />
+                <p className='font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pr-[18px]'>
+                  {lang.mbi_page.robot_hint_1}
+                  <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
+                  {lang.mbi_page.robot_hint_3}
+                </p>
+                <p className='font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pr-[18px] pb-[20px]'>
+                  {lang.mbi_page.robot_hint_3}
+                </p>
+              </div>
               <Image
                 src={robotLookImg2}
                 alt='robot'
                 loading='lazy'
                 width={236}
                 height={236}
-                className='absolute right-[190px] -top-[30px] mobile:hidden'
+                className='mobile:hidden'
               />
             </div>
             <div className='mt-[48px]'>

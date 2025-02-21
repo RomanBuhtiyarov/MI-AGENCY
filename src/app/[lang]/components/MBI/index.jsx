@@ -6,13 +6,19 @@ import { Checkbox } from "../UI/Checkbox/Checkbox";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { cn } from "@/_helpers/cn";
 import MBIResult from "./MBIResult";
+import { Modal } from "antd";
+import MainButton from "../UI/Buttons/MainButton";
+import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
+import { useScreenSize } from "@/hooks/useScreenSize";
+import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
+import Image from "next/image";
 
 const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }) => {
   const relativeIndex = index + (currentPage - 1) * 7;
 
   return (
     <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px]'>
-      <div className='max-w-[310px] font-medium mobile:text-center mobile:max-w-full mobile:mb-[17px] mobile:text-sm'>
+      <div className='max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm'>
         {label}
       </div>
       <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>
@@ -34,6 +40,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 
 const MBI = ({ lang }) => {
   const localizedTests = mbi(lang);
+  const { isMobile } = useScreenSize();
   const [currentPage, setCurrentPage] = useState(1);
   const [userAnswers, setUserAnswers] = useState(() => {
     const storedUserAnswers = localStorage.getItem("mbi_userAnswers");
@@ -41,6 +48,7 @@ const MBI = ({ lang }) => {
     return parsed ?? {};
   });
   const [isShownResult, setIsShownResult] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const currentQuestions = useMemo(() => {
     const questionsPerPage = currentPage > 2 ? 8 : 7;
@@ -81,29 +89,45 @@ const MBI = ({ lang }) => {
 
   return (
     <div>
+      <MainButton
+        className='md:w-[120px] md:mr-[10px] h-[30px] mobile:mb-4'
+        label={lang.enneagram_block.back_btn}
+        onClick={() => setIsModalOpen(true)}
+      />
       <div className='flex gap-[50px] mobile:block'>
-        <div className='max-w-[661px]'>
-          <div className='flex gap-[34px] justify-end pr-[32px] mobile:justify-center mobile:pr-1'>
+        <div className='max-w-[812px] w-full mobile:mb-[50px]'>
+          <div className='flex gap-[34px] justify-end pr-[212px] mobile:justify-center mobile:pr-1'>
             {[0, 1, 2, 3, 4, 5, 6].map((number) => (
               <div key={number} className='text-[#5D5D5D] font-semibold '>
                 {number}
               </div>
             ))}
           </div>
-          <div>
-            {currentQuestions.map(({ label, type }, index) => {
-              return (
-                <Question
-                  key={label}
-                  index={index}
-                  userAnswers={userAnswers}
-                  label={label}
-                  type={type}
-                  handleSubmit={handleSubmit}
-                  currentPage={currentPage}
-                />
-              );
-            })}
+          <div className='flex items-center gap-[58px]'>
+            <div>
+              {currentQuestions.map(({ label, type }, index) => {
+                return (
+                  <Question
+                    key={label}
+                    index={index}
+                    userAnswers={userAnswers}
+                    label={label}
+                    type={type}
+                    handleSubmit={handleSubmit}
+                    currentPage={currentPage}
+                  />
+                );
+              })}
+            </div>
+            <div className='flex items-center mobile:flex-col-reverse'>
+              <div className='flex items-center justify-center flex-col mobile:mt-[15px] mobile:mb-[15px]'>
+                <div className='font-unbounded'>{lang.mbi_page.done}</div>
+                <div className='text-[40px] font-unbounded bg-gradient-to-r from-[#4485ED] to-[#6764E7] text-transparent bg-clip-text'>
+                  {currentPage} / 3
+                </div>
+                <div className='text-[#5D5D5D] font-medium'>{lang.mbi_results.blocks}</div>
+              </div>
+            </div>
           </div>
           <div className='mt-[21px] flex justify-center max-w-[661px]'>
             <NextPrevButton
@@ -123,55 +147,86 @@ const MBI = ({ lang }) => {
               }}
             />
           </div>
-        </div>
-        <div className="flex flex-col mobile:flex-col-reverse">
-          <div>
-            {Object.keys(userAnswers).length && currentPage === 3 && (
-              <button
-                onClick={() => {
-                  setIsShownResult(!isShownResult);
+          {Object.keys(userAnswers).length > 0 && currentPage === 3 && (
+            <button
+              onClick={() => {
+                setIsShownResult(!isShownResult);
+                if (!isShownResult) {
                   setTimeout(() => {
                     window.scrollTo({
-                      top: document.documentElement.scrollHeight,
+                      top:
+                        document.documentElement.scrollHeight -
+                        (window?.innerWidth > 480 ? 1000 : 1800),
                       behavior: "smooth",
                     });
                   }, 200);
-                }}
-                className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px] mobile:mb-[30px]'
+                }
+              }}
+              className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px] mobile:mb-[30px]'
+            >
+              <span className='text-[#262626] text-center font-unbounded text-[16px] md:text-[22px]'>
+                {lang.ipi_page.get_result_btn}
+              </span>
+              <svg
+                className={cn("w-[18px] h-[10px] md:w-22 md:h-11 duration-300", {
+                  "rotate-180": isShownResult,
+                })}
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 22 11'
+                fill='none'
               >
-                <span className='text-[#262626] text-center font-unbounded text-[16px] md:text-[22px]'>
-                  {lang.ipi_page.get_result_btn}
-                </span>
-                <svg
-                  className={cn("w-[18px] h-[10px] md:w-22 md:h-11 duration-300", {
-                    "rotate-180": isShownResult,
-                  })}
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 22 11'
-                  fill='none'
-                >
-                  <path
-                    fillRule='evenodd'
-                    clipRule='evenodd'
-                    d='M0.219168 0.375342C0.564178 -0.0559202 1.19347 -0.125842 1.62473 0.219168L11 7.71941L20.3753 0.219168C20.8066 -0.125842 21.4359 -0.0559202 21.7809 0.375342C22.1259 0.806604 22.056 1.4359 21.6247 1.78091L11 10.2807L0.375342 1.78091C-0.0559202 1.4359 -0.125842 0.806604 0.219168 0.375342Z'
-                    fill='#262626'
-                  />
-                </svg>
-              </button>
-            )}
-          </div>
-          <div className='flex items-center justify-center flex-col mobile:mt-[15px] mobile:mb-[15px]'>
-            <div className='font-unbounded'>{lang.mbi_page.done}</div>
-            <div className='text-[40px] font-unbounded bg-gradient-to-r from-[#4485ED] to-[#6764E7] text-transparent bg-clip-text'>
-              {currentPage} / 3
-            </div>
-            <div className='text-[#5D5D5D] font-medium'>{lang.mbi_results.blocks}</div>
-          </div>
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d='M0.219168 0.375342C0.564178 -0.0559202 1.19347 -0.125842 1.62473 0.219168L11 7.71941L20.3753 0.219168C20.8066 -0.125842 21.4359 -0.0559202 21.7809 0.375342C22.1259 0.806604 22.056 1.4359 21.6247 1.78091L11 10.2807L0.375342 1.78091C-0.0559202 1.4359 -0.125842 0.806604 0.219168 0.375342Z'
+                  fill='#262626'
+                />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
       {isShownResult && currentPage === 3 && (
         <MBIResult lang={lang} answers={userAnswers} questions={localizedTests} />
       )}
+      <Modal
+        className='w-[800px] h-[360px]'
+        open={isModalOpen}
+        width={!isMobile ? 800 : 350}
+        height={360}
+        footer={[]}
+        closable={true}
+        onCancel={() => setIsModalOpen(false)}
+      >
+        <div className='flex items-center'>
+          <Image
+            className='hidden md:block ml-[30px] w-[192px] h-[280px]'
+            src={leaveTestingRobot}
+            alt={"robot look"}
+            loading='lazy'
+          />
+          <div className='md:ml-[50px]'>
+            <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
+              {lang.enneagram_block.modal_window_h1}
+            </h1>
+            <p className='text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]'>
+              {lang.enneagram_block.modal_window_p}
+            </p>
+            <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
+              <EnneagramaButton
+                onClick={handleLeavePage}
+                className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
+                label={lang.enneagram_block.modal_leave_btn}
+              />
+              <EnneagramaButton
+                className='w-[209px] h-[38px]'
+                onClick={() => setIsModalOpen(false)}
+                label={lang.enneagram_block.modal_continue_btn}
+              />
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

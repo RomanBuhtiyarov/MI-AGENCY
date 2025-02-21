@@ -1,21 +1,24 @@
 "use client";
 
 import { mbi_results } from "@/_libs/mbi_results";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import arrowRight from "/public/_assets/images/arrows/arrowRight.svg";
 import { cn } from "@/_helpers/cn";
+import MainButton from "../../UI/Buttons/MainButton";
+import axios from "axios";
+import { Modal } from "antd";
 
 const ProgressBar = ({ max, value, lang, level }) => {
   return (
     <div className='flex gap-[25px] mobile:block '>
-      <div className='mt-[9px] max-w-[546px] mobile:flex-1'>
+      <div className='mt-[9px] max-w-[546px] mobile:flex-1 w-full flex-1'>
         <div className='flex justify-between px-[7px] mb-[5px] text-[#5D5D5D] font-semibold'>
           <div>{value}</div>
           <div>{max}</div>
         </div>
-        <div className='flex items-center gap-[11px]'>
-          <div className='bg-white rounded-[9px] p-[10px] flex-1'>
-            <div className='flex-start rounded-[29px] max-w-[521px] h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
+        <div className='flex items-center gap-[11px] flex-1'>
+          <div className='bg-white rounded-[9px] p-[10px] flex-1 w-full'>
+            <div className='flex-start rounded-[29px] w-full max-w-[521px] h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
               <div
                 className={cn(
                   "rounded-[6px] h-full items-baseline justify-center overflow-hidden break-all bg-gradient-to-r from-[#4485ED] to-[#6764E7] relative transition-all duration-300 ease-in-out",
@@ -43,11 +46,83 @@ const ProgressBar = ({ max, value, lang, level }) => {
 
 const MBIResult = ({ lang, answers, questions }) => {
   const [expanded, setExpanded] = useState(new Array(3).fill(false));
+  const [isAuth, setIsAuth] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   const toggleExpanded = (index) => {
     const newExpanded = [...expanded];
     newExpanded[index] = !newExpanded[index];
     setExpanded(newExpanded);
+  };
+
+  const handleSubmit = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    const data = {
+      test: 1,
+      user: userData.id,
+      type: enneagramResultData.type.toString(),
+      description: "",
+    };
+    try {
+      await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
+      setIsSaved(!isSaved);
+      localStorage.removeItem("mbi_currentPage");
+      localStorage.removeItem("mbi_userAnswers");
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const authToken = localStorage.getItem("authToken");
+      !authToken ? setIsAuth(false) : setIsAuth(true);
+
+      try {
+        // Use ky to make a request with the auth token in the headers
+        const response = await axios.get(
+          `https://psymi.com.ua/${lang.backend_locale}/api/auth/users/me`,
+          {
+            headers: {
+              Authorization: `Token ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        // Set the user data in the component state
+        setUserData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []);
+
+  const authModal = () => {
+    Modal.error({
+      title: lang.test_page.auth_modal.title,
+      content: (
+        <div className='flex flex-col items-center'>
+          <p className='text-left text-[16px] mb-[10px] font-unbounded'>
+            {lang.test_page.auth_modal.description}
+          </p>
+          <MainButton
+            onClick={() => {
+              window.location.href = `/${lang.locale}/pages/sign-up/`;
+            }}
+            label={lang.test_page.auth_modal.button_label}
+          />
+        </div>
+      ),
+      closable: true,
+      centered: true,
+      footer: null,
+    });
   };
 
   const results = useMemo(() => {
@@ -76,7 +151,7 @@ const MBIResult = ({ lang, answers, questions }) => {
           <div
             key={index}
             className={cn("mb-[10px]", {
-              "mobile:mb-[70px]": index+1 === results.length,
+              "mobile:mb-[70px]": index + 1 === results.length,
             })}
           >
             <div>{title}</div>
@@ -108,6 +183,18 @@ const MBIResult = ({ lang, answers, questions }) => {
           </div>
         );
       })}
+      <div className='text-center mx-auto mb-[20px] md:mb-0 mt-[60px]'>
+        <MainButton
+          className='save-button w-[271px] h-[40px] text-[16px] px-[10px] !important mb-[40px]'
+          label={isSaved ? lang.mbi_results.saved_results : lang.enneagram_page.save_button}
+          onClick={isAuth ? handleSubmit : authModal}
+        />
+        {isSaved && (
+          <p className='mt-[10px] text-[10px] font-medium'>
+            {lang.enneagram_page.saved_result_msg}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

@@ -120,7 +120,7 @@ export const IPI = ({ lang }) => {
       </div>
 
       <div className='flex justify-center flex-col items-center'>
-        <div className='mobile:px-[24px] mobile:gap-[45px] max-w-[512px] border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
+        <div className='mobile:px-[24px] rounded-[10px] px-[30px] mobile:gap-[45px] max-w-[512px] shadow-shadow-20 border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
           <Checkbox value={1} checked={selectedValue === 1} onChange={handleSubmit} />
           <Checkbox value={2} checked={selectedValue === 2} onChange={handleSubmit} />
           <Checkbox value={3} checked={selectedValue === 3} onChange={handleSubmit} />
@@ -166,12 +166,16 @@ export const IPI = ({ lang }) => {
         <button
           onClick={() => {
             setIsShownResult(!isShownResult);
-            setTimeout(() => {
-              window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: "smooth",
-              });
-            }, 200);
+            if (!isShownResult) {
+              setTimeout(() => {
+                window.scrollTo({
+                  top:
+                    document.documentElement.scrollHeight -
+                    (window?.innerWidth > 480 ? 1000 : 2380),
+                  behavior: "smooth",
+                });
+              }, 200);
+            }
           }}
           className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px]'
         >

@@ -17,11 +17,12 @@ export const Logo = ({ lang }) => {
 
     loadImage();
   }, []);
+
   return (
     <Link href={`/${lang.locale}/`}>
       {imageSrc && (
         <Image
-          className='w-[186px] h-[60px] md:w-[186px] md:h-[60px] '
+          className='w-[186px] h-[60px] md:w-[186px] md:h-[60px]'
           src={imageSrc}
           alt={"psyMI"}
           loading={"lazy"}
