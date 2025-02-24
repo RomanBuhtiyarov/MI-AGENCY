@@ -44,7 +44,7 @@ const ProgressBar = ({ max, value, lang, level }) => {
   );
 };
 
-const MBIResult = ({ lang, answers, questions }) => {
+const MBIResult = ({ lang, answers, questions, resultRef }) => {
   const [expanded, setExpanded] = useState(new Array(3).fill(false));
   const [isAuth, setIsAuth] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -145,7 +145,7 @@ const MBIResult = ({ lang, answers, questions }) => {
   }, [answers, questions]);
 
   return (
-    <div>
+    <div ref={resultRef}>
       {results.map(({ content, title, max, value, level }, index) => {
         return (
           <div

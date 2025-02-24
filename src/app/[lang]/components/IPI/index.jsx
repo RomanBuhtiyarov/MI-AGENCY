@@ -168,12 +168,7 @@ export const IPI = ({ lang }) => {
             setIsShownResult(!isShownResult);
             if (!isShownResult) {
               setTimeout(() => {
-                window.scrollTo({
-                  top:
-                    document.documentElement.scrollHeight -
-                    (window?.innerWidth > 480 ? 1000 : 2380),
-                  behavior: "smooth",
-                });
+                contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
               }, 200);
             }
           }}

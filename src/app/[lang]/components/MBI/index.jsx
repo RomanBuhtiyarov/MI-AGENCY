@@ -1,7 +1,7 @@
 "use client";
 
 import { mbi } from "@/_libs/mbi";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Checkbox } from "../UI/Checkbox/Checkbox";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { cn } from "@/_helpers/cn";
@@ -49,7 +49,7 @@ const MBI = ({ lang }) => {
   });
   const [isShownResult, setIsShownResult] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const resultRef = useRef(null);
   const currentQuestions = useMemo(() => {
     const questionsPerPage = currentPage > 2 ? 8 : 7;
     const startIndex = (currentPage - 1) * 7;
@@ -153,12 +153,7 @@ const MBI = ({ lang }) => {
                 setIsShownResult(!isShownResult);
                 if (!isShownResult) {
                   setTimeout(() => {
-                    window.scrollTo({
-                      top:
-                        document.documentElement.scrollHeight -
-                        (window?.innerWidth > 480 ? 1000 : 1800),
-                      behavior: "smooth",
-                    });
+                    resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }, 200);
                 }
               }}
@@ -187,7 +182,12 @@ const MBI = ({ lang }) => {
         </div>
       </div>
       {isShownResult && currentPage === 3 && (
-        <MBIResult lang={lang} answers={userAnswers} questions={localizedTests} />
+        <MBIResult
+          lang={lang}
+          answers={userAnswers}
+          questions={localizedTests}
+          resultRef={resultRef}
+        />
       )}
       <Modal
         className='w-[800px] h-[360px]'
