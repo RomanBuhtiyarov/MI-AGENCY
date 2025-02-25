@@ -57,7 +57,12 @@ const MBI = ({ lang }) => {
     return localizedTests.slice(startIndex, endIndex);
   }, [currentPage, localizedTests]);
 
-  const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
+  const {
+    setPreventNavigation,
+    showModal: isModalOpen,
+    setShowModal,
+    setLastUrl,
+  } = useRootContext();
 
   useEffect(() => {
     setPreventNavigation(true);
@@ -83,10 +88,13 @@ const MBI = ({ lang }) => {
     localStorage.setItem("mbi_userAnswers", JSON.stringify(userAnswers));
   }, [currentPage, userAnswers]);
 
-  const handleLeavePage = () => {
+  const handleLeavePage = (url) => {
     localStorage.removeItem("mbi_currentPage");
     localStorage.removeItem("mbi_userAnswers");
     setPreventNavigation(false);
+    if (url) {
+      setLastUrl(url);
+    }
   };
 
   const handleSubmit = ({ index, type, value }) => {
@@ -95,6 +103,21 @@ const MBI = ({ lang }) => {
       [index]: parseInt(value, 10),
     });
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isModalOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
+      }
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.documentElement.style.overflow = "auto";
+      }
+    };
+  }, [isModalOpen]);
 
   return (
     <div>
@@ -219,7 +242,7 @@ const MBI = ({ lang }) => {
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
               <EnneagramaButton
-                onClick={handleLeavePage}
+                onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
                 className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
                 label={lang.enneagram_block.modal_leave_btn}
               />

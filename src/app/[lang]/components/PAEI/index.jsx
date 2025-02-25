@@ -210,6 +210,22 @@ export const PAEI = ({ lang }) => {
     // Обновляем высоту при загрузке компонента
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isModalOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
+      }
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.documentElement.style.overflow = "auto";
+      }
+    };
+  }, [isModalOpen]);
+
   return (
     <>
       <div className='w-[100%] md:mt-0 flex md:gap-[96px] max-w-[780px] justify-between mobile:gap-[36px] mobile:justify-center '>

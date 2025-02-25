@@ -34,7 +34,12 @@ export const IPI = ({ lang }) => {
     return parsed ?? {};
   });
 
-  const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
+  const {
+    setPreventNavigation,
+    showModal: isModalOpen,
+    setShowModal,
+    setLastUrl,
+  } = useRootContext();
 
   useEffect(() => {
     setPreventNavigation(true);
@@ -51,11 +56,14 @@ export const IPI = ({ lang }) => {
     setShowModal(false);
   };
 
-  const handleLeavePage = () => {
+  const handleLeavePage = (url) => {
     localStorage.removeItem("ipi_currentQuestion");
     localStorage.removeItem("ipi_generalCount");
     localStorage.removeItem("ipi_userAnswers");
     setPreventNavigation(false);
+    if (url) {
+      setLastUrl(url);
+    }
   };
 
   useEffect(() => {
@@ -97,6 +105,21 @@ export const IPI = ({ lang }) => {
       [currentQuestion]: value,
     }));
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isModalOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
+      }
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.documentElement.style.overflow = "auto";
+      }
+    };
+  }, [isModalOpen]);
 
   return (
     <div className='max-w-[842px] mobile:max-w-[370px] h-auto mt-[15px]'>
@@ -214,7 +237,7 @@ export const IPI = ({ lang }) => {
         height={360}
         footer={[]}
         closable={true}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => setShowModal(false)}
       >
         <div className='flex items-center'>
           <Image
@@ -232,7 +255,7 @@ export const IPI = ({ lang }) => {
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
               <EnneagramaButton
-                onClick={handleLeavePage}
+                onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
                 className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
                 label={lang.enneagram_block.modal_leave_btn}
               />

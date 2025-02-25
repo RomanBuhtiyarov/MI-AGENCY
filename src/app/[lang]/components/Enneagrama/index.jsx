@@ -5,14 +5,12 @@ import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import MainButton from "../UI/Buttons/MainButton";
 import { useState, useEffect, useRef } from "react";
 import { Modal } from "antd";
-import Link from "next/link";
 import { enneagrama } from "@/_libs/enneagrama";
 import Image from "next/image";
 import { EnneagramaResult } from "./EnneagramaResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
-import { useRouter } from "next/navigation";
 import { useRootContext } from "@/state/rootContext";
 
 export const Enneagrama = ({ lang }) => {
@@ -41,11 +39,14 @@ export const Enneagrama = ({ lang }) => {
     // window.history.back(); // Go back to the previous page
   };
 
-  const handleLeavePage = () => {
+  const handleLeavePage = (url) => {
     localStorage.removeItem("currentQuestion");
     localStorage.removeItem("generalCount");
     localStorage.removeItem("userAnswers");
     setPreventNavigation(false);
+    if (url) {
+      setLastUrl(url);
+    }
   };
   const [height, setHeight] = useState("auto");
 
@@ -118,6 +119,21 @@ export const Enneagrama = ({ lang }) => {
       setCurrentQuestion((prev) => prev + 1);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isModalOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
+      }
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.documentElement.style.overflow = "auto";
+      }
+    };
+  }, [isModalOpen]);
 
   return (
     <div className='max-w-[842px] h-auto mt-[15px]'>
@@ -219,7 +235,7 @@ export const Enneagrama = ({ lang }) => {
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
               <EnneagramaButton
-                onClick={handleLeavePage}
+                onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
                 className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
                 label={lang.enneagram_block.modal_leave_btn}
               />
