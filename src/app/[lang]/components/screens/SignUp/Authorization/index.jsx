@@ -1,5 +1,5 @@
 "use client";
-import avatarImg from "/public/_assets/images/smileRobot.svg";
+import avatarImg from "/public/_assets/images/smileRobot.png";
 import registerBorder from "/public/_assets/images/borders/register_border.png";
 import Image from "next/image";
 import LoginGoogle from "../../../UI/Buttons/LoginGoogle";
@@ -25,11 +25,11 @@ export const Authorization = ({ session, lang }) => {
           width={434}
           height={151}
           loading='lazy'
-          className='absolute top-[0px] -left-[55px] mobile:hidden'
+          className='absolute top-[0px] -left-[55px] mobile:hidden min-w-[434px]'
         />
         <p className='text-[#262626] font-medium max-w-[350px] leading-5 mb-[65px]'>
           <span className='text-[#347AEC] font-[700] leading-5'>
-            {lang.login_page.google_provider.p_highlight}
+            {lang.login_page.google_provider.p_highlight}{" "}
           </span>
           {lang.login_page.google_provider.p_default}
         </p>

@@ -23,7 +23,7 @@ export const PAEIDescription = ({ lang }) => {
 
   return (
     <div className='max-w-[595px] w-full flex flex-row-reverse justify-between relative'>
-      <button className='absolute right-0' onClick={toggleAccordion}>
+      <button className='absolute right-0 -top-4' onClick={toggleAccordion}>
         {isOpen ? (
           <MainButton
             className='text-[14px] md:text-[16px]'

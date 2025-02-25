@@ -38,7 +38,7 @@ const ProgressBar = ({ max, value, level }) => {
   );
 };
 
-export const IPIResult = ({ answers, lang, contentRef, questions }) => {
+export const IPIResult = ({ answers, lang, questions }) => {
   const localizedResults = ipi_results(lang);
   const [expanded, setExpanded] = useState(new Array(7).fill(false));
   const [isAuth, setIsAuth] = useState(false);
@@ -162,7 +162,7 @@ export const IPIResult = ({ answers, lang, contentRef, questions }) => {
   }, [total]);
 
   return (
-    <div ref={contentRef}>
+    <div>
       <div>
         <div className='text-[#262626] text-3xl font-unbounded'>{lang.ipi_results.total.title}</div>
         <ProgressBar max={210} value={total} level={totalLevel} />

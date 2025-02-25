@@ -51,7 +51,7 @@ export default function Sidebar({ lang }) {
     return <div>Error: {error}</div>;
   }
   return (
-    <aside className='w-full h-[80px] md:w-[250px] md:h-[610px]'>
+    <aside className='w-full h-[80px] md:w-[250px] md:h-[610px] pt-[20px]'>
       <div className='w-full h-full bg-white shadow-lg rounded-t-[10px] md:rounded-[15px] pr-[0px] py-[15px] md:px-[20px] md:py-[25px] flex flex-row md:flex-col justify-center md:justify-between items-center md:items-start'>
         <div>
           <div>

@@ -12,12 +12,14 @@ import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }) => {
   const relativeIndex = index + (currentPage - 1) * 7;
 
   return (
-    <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px]'>
+    <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px] mobile:pr-4'>
       <div className='max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm'>
         {label}
       </div>
@@ -39,6 +41,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 };
 
 const MBI = ({ lang }) => {
+  const location = usePathname();
   const localizedTests = mbi(lang);
   const { isMobile } = useScreenSize();
   const [currentPage, setCurrentPage] = useState(1);
@@ -103,7 +106,7 @@ const MBI = ({ lang }) => {
               </div>
             ))}
           </div>
-          <div className='flex items-center gap-[58px]'>
+          <div className='flex items-center gap-[58px] mobile:flex-col'>
             <div>
               {currentQuestions.map(({ label, type }, index) => {
                 return (
@@ -149,6 +152,7 @@ const MBI = ({ lang }) => {
           </div>
           {Object.keys(userAnswers).length > 0 && currentPage === 3 && (
             <button
+              ref={resultRef}
               onClick={() => {
                 setIsShownResult(!isShownResult);
                 if (!isShownResult) {
@@ -182,12 +186,7 @@ const MBI = ({ lang }) => {
         </div>
       </div>
       {isShownResult && currentPage === 3 && (
-        <MBIResult
-          lang={lang}
-          answers={userAnswers}
-          questions={localizedTests}
-          resultRef={resultRef}
-        />
+        <MBIResult lang={lang} answers={userAnswers} questions={localizedTests} />
       )}
       <Modal
         className='w-[800px] h-[360px]'

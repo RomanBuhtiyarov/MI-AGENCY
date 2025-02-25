@@ -22,7 +22,6 @@ export const IPI = ({ lang }) => {
 
   const [selectedValue, setSelectedValue] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [height, setHeight] = useState("auto");
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
   const [currentQuestion, setCurrentQuestion] = useState(() => {
@@ -68,10 +67,6 @@ export const IPI = ({ lang }) => {
   }, [currentQuestion, userAnswers]);
 
   useEffect(() => {
-    setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
-  }, [isShownResult]);
-
-  useEffect(() => {
     localStorage.setItem("ipi_userAnswers", JSON.stringify(userAnswers));
     if (userAnswers[currentQuestion]) {
       setSelectedValue(parseInt(userAnswers[currentQuestion], 10));
@@ -95,7 +90,7 @@ export const IPI = ({ lang }) => {
   };
 
   return (
-    <div className='max-w-[842px] h-auto mt-[15px]'>
+    <div className='max-w-[842px] mobile:max-w-[370px] h-auto mt-[15px]'>
       <div className='text-end w-full flex justify-between mobile:justify-normal mobile:gap-[6px]'>
         <MainButton
           className='md:w-[120px] md:mr-[10px] h-[30px]'
@@ -120,7 +115,7 @@ export const IPI = ({ lang }) => {
       </div>
 
       <div className='flex justify-center flex-col items-center'>
-        <div className='mobile:px-[24px] rounded-[10px] px-[30px] mobile:gap-[45px] max-w-[512px] shadow-shadow-20 border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
+        <div className='mobile:max-w-[380px] mobile:gap-[32px] mobile:px-[24px] rounded-[10px] px-[30px] max-w-[512px] shadow-shadow-20 border-solid border-[6px] border-white h-[77px] flex gap-[55px] items-center justify-center'>
           <Checkbox value={1} checked={selectedValue === 1} onChange={handleSubmit} />
           <Checkbox value={2} checked={selectedValue === 2} onChange={handleSubmit} />
           <Checkbox value={3} checked={selectedValue === 3} onChange={handleSubmit} />
@@ -129,7 +124,7 @@ export const IPI = ({ lang }) => {
           <Checkbox value={6} checked={selectedValue === 6} onChange={handleSubmit} />
           <Checkbox value={7} checked={selectedValue === 7} onChange={handleSubmit} />
         </div>
-        <div className='max-w-[512px] mobile:gap-[47px] flex gap-[58px] items-center justify-center mt-[10px] text-[#5D5D5D] font-medium font-unbounded'>
+        <div className='mobile:max-w-[380px] mobile:gap-[36px] max-w-[512px] flex gap-[58px] items-center justify-center mt-[10px] text-[#5D5D5D] font-medium font-unbounded'>
           <span>3</span>
           <span>2</span>
           <span>1</span>
@@ -164,6 +159,7 @@ export const IPI = ({ lang }) => {
       </div>
       {Object.keys(userAnswers || {}).length === 30 && currentQuestion + 1 === generalQuestions && (
         <button
+          ref={contentRef}
           onClick={() => {
             setIsShownResult(!isShownResult);
             if (!isShownResult) {
@@ -196,7 +192,7 @@ export const IPI = ({ lang }) => {
       )}
       {isShownResult && currentQuestion + 1 === generalQuestions && (
         <IPIResult
-          contentRef={contentRef}
+          // contentRef={contentRef}
           answers={userAnswers}
           lang={lang}
           questions={localizedTests}

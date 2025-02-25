@@ -30,7 +30,7 @@ export default async function Page(context) {
       >
         {data.label}
       </h1>
-      <div className="pb-[35px] pt-[10px] md:pt-[20px]">
+      <div className="pb-[71px] pt-[10px] md:pt-[20px]">
         {data.page.description}
       </div>
       <div>{data.page.children}</div>
