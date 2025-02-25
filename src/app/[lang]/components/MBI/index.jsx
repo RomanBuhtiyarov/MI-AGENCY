@@ -12,8 +12,7 @@ import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { usePathname } from "next/navigation";
+import { useRootContext } from "@/state/rootContext";
 
 const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }) => {
   const relativeIndex = index + (currentPage - 1) * 7;
@@ -41,7 +40,6 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 };
 
 const MBI = ({ lang }) => {
-  const location = usePathname();
   const localizedTests = mbi(lang);
   const { isMobile } = useScreenSize();
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,7 +49,6 @@ const MBI = ({ lang }) => {
     return parsed ?? {};
   });
   const [isShownResult, setIsShownResult] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const resultRef = useRef(null);
   const currentQuestions = useMemo(() => {
     const questionsPerPage = currentPage > 2 ? 8 : 7;
@@ -59,6 +56,15 @@ const MBI = ({ lang }) => {
     const endIndex = Math.min(startIndex + questionsPerPage, localizedTests.length);
     return localizedTests.slice(startIndex, endIndex);
   }, [currentPage, localizedTests]);
+
+  const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
+
+  useEffect(() => {
+    setPreventNavigation(true);
+    return () => {
+      setPreventNavigation(false);
+    };
+  }, []);
 
   useEffect(() => {
     const storedCurrentPage = localStorage?.getItem("mbi_currentpage");
@@ -80,7 +86,7 @@ const MBI = ({ lang }) => {
   const handleLeavePage = () => {
     localStorage.removeItem("mbi_currentPage");
     localStorage.removeItem("mbi_userAnswers");
-    window.location.href = `/${lang.locale}/get-tested`;
+    setPreventNavigation(false);
   };
 
   const handleSubmit = ({ index, type, value }) => {
@@ -95,7 +101,7 @@ const MBI = ({ lang }) => {
       <MainButton
         className='md:w-[120px] md:mr-[10px] h-[30px] mobile:mb-4'
         label={lang.enneagram_block.back_btn}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => setShowModal(true)}
       />
       <div className='flex gap-[50px] mobile:block'>
         <div className='max-w-[812px] w-full mobile:mb-[50px]'>
@@ -195,7 +201,7 @@ const MBI = ({ lang }) => {
         height={360}
         footer={[]}
         closable={true}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => setShowModal(false)}
       >
         <div className='flex items-center'>
           <Image
@@ -219,7 +225,7 @@ const MBI = ({ lang }) => {
               />
               <EnneagramaButton
                 className='w-[209px] h-[38px]'
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setShowModal(false)}
                 label={lang.enneagram_block.modal_continue_btn}
               />
             </div>

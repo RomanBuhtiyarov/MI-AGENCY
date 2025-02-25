@@ -61,6 +61,12 @@ const News = ({ lang }) => {
       if (filters.language.length > 0 && !filters.language.includes(post.language)) {
         return false;
       }
+      console.log();
+      
+
+      if (!post.imageUrl) {
+        return false;
+      }
 
       return true;
     })

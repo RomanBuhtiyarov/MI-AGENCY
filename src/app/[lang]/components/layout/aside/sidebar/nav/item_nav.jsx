@@ -1,19 +1,25 @@
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { useRootContext } from "@/state/rootContext";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export const ItemNav = ({ data, setCurrentTab, currentTab }) => {
   const { isMobile } = useScreenSize();
   const pathname = usePathname();
   const segments = pathname.replace(/^\/|\/$/g, "").split("/");
   const slug = segments.length > 1 ? segments.pop() : "";
+  const router = useRouter();
+  const { navigate } = useRootContext();
   return (
     <li key={data.key} onClick={() => setCurrentTab(data.key)}>
-      <Link
-        href={`/${data.locale}${data.href}`}
-        prefetch={false}
-        className='flex flex-col text-center md:flex-row items-center gap-[7px] md:gap-[14px] item-nav'
+      <span
+        onClick={() => {
+          navigate(`/${data.locale}${data.href}`);
+        }}
+        // href={`/${data.locale}${data.href}`}
+        // prefetch={false}
+        className='flex flex-col text-center md:flex-row items-center gap-[7px] md:gap-[14px] item-nav cursor-pointer'
       >
         <span
           className={`w-[35px] h-[35px] md:w-[21px] md:h-[21px] rounded-[100%] flex items-center justify-center ${
@@ -41,7 +47,7 @@ export const ItemNav = ({ data, setCurrentTab, currentTab }) => {
         <p className='text-[9px] md:text-[16px] w-[50px] md:w-auto'>
           {data.label && Object.values(data.label)[1]}
         </p>
-      </Link>
+      </span>
     </li>
   );
 };

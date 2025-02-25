@@ -12,17 +12,32 @@ import { EnneagramaResult } from "./EnneagramaResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
+import { useRouter } from "next/navigation";
+import { useRootContext } from "@/state/rootContext";
 
 export const Enneagrama = ({ lang }) => {
   const { isMobile } = useScreenSize();
   const localizedTests = enneagrama(lang);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const {
+    setPreventNavigation,
+    showModal: isModalOpen,
+    setShowModal,
+    setLastUrl,
+  } = useRootContext();
+
+  useEffect(() => {
+    setPreventNavigation(true);
+    return () => {
+      setPreventNavigation(false);
+    };
+  }, []);
+
   const showModal = () => {
-    setIsModalOpen(true);
+    setShowModal(true);
   };
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setShowModal(false);
     // window.history.back(); // Go back to the previous page
   };
 
@@ -30,7 +45,7 @@ export const Enneagrama = ({ lang }) => {
     localStorage.removeItem("currentQuestion");
     localStorage.removeItem("generalCount");
     localStorage.removeItem("userAnswers");
-    window.location.href = `/${lang.locale}/get-tested`; // Redirect to the specified URL
+    setPreventNavigation(false);
   };
   const [height, setHeight] = useState("auto");
 
@@ -186,7 +201,7 @@ export const Enneagrama = ({ lang }) => {
         height={360}
         footer={[]}
         closable={true}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => setShowModal(false)}
       >
         <div className='flex items-center'>
           <Image

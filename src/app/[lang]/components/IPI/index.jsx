@@ -13,6 +13,7 @@ import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import { Checkbox } from "../UI/Checkbox/Checkbox";
 import { cn } from "@/_helpers/cn";
+import { useRootContext } from "@/state/rootContext";
 
 export const IPI = ({ lang }) => {
   const { isMobile } = useScreenSize();
@@ -21,7 +22,6 @@ export const IPI = ({ lang }) => {
   const contentRef = useRef(null);
 
   const [selectedValue, setSelectedValue] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
   const [currentQuestion, setCurrentQuestion] = useState(() => {
@@ -34,19 +34,28 @@ export const IPI = ({ lang }) => {
     return parsed ?? {};
   });
 
+  const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
+
+  useEffect(() => {
+    setPreventNavigation(true);
+    return () => {
+      setPreventNavigation(false);
+    };
+  }, []);
+
   const showModal = () => {
-    setIsModalOpen(true);
+    setShowModal(true);
   };
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setShowModal(false);
   };
 
   const handleLeavePage = () => {
     localStorage.removeItem("ipi_currentQuestion");
     localStorage.removeItem("ipi_generalCount");
     localStorage.removeItem("ipi_userAnswers");
-    window.location.href = `/${lang.locale}/get-tested`;
+    setPreventNavigation(false);
   };
 
   useEffect(() => {

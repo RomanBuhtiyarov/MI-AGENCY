@@ -2,13 +2,19 @@
 
 import BlockTest from "./BlockTest";
 import { useEffect, useState, useRef } from "react";
-
+import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import { tests } from "@/_libs/paei";
 import { PAEIResult } from "./PAEIResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
+import { useRootContext } from "@/state/rootContext";
+import { Modal } from "antd";
+import Image from "next/image";
+import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 export const PAEI = ({ lang }) => {
   const localizedTests = tests(lang);
+  const { isMobile } = useScreenSize();
   const [counterTest, setCounterTest] = useState([]);
   const [currentBlock, setCurrentBlock] = useState(localizedTests.block_1);
   const [currentBlockID, setCurrentBlockID] = useState(1);
@@ -22,6 +28,20 @@ export const PAEI = ({ lang }) => {
     const parsedPAEIAnswers = JSON.parse(storedPAEIAnswers);
     return parsedPAEIAnswers ?? [];
   });
+
+  const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
+
+  useEffect(() => {
+    setPreventNavigation(true);
+    return () => {
+      setPreventNavigation(false);
+    };
+  }, []);
+
+  const handleLeavePage = () => {
+    localStorage.removeItem("paeiAnswers");
+    setPreventNavigation(false);
+  };
 
   useEffect(() => {
     // Зберігаємо дані в локальному сховищі
@@ -364,6 +384,44 @@ export const PAEI = ({ lang }) => {
       {isShownResult && (
         <PAEIResult answers={answers} lang={lang} contentRef={contentRef} height={height} />
       )}
+      <Modal
+        className='w-[800px] h-[360px]'
+        open={isModalOpen}
+        width={!isMobile ? 800 : 350}
+        height={360}
+        footer={[]}
+        closable={true}
+        onCancel={() => setShowModal(false)}
+      >
+        <div className='flex items-center'>
+          <Image
+            className='hidden md:block ml-[30px] w-[192px] h-[280px]'
+            src={leaveTestingRobot}
+            alt={"robot look"}
+            loading='lazy'
+          />
+          <div className='md:ml-[50px]'>
+            <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
+              {lang.enneagram_block.modal_window_h1}
+            </h1>
+            <p className='text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]'>
+              {lang.enneagram_block.modal_window_p}
+            </p>
+            <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
+              <EnneagramaButton
+                onClick={handleLeavePage}
+                className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
+                label={lang.enneagram_block.modal_leave_btn}
+              />
+              <EnneagramaButton
+                className='w-[209px] h-[38px]'
+                onClick={() => setShowModal(false)}
+                label={lang.enneagram_block.modal_continue_btn}
+              />
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
