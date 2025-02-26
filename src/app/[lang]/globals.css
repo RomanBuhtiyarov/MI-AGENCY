@@ -234,3 +234,10 @@ select {
   font-size: 12px;
   font-weight: 500 !important;
 }
+
+.ant-modal-wrap {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 150px;
+}

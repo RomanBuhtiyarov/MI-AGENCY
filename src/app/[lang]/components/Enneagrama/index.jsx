@@ -230,7 +230,7 @@ export const Enneagrama = ({ lang }) => {
             <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
               {lang.enneagram_block.modal_window_h1}
             </h1>
-            <p className='text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]'>
+            <p className='text-justify mobile:pr-[0] md:text-left text-[18px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
               {lang.enneagram_block.modal_window_p}
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>

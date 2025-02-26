@@ -167,7 +167,7 @@ export const IPIResult = ({ answers, lang, questions }) => {
         <div className='text-[#262626] text-3xl font-unbounded'>{lang.ipi_results.total.title}</div>
         <ProgressBar max={210} value={total} level={totalLevel} />
         <div>
-          <div className='text-[#262626] font-medium leading-[20.8px] mt-[29px]'>
+          <div className='text-[#262626] font-medium leading-[20.8px] mt-[29px] text-justify'>
             {lang.ipi_results.total.description_1}
             <span className='font-bold'>{lang.ipi_results.total.description_2}</span>
             {lang.ipi_results.total.description_3}
@@ -182,7 +182,7 @@ export const IPIResult = ({ answers, lang, questions }) => {
               <div className='text-[#262626] font-bold text-[25px] leading-[32.5px]'>
                 {totalText.title} <span className='text-[#347AEC]'>{totalText.level}</span>
               </div>
-              <div className='mt-[9px] text-lg leading-[23.4px]'>{totalText.description}</div>
+              <div className='mt-[9px] text-lg leading-[23.4px] text-justify'>{totalText.description}</div>
             </div>
           </div>
         </div>
@@ -224,11 +224,11 @@ export const IPIResult = ({ answers, lang, questions }) => {
               />
             </div>
             {expanded[expandedIndex] && (
-              <div className='leading-[20.8px]'>
+              <div className='leading-[20.8px] text-justify font-medium'>
                 {result.description}
                 <div className='mt-[19px]'>
                   {result[levelkey].title}
-                  <span className='leading-[23.4px]'>{result[levelkey].description}</span>
+                  <span className='leading-[23.4px] text-justify'>{result[levelkey].description}</span>
                 </div>
               </div>
             )}

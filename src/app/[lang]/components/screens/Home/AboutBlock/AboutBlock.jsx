@@ -9,7 +9,7 @@ const AboutBlock = ({ lang }) => {
       </div>
       <div className='flex gap-[21px] mt-[14px] mobile:block'>
         <div className='max-w-[465px]'>
-          <div className='text-[17px] bg-white rounded-[13px] pt-[11px] pl-[16px] pr-[6px] pb-[20px] text-[#262626] leading-[22.95px] font-medium'>
+          <div className='text-justify text-[17px] bg-white rounded-[13px] pt-[11px] pl-[16px] pr-[20px] pb-[20px] text-[#262626] leading-[22.95px] font-medium'>
             <span className='text-[#347AEC] text-[17px] font-bold'>PSY MI</span>
             {lang.about_block.description}
           </div>
@@ -21,7 +21,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_1}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
               {lang.about_block.description_1}
             </p>
           </div>
@@ -30,7 +30,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_2}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
               {lang.about_block.description_2}
             </p>
           </div>
@@ -39,7 +39,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_3}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
               {lang.about_block.description_3}
             </p>
           </div>

@@ -30,9 +30,9 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
         <div className='font-unbounded text-3xl'>{lang.mbi_results.emotional_burnout.title}</div>
       ),
       content: (
-        <div className='max-w-[843px]'>
-          <div className='mt-[14px] leading-[20.8px]'>
-            <span className='font-bold'>{lang.mbi_results.emotional_burnout.description_1}</span>
+        <div className='max-w-full'>
+          <div className='mt-[14px] leading-[20.8px] text-justify'>
+            <span className='font-bold text-justify'>{lang.mbi_results.emotional_burnout.description_1}</span>
             {lang.mbi_results.emotional_burnout.description_2}
           </div>
           <div className='flex gap-[41px] mt-[23px] mobile:block'>
@@ -43,14 +43,14 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
               alt='robot'
               className='w-[254px] h-[279px] mobile:w-full mobile:h-[391px]'
             />
-            <div className='max-w-[547px]'>
+            <div className='max-w-full'>
               <div className='text-[25px] leading-[130%] font-bold'>
                 {lang.mbi_results.emotional_burnout[emotional_burnoutKey].title}
                 <span className='uppercase text-[#347AEC]'>
                   {lang.mbi_results.emotional_burnout[emotional_burnoutKey].level}
                 </span>
               </div>
-              <div className='mt-[10px] text-lg leading-[23.4px]'>
+              <div className='mt-[10px] text-lg leading-[23.4px] text-justify'>
                 <div>{lang.mbi_results.emotional_burnout[emotional_burnoutKey].description_1}</div>
                 <div className='mt-[16px] '>
                   {lang.mbi_results.emotional_burnout[emotional_burnoutKey].description_2}
@@ -67,8 +67,8 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       value: alienation,
       title: <div className='font-unbounded text-3xl'>{lang.mbi_results.alienation.title}</div>,
       content: (
-        <div className='max-w-[843px]'>
-          <div className='mt-[14px] leading-[20.8px]'>
+        <div className='max-w-full'>
+          <div className='mt-[14px] leading-[20.8px] text-justify'>
             <span className='font-bold'>{lang.mbi_results.alienation.description_1}</span>
             {lang.mbi_results.alienation.description_2}
           </div>
@@ -78,7 +78,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
               {lang.mbi_results.alienation[alienationKey].level}
             </span>
           </div>
-          <div className='text-lg leading-[23.4px] mt-[10px]'>
+          <div className='text-lg leading-[23.4px] mt-[10px] text-justify'>
             {lang.mbi_results.alienation[alienationKey].description}
           </div>
         </div>
@@ -94,24 +94,24 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
         </div>
       ),
       content: (
-        <div className='max-w-[840px]'>
-          <div className='mt-[14px] leading-[20.8px]'>
+        <div className='max-w-full'>
+          <div className='mt-[14px] leading-[20.8px] text-justify'>
             <span className='font-bold'>
               {lang.mbi_results.personal_accomplishments.description_1}
             </span>
             {lang.mbi_results.personal_accomplishments.description_2}
           </div>
-          <div className='text-[25px] leading-[130%] font-bold max-w-[746px] mt-4'>
+          <div className='text-[25px] leading-[130%] font-bold max-w-full mt-4'>
             {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].title}
             <span className='uppercase text-[#347AEC]'>
               {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].level}
             </span>
           </div>
-          <div className='text-lg leading-[23.4px] mt-[10px] max-w-[840px]'>
+          <div className='text-lg leading-[23.4px] mt-[10px] max-w-full text-justify'>
             {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].description}
           </div>
           {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].additional && (
-            <p className='text-[#347AEC] italic font-bold mt-[14px] leading-[23.4px]'>
+            <p className='text-[#347AEC] italic font-bold mt-[14px] leading-[23.4px] text-justify'>
               {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].additional}
             </p>
           )}

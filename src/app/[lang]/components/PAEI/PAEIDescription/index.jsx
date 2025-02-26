@@ -22,8 +22,8 @@ export const PAEIDescription = ({ lang }) => {
   }, []); // Пустой массив зависимостей означает, что useEffect выполняется только один раз при монтировании
 
   return (
-    <div className='max-w-[595px] w-full flex flex-row-reverse justify-between relative'>
-      <button className='absolute right-0 -top-4 mobile:-top-6' onClick={toggleAccordion}>
+    <div className='max-w-[595px] w-full flex flex-row-reverse justify-between relative mt-[35px]'>
+      <button className='absolute right-0 top-0 mobile:-top-6' onClick={toggleAccordion}>
         {isOpen ? (
           <MainButton
             className='text-[14px] md:text-[16px]'

@@ -14,7 +14,7 @@ import MBI from "@/app/[lang]/components/MBI";
 export const tests = (lang) => {
   return [
     {
-      label: lang.paei_page.title,
+      label: <div className='pt-[30px]'>{lang.paei_page.title}</div>, //,
       type: "paei",
       description: "В основі методики лежить PAEI-концепція, згід...",
       banner: "paei_banner.png",
@@ -22,7 +22,7 @@ export const tests = (lang) => {
       page: {
         title: lang.paei_page.title,
         description: (
-          <p className='text-[#262626] font-[400] leading-5 tracking-wide'>
+          <p className='text-[#262626] font-[400] leading-5 tracking-wide text-justify'>
             {lang.paei_page.description_1}{" "}
             <span className='font-semibold'>{lang.paei_page.description_2}</span>{" "}
             {lang.paei_page.description_3}{" "}
@@ -34,10 +34,10 @@ export const tests = (lang) => {
         children: (
           <section className='flex flex-col items-start gap-[20px] mb-[50px]'>
             <PAEIDescription lang={lang} />
-            <div className='relative flex items-center gap-[27px] mt-[10px] md:mt-0 mb-[27px]'>
+            <div className='relative flex items-center gap-[27px] mt-[35px] mb-[27px]'>
               <div className='py-[15px] px-[24px] max-w-[590px] rounded-[15px] border-0 border-[#347AEC] border-solid mobile:border-2'>
                 <div className='text-[#262626] leading-[130%]'>
-                  <p className='font-medium mb-[10px] leading-[20.8px]'>
+                  <p className='font-medium mb-[10px] leading-[20.8px] text-justify'>
                     {lang.paei_page.robot_hint_p}
                   </p>
                   <h3 className='font-bold'>{lang.paei_page.robot_hint_h3}</h3>
@@ -64,7 +64,7 @@ export const tests = (lang) => {
       },
     },
     {
-      label: lang.enneagram_page.title,
+      label: <div className='pt-[30px]'>{lang.enneagram_page.title}</div>,
       type: "eneagrama",
       description: "Психологічна модель, що описує 9 глибинних...",
       banner: "enneagram_banner.png",
@@ -72,7 +72,7 @@ export const tests = (lang) => {
       page: {
         title: lang.enneagram_page.title,
         description: (
-          <p className='font-medium leading-[130%]'>
+          <p className='font-medium leading-[130%] text-justify'>
             <span className='text-[#262626] font-[700]'>{lang.enneagram_page.title}</span>{" "}
             {lang.enneagram_page.description_1}
             <br /> {lang.enneagram_page.description_2} <br />
@@ -82,7 +82,7 @@ export const tests = (lang) => {
           <section>
             <div className='flex flex-col-reverse md:flex-row items-center gap-[27px] mb-[105px] mobile:items-start'>
               <Image
-                className='hidden md:block w-[269px] h-[269px] absolute top-[310px] left-[382px] mobile:hidden'
+                className='hidden md:block w-[269px] h-[269px] absolute top-[280px] left-[382px] mobile:hidden'
                 src={robotLookImg2}
                 alt={"robot look"}
                 loading='lazy'
@@ -90,7 +90,7 @@ export const tests = (lang) => {
               <div className='relative flex -ml-[54px] mobile:-ml-0'>
                 <div className='w-[269px] mobile:hidden' />
                 <div className='md:w-[380px] relative py-[15px] md:px-[24px] w-[320px] rounded-[15px] mobile:w-full'>
-                  <div className='text-[#262626] leading-[130%]'>
+                  <div className='text-[#262626] leading-[130%] text-justify'>
                     <p className='font-medium mb-[10px]'>{lang.enneagram_page.robot_hint_p}</p>
                     <h3 className='font-bold'>{lang.enneagram_page.robot_hint_h3}</h3>
                   </div>
@@ -115,14 +115,14 @@ export const tests = (lang) => {
       },
     },
     {
-      label: lang.mbi_page.title,
+      label: <div className='pt-[30px]'>{lang.mbi_page.title}</div>,
       type: "mbi",
       description: "Тест MBI розроблений для оцінки рівня вигорання. В...",
       banner: "MBI_banner.svg",
       page: {
-        title: lang.mbi_page.title + "123",
+        title: lang.mbi_page.title,
         description: (
-          <p className='text-base text-[#262626] font-medium'>
+          <p className='text-base text-[#262626] font-medium text-justify leading-[25px]'>
             <span className='font-bold'>{lang.mbi_page.description_1}</span>
             {lang.mbi_page.description_2}
             <span className='font-bold'>{lang.mbi_page.description_3}</span>
@@ -133,7 +133,7 @@ export const tests = (lang) => {
         children: (
           <div>
             <div className='flex gap-[30px] items-center text-[#262626] max-w-[1050px]'>
-              <div className="border-2 border-none border-[#347AEC] mobile:border-solid rounded-[15px]">
+              <div className='border-2 border-none border-[#347AEC] mobile:border-solid rounded-[15px] mobile:mt-[26px] mobile:mb-[21px]'>
                 <Image
                   src={mbiBorder}
                   width={681}
@@ -141,12 +141,12 @@ export const tests = (lang) => {
                   className='absolute top mobile:hidden'
                   alt='mbi border'
                 />
-                <p className='font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pr-[18px]'>
+                <p className='leading-[20px] font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pr-[18px] text-justify'>
                   {lang.mbi_page.robot_hint_1}
                   <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
                   {lang.mbi_page.robot_hint_3}
                 </p>
-                <p className='font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pr-[18px] pb-[20px]'>
+                <p className='leading-[20px] font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pr-[18px] pb-[20px] text-justify'>
                   {lang.mbi_page.robot_hint_3}
                 </p>
               </div>
@@ -159,7 +159,7 @@ export const tests = (lang) => {
                 className='mobile:hidden'
               />
             </div>
-            <div className='mt-[48px]'>
+            <div className=''>
               <div className='font-unbounded text-3xl text-[#262626] mobile:text-center'>
                 {lang.mbi_page.answer_options}
               </div>
@@ -236,7 +236,7 @@ export const tests = (lang) => {
       stretchBanner: true,
     },
     {
-      label: lang.ipi_page.title,
+      label: <div className="pt-[30px]">{lang.ipi_page.title}</div>,
       type: "ipi",
       description: "Тест дозволяє виявити, наскільки ви відкриті до нови...",
       banner: "ipi_banner.png",
@@ -245,7 +245,7 @@ export const tests = (lang) => {
       page: {
         title: lang.ipi_page.title,
         description: (
-          <p className='text-[#262626] font-[400] leading-5 tracking-wide'>
+          <p className='text-[#262626] font-[400] leading-5 tracking-wide text-justify mb-[28px]'>
             {lang.ipi_page.description}
           </p>
         ),
@@ -254,7 +254,7 @@ export const tests = (lang) => {
             <div className='flex items-center gap-[27px] mt-[10px] md:mt-0'>
               <div className='relative border-solid border-[3px] border-[#347AEC] py-[15px] px-[24px] max-w-[595px] rounded-[15px]'>
                 <div className='text-[#262626] leading-[130%]'>
-                  <p className='font-[500] mb-[10px]'>
+                  <p className='font-[500] mb-[10px] text-justify'>
                     {lang.ipi_page.robot_hint_p_1}
                     <span className='font-semibold'>{lang.ipi_page.robot_hint_h3}</span>
                     <span className='font-[500] mb-[10px]'>{lang.ipi_page.robot_hint_p_2}</span>

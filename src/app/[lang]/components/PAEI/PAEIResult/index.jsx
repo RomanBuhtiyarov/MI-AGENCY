@@ -186,7 +186,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
         </h1>
 
         {/* Используем результаты теста для отображения соответствующих описаний */}
-        <p className='mt-[10px] mb-[30px] font-medium'>
+        <p className='mt-[10px] mb-[30px] font-medium text-justify'>
           {
             localizedResults.find((desc) => desc.letter === "P")[
               finalResult.includes("P")
@@ -197,7 +197,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
             ]
           }
         </p>
-        <p className='mb-[30px] font-medium'>
+        <p className='mb-[30px] font-medium text-justify'>
           {
             localizedResults.find((desc) => desc.letter === "A")[
               finalResult.includes("A")
@@ -208,7 +208,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
             ]
           }
         </p>
-        <p className='mb-[30px] font-medium'>
+        <p className='mb-[30px] font-medium text-justify'>
           {
             localizedResults.find((desc) => desc.letter === "E")[
               finalResult.includes("E")
@@ -219,7 +219,7 @@ export const PAEIResult = ({ answers, lang, contentRef, height }) => {
             ]
           }
         </p>
-        <p className='mb-[30px] font-medium'>
+        <p className='mb-[30px] font-medium text-justify'>
           {
             localizedResults.find((desc) => desc.letter === "I")[
               finalResult.includes("I")

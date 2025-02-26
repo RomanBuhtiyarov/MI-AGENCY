@@ -19,7 +19,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 
   return (
     <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px] mobile:pr-4'>
-      <div className='max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm'>
+      <div className='leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm text-justify mr-[44px]'>
         {label}
       </div>
       <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>
@@ -127,8 +127,8 @@ const MBI = ({ lang }) => {
         onClick={() => setShowModal(true)}
       />
       <div className='flex gap-[50px] mobile:block'>
-        <div className='max-w-[812px] w-full mobile:mb-[50px]'>
-          <div className='flex gap-[34px] justify-end pr-[212px] mobile:justify-center mobile:pr-1'>
+        <div className='max-w-[1024px] w-full mobile:mb-[50px]'>
+          <div className='flex gap-[34px] justify-end pr-[395px] mobile:justify-center mobile:pr-1'>
             {[0, 1, 2, 3, 4, 5, 6].map((number) => (
               <div key={number} className='text-[#5D5D5D] font-semibold '>
                 {number}
@@ -237,7 +237,7 @@ const MBI = ({ lang }) => {
             <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
               {lang.enneagram_block.modal_window_h1}
             </h1>
-            <p className='text-center md:text-left text-[18px] font-normal font-montserrat leading-[130%] w-[300px] md:w-[350px] mb-[20px] md:mb-[50px]'>
+            <p className='text-justify mobile:pr-[0] md:text-left text-[18px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
               {lang.enneagram_block.modal_window_p}
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>

@@ -158,22 +158,22 @@ export const EnneagramaResult = ({ answers, lang, contentRef, height }) => {
         <p className='mx-auto md:mx-0 w-[60px] bg-[#347AEC] text-[#fff] rounded-[5px] py-[3px] text-center'>
           {resultType} {lang.enneagram_page.n_type}
         </p>
-        <p className='my-[20px] font-medium'>{description}</p>
-        <p className='mb-[20px] font-medium'>
+        <p className='my-[20px] font-medium text-justify'>{description}</p>
+        <p className='mb-[20px] font-medium text-justify'>
           <span className='text-[#347AEC] font-semibold'>{lang.enneagram_page.lifeCreed}</span>{" "}
           {lifeCreed}
         </p>
-        <p className='mb-[20px] font-medium'>
+        <p className='mb-[20px] font-medium text-justify'>
           <span className='text-[#347AEC] font-semibold'>{lang.enneagram_page.keyword}</span>{" "}
           {keyword}
         </p>
-        <p className='mb-[20px] font-medium'>
+        <p className='mb-[20px] font-medium text-justify'>
           <span className='text-[#347AEC] font-semibold'>
             {lang.enneagram_page.careerOrientations}
           </span>
           {careerOrientations}
         </p>
-        <p className='mb-[20px] font-medium'>
+        <p className='mb-[20px] font-medium text-justify'>
           <span className='text-[#347AEC] font-semibold'>
             {lang.enneagram_page.possibleProfessions}
           </span>{" "}

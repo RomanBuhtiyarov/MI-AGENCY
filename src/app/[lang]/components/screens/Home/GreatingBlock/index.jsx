@@ -24,7 +24,7 @@ const GreatingBlock = ({ lang }) => {
 
   return (
     <section className='flex items-end mobile:mt-[28px]'>
-      <div className='max-w-[547px]'>
+      <div className='max-w-[647px]'>
         {imageLogoSrc && (
           <Image
             className='relative z-10 max-w-[547px] max-h-[103px] w-full mobile:w-[360px] mobile:mx-auto'
@@ -39,7 +39,7 @@ const GreatingBlock = ({ lang }) => {
             {lang.greatings_block.title}
           </p>
         </div>
-        <div className='bg-white mt-[18px] max-w-[487px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
+        <div className='text-justify bg-white mt-[18px] max-w-[630px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
           {lang.greatings_block.description}
         </div>
         <div className='mt-[18.5px] flex gap-5 mobile:justify-between'>
