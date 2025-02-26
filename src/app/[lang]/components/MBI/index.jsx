@@ -89,8 +89,10 @@ const MBI = ({ lang }) => {
   }, [currentPage, userAnswers]);
 
   const handleLeavePage = (url) => {
-    localStorage.removeItem("mbi_currentPage");
-    localStorage.removeItem("mbi_userAnswers");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("mbi_currentPage");
+      localStorage.removeItem("mbi_userAnswers");
+    }
     setPreventNavigation(false);
     if (url) {
       setLastUrl(url);

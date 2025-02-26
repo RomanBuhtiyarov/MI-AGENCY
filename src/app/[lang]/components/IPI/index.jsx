@@ -57,9 +57,11 @@ export const IPI = ({ lang }) => {
   };
 
   const handleLeavePage = (url) => {
-    localStorage.removeItem("ipi_currentQuestion");
-    localStorage.removeItem("ipi_generalCount");
-    localStorage.removeItem("ipi_userAnswers");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("ipi_currentQuestion");
+      localStorage.removeItem("ipi_generalCount");
+      localStorage.removeItem("ipi_userAnswers");
+    }
     setPreventNavigation(false);
     if (url) {
       setLastUrl(url);
@@ -245,8 +247,8 @@ export const IPI = ({ lang }) => {
                 {lang.enneagram_block.modal_window_h1}
               </h1>
               <p className='text-justify mobile:pr-[0] md:text-left text-[18px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
-              {lang.enneagram_block.modal_window_p}
-            </p>
+                {lang.enneagram_block.modal_window_p}
+              </p>
               <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
                 <EnneagramaButton
                   onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}

@@ -39,7 +39,9 @@ export const PAEI = ({ lang }) => {
   }, []);
 
   const handleLeavePage = () => {
-    localStorage.removeItem("paeiAnswers");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("paeiAnswers");
+    }
     setPreventNavigation(false);
   };
 

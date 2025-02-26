@@ -40,9 +40,11 @@ export const Enneagrama = ({ lang }) => {
   };
 
   const handleLeavePage = (url) => {
-    localStorage.removeItem("currentQuestion");
-    localStorage.removeItem("generalCount");
-    localStorage.removeItem("userAnswers");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("currentQuestion");
+      localStorage.removeItem("generalCount");
+      localStorage.removeItem("userAnswers");
+    }
     setPreventNavigation(false);
     if (url) {
       setLastUrl(url);
