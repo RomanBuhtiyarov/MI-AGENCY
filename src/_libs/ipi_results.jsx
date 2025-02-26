@@ -11,7 +11,7 @@ export const ipi_results = (lang) => {
       ),
       low: {
         title: (
-          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify font-medium'>
+          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify'>
             {lang.ipi_results.abilityDiscover.low_level.title}
             <span className='text-[#347AEC]'>
               {lang.ipi_results.abilityDiscover.low_level.level}
@@ -22,7 +22,7 @@ export const ipi_results = (lang) => {
       },
       optimal: {
         title: (
-          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify font-medium'>
+          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify'>
             {lang.ipi_results.abilityDiscover.optimal_level.title}
             <span className='text-[#347AEC]'>
               {lang.ipi_results.abilityDiscover.optimal_level.level}
@@ -33,7 +33,7 @@ export const ipi_results = (lang) => {
       },
       high: {
         title: (
-          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify font-medium'>
+          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify'>
             {lang.ipi_results.abilityDiscover.high_level.title}
             <span className='text-[#347AEC]'>
               {lang.ipi_results.abilityDiscover.high_level.level}
