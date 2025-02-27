@@ -13,6 +13,7 @@ import { useScreenSize } from "@/hooks/useScreenSize";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import Image from "next/image";
 import { useRootContext } from "@/state/rootContext";
+import { ConfirmLeaveModal } from "../modals/ConfirmLeaveModal";
 
 const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }) => {
   const relativeIndex = index + (currentPage - 1) * 7;
@@ -41,7 +42,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 
 const MBI = ({ lang }) => {
   const localizedTests = mbi(lang);
-  const { isMobile } = useScreenSize();
+  const [backUrl, setBackUrl] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [userAnswers, setUserAnswers] = useState(() => {
     const storedUserAnswers = localStorage.getItem("mbi_userAnswers");
@@ -126,7 +127,10 @@ const MBI = ({ lang }) => {
       <MainButton
         className='md:w-[120px] md:mr-[10px] h-[30px] mobile:mb-4'
         label={lang.enneagram_block.back_btn}
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setBackUrl(`/${lang.locale}/get-tested`);
+          setShowModal(true);
+        }}
       />
       <div className='flex gap-[50px] mobile:block'>
         <div className='max-w-[1024px] w-full mobile:mb-[50px]'>
@@ -225,44 +229,12 @@ const MBI = ({ lang }) => {
       {isShownResult && currentPage === 3 && (
         <MBIResult lang={lang} answers={userAnswers} questions={localizedTests} />
       )}
-      <Modal
-        className='w-[800px] h-[360px]'
-        open={isModalOpen}
-        width={!isMobile ? 800 : 350}
-        height={360}
-        footer={[]}
-        closable={true}
-        onCancel={() => setShowModal(false)}
-      >
-        <div className='flex items-center'>
-          <Image
-            className='hidden md:block ml-[30px] w-[192px] h-[280px]'
-            src={leaveTestingRobot}
-            alt={"robot look"}
-            loading='lazy'
-          />
-          <div className='md:ml-[50px]'>
-            <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
-              {lang.enneagram_block.modal_window_h1}
-            </h1>
-            <p className='text-justify mobile:pr-[0] md:text-left text-[16px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
-              {lang.enneagram_block.modal_window_p}
-            </p>
-            <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
-              <EnneagramaButton
-                onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
-                className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
-                label={lang.enneagram_block.modal_leave_btn}
-              />
-              <EnneagramaButton
-                className='w-[209px] h-[38px]'
-                onClick={() => setShowModal(false)}
-                label={lang.enneagram_block.modal_continue_btn}
-              />
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <ConfirmLeaveModal
+        isModalOpen={isModalOpen}
+        handleClose={() => setShowModal(false)}
+        handleLeavePage={() => handleLeavePage()}
+        lang={lang}
+      />
     </div>
   );
 };

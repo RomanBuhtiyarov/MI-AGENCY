@@ -4,17 +4,13 @@ import { QuestionsSection } from "./QuestionsSection";
 import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import MainButton from "../UI/Buttons/MainButton";
 import { useState, useEffect, useRef } from "react";
-import { Modal } from "antd";
 import { enneagrama } from "@/_libs/enneagrama";
-import Image from "next/image";
 import { EnneagramaResult } from "./EnneagramaResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
-import { useScreenSize } from "@/hooks/useScreenSize";
-import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import { useRootContext } from "@/state/rootContext";
+import { ConfirmLeaveModal } from "../modals/ConfirmLeaveModal";
 
 export const Enneagrama = ({ lang }) => {
-  const { isMobile } = useScreenSize();
   const localizedTests = enneagrama(lang);
   const {
     setPreventNavigation,
@@ -22,6 +18,7 @@ export const Enneagrama = ({ lang }) => {
     setShowModal,
     setLastUrl,
   } = useRootContext();
+  const [backUrl, setBackUrl] = useState("");
 
   useEffect(() => {
     setPreventNavigation(true);
@@ -34,20 +31,15 @@ export const Enneagrama = ({ lang }) => {
     setShowModal(true);
   };
 
-  const handleCancel = () => {
-    setShowModal(false);
-    // window.history.back(); // Go back to the previous page
-  };
-
-  const handleLeavePage = (url) => {
+  const handleLeavePage = () => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("currentQuestion");
       localStorage.removeItem("generalCount");
       localStorage.removeItem("userAnswers");
     }
     setPreventNavigation(false);
-    if (url) {
-      setLastUrl(url);
+    if (backUrl) {
+      setLastUrl(backUrl);
     }
   };
   const [height, setHeight] = useState("auto");
@@ -143,7 +135,10 @@ export const Enneagrama = ({ lang }) => {
         <MainButton
           className='md:w-[120px] md:mr-[10px] h-[30px]'
           label={lang.enneagram_block.back_btn}
-          onClick={showModal}
+          onClick={() => {
+            setBackUrl(`/${lang.locale}/get-tested`);
+            showModal();
+          }}
         />
         <QuestionsCounter
           className='w-[250px] md:w-auto'
@@ -212,44 +207,12 @@ export const Enneagrama = ({ lang }) => {
           lang={lang}
         />
       )}
-      <Modal
-        className='w-[800px] h-[360px]'
-        open={isModalOpen}
-        width={!isMobile ? 800 : 350}
-        height={360}
-        footer={[]}
-        closable={true}
-        onCancel={() => setShowModal(false)}
-      >
-        <div className='flex items-center'>
-          <Image
-            className='hidden md:block ml-[30px] w-[192px] h-[280px]'
-            src={leaveTestingRobot}
-            alt={"robot look"}
-            loading='lazy'
-          />
-          <div className='md:ml-[50px]'>
-            <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
-              {lang.enneagram_block.modal_window_h1}
-            </h1>
-            <p className='text-justify mobile:pr-[0] md:text-left text-[16px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
-              {lang.enneagram_block.modal_window_p}
-            </p>
-            <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
-              <EnneagramaButton
-                onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
-                className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
-                label={lang.enneagram_block.modal_leave_btn}
-              />
-              <EnneagramaButton
-                className='w-[209px] h-[38px]'
-                onClick={handleCancel}
-                label={lang.enneagram_block.modal_continue_btn}
-              />
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <ConfirmLeaveModal
+        isModalOpen={isModalOpen}
+        handleClose={() => setShowModal(false)}
+        handleLeavePage={() => handleLeavePage()}
+        lang={lang}
+      />
     </div>
   );
 };

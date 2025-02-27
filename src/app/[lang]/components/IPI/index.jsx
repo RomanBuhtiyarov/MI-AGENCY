@@ -1,22 +1,17 @@
 "use client";
 import { QuestionsCounter } from "./QuestionsCounter";
 import { QuestionsSection } from "./QuestionsSection";
-import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
 import MainButton from "../UI/Buttons/MainButton";
 import { useState, useEffect, useRef } from "react";
-import { Modal } from "antd";
 import { ipi } from "@/_libs/ipi";
-import Image from "next/image";
 import { IPIResult } from "./IPIResult";
 import NextPrevButton from "../UI/Buttons/NextPrevButton";
-import { useScreenSize } from "@/hooks/useScreenSize";
-import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import { Checkbox } from "../UI/Checkbox/Checkbox";
 import { cn } from "@/_helpers/cn";
 import { useRootContext } from "@/state/rootContext";
+import { ConfirmLeaveModal } from "../modals/ConfirmLeaveModal";
 
 export const IPI = ({ lang }) => {
-  const { isMobile } = useScreenSize();
   const localizedTests = ipi(lang);
 
   const contentRef = useRef(null);
@@ -33,6 +28,7 @@ export const IPI = ({ lang }) => {
     const parsed = JSON.parse(storedUserAnswers);
     return parsed ?? {};
   });
+  const [backUrl, setBackUrl] = useState("");
 
   const {
     setPreventNavigation,
@@ -52,19 +48,15 @@ export const IPI = ({ lang }) => {
     setShowModal(true);
   };
 
-  const handleCancel = () => {
-    setShowModal(false);
-  };
-
-  const handleLeavePage = (url) => {
+  const handleLeavePage = () => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("ipi_currentQuestion");
       localStorage.removeItem("ipi_generalCount");
       localStorage.removeItem("ipi_userAnswers");
     }
     setPreventNavigation(false);
-    if (url) {
-      setLastUrl(url);
+    if (backUrl) {
+      setLastUrl(backUrl);
     }
   };
 
@@ -130,7 +122,10 @@ export const IPI = ({ lang }) => {
           <MainButton
             className='md:w-[120px] md:mr-[10px] h-[30px]'
             label={lang.enneagram_block.back_btn}
-            onClick={showModal}
+            onClick={() => {
+              setBackUrl(`/${lang.locale}/get-tested`);
+              showModal();
+            }}
           />
           <QuestionsCounter
             className='mobile:flex-1'
@@ -226,44 +221,12 @@ export const IPI = ({ lang }) => {
               </svg>
             </button>
           )}
-        <Modal
-          className='w-[800px] h-[360px]'
-          open={isModalOpen}
-          width={!isMobile ? 800 : 350}
-          height={360}
-          footer={[]}
-          closable={true}
-          onCancel={() => setShowModal(false)}
-        >
-          <div className='flex items-center'>
-            <Image
-              className='hidden md:block ml-[30px] w-[192px] h-[280px]'
-              src={leaveTestingRobot}
-              alt={"robot look"}
-              loading='lazy'
-            />
-            <div className='md:ml-[50px]'>
-              <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
-                {lang.enneagram_block.modal_window_h1}
-              </h1>
-              <p className='text-justify mobile:pr-[0] md:text-left text-[16px] font-montserrat font-medium leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
-                {lang.enneagram_block.modal_window_p}
-              </p>
-              <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
-                <EnneagramaButton
-                  onClick={() => handleLeavePage(`/${lang.locale}/get-tested`)}
-                  className='w-[209px] h-[38px] md:mr-[15px] bg-[#7DACF1]'
-                  label={lang.enneagram_block.modal_leave_btn}
-                />
-                <EnneagramaButton
-                  className='w-[209px] h-[38px]'
-                  onClick={handleCancel}
-                  label={lang.enneagram_block.modal_continue_btn}
-                />
-              </div>
-            </div>
-          </div>
-        </Modal>
+        <ConfirmLeaveModal
+          isModalOpen={isModalOpen}
+          handleClose={() => setShowModal(false)}
+          handleLeavePage={() => handleLeavePage()}
+          lang={lang}
+        />
       </div>
       {isShownResult && currentQuestion + 1 === generalQuestions && (
         <IPIResult
