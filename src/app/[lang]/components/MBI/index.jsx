@@ -94,7 +94,9 @@ const MBI = ({ lang }) => {
       localStorage.removeItem("mbi_currentPage");
       localStorage.removeItem("mbi_userAnswers");
     }
-    setPreventNavigation(false);
+    setTimeout(() => {
+      setPreventNavigation(false);
+    }, 100);
     if (url) {
       setLastUrl(url);
     }

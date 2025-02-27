@@ -54,7 +54,9 @@ export const IPI = ({ lang }) => {
       localStorage.removeItem("ipi_generalCount");
       localStorage.removeItem("ipi_userAnswers");
     }
-    setPreventNavigation(false);
+    setTimeout(() => {
+      setPreventNavigation(false);
+    }, 100);
     if (backUrl) {
       setLastUrl(backUrl);
     }

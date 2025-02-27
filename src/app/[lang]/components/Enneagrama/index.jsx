@@ -37,7 +37,9 @@ export const Enneagrama = ({ lang }) => {
       localStorage.removeItem("generalCount");
       localStorage.removeItem("userAnswers");
     }
-    setPreventNavigation(false);
+    setTimeout(() => {
+      setPreventNavigation(false);
+    }, 100);
     if (backUrl) {
       setLastUrl(backUrl);
     }
