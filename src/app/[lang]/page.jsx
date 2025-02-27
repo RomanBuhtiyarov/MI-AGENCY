@@ -1,6 +1,5 @@
 import GreatingBlock from "./components/screens/Home/GreatingBlock";
 import TrustBlock from "./components/screens/Home/TrustBlock";
-import { Unbounded } from "next/font/google";
 import { getDictionary } from "../../../getDictionary";
 import AboutBlock from "./components/screens/Home/AboutBlock/AboutBlock";
 import ClientsBlock from "./components/screens/Home/ClientsBlock";

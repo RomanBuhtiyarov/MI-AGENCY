@@ -19,7 +19,7 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
 
   return (
     <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px] mobile:pr-4'>
-      <div className='leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm text-justify mr-[44px]'>
+      <div className='leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm mr-[44px]'>
         {label}
       </div>
       <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>
@@ -130,15 +130,15 @@ const MBI = ({ lang }) => {
       />
       <div className='flex gap-[50px] mobile:block'>
         <div className='max-w-[1024px] w-full mobile:mb-[50px]'>
-          <div className='flex gap-[34px] justify-end pr-[395px] mobile:justify-center mobile:pr-1'>
-            {[0, 1, 2, 3, 4, 5, 6].map((number) => (
-              <div key={number} className='text-[#5D5D5D] font-semibold '>
-                {number}
-              </div>
-            ))}
-          </div>
           <div className='flex items-center gap-[58px] mobile:flex-col'>
             <div>
+              <div className='flex gap-[34px]  justify-end pr-[32px] mobile:justify-center mobile:pr-1'>
+                {[0, 1, 2, 3, 4, 5, 6].map((number) => (
+                  <div key={number} className='text-[#5D5D5D] font-semibold '>
+                    {number}
+                  </div>
+                ))}
+              </div>
               {currentQuestions.map(({ label, type }, index) => {
                 return (
                   <Question
@@ -163,57 +163,63 @@ const MBI = ({ lang }) => {
               </div>
             </div>
           </div>
-          <div className='mt-[21px] flex justify-center max-w-[661px]'>
-            <NextPrevButton
-              className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
-              label={lang.test_page.prev_block_btn}
-              onClick={() => {
-                setCurrentPage((prev) => prev - 1);
-              }}
-              disabled={currentPage === 1}
-            />
-            <NextPrevButton
-              disabled={currentPage === 3}
-              className='block-button bg-transparent w-[130px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
-              label={lang.test_page.next_block_btn}
-              onClick={() => {
-                setCurrentPage((prev) => prev + 1);
-              }}
-            />
-          </div>
-          {Object.keys(userAnswers).length > 0 && currentPage === 3 && (
-            <button
-              ref={resultRef}
-              onClick={() => {
-                setIsShownResult(!isShownResult);
-                if (!isShownResult) {
-                  setTimeout(() => {
-                    resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }, 200);
+          <div className='mt-[21px]  max-w-[661px]'>
+            <div className='flex justify-center'>
+              <NextPrevButton
+                className='previous-block block-button bg-transparent w-[140px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
+                label={lang.test_page.prev_block_btn}
+                onClick={() => {
+                  setCurrentPage((prev) => prev - 1);
+                }}
+                disabled={currentPage === 1}
+              />
+              <NextPrevButton
+                disabled={
+                  currentPage === 3 ||
+                  (currentPage === 1 && Object.keys(userAnswers).length < 7) ||
+                  (currentPage === 2 && Object.keys(userAnswers).length < 14)
                 }
-              }}
-              className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px] mobile:mb-[30px]'
-            >
-              <span className='text-[#262626] text-center font-unbounded text-[16px] md:text-[22px]'>
-                {lang.ipi_page.get_result_btn}
-              </span>
-              <svg
-                className={cn("w-[18px] h-[10px] md:w-22 md:h-11 duration-300", {
-                  "rotate-180": isShownResult,
-                })}
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 22 11'
-                fill='none'
+                className='block-button bg-transparent w-[130px] h-[17px] text-[#000] hover:bg-transparent hover:font-bold'
+                label={lang.test_page.next_block_btn}
+                onClick={() => {
+                  setCurrentPage((prev) => prev + 1);
+                }}
+              />
+            </div>
+            {Object.keys(userAnswers).length === 22 && currentPage === 3 && (
+              <button
+                ref={resultRef}
+                onClick={() => {
+                  setIsShownResult(!isShownResult);
+                  if (!isShownResult) {
+                    setTimeout(() => {
+                      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 200);
+                  }
+                }}
+                className='flex items-center justify-center flex-col gap-[5px] w-full py-[26px] mobile:mb-[30px]'
               >
-                <path
-                  fillRule='evenodd'
-                  clipRule='evenodd'
-                  d='M0.219168 0.375342C0.564178 -0.0559202 1.19347 -0.125842 1.62473 0.219168L11 7.71941L20.3753 0.219168C20.8066 -0.125842 21.4359 -0.0559202 21.7809 0.375342C22.1259 0.806604 22.056 1.4359 21.6247 1.78091L11 10.2807L0.375342 1.78091C-0.0559202 1.4359 -0.125842 0.806604 0.219168 0.375342Z'
-                  fill='#262626'
-                />
-              </svg>
-            </button>
-          )}
+                <span className='text-[#262626] text-center font-unbounded text-[16px] md:text-[22px]'>
+                  {lang.ipi_page.get_result_btn}
+                </span>
+                <svg
+                  className={cn("w-[18px] h-[10px] md:w-22 md:h-11 duration-300", {
+                    "rotate-180": isShownResult,
+                  })}
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 22 11'
+                  fill='none'
+                >
+                  <path
+                    fillRule='evenodd'
+                    clipRule='evenodd'
+                    d='M0.219168 0.375342C0.564178 -0.0559202 1.19347 -0.125842 1.62473 0.219168L11 7.71941L20.3753 0.219168C20.8066 -0.125842 21.4359 -0.0559202 21.7809 0.375342C22.1259 0.806604 22.056 1.4359 21.6247 1.78091L11 10.2807L0.375342 1.78091C-0.0559202 1.4359 -0.125842 0.806604 0.219168 0.375342Z'
+                    fill='#262626'
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
       </div>
       {isShownResult && currentPage === 3 && (
@@ -239,7 +245,7 @@ const MBI = ({ lang }) => {
             <h1 className='text-center md:text-left text-[30px] md:text-[42px] font-unbounded'>
               {lang.enneagram_block.modal_window_h1}
             </h1>
-            <p className='text-justify mobile:pr-[0] md:text-left text-[18px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
+            <p className='text-justify mobile:pr-[0] md:text-left text-[16px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[20px] md:mb-[50px]'>
               {lang.enneagram_block.modal_window_p}
             </p>
             <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>

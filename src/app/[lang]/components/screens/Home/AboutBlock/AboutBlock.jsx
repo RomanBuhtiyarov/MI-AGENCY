@@ -21,7 +21,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_1}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
               {lang.about_block.description_1}
             </p>
           </div>
@@ -30,7 +30,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_2}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
               {lang.about_block.description_2}
             </p>
           </div>
@@ -39,7 +39,7 @@ const AboutBlock = ({ lang }) => {
             <div className='uppercase font-unbounded font-bold leading-[27px] text-[20px]'>
               {lang.about_block.title_3}
             </div>
-            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px] text-justify'>
+            <p className='mt-[5px] font-medium text-[17px] leading-[22.95px]'>
               {lang.about_block.description_3}
             </p>
           </div>

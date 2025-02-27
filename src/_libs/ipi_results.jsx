@@ -18,18 +18,28 @@ export const ipi_results = (lang) => {
             </span>
           </div>
         ),
-        description: lang.ipi_results.abilityDiscover.low_level.description,
+        description: (
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.abilityDiscover.low_level.description}
+          </span>
+        ),
       },
       optimal: {
         title: (
-          <div className='text-[25px] leading-[32.5px] font-bold mb-[9px] text-justify'>
-            {lang.ipi_results.abilityDiscover.optimal_level.title}
+          <div className='text-[25px] leading-[32.5px] mb-[9px] text-justify'>
+            <span className='font-bold'>
+              {lang.ipi_results.abilityDiscover.optimal_level.title}
+            </span>
             <span className='text-[#347AEC]'>
               {lang.ipi_results.abilityDiscover.optimal_level.level}
             </span>
           </div>
         ),
-        description: lang.ipi_results.abilityDiscover.optimal_level.description,
+        description: (
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.abilityDiscover.optimal_level.description}
+          </span>
+        ),
       },
       high: {
         title: (
@@ -40,7 +50,11 @@ export const ipi_results = (lang) => {
             </span>
           </div>
         ),
-        description: lang.ipi_results.abilityDiscover.high_level.description,
+        description: (
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.abilityDiscover.high_level.description}
+          </span>
+        ),
       },
     },
     {
@@ -60,7 +74,9 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>{lang.ipi_results.creativity.low_level.description}</span>
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.creativity.low_level.description}
+          </span>
         ),
       },
       optimal: {
@@ -73,7 +89,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.creativity.optimal_level.description}
           </span>
         ),
@@ -86,7 +102,9 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>{lang.ipi_results.creativity.high_level.description}</span>
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.creativity.high_level.description}
+          </span>
         ),
       },
     },
@@ -109,7 +127,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewPhenomena.low_level.description}
           </span>
         ),
@@ -124,7 +142,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewPhenomena.optimal_level.description}
           </span>
         ),
@@ -139,7 +157,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewPhenomena.high_level.description}
           </span>
         ),
@@ -164,7 +182,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewSituation.low_level.description}
           </span>
         ),
@@ -179,7 +197,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewSituation.optimal_level.description}
           </span>
         ),
@@ -194,7 +212,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.methodNewSituation.high_level.description}
           </span>
         ),
@@ -217,7 +235,9 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>{lang.ipi_results.readiness.low_level.description}</span>
+          <span className='font-normal text-[18px]'>
+            {lang.ipi_results.readiness.low_level.description}
+          </span>
         ),
       },
       optimal: {
@@ -228,7 +248,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>
+          <span className='font-normat text-[18px]'>
             {lang.ipi_results.readiness.optimal_level.description}
           </span>
         ),
@@ -241,7 +261,9 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-medium'>{lang.ipi_results.readiness.high_level.description}</span>
+          <span className='font-normat text-[18px]'>
+            {lang.ipi_results.readiness.high_level.description}
+          </span>
         ),
       },
     },
@@ -261,7 +283,11 @@ export const ipi_results = (lang) => {
             <span className='text-[#347AEC]'>{lang.ipi_results.tolerance.low_level.level}</span>
           </div>
         ),
-        description: lang.ipi_results.tolerance.low_level.description,
+        description: (
+          <span className='font-normat text-[18px]'>
+            {lang.ipi_results.tolerance.low_level.description}
+          </span>
+        ),
       },
       optimal: {
         title: (
@@ -270,7 +296,11 @@ export const ipi_results = (lang) => {
             <span className='text-[#347AEC]'>{lang.ipi_results.tolerance.optimal_level.level}</span>
           </div>
         ),
-        description: lang.ipi_results.tolerance.optimal_level.description,
+        description: (
+          <span className='font-normat text-[18px]'>
+            {lang.ipi_results.tolerance.optimal_level.description}
+          </span>
+        ),
       },
       high: {
         title: (
@@ -279,7 +309,11 @@ export const ipi_results = (lang) => {
             <span className='text-[#347AEC]'>{lang.ipi_results.tolerance.high_level.level}</span>
           </div>
         ),
-        description: lang.ipi_results.tolerance.high_level.description,
+        description: (
+          <span className='font-normat text-[18px]'>
+            {lang.ipi_results.tolerance.high_level.description}
+          </span>
+        ),
       },
     },
   ];
