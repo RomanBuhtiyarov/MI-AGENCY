@@ -1,6 +1,7 @@
 export const ipi_results = (lang) => {
   return [
     {
+      id: "abilityDiscover",
       title: lang.ipi_results.abilityDiscover.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify font-medium'>
@@ -58,6 +59,7 @@ export const ipi_results = (lang) => {
       },
     },
     {
+      id: "creativity",
       title: lang.ipi_results.creativity.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify font-medium'>
@@ -109,6 +111,7 @@ export const ipi_results = (lang) => {
       },
     },
     {
+      id: "methodNewPhenomena",
       title: lang.ipi_results.methodNewPhenomena.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify font-medium'>
@@ -164,6 +167,7 @@ export const ipi_results = (lang) => {
       },
     },
     {
+      id: "methodNewSituation",
       title: lang.ipi_results.methodNewSituation.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify font-medium'>
@@ -219,6 +223,7 @@ export const ipi_results = (lang) => {
       },
     },
     {
+      id: "readiness",
       title: lang.ipi_results.readiness.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify font-medium'>
@@ -268,6 +273,7 @@ export const ipi_results = (lang) => {
       },
     },
     {
+      id: "tolerance",
       title: lang.ipi_results.tolerance.title,
       description: (
         <div className='text-[#262626] mt-[9px] text-justify'>

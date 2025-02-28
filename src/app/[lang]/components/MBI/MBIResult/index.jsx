@@ -68,8 +68,10 @@ const MBIResult = ({ lang, answers, questions }) => {
         max: item.max,
         value: item.value,
         title: item.titleString,
+        id: item.id,
       })),
     };
+    console.log(data);
 
     try {
       await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);

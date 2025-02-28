@@ -11,12 +11,13 @@ module.exports = {
     extend: {
       screens: {
         mobile: { max: "480px" },
-        mobileS: {max: "420px"}
+        mobileS: { max: "420px" },
+        screenL: { max: "1280px" },
       },
       fontFamily: {
         // 'unbounded': ['__Unbounded_a10cd1']
         unbounded: ["Unbounded", "sans-serif"],
-        montserrat: ['Montserrat', 'sans-serif']
+        montserrat: ["Montserrat", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

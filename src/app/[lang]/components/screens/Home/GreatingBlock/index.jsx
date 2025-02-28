@@ -27,7 +27,7 @@ const GreatingBlock = ({ lang }) => {
       <div className='max-w-[647px]'>
         {imageLogoSrc && (
           <Image
-            className='relative z-10 max-w-[547px] max-h-[103px] w-full mobile:w-[360px] mobile:mx-auto'
+            className='relative z-10 max-w-[547px] max-h-[103px] w-full mobile:w-[375px] mobile:mx-auto'
             src={imageLogoSrc}
             alt={"logo"}
             width={547}

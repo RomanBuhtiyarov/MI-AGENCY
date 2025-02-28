@@ -23,6 +23,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
 
   return [
     {
+      id: "emotional_burnout",
       level: emotional_burnoutKey,
       max: 54,
       value: emotional_burnout,
@@ -65,6 +66,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       titleString: lang.mbi_results.emotional_burnout.title,
     },
     {
+      id: "alienation",
       level: alienationKey,
       max: 30,
       value: alienation,
@@ -89,6 +91,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       titleString: lang.mbi_results.alienation.title,
     },
     {
+      id: "personal_accomplishments",
       level: personal_accomplishmentsKey,
       max: 48,
       value: personal_accomplishments,

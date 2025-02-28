@@ -49,11 +49,17 @@ export const IPIResult = ({ answers, lang, questions }) => {
     if (e) {
       e.preventDefault();
     }
+    console.log(scores, total);
+
     const data = {
       test: 4,
       user: userData.id,
       type: "ipi",
+      scores,
+      total,
     };
+    console.log(data);
+
     try {
       await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
       setIsSaved(!isSaved);
