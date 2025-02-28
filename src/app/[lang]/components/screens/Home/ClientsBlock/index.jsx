@@ -16,7 +16,7 @@ const ClientsBlock = ({ lang }) => {
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={firstClientImage.src} alt='client' className='w-[58px] h-[53px]' />
             </div>
-            <div className='max-w-[275px] mobile:max-w-[160px] mobile:text-xs flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            <div className='max-w-[325px] mobile:max-w-[160px] mobile:text-xs flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
               {lang.clients_block.client_1}
             </div>
           </div>
