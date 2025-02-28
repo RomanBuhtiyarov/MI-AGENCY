@@ -39,7 +39,7 @@ const GreatingBlock = ({ lang }) => {
             {lang.greatings_block.title}
           </p>
         </div>
-        <div className='text-justify bg-white mt-[18px] max-w-[630px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
+        <div className=' bg-white mt-[18px] max-w-[630px] py-[14px] pl-[21px] pr-[11px] rounded-[13px] font-unbounded text-[17px] leading-[22.95px]'>
           {lang.greatings_block.description}
         </div>
         <div className='mt-[18.5px] flex gap-5 mobile:justify-between'>

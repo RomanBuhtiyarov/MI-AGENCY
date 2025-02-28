@@ -18,7 +18,7 @@ const ProgressBar = ({ max, value, level }) => {
       </div>
       <div className='flex items-center gap-[11px]'>
         <div className='bg-white rounded-[9px] p-[10px] mobile:flex-1 flex-1'>
-          <div className='flex-start rounded-[29px] max-w-[521px] w-full h-[16px] overflow-hidden bg-[#EFF3FB] font-monserrat text-xs font-[600] relative'>
+          <div className='flex-start rounded-[29px] max-w-[521px] w-full h-[16px] overflow-hidden bg-[#EFF3FB] text-xs font-[600] relative'>
             <div
               className={cn(
                 "rounded-[6px] h-full items-baseline justify-center overflow-hidden break-all bg-gradient-to-r from-[#4485ED] to-[#6764E7] relative transition-all duration-300 ease-in-out",
@@ -50,10 +50,9 @@ export const IPIResult = ({ answers, lang, questions }) => {
       e.preventDefault();
     }
     const data = {
-      test: 1,
+      test: 4,
       user: userData.id,
-      type: enneagramResultData.type.toString(),
-      description: "",
+      type: "ipi",
     };
     try {
       await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
@@ -182,7 +181,9 @@ export const IPIResult = ({ answers, lang, questions }) => {
               <div className='text-[#262626] font-bold text-[25px] leading-[32.5px]'>
                 {totalText.title} <span className='text-[#347AEC]'>{totalText.level}</span>
               </div>
-              <div className='mt-[9px] text-lg leading-[23.4px] text-justify'>{totalText.description}</div>
+              <div className='mt-[9px] text-lg leading-[23.4px] text-justify'>
+                {totalText.description}
+              </div>
             </div>
           </div>
         </div>
@@ -228,7 +229,9 @@ export const IPIResult = ({ answers, lang, questions }) => {
                 {result.description}
                 <div className='mt-[19px]'>
                   {result[levelkey].title}
-                  <span className='leading-[23.4px] text-justify'>{result[levelkey].description}</span>
+                  <span className='leading-[23.4px] text-justify'>
+                    {result[levelkey].description}
+                  </span>
                 </div>
               </div>
             )}

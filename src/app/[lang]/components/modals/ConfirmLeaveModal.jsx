@@ -28,10 +28,10 @@ export const ConfirmLeaveModal = ({ isModalOpen, handleLeavePage, handleClose, l
           loading='lazy'
         />
         <div className='md:ml-[50px]'>
-          <h1 className='text-left text-[42px] font-unbounded'>
+          <h1 className='text-left text-[42px] font-unbounded mobileS:text-[38px]'>
             {lang.enneagram_block.modal_window_h1}
           </h1>
-          <p className='text-[#262626] max-w-[432px] text-justify mobile:pr-[0] md:text-left text-[16px] font-medium font-montserrat leading-[130%] w-full pr-[54px] mb-[24px]'>
+          <p className='text-[#262626] font-medium max-w-[432px] text-justify mobile:pr-[0] md:text-left text-[16px] leading-[20.8px] w-full pr-[44px] mb-[24px]'>
             {lang.enneagram_block.modal_window_p}
           </p>
           <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>

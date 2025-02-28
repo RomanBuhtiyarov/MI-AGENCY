@@ -61,11 +61,16 @@ const MBIResult = ({ lang, answers, questions }) => {
       e.preventDefault();
     }
     const data = {
-      test: 1,
+      test: 3,
       user: userData.id,
-      type: enneagramResultData.type.toString(),
-      description: "",
+      results: results.map((item) => ({
+        level: item.level,
+        max: item.max,
+        value: item.value,
+        title: item.titleString,
+      })),
     };
+
     try {
       await axios.post(`https://psymi.com.ua/${lang.backend_locale}/api/test-results/`, data);
       setIsSaved(!isSaved);

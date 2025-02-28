@@ -14,7 +14,7 @@ import MBI from "@/app/[lang]/components/MBI";
 export const tests = (lang) => {
   return [
     {
-      label: <div className='pt-[30px]'>{lang.paei_page.title}</div>, //,
+      label: <div className='pt-[30px] mobile:pt-[0px]'>{lang.paei_page.title}</div>, //,
       type: "paei",
       description: "В основі методики лежить PAEI-концепція, згід...",
       banner: "paei_banner.png",
@@ -64,7 +64,7 @@ export const tests = (lang) => {
       },
     },
     {
-      label: <div className='pt-[30px]'>{lang.enneagram_page.title}</div>,
+      label: <div className='pt-[30px] mobile:pt-[0px]'>{lang.enneagram_page.title}</div>,
       type: "eneagrama",
       description: "Психологічна модель, що описує 9 глибинних...",
       banner: "enneagram_banner.png",
@@ -115,7 +115,7 @@ export const tests = (lang) => {
       },
     },
     {
-      label: <div className='pt-[30px]'>{lang.mbi_page.title}</div>,
+      label: <div className='pt-[30px] mobile:pt-[0px]'>{lang.mbi_page.title}</div>,
       type: "mbi",
       description: "Тест MBI розроблений для оцінки рівня вигорання. В...",
       banner: "MBI_banner.svg",
@@ -236,7 +236,7 @@ export const tests = (lang) => {
       stretchBanner: true,
     },
     {
-      label: <div className="pt-[30px]">{lang.ipi_page.title}</div>,
+      label: <div className="pt-[30px] mobile:pt-[0px]">{lang.ipi_page.title}</div>,
       type: "ipi",
       description: "Тест дозволяє виявити, наскільки ви відкриті до нови...",
       banner: "ipi_banner.png",

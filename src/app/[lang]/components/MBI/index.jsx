@@ -19,8 +19,8 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
   const relativeIndex = index + (currentPage - 1) * 7;
 
   return (
-    <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px] mobile:pr-4'>
-      <div className='leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm mr-[44px]'>
+    <div className='bg-white mobile:bg-transparent mobile:shadow-none mobile:block justify-between max-w-[661px] min-h-[57px] mt-[12px] shadow-shadow-20 rounded-[5px] flex items-center pl-4 pr-[30px] mobile:pr-[12px]'>
+      <div className='pl-[20px] leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm mr-[44px]'>
         {label}
       </div>
       <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>

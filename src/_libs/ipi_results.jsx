@@ -248,7 +248,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-normat text-[18px]'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.readiness.optimal_level.description}
           </span>
         ),
@@ -261,7 +261,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-normat text-[18px]'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.readiness.high_level.description}
           </span>
         ),
@@ -284,7 +284,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-normat text-[18px]'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.tolerance.low_level.description}
           </span>
         ),
@@ -297,7 +297,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-normat text-[18px]'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.tolerance.optimal_level.description}
           </span>
         ),
@@ -310,7 +310,7 @@ export const ipi_results = (lang) => {
           </div>
         ),
         description: (
-          <span className='font-normat text-[18px]'>
+          <span className='font-normal text-[18px]'>
             {lang.ipi_results.tolerance.high_level.description}
           </span>
         ),

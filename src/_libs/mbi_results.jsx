@@ -32,7 +32,9 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
       content: (
         <div className='max-w-full'>
           <div className='mt-[14px] leading-[20.8px] text-justify'>
-            <span className='font-bold text-justify'>{lang.mbi_results.emotional_burnout.description_1}</span>
+            <span className='font-bold text-justify'>
+              {lang.mbi_results.emotional_burnout.description_1}
+            </span>
             {lang.mbi_results.emotional_burnout.description_2}
           </div>
           <div className='flex gap-[41px] mt-[23px] mobile:block'>
@@ -60,6 +62,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
           </div>
         </div>
       ),
+      titleString: lang.mbi_results.emotional_burnout.title,
     },
     {
       level: alienationKey,
@@ -83,6 +86,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
           </div>
         </div>
       ),
+      titleString: lang.mbi_results.alienation.title,
     },
     {
       level: personal_accomplishmentsKey,
@@ -117,6 +121,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
           )}
         </div>
       ),
+      titleString: lang.mbi_results.personal_accomplishments.title,
     },
   ];
 };

@@ -7,7 +7,7 @@ import ClientsBlock from "./components/screens/Home/ClientsBlock";
 export default async function Home({ params }) {
   const lang = await getDictionary(params.lang);
   return (
-    <div className='mb-[50px] pt-[90px]'>
+    <div className='mb-[50px] pt-[90px] mobile:pt-[28px]'>
       <GreatingBlock lang={lang} />
       <TrustBlock lang={lang} />
       <AboutBlock lang={lang} />

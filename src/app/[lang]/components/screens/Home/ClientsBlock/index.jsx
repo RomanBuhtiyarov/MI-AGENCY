@@ -12,11 +12,11 @@ const ClientsBlock = ({ lang }) => {
 
       <div className='flex mt-[30px] max-w-[930px] gap-[40px] mobile:gap-[0px]'>
         <div className='flex mobile:block gap-[40px]'>
-          <div className='flex flex-col gap-[14px] items-center max-w-[220px]'>
+          <div className='flex flex-col gap-[14px] items-center max-w-[220px] mobile:max-w-[180px]'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={firstClientImage.src} alt='client' className='w-[58px] h-[53px]' />
             </div>
-            <div className='max-w-[325px] mobile:max-w-[160px] mobile:text-xs flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            <div className='max-w-[325px] mobile:max-w-[200px] mobile:text-xs mobile:leading-[19px] flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
               {lang.clients_block.client_1}
             </div>
           </div>
@@ -30,7 +30,7 @@ const ClientsBlock = ({ lang }) => {
           </div>
         </div>
         <div className='flex mobile:block gap-[40px]'>
-          <div className='flex flex-col gap-[14px] items-center max-w-[234px]'>
+          <div className='flex flex-col gap-[14px] items-center max-w-[234px] mobile:max-w-[150px]'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={thirdClientImage.src} alt='client' className='w-[60px] h-[55px]' />
             </div>
@@ -38,7 +38,7 @@ const ClientsBlock = ({ lang }) => {
               {lang.clients_block.client_3}
             </div>
           </div>
-          <div className='flex flex-col gap-[14px] items-center mobile:mt-[25px] max-w-[220px]'>
+          <div className='flex flex-col gap-[14px] items-center mobile:mt-[28px] max-w-[220px] mobile:max-w-[150px]'>
             <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
               <img src={fourthClientImage.src} alt='client' className='w-[58px] h-[58px]' />
             </div>

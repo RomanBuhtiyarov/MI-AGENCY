@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       screens: {
         mobile: { max: "480px" },
+        mobileS: {max: "420px"}
       },
       fontFamily: {
         // 'unbounded': ['__Unbounded_a10cd1']

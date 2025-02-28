@@ -94,7 +94,7 @@ export const IPI = ({ lang }) => {
 
   return (
     <div>
-      <div className='max-w-[842px] mobile:max-w-[370px] h-auto mt-[15px]'>
+      <div className='max-w-[842px] mobile:max-w-[370px] mobileS:max-w-[360px] h-auto mt-[15px]'>
         <div className='text-end w-full flex justify-between mobile:justify-normal mobile:gap-[6px]'>
           <MainButton
             className='md:w-[120px] md:mr-[10px] h-[30px]'
