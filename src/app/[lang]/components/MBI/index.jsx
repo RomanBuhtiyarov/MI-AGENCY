@@ -44,11 +44,7 @@ const MBI = ({ lang }) => {
   const localizedTests = mbi(lang);
   const [backUrl, setBackUrl] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [userAnswers, setUserAnswers] = useState(() => {
-    const storedUserAnswers = localStorage.getItem("mbi_userAnswers");
-    const parsed = JSON.parse(storedUserAnswers);
-    return parsed ?? {};
-  });
+  const [userAnswers, setUserAnswers] = useState({});
   const [isShownResult, setIsShownResult] = useState(false);
   const resultRef = useRef(null);
   const currentQuestions = useMemo(() => {
@@ -72,23 +68,6 @@ const MBI = ({ lang }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const storedCurrentPage = localStorage?.getItem("mbi_currentpage");
-    const storedUserAnswers = JSON.parse(localStorage?.getItem("mbi_userAnswers"));
-
-    if (storedCurrentPage) {
-      setCurrentPage(parseInt(storedCurrentPage, 10));
-    }
-    if (storedUserAnswers || Object.keys(userAnswers).length === 0) {
-      setUserAnswers(storedUserAnswers ?? {});
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("mbi_currentPage", currentPage);
-    localStorage.setItem("mbi_userAnswers", JSON.stringify(userAnswers));
-  }, [currentPage, userAnswers]);
-
   const handleLeavePage = (url) => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("mbi_currentPage");
@@ -97,8 +76,8 @@ const MBI = ({ lang }) => {
     setTimeout(() => {
       setPreventNavigation(false);
     }, 100);
-    if (url) {
-      setLastUrl(url);
+    if (backUrl) {
+      setLastUrl(backUrl);
     }
   };
 

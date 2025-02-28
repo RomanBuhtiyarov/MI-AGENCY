@@ -19,15 +19,8 @@ export const IPI = ({ lang }) => {
   const [selectedValue, setSelectedValue] = useState(null);
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
-  const [currentQuestion, setCurrentQuestion] = useState(() => {
-    const storedCurrentQuestion = localStorage.getItem("ipi_currentQuestion");
-    return storedCurrentQuestion ? parseInt(storedCurrentQuestion, 10) : 0;
-  });
-  const [userAnswers, setUserAnswers] = useState(() => {
-    const storedUserAnswers = localStorage.getItem("ipi_userAnswers");
-    const parsed = JSON.parse(storedUserAnswers);
-    return parsed ?? {};
-  });
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState({});
   const [backUrl, setBackUrl] = useState("");
 
   const {
@@ -63,24 +56,6 @@ export const IPI = ({ lang }) => {
   };
 
   useEffect(() => {
-    const storedCurrentQuestion = localStorage?.getItem("ipi_currentQuestion");
-    const storedUserAnswers = JSON.parse(localStorage?.getItem("ipi_userAnswers"));
-
-    if (storedCurrentQuestion) {
-      setCurrentQuestion(parseInt(storedCurrentQuestion, 10));
-    }
-    if (storedUserAnswers || Object.keys(userAnswers).length === 0) {
-      setUserAnswers(storedUserAnswers ?? {});
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("ipi_currentQuestion", currentQuestion);
-    localStorage.setItem("ipi_userAnswers", JSON.stringify(userAnswers));
-  }, [currentQuestion, userAnswers]);
-
-  useEffect(() => {
-    localStorage.setItem("ipi_userAnswers", JSON.stringify(userAnswers));
     if (userAnswers[currentQuestion]) {
       setSelectedValue(parseInt(userAnswers[currentQuestion], 10));
     } else {

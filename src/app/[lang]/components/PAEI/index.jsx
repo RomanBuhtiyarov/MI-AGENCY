@@ -20,12 +20,7 @@ export const PAEI = ({ lang }) => {
   const [isShownResult, setIsShownResult] = useState(false);
   const [height, setHeight] = useState("auto");
   const contentRef = useRef(null);
-  const [answers, setAnswers] = useState(() => {
-    const storedPAEIAnswers = localStorage.getItem("paeiAnswers");
-    const parsedPAEIAnswers = JSON.parse(storedPAEIAnswers);
-    return parsedPAEIAnswers ?? [];
-  });
-
+  const [answers, setAnswers] = useState([]);
   const { setPreventNavigation, showModal: isModalOpen, setShowModal } = useRootContext();
 
   useEffect(() => {
@@ -43,11 +38,6 @@ export const PAEI = ({ lang }) => {
       setPreventNavigation(false);
     }, 100);
   };
-
-  useEffect(() => {
-    // Зберігаємо дані в локальному сховищі
-    localStorage.setItem("paeiAnswers", JSON.stringify(answers));
-  }, [answers]);
 
   useEffect(() => {
     const updatedCounterTest = counterTest.map((item) => ({ ...item })); // Создаем новый массив с копиями объектов

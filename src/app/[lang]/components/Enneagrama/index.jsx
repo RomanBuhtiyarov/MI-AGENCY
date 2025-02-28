@@ -50,43 +50,8 @@ export const Enneagrama = ({ lang }) => {
   const [isShownResult, setIsShownResult] = useState(false);
   const [generalQuestions] = useState(localizedTests.length);
 
-  useEffect(() => {
-    // Завантаження даних з localStorage при старті компоненту
-    const storedCurrentQuestion = localStorage?.getItem("currentQuestion");
-    const storedGeneralCount = localStorage?.getItem("generalCount");
-    const storedUserAnswers = localStorage?.getItem("userAnswers");
-
-    // Встановлення станів з даних localStorage, якщо вони існують
-    if (storedCurrentQuestion) {
-      setCurrentQuestion(parseInt(storedCurrentQuestion, 10));
-    }
-    if (storedGeneralCount) {
-      setGeneralCount(parseInt(storedGeneralCount, 10));
-    }
-    if (storedUserAnswers || Object.keys(userAnswers).length === 0) {
-      setUserAnswers(JSON.parse(storedUserAnswers));
-    }
-  }, []);
-  const [generalCount, setGeneralCount] = useState(() => {
-    const storedGeneralCount = localStorage.getItem("generalCount");
-    return storedGeneralCount ? parseInt(storedGeneralCount, 10) : 0;
-  });
-
-  const [currentQuestion, setCurrentQuestion] = useState(() => {
-    const storedCurrentQuestion = localStorage.getItem("currentQuestion");
-    return storedCurrentQuestion ? parseInt(storedCurrentQuestion, 10) : 0;
-  });
-  const [userAnswers, setUserAnswers] = useState(() => {
-    const storedUserAnswers = localStorage.getItem("userAnswers");
-    return storedUserAnswers ? JSON.parse(storedUserAnswers) : {};
-  });
-
-  useEffect(() => {
-    // Зберігаємо дані в локальному сховищі
-    localStorage.setItem("currentQuestion", currentQuestion);
-    localStorage.setItem("generalCount", generalCount);
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
-  }, [currentQuestion, generalCount, userAnswers]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState({});
 
   useEffect(() => {
     setHeight(isShownResult ? `${contentRef.current.scrollHeight}px` : "0px");
@@ -108,12 +73,7 @@ export const Enneagrama = ({ lang }) => {
       [currentQuestion]: answerScore,
     }));
 
-    if (type === "Yes") {
-      setCurrentQuestion((prev) => prev + 1);
-      setGeneralCount((prev) => prev + 1);
-    } else {
-      setCurrentQuestion((prev) => prev + 1);
-    }
+    setCurrentQuestion((prev) => prev + 1);
   };
 
   useEffect(() => {
