@@ -9,43 +9,38 @@ const ClientsBlock = ({ lang }) => {
       <div className='text-[#262626] uppercase text-[40px] leading-[54px] font-bold mobile:text-[35px] mobile:leading-[47px]'>
         {lang.clients_block.title}
       </div>
-
-      <div className='flex mt-[30px] max-w-[930px] gap-[40px] mobile:gap-[0px] screenL:gap-[10px]'>
-        <div className='flex mobile:block gap-[40px] screenL:gap-[5px]'>
-          <div className='flex flex-col gap-[14px] items-center max-w-[220px] mobile:max-w-[180px]'>
-            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
-              <img src={firstClientImage.src} alt='client' className='w-[58px] h-[53px]' />
-            </div>
-            <div className='screenL:w-[220px] max-w-[325px] mobile:max-w-[200px] mobile:text-xs mobile:leading-[19px] flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
-              {lang.clients_block.client_1}
-            </div>
+      <div className='grid grid-cols-2 gap-4 mt-[30px] md:flex md:flex-nowrap md:justify-evenly mobile:justify-normal'>
+        <div className='flex flex-col min-w-[200px] w-min items-center text-center'>
+          <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+            <img src={firstClientImage.src} alt='client' className='w-[58px] h-[53px]' />
           </div>
-          <div className='flex flex-col gap-[14px] items-center mobile:mt-[25px] max-w-[220px]'>
-            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
-              <img src={secondClientImage.src} alt='client' className='w-[64px] h-[61px]' />
-            </div>
-            <div className='screenL:w-[180px] mobile:text-xs max-w-[250px] mobile:max-w-[180px] flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
-              {lang.clients_block.client_2}
-            </div>
-          </div>
+          <p className='text-[15px] uppercase mt-[14px] font-unbounded leading-[20.8px] text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            {lang.clients_block.client_1}
+          </p>
         </div>
-        <div className='flex mobile:block gap-[40px] screenL:gap-[0px]'>
-          <div className='flex flex-col gap-[14px] items-center max-w-[234px] mobile:max-w-[150px]'>
-            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
-              <img src={thirdClientImage.src} alt='client' className='w-[60px] h-[55px]' />
-            </div>
-            <div className='screenL:w-[190px] text-[15px] mobile:text-xs max-w-[230px] mobile:max-w-[160px] flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
-              {lang.clients_block.client_3}
-            </div>
+        <div className='flex flex-col min-w-[200px] w-min items-center text-center'>
+          <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+            <img src={secondClientImage.src} alt='client' className='w-[58px] h-[53px]' />
           </div>
-          <div className='flex flex-col gap-[14px] items-center mobile:mt-[28px] max-w-[220px] mobile:max-w-[150px]'>
-            <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
-              <img src={fourthClientImage.src} alt='client' className='w-[58px] h-[58px]' />
-            </div>
-            <div className='screenL:w-[210px] mobile:text-xs max-w-[240px] mobile:w-[200px] flex font-unbounded items-center uppercase leading-[20.8px] text-center text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
-              {lang.clients_block.client_4}
-            </div>
+          <p className='text-[15px] uppercase mt-[14px] font-unbounded leading-[20.8px] text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            {lang.clients_block.client_2}
+          </p>
+        </div>
+        <div className='flex flex-col min-w-[200px] w-min items-center text-center mobile:mt-[30px]'>
+          <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+            <img src={thirdClientImage.src} alt='client' className='w-[58px] h-[53px]' />
           </div>
+          <p className='text-[15px] uppercase mt-[14px] font-unbounded leading-[20.8px] text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            {lang.clients_block.client_3}
+          </p>
+        </div>
+        <div className='flex flex-col min-w-[200px] w-min items-center text-center mobile:mt-[30px]'>
+          <div className='w-[117px] h-[117px] bg-white rounded-full flex items-center justify-center drop-shadow-drop'>
+            <img src={fourthClientImage.src} alt='client' className='w-[58px] h-[53px]' />
+          </div>
+          <p className='text-[15px] uppercase mt-[14px] font-unbounded leading-[20.8px] text-transparent bg-gradient-to-r from-[#347AEC] to-[#6764E7] bg-clip-text'>
+            {lang.clients_block.client_4}
+          </p>
         </div>
       </div>
     </section>
