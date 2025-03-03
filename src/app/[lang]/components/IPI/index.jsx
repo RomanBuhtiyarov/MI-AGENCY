@@ -92,6 +92,12 @@ export const IPI = ({ lang }) => {
     };
   }, [isModalOpen]);
 
+  useEffect(() => {
+    if (Object.keys(userAnswers).length === 30 && contentRef.current) {
+      contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [contentRef, userAnswers]);
+
   return (
     <div>
       <div className='max-w-[842px] mobile:max-w-[370px] mobileS:max-w-[360px] h-auto mt-[15px]'>

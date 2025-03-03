@@ -3,6 +3,10 @@ import { Modal } from "antd";
 import Image from "next/image";
 import leaveTestingRobot from "/public/_assets/images/sadRobot.svg";
 import EnneagramaButton from "../UI/Buttons/EnneagramaButton";
+import { Montserrat } from "next/font/google";
+import { cn } from "@/_helpers/cn";
+
+const Mont = Montserrat({ subsets: ["latin"] });
 
 export const ConfirmLeaveModal = ({ isModalOpen, handleLeavePage, handleClose, lang }) => {
   const { isMobile } = useScreenSize();
@@ -31,7 +35,12 @@ export const ConfirmLeaveModal = ({ isModalOpen, handleLeavePage, handleClose, l
           <h1 className='text-left text-[42px] font-unbounded mobileS:text-[38px]'>
             {lang.enneagram_block.modal_window_h1}
           </h1>
-          <p className='text-[#262626] font-medium max-w-[432px] text-justify mobile:pr-[0] md:text-left text-[16px] leading-[20.8px] w-full pr-[44px] mb-[24px]'>
+          <p
+            className={cn(
+              "text-[#262626] font-medium max-w-[432px] text-justify mobile:pr-[0] md:text-left text-[16px] leading-[20.8px] w-full mb-[24px]",
+              Mont.className,
+            )}
+          >
             {lang.enneagram_block.modal_window_p}
           </p>
           <div className='flex items-center flex-col gap-[10px] md:flex-row md:w-[500px]'>
