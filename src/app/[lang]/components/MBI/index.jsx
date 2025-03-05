@@ -23,6 +23,15 @@ const Question = ({ label, handleSubmit, type, index, userAnswers, currentPage }
       <div className='pl-[20px] leading-[20.8px] max-w-[310px] font-medium mobile:max-w-full mobile:mb-[17px] mobile:text-sm mr-[44px]'>
         {label}
       </div>
+      {window?.innerWidth <= 480 && (
+        <div className='flex gap-[34px]  justify-end pr-[32px] mobile:justify-center mobile:mb-[12px] mobile:pr-0'>
+          {[0, 1, 2, 3, 4, 5, 6].map((number) => (
+            <div key={number} className='text-[#5D5D5D] font-semibold '>
+              {number}
+            </div>
+          ))}
+        </div>
+      )}
       <div className='flex gap-6 mobile:justify-center bg-white mobile:py-[15px] mobile:px-[50px] mobile:rounded-[5px]'>
         {[0, 1, 2, 3, 4, 5, 6].map((value) => (
           <Checkbox
@@ -53,6 +62,8 @@ const MBI = ({ lang }) => {
     const endIndex = Math.min(startIndex + questionsPerPage, localizedTests.length);
     return localizedTests.slice(startIndex, endIndex);
   }, [currentPage, localizedTests]);
+
+  window.innerWidth;
 
   const {
     setPreventNavigation,
@@ -117,13 +128,15 @@ const MBI = ({ lang }) => {
         <div className='max-w-[1024px] w-full mobile:mb-[50px]'>
           <div className='flex items-center gap-[58px] mobile:flex-col'>
             <div>
-              <div className='flex gap-[34px]  justify-end pr-[32px] mobile:justify-center mobile:pr-1'>
-                {[0, 1, 2, 3, 4, 5, 6].map((number) => (
-                  <div key={number} className='text-[#5D5D5D] font-semibold '>
-                    {number}
-                  </div>
-                ))}
-              </div>
+              {window?.innerWidth > 480 && (
+                <div className='flex gap-[34px]  justify-end pr-[32px] mobile:justify-center mobile:pr-1'>
+                  {[0, 1, 2, 3, 4, 5, 6].map((number) => (
+                    <div key={number} className='text-[#5D5D5D] font-semibold '>
+                      {number}
+                    </div>
+                  ))}
+                </div>
+              )}
               {currentQuestions.map(({ label, type }, index) => {
                 return (
                   <Question

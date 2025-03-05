@@ -49,7 +49,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
             <div className='max-w-full'>
               <div className='text-[25px] leading-[130%] font-bold'>
                 {lang.mbi_results.emotional_burnout[emotional_burnoutKey].title}
-                <span className='uppercase text-[#347AEC]'>
+                <span className='uppercase mobile:lowercase text-[#347AEC]'>
                   {lang.mbi_results.emotional_burnout[emotional_burnoutKey].level}
                 </span>
               </div>
@@ -79,7 +79,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
           </div>
           <div className='text-[25px] leading-[130%] font-bold mt-4'>
             {lang.mbi_results.alienation[alienationKey].title}
-            <span className='uppercase text-[#347AEC]'>
+            <span className='uppercase mobile:lowercase text-[#347AEC]'>
               {lang.mbi_results.alienation[alienationKey].level}
             </span>
           </div>
@@ -110,7 +110,7 @@ export const mbi_results = ({ lang, emotional_burnout, alienation, personal_acco
           </div>
           <div className='text-[25px] leading-[130%] font-bold max-w-full mt-4'>
             {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].title}
-            <span className='uppercase text-[#347AEC]'>
+            <span className='uppercase mobile:lowercase text-[#347AEC]'>
               {lang.mbi_results.personal_accomplishments[personal_accomplishmentsKey].level}
             </span>
           </div>

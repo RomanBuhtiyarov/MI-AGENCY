@@ -32,7 +32,16 @@ const CardTest = ({ data }) => {
   }, [data]);
 
   return (
-    <div className='relative max-w-[408px] w-full'>
+    <div
+      className={cn("relative max-w-[408px] w-full cursor-pointer", {
+        "cursor-default": data.development,
+      })}
+      onClick={() => {
+        if (!data.development) {
+          router.push(`/${data.locale}/test/${data.type}`);
+        }
+      }}
+    >
       <div
         className={cn("shadow-lg rounded-[15px]", {
           "blur-[2px]": data?.development,

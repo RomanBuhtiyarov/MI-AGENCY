@@ -122,7 +122,7 @@ export const tests = (lang) => {
       page: {
         title: lang.mbi_page.title,
         description: (
-          <p className='text-base text-[#262626] font-medium text-justify leading-[25px]'>
+          <p className='text-base text-[#262626] font-medium text-justify mobile:text-left leading-[25px]'>
             <span className='font-bold'>{lang.mbi_page.description_1}</span>
             {lang.mbi_page.description_2}
             <span className='font-bold'>{lang.mbi_page.description_3}</span>
@@ -141,12 +141,12 @@ export const tests = (lang) => {
                   className='absolute top mobile:hidden'
                   alt='mbi border'
                 />
-                <p className='leading-[20px] font-medium text-base max-w-[600px] pt-[17px] pl-[20px] mobile:pr-[18px] text-justify'>
+                <p className='leading-[20px] font-medium text-base mobile:text-left max-w-[600px] pt-[17px] pl-[20px] mobile:pr-[18px] text-justify'>
                   {lang.mbi_page.robot_hint_1}
                   <span className='font-bold'>{lang.mbi_page.robot_hint_2}</span>
                   {lang.mbi_page.robot_hint_3}
                 </p>
-                <p className='leading-[20px] font-bold max-w-[600px] pl-[20px] pt-[20px] mobile:pr-[18px] pb-[20px] text-justify'>
+                <p className='leading-[20px] font-bold max-w-[600px]  mobile:text-left pl-[20px] pt-[20px] mobile:pr-[18px] pb-[20px] text-justify'>
                   {lang.mbi_page.robot_hint_3}
                 </p>
               </div>
@@ -236,7 +236,7 @@ export const tests = (lang) => {
       stretchBanner: true,
     },
     {
-      label: <div className="pt-[30px] mobile:pt-[0px]">{lang.ipi_page.title}</div>,
+      label: <div className='pt-[30px] mobile:pt-[0px]'>{lang.ipi_page.title}</div>,
       type: "ipi",
       description: "Тест дозволяє виявити, наскільки ви відкриті до нови...",
       banner: "ipi_banner.png",
